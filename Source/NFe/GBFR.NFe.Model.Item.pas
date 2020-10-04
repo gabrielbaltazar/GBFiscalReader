@@ -6,7 +6,10 @@ uses
   GBFR.NFe.Model.Types,
   GBFR.NFe.Model.Imposto.ICMS,
   GBFR.NFe.Model.Imposto.PIS,
-  GBFR.NFe.Model.Imposto.COFINS;
+  GBFR.NFe.Model.Imposto.COFINS,
+  GBFR.NFe.Model.Imposto.II,
+  GBFR.NFe.Model.Imposto.ISSQN,
+  GBFR.NFe.Model.Imposto.IPI;
 
 type TGBFRNFeModelItem = class
   private
@@ -28,6 +31,9 @@ type TGBFRNFeModelItem = class
     FICMS: TGBFRNFeModelICMS;
     FPIS: TGBFRNFeModelPIS;
     FCOFINS: TGBFRNFeModelCOFINS;
+    FIPI: TGBFRNFeModelIPI;
+    FII: TGBFRNFeModelII;
+    FISSQN: TGBFRNFeModelISSQN;
 
   public
     property nItem: Integer read FnItem write FnItem;
@@ -48,6 +54,9 @@ type TGBFRNFeModelItem = class
     property ICMS: TGBFRNFeModelICMS read FICMS write FICMS;
     property PIS: TGBFRNFeModelPIS read FPIS write FPIS;
     property COFINS: TGBFRNFeModelCOFINS read FCOFINS write FCOFINS;
+    property IPI: TGBFRNFeModelIPI read FIPI write FIPI;
+    property II: TGBFRNFeModelII read FII write FII;
+    property ISSQN: TGBFRNFeModelISSQN read FISSQN write FISSQN;
 
     constructor create;
     destructor  Destroy; override;
@@ -62,6 +71,9 @@ begin
   FICMS   := TGBFRNFeModelICMS.Create;
   FPIS    := TGBFRNFeModelPIS.Create;
   FCOFINS := TGBFRNFeModelCOFINS.Create;
+  FIPI    := TGBFRNFeModelIPI.Create;
+  FISSQN  := TGBFRNFeModelISSQN.Create;
+  FII     := TGBFRNFeModelII.Create;
 end;
 
 destructor TGBFRNFeModelItem.Destroy;
@@ -69,6 +81,9 @@ begin
   FICMS.Free;
   FPIS.Free;
   FCOFINS.Free;
+  FIPI.Free;
+  FISSQN.Free;
+  FII.Free;
   inherited;
 end;
 

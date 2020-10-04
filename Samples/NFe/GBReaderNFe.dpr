@@ -19,7 +19,9 @@ uses
   GBFR.XML.Base in '..\..\Source\XML\GBFR.XML.Base.pas',
   GBFR.NFe.XML.Interfaces in '..\..\Source\NFe\GBFR.NFe.XML.Interfaces.pas',
   GBFR.NFe.XML.Default in '..\..\Source\NFe\GBFR.NFe.XML.Default.pas',
-  GBFR.NFe.Model.Pagamento in '..\..\Source\NFe\GBFR.NFe.Model.Pagamento.pas';
+  GBFR.NFe.Model.Pagamento in '..\..\Source\NFe\GBFR.NFe.Model.Pagamento.pas',
+  GBFR.NFe.Model.Imposto.IPI in '..\..\Source\NFe\GBFR.NFe.Model.Imposto.IPI.pas',
+  GBFR.NFe.Model.ISSQN in '..\..\Source\NFe\GBFR.NFe.Model.ISSQN.pas';
 
 {$R *.res}
 
