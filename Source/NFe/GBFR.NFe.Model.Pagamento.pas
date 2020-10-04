@@ -3,26 +3,35 @@ unit GBFR.NFe.Model.Pagamento;
 interface
 
 uses
-  GBFR.NFe.Types;
+  GBFR.NFe.Model.FormaPagamento,
+  System.Generics.Collections;
 
 type TGBFRNFeModelPagamento = class
   private
-    FtPag: TNFeFormaPagamento;
-    FvPag: Currency;
-    FtpIntegra: TNFeTipoIntegracaoPagamento;
-    FCNPJ: String;
-    FtBand: TNFeBandeiraOperadora;
-    FcAut: String;
+    FvTroco: Currency;
+    FdetPag: TObjectList<TGBFRNFeModelFormaPagamento>;
 
   public
-    property tPag: TNFeFormaPagamento read FtPag write FtPag;
-    property vPag: Currency read FvPag write FvPag;
-    property tpIntegra: TNFeTipoIntegracaoPagamento read FtpIntegra write FtpIntegra;
-    property CNPJ: String read FCNPJ write FCNPJ;
-    property tBand: TNFeBandeiraOperadora read FtBand write FtBand;
-    property cAut: String read FcAut write FcAut;
+    property vTroco: Currency read FvTroco write FvTroco;
+    property detPag: TObjectList<TGBFRNFeModelFormaPagamento> read FdetPag write FdetPag;
+
+    constructor create;
+    destructor  Destroy; override;
 end;
 
 implementation
+
+{ TGBFRNFeModelPagamento }
+
+constructor TGBFRNFeModelPagamento.create;
+begin
+  FdetPag := TObjectList<TGBFRNFeModelFormaPagamento>.create;
+end;
+
+destructor TGBFRNFeModelPagamento.Destroy;
+begin
+  FdetPag.Free;
+  inherited;
+end;
 
 end.

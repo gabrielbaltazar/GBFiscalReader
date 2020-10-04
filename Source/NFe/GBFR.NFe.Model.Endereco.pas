@@ -19,7 +19,7 @@ type TGBFRNFeModelEndereco = class
   public
     property xLgr: String read FxLgr write FxLgr;
     property nro: String read Fnro write Fnro;
-    property xCompl: String read FxCompl write FxCompl;
+    property xCpl: String read FxCompl write FxCompl;
     property xBairro: String read FxBairro write FxBairro;
     property cMun: String read FcMun write FcMun;
     property xMun: string read FxMun write FxMun;

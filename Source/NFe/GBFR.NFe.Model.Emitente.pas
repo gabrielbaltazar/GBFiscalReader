@@ -3,7 +3,7 @@ unit GBFR.NFe.Model.Emitente;
 interface
 
 uses
-  GBFR.NFe.Types,
+  GBFR.NFe.Model.Types,
   GBFR.NFe.Model.Endereco;
 
 type TGBFRNFeModelEmitente = class

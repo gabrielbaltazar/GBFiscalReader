@@ -3,7 +3,7 @@ unit GBFR.NFe.Model.Imposto.ICMS;
 interface
 
 uses
-  GBFR.NFe.Types;
+  GBFR.NFe.Model.Types;
 
 type TGBFRNFeModelICMS = class
   private

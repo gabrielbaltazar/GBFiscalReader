@@ -3,7 +3,7 @@ unit GBFR.NFe.Model.Protocolo;
 interface
 
 uses
-  GBFR.NFe.Types;
+  GBFR.NFe.Model.Types;
 
 type TGBRFNFeModelProtocolo = class
   private

@@ -23,6 +23,10 @@ type TGBFRNFeModelICMSTot = class
     FvCOFINS: Currency;
     FvOutro: Currency;
     FvNF: Currency;
+    FvTotTrib: Currency;
+    FvFCPUFDest: Currency;
+    FvICMSUFDest: Currency;
+    FvICMSUFRemet: Currency;
 
   public
     property vBC: Currency read FvBC write FvBC;
@@ -31,6 +35,10 @@ type TGBFRNFeModelICMSTot = class
     property vFCP: Currency read FvFCP write FvFCP;
     property vBCST: Currency read FvBCST write FvBCST;
     property vST: Currency read FvST write FvST;
+    property vTotTrib: Currency read FvTotTrib write FvTotTrib;
+    property vFCPUFDest: Currency read FvFCPUFDest write FvFCPUFDest;
+    property vICMSUFDest: Currency read FvICMSUFDest write FvICMSUFDest;
+    property vICMSUFRemet: Currency read FvICMSUFRemet write FvICMSUFRemet;
     property vFCPST: Currency read FvFCPST write FvFCPST;
     property vFCPSTRet: Currency read FvFCPSTRet write FvFCPSTRet;
     property vProd: Currency read FvProd write FvProd;

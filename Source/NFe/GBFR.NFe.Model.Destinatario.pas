@@ -3,7 +3,7 @@ unit GBFR.NFe.Model.Destinatario;
 interface
 
 uses
-  GBFR.NFe.Types,
+  GBFR.NFe.Model.Types,
   GBFR.NFe.Model.Endereco;
 
 type TGBFRNFeModelDestinatario = class

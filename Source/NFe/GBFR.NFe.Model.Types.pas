@@ -1,4 +1,4 @@
-unit GBFR.NFe.Types;
+unit GBFR.NFe.Model.Types;
 
 interface
 

@@ -3,7 +3,7 @@ unit GBFR.NFe.Model.Item;
 interface
 
 uses
-  GBFR.NFe.Types,
+  GBFR.NFe.Model.Types,
   GBFR.NFe.Model.Imposto.ICMS,
   GBFR.NFe.Model.Imposto.PIS,
   GBFR.NFe.Model.Imposto.COFINS;

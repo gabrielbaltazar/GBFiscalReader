@@ -3,7 +3,7 @@ unit GBFR.NFe.Model.NotaFiscal;
 interface
 
 uses
-  GBFR.NFe.Types,
+  GBFR.NFe.Model.Types,
   GBFR.NFe.Model.Destinatario,
   GBFR.NFe.Model.Emitente,
   GBFR.NFe.Model.ICMSTot,
@@ -29,9 +29,10 @@ type TGBRFNFeModelNotaFiscal = class
     FICMSTot: TGBFRNFeModelICMSTot;
     FinfCpl: String;
     Fitens: TObjectList<TGBFRNFeModelItem>;
-    Fpag: TObjectList<TGBFRNFeModelPagamento>;
+    Fpag: TGBFRNFeModelPagamento;
     FinfRespTec: TGBFRNFeModelResponsavelTecnico;
     FprotNFe: TGBRFNFeModelProtocolo;
+    FdSaiEnt: TDateTime;
 
   public
     property cUF: string read FcUF write FcUF;
@@ -41,13 +42,14 @@ type TGBRFNFeModelNotaFiscal = class
     property serie: String read Fserie write Fserie;
     property nNF: Integer read FnNF write FnNF;
     property dhEmi: TDateTime read FdhEmi write FdhEmi;
+    property dSaiEnt: TDateTime read FdSaiEnt write FdSaiEnt;
     property cMunFG: String read FcMunFG write FcMunFG;
     property tpAmb: TNFeAmbiente read FtpAmb write FtpAmb;
     property infCpl: String read FinfCpl write FinfCpl;
     property emit: TGBFRNFeModelEmitente read Femit write Femit;
     property dest: TGBFRNFeModelDestinatario read Fdest write Fdest;
     property itens: TObjectList<TGBFRNFeModelItem> read Fitens write Fitens;
-    property pag: TObjectList<TGBFRNFeModelPagamento> read Fpag write Fpag;
+    property pag: TGBFRNFeModelPagamento read Fpag write Fpag;
     property ICMSTot: TGBFRNFeModelICMSTot read FICMSTot write FICMSTot;
     property infRespTec: TGBFRNFeModelResponsavelTecnico read FinfRespTec write FinfRespTec;
     property protNFe: TGBRFNFeModelProtocolo read FprotNFe write FprotNFe;
@@ -67,8 +69,8 @@ begin
   FICMSTot    := TGBFRNFeModelICMSTot.Create;
   FprotNFe    := TGBRFNFeModelProtocolo.Create;
   FinfRespTec := TGBFRNFeModelResponsavelTecnico.Create;
+  Fpag        := TGBFRNFeModelPagamento.create;
   Fitens      := TObjectList<TGBFRNFeModelItem>.create;
-  Fpag        := TObjectList<TGBFRNFeModelPagamento>.create;
 end;
 
 destructor TGBRFNFeModelNotaFiscal.Destroy;
