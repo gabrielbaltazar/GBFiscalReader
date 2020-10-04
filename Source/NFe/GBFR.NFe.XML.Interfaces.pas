@@ -3,9 +3,11 @@ unit GBFR.NFe.XML.Interfaces;
 interface
 
 uses
-  GBFR.NFe.Model.NotaFiscal;
+  GBFR.NFe.Model.Classes;
 
 type
+  TGBRFNFeModelNotaFiscal = GBFR.NFe.Model.Classes.TGBRFNFeModelNotaFiscal;
+
   IGBFRNFeXML = interface
     ['{F77AAF88-CEA4-4534-AEF5-A43103A785EF}']
     function loadFromContent(Value: String): TGBRFNFeModelNotaFiscal;

@@ -456,6 +456,8 @@ begin
 
   result := TGBRFNFeModelNotaFiscal.create;
   try
+    FNota := Result;
+
     loadNotaFiscal;
     loadEmitente;
     loadDestinatario;
