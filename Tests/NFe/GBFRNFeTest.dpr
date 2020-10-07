@@ -4,10 +4,13 @@ program GBFRNFeTest;
 {$APPTYPE CONSOLE}
 {$ENDIF}
 {$STRONGLINKTYPES ON}
+
+
 {$R *.dres}
 
 uses
   System.SysUtils,
+  Winapi.ActiveX,
   {$IFDEF TESTINSIGHT}
   TestInsight.DUnitX,
   {$ELSE}
@@ -36,7 +39,9 @@ uses
   GBFR.NFe.Model.Types in '..\..\Source\NFe\GBFR.NFe.Model.Types.pas',
   GBFR.NFe.XML.Default in '..\..\Source\NFe\GBFR.NFe.XML.Default.pas',
   GBFR.NFe.XML.Interfaces in '..\..\Source\NFe\GBFR.NFe.XML.Interfaces.pas',
-  GBFR.NFe.Model.Ide in '..\..\Source\NFe\GBFR.NFe.Model.Ide.pas';
+  GBFR.NFe.Model.Ide in '..\..\Source\NFe\GBFR.NFe.Model.Ide.pas',
+  GBFR.NFe.Model.InfAdic in '..\..\Source\NFe\GBFR.NFe.Model.InfAdic.pas',
+  GBFR.NFe.Test.NFCe.OneItem in 'Source\GBFR.NFe.Test.NFCe.OneItem.pas';
 
 //
 {$IFNDEF TESTINSIGHT}
@@ -47,6 +52,7 @@ var
   nunitLogger : ITestLogger;
 {$ENDIF}
 begin
+  CoInitialize(nil);
 {$IFDEF TESTINSIGHT}
   TestInsight.DUnitX.RunRegisteredTests;
 {$ELSE}
@@ -89,4 +95,5 @@ begin
       System.Writeln(E.ClassName, ': ', E.Message);
   end;
 {$ENDIF}
+  CoUninitialize;
 end.

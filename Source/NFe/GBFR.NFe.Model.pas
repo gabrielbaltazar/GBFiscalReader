@@ -26,8 +26,12 @@ type TGBRFNFeModel = class
     FinfRespTec: TGBFRNFeModelResponsavelTecnico;
     FprotNFe: TGBRFNFeModelProtocolo;
     FinfAdic: TGBFRNFeModelInfAdic;
+    FId: String;
+    Fversao: String;
 
   public
+    property Id: String read FId write FId;
+    property versao: String read Fversao write Fversao;
     property ide: TGBFRNFeModelIde read Fide write Fide;
     property emit: TGBFRNFeModelEmitente read Femit write Femit;
     property dest: TGBFRNFeModelDestinatario read Fdest write Fdest;

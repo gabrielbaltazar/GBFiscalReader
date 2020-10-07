@@ -21,6 +21,7 @@ type TGBFRNFeXMLDefault = class(TGBFRXmlBase, IGBFRNFeXML)
 
     function GetNodeImposto(ANodeDet: IXMLNode; ATag: String): IXMLNode;
 
+    procedure loadTagInfNFe;
     procedure loadTagIde;
     procedure loadTagEmit;
     procedure loadTagDest;
@@ -320,17 +321,13 @@ var
   nodeIDE : IXMLNode;
 begin
   try
-    FInfNFe := FXml.DocumentElement.ChildNodes.Get(0)
-                                   .ChildNodes.Get(0);
-    if not Assigned(FInfNFe) then
-      raise Exception.CreateFmt('Error on read Tag infNFe', []);
-
     nodeIDE := FInfNFe.ChildNodes.FindNode('ide');
 
     if Assigned(nodeIDE) then
     begin
       FModel.ide.tpAmb.fromInteger(GetNodeInt(nodeIDE, 'tpAmb', 2));
 
+      FModel.ide.cUF     := GetNodeStr(nodeIDE, 'cUF');
       FModel.ide.cNF     := GetNodeStr(nodeIDE, 'cNF');
       FModel.ide.natOp   := GetNodeStr(nodeIDE, 'natOp');
       FModel.ide.&mod    := GetNodeStr(nodeIDE, 'mod');
@@ -458,6 +455,7 @@ begin
   try
     FModel := Result;
 
+    loadTagInfNFe;
     loadTagIde;
     loadTagEmit;
     loadTagDest;
@@ -483,6 +481,17 @@ begin
   finally
     xmlFile.Free;
   end;
+end;
+
+procedure TGBFRNFeXMLDefault.loadTagInfNFe;
+begin
+  FInfNFe := FXml.DocumentElement.ChildNodes.Get(0)
+                                 .ChildNodes.Get(0);
+  if not Assigned(FInfNFe) then
+    raise Exception.CreateFmt('Error on read Tag infNFe', []);
+
+  FModel.Id     := FInfNFe.Attributes['Id'];
+  FModel.versao := FInfNFe.Attributes['versao'];
 end;
 
 end.

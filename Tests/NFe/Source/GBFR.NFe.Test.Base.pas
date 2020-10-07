@@ -3,13 +3,11 @@ unit GBFR.NFe.Test.Base;
 interface
 
 uses
-  DUnitX.TestFramework,
   System.SysUtils,
   System.Classes,
   Winapi.Windows;
 
 type
-  [TestFixture]
   TGBFRNFeTestBase = class
 
   protected
@@ -39,8 +37,5 @@ begin
     resource.Free;
   end;
 end;
-
-initialization
-  TDUnitX.RegisterTestFixture(TGBFRNFeTestBase);
 
 end.
