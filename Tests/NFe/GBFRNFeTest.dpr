@@ -35,7 +35,8 @@ uses
   GBFR.NFe.Model.ResponsavelTecnico in '..\..\Source\NFe\GBFR.NFe.Model.ResponsavelTecnico.pas',
   GBFR.NFe.Model.Types in '..\..\Source\NFe\GBFR.NFe.Model.Types.pas',
   GBFR.NFe.XML.Default in '..\..\Source\NFe\GBFR.NFe.XML.Default.pas',
-  GBFR.NFe.XML.Interfaces in '..\..\Source\NFe\GBFR.NFe.XML.Interfaces.pas';
+  GBFR.NFe.XML.Interfaces in '..\..\Source\NFe\GBFR.NFe.XML.Interfaces.pas',
+  GBFR.NFe.Model.Ide in '..\..\Source\NFe\GBFR.NFe.Model.Ide.pas';
 
 //
 {$IFNDEF TESTINSIGHT}

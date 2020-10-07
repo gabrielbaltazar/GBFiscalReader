@@ -154,6 +154,7 @@
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.Types.pas"/>
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.XML.Default.pas"/>
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.XML.Interfaces.pas"/>
+        <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.Ide.pas"/>
         <RcItem Include="Resources\41200675228403000191650020000000031000000117-nfce.xml">
             <ContainerId>ResourceItem</ContainerId>
             <ResourceType>RCDATA</ResourceType>

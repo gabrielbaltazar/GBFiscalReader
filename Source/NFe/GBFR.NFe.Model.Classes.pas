@@ -9,6 +9,7 @@ uses
   GBFR.NFe.Model.Endereco,
   GBFR.NFe.Model.FormaPagamento,
   GBFR.NFe.Model.ICMSTot,
+  GBFR.NFe.Model.InfAdic,
   GBFR.NFe.Model.Imposto.COFINS,
   GBFR.NFe.Model.Imposto.ICMS,
   GBFR.NFe.Model.Imposto.II,
@@ -29,6 +30,7 @@ type
   TGBFRNFeModelCOFINS             = GBFR.NFe.Model.Imposto.COFINS.TGBFRNFeModelCOFINS;
   TGBFRNFeModelICMS               = GBFR.NFe.Model.Imposto.ICMS.TGBFRNFeModelICMS;
   TGBFRNFeModelII                 = GBFR.NFe.Model.Imposto.II.TGBFRNFeModelII;
+  TGBFRNFeModelInfAdic            = GBFR.NFe.Model.InfAdic.TGBFRNFeModelInfAdic;
   TGBFRNFeModelIPI                = GBFR.NFe.Model.Imposto.IPI.TGBFRNFeModelIPI;
   TGBFRNFeModelISSQN              = GBFR.NFe.Model.Imposto.ISSQN.TGBFRNFeModelISSQN;
   TGBFRNFeModelPIS                = GBFR.NFe.Model.Imposto.PIS.TGBFRNFeModelPIS;
