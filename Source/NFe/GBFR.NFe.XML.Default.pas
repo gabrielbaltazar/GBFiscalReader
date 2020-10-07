@@ -6,9 +6,7 @@ uses
   GBFR.XML.Base,
   GBFR.NFe.XML.Interfaces,
   GBFR.NFe.Model.Types,
-  GBFR.NFe.Model.Item,
-  GBFR.NFe.Model.NotaFiscal,
-  GBFR.NFe.Model.FormaPagamento,
+  GBFR.NFe.Model.Classes,
   System.Classes,
   System.SysUtils,
   Xml.XMLIntf,
@@ -17,7 +15,7 @@ uses
 type TGBFRNFeXMLDefault = class(TGBFRXmlBase, IGBFRNFeXML)
 
   private
-    FNota: TGBRFNFeModelNotaFiscal;
+    FNota: TGBRFNFeModel;
     [Weak]
     FInfNFe: IXMLNode;
 
@@ -40,8 +38,8 @@ type TGBFRNFeXMLDefault = class(TGBFRXmlBase, IGBFRNFeXML)
     procedure loadImpostoII     (ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
     procedure loadImpostoISSQN  (ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
   protected
-    function loadFromContent(Value: String): TGBRFNFeModelNotaFiscal;
-    function loadFromFile   (Value: String): TGBRFNFeModelNotaFiscal;
+    function loadFromContent(Value: String): TGBRFNFeModel;
+    function loadFromFile   (Value: String): TGBRFNFeModel;
 
   public
     class function New: IGBFRNFeXML;
@@ -450,11 +448,11 @@ begin
   result := Self.create;
 end;
 
-function TGBFRNFeXMLDefault.loadFromContent(Value: String): TGBRFNFeModelNotaFiscal;
+function TGBFRNFeXMLDefault.loadFromContent(Value: String): TGBRFNFeModel;
 begin
   loadXmlContent(Value);
 
-  result := TGBRFNFeModelNotaFiscal.create;
+  result := TGBRFNFeModel.create;
   try
     FNota := Result;
 
@@ -472,7 +470,7 @@ begin
   end;
 end;
 
-function TGBFRNFeXMLDefault.loadFromFile(Value: String): TGBRFNFeModelNotaFiscal;
+function TGBFRNFeXMLDefault.loadFromFile(Value: String): TGBRFNFeModel;
 var
   xmlFile: TStrings;
 begin

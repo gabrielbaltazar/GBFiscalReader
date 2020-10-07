@@ -1,4 +1,4 @@
-unit GBFR.NFe.Model.NotaFiscal;
+unit GBFR.NFe.Model;
 
 interface
 
@@ -13,7 +13,7 @@ uses
   GBFR.NFe.Model.ResponsavelTecnico,
   System.Generics.Collections;
 
-type TGBRFNFeModelNotaFiscal = class
+type TGBRFNFeModel = class
   private
     FcUF: string;
     FcNF: String;
@@ -60,9 +60,9 @@ end;
 
 implementation
 
-{ TGBRFNFeModelNotaFiscal }
+{ TGBRFNFeModel }
 
-constructor TGBRFNFeModelNotaFiscal.create;
+constructor TGBRFNFeModel.create;
 begin
   Femit       := TGBFRNFeModelEmitente.create;
   Fdest       := TGBFRNFeModelDestinatario.create;
@@ -73,7 +73,7 @@ begin
   Fitens      := TObjectList<TGBFRNFeModelItem>.create;
 end;
 
-destructor TGBRFNFeModelNotaFiscal.Destroy;
+destructor TGBRFNFeModel.Destroy;
 begin
   Femit.Free;
   Fdest.Free;

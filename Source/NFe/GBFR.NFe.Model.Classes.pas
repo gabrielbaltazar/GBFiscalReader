@@ -3,6 +3,7 @@ unit GBFR.NFe.Model.Classes;
 interface
 
 uses
+  GBFR.NFe.Model,
   GBFR.NFe.Model.Destinatario,
   GBFR.NFe.Model.Emitente,
   GBFR.NFe.Model.Endereco,
@@ -15,7 +16,6 @@ uses
   GBFR.NFe.Model.Imposto.ISSQN,
   GBFR.NFe.Model.Imposto.PIS,
   GBFR.NFe.Model.Item,
-  GBFR.NFe.Model.NotaFiscal,
   GBFR.NFe.Model.Pagamento,
   GBFR.NFe.Model.Protocolo,
   GBFR.NFe.Model.ResponsavelTecnico;
@@ -33,7 +33,7 @@ type
   TGBFRNFeModelISSQN              = GBFR.NFe.Model.Imposto.ISSQN.TGBFRNFeModelISSQN;
   TGBFRNFeModelPIS                = GBFR.NFe.Model.Imposto.PIS.TGBFRNFeModelPIS;
   TGBFRNFeModelItem               = GBFR.NFe.Model.Item.TGBFRNFeModelItem;
-  TGBRFNFeModelNotaFiscal         = GBFR.NFe.Model.NotaFiscal.TGBRFNFeModelNotaFiscal;
+  TGBRFNFeModel                   = GBFR.NFe.Model.TGBRFNFeModel;
   TGBFRNFeModelPagamento          = GBFR.NFe.Model.Pagamento.TGBFRNFeModelPagamento;
   TGBRFNFeModelProtocolo          = GBFR.NFe.Model.Protocolo.TGBRFNFeModelProtocolo;
   TGBFRNFeModelResponsavelTecnico = GBFR.NFe.Model.ResponsavelTecnico.TGBFRNFeModelResponsavelTecnico;
