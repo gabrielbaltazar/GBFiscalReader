@@ -13,11 +13,10 @@ uses
   TestInsight.DUnitX,
   {$ELSE}
   DUnitX.Loggers.Console,
-  DUnitX.Loggers.Xml.NUnit,
   {$ENDIF }
   DUnitX.TestFramework,
   GBFR.CTe.Test.Base in 'GBFR.CTe.Test.Base.pas',
-  GBFR.CTe.Model.ConhecimentoTransporte in '..\..\Source\CTe\GBFR.CTe.Model.ConhecimentoTransporte.pas',
+  GBFR.CTe.Model in '..\..\Source\CTe\GBFR.CTe.Model.pas',
   GBFR.CTe.Model.Ide in '..\..\Source\CTe\GBFR.CTe.Model.Ide.pas',
   GBFR.CTe.Model.Types in '..\..\Source\CTe\GBFR.CTe.Model.Types.pas',
   GBFR.CTe.Model.Classes in '..\..\Source\CTe\GBFR.CTe.Model.Classes.pas',
@@ -25,7 +24,7 @@ uses
   GBFR.CTe.XML.Default in '..\..\Source\CTe\GBFR.CTe.XML.Default.pas',
   GBFR.XML.Base in '..\..\Source\XML\GBFR.XML.Base.pas';
 
-{$IFNDEF TESTINSIGHT}
+{$IFDEF TESTINSIGHT}
 var
   runner: ITestRunner;
   results: IRunResults;

@@ -3,11 +3,11 @@ unit GBFR.CTe.Model.Classes;
 interface
 
 uses
-  GBFR.CTe.Model.ConhecimentoTransporte,
+  GBFR.CTe.Model,
   GBFR.CTe.Model.Ide;
 
 type
-  TGBFRCTeModel = GBFR.CTe.Model.ConhecimentoTransporte.TGBFRCTeModelConhecimentoTransporte;
+  TGBFRCTeModel = GBFR.CTe.Model.TGBFRCTeModel;
   TGBFRCTeModelIde = GBFR.CTe.Model.Ide.TGBFRCTeModelIde;
 
 implementation

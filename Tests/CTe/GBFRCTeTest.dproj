@@ -133,7 +133,7 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="GBFR.CTe.Test.Base.pas"/>
-        <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.ConhecimentoTransporte.pas"/>
+        <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.pas"/>
         <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.Ide.pas"/>
         <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.Types.pas"/>
         <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.Classes.pas"/>
@@ -193,6 +193,12 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="Win32\Debug\GBFRCTeTest.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>GBFRCTeTest.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib" Class="DependencyModule">
                     <Platform Name="iOSSimulator">
                         <Overwrite>true</Overwrite>
@@ -200,12 +206,6 @@
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\iossimulator\libpcre.dylib" Class="DependencyModule">
                     <Platform Name="iOSSimulator">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Win32\Debug\GBFRCTeTest.exe" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win32">
-                        <RemoteName>GBFRCTeTest.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

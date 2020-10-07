@@ -1,11 +1,11 @@
-unit GBFR.CTe.Model.ConhecimentoTransporte;
+unit GBFR.CTe.Model;
 
 interface
 
 uses
   GBFR.CTe.Model.Ide;
 
-type TGBFRCTeModelConhecimentoTransporte = class
+type TGBFRCTeModel = class
   private
     Fide: TGBFRCTeModelIde;
     FId: string;
@@ -22,14 +22,14 @@ end;
 
 implementation
 
-{ TGBFRCTeModelConhecimentoTransporte }
+{ TGBFRCTeModel }
 
-constructor TGBFRCTeModelConhecimentoTransporte.create;
+constructor TGBFRCTeModel.create;
 begin
   Fide := TGBFRCTeModelIde.Create;
 end;
 
-destructor TGBFRCTeModelConhecimentoTransporte.Destroy;
+destructor TGBFRCTeModel.Destroy;
 begin
   Fide.Free;
   inherited;
