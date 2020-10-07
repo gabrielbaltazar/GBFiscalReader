@@ -26,6 +26,7 @@ type TGBFRXmlBase = class(TInterfacedObject)
 
   public
     constructor create;
+    destructor Destroy; override;
 end;
 
 implementation
@@ -35,6 +36,11 @@ implementation
 constructor TGBFRXmlBase.create;
 begin
   FXml := TXMLDocument.Create(nil);
+end;
+
+destructor TGBFRXmlBase.Destroy;
+begin
+  inherited;
 end;
 
 function TGBFRXmlBase.GetNodeCurrency(ANode: IXMLNode; ATag: String): Currency;
