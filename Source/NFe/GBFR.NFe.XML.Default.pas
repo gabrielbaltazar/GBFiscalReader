@@ -23,12 +23,14 @@ type TGBFRNFeXMLDefault = class(TGBFRXmlBase, IGBFRNFeXML)
 
     procedure loadTagInfNFe;
     procedure loadTagIde;
+    procedure loadTagIdeNFref;
     procedure loadTagEmit;
     procedure loadTagDest;
     procedure loadTagDetItem;
     procedure loadTagPag;
     procedure loadTagTotal;
     procedure loadTagInfAdic;
+    procedure loadTagInfRespTec;
     procedure loadTagProtNFe;
 
     procedure loadTagImposto       (ANodeDet: IXMLNode);
@@ -82,6 +84,8 @@ begin
   FModel.dest.IM    := GetNodeStr(nodeDestinatario, 'IM');
   FModel.dest.email := GetNodeStr(nodeDestinatario, 'email');
 
+  FModel.dest.indIEDest.fromInteger(GetNodeInt(nodeDestinatario, 'indIEDest'));
+
   nodeEndereco := nodeDestinatario.ChildNodes.FindNode('enderDest');
   if Assigned(nodeEndereco) then
   begin
@@ -114,6 +118,9 @@ begin
   FModel.emit.CNPJ  := GetNodeStr(nodeEmitente, 'CNPJ');
   FModel.emit.IE    := GetNodeStr(nodeEmitente, 'IE');
   FModel.emit.IM    := GetNodeStr(nodeEmitente, 'IM');
+  FModel.emit.CNAE  := GetNodeStr(nodeEmitente, 'CNAE');
+
+  FModel.emit.CRT.fromInteger(GetNodeInt(nodeEmitente, 'CRT'));
 
   nodeEndereco := nodeEmitente.ChildNodes.FindNode('enderEmit');
   if Assigned(nodeEndereco) then
@@ -288,6 +295,7 @@ begin
         item.uCom      := GetNodeStr(nodeItem, 'uCom');
         item.qCom      := GetNodeCurrency(nodeItem, 'qCom');
         item.vUnCom    := GetNodeCurrency(nodeItem, 'vUnCom');
+        item.vProd     := GetNodeCurrency(nodeItem, 'vProd');
         item.cEANTrib  := GetNodeStr(nodeItem, 'cEANTrib');
         item.uTrib     := GetNodeStr(nodeItem, 'uTrib');
         item.qTrib     := GetNodeCurrency(nodeItem, 'qTrib');
@@ -335,7 +343,10 @@ begin
       FModel.ide.nNF     := GetNodeInt(nodeIDE, 'nNF');
       FModel.ide.dhEmi   := GetNodeDate(nodeIDE, 'dhEmi');
       FModel.ide.dSaiEnt := GetNodeDate(nodeIDE, 'dSaiEnt');
+      FModel.ide.cMunFG  := GetNodeStr(nodeIDE, 'cMunFG');
       FModel.ide.cDV     := GetNodeStr(nodeIDE, 'cDV');
+
+      loadTagIdeNFref;
     end;
   except
     on e : Exception do
@@ -344,6 +355,25 @@ begin
       raise;
     end;
   end;
+end;
+
+procedure TGBFRNFeXMLDefault.loadTagIdeNFref;
+var
+  nodeIDE   : IXMLNode;
+  nodeNFRef : IXMLNode;
+begin
+  nodeIDE := FInfNFe.ChildNodes.FindNode('ide');
+  if not Assigned(nodeIDE) then
+    Exit;
+
+  nodeNFRef := nodeIDE.ChildNodes.FindNode('NFref');
+  if not Assigned(nodeNFRef) then
+    Exit;
+
+  repeat
+    FModel.ide.addNFRef(GetNodeStr(nodeNFRef, 'refNFe'));
+    nodeNFRef := nodeNFRef.NextSibling;
+  until nodeNFRef = nil;
 end;
 
 procedure TGBFRNFeXMLDefault.loadTagPag;
@@ -404,6 +434,20 @@ begin
   FModel.protNFe.tpAmb.fromInteger(GetNodeInt(nodeProt, 'tpAmb', 2));
 end;
 
+procedure TGBFRNFeXMLDefault.loadTagInfRespTec;
+var
+  nodeInfRespTec: IXMLNode;
+begin
+  nodeInfRespTec := FInfNFe.ChildNodes.FindNode('infRespTec');
+  if not Assigned(nodeInfRespTec) then
+    Exit;
+
+  FModel.infRespTec.CNPJ     := GetNodeStr(nodeInfRespTec, 'CNPJ');
+  FModel.infRespTec.xContato := GetNodeStr(nodeInfRespTec, 'xContato');
+  FModel.infRespTec.email    := GetNodeStr(nodeInfRespTec, 'email');
+  FModel.infRespTec.fone     := GetNodeStr(nodeInfRespTec, 'fone');
+end;
+
 procedure TGBFRNFeXMLDefault.loadTagTotal;
 var
   nodeTotal: IXMLNode;
@@ -461,6 +505,7 @@ begin
     loadTagDest;
     loadTagDetItem;
     loadTagInfAdic;
+    loadTagInfRespTec;
     loadTagTotal;
     loadTagPag;
     loadTagProtNFe;

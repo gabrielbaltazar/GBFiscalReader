@@ -17,6 +17,7 @@ uses
   GBFR.NFe.Model.Imposto.ISSQN,
   GBFR.NFe.Model.Imposto.PIS,
   GBFR.NFe.Model.Item,
+  GBFR.NFe.Model.NFRef,
   GBFR.NFe.Model.Pagamento,
   GBFR.NFe.Model.Protocolo,
   GBFR.NFe.Model.ResponsavelTecnico;
@@ -35,6 +36,7 @@ type
   TGBFRNFeModelISSQN              = GBFR.NFe.Model.Imposto.ISSQN.TGBFRNFeModelISSQN;
   TGBFRNFeModelPIS                = GBFR.NFe.Model.Imposto.PIS.TGBFRNFeModelPIS;
   TGBFRNFeModelItem               = GBFR.NFe.Model.Item.TGBFRNFeModelItem;
+  TGBFRNFeModelNFRef              = GBFR.NFe.Model.NFRef.TGBFRNFeModelNFRef;
   TGBRFNFeModel                   = GBFR.NFe.Model.TGBRFNFeModel;
   TGBFRNFeModelPagamento          = GBFR.NFe.Model.Pagamento.TGBFRNFeModelPagamento;
   TGBRFNFeModelProtocolo          = GBFR.NFe.Model.Protocolo.TGBRFNFeModelProtocolo;

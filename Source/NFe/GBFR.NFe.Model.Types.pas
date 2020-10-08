@@ -16,7 +16,7 @@ type
                     NFeContribuinteIsentoInscricao,
                     NFeNaoContribuinte);
 
-  TNFeIndicadorTotal = (NFeCompoe, NFeNaoCompoe);
+  TNFeIndicadorTotal = (NFeNaoCompoe, NFeCompoe);
 
   TNFeModalidadeBC = (NFeMargemValorAgregado,
                       NFePauta,
@@ -194,8 +194,8 @@ function TNFeIndicadorTotalHelper.Value: Integer;
 begin
   result := -1;
   case Self of
-    NFeCompoe   : result := 0;
-    NFeNaoCompoe: result := 1;
+    NFeNaoCompoe: result := 0;
+    NFeCompoe   : result := 1;
   end;
 end;
 

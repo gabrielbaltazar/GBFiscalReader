@@ -157,6 +157,8 @@
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.Ide.pas"/>
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.InfAdic.pas"/>
         <DCCReference Include="Source\GBFR.NFe.Test.NFCe.OneItem.pas"/>
+        <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.NFRef.pas"/>
+        <DCCReference Include="Source\GBFR.NFe.Test.NFeReferenciada.pas"/>
         <RcItem Include="Resources\41200699999999999999650020000000031000000117-nfce.xml">
             <ContainerId>ResourceItem</ContainerId>
             <ResourceType>RCDATA</ResourceType>
@@ -166,6 +168,11 @@
             <ContainerId>ResourceItem</ContainerId>
             <ResourceType>RCDATA</ResourceType>
             <ResourceId>NFCe41200999999999999999650020000000481000000659</ResourceId>
+        </RcItem>
+        <RcItem Include="Resources\nfeComNotaReferenciada.xml">
+            <ContainerId>ResourceItem</ContainerId>
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>nfeComNotaReferenciada</ResourceId>
         </RcItem>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
@@ -194,6 +201,12 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
+                <DeployFile LocalName="Resources\nfeComNotaReferenciada.xml" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">
                     <Platform Name="OSX32">
                         <Overwrite>true</Overwrite>

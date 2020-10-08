@@ -41,7 +41,9 @@ uses
   GBFR.NFe.XML.Interfaces in '..\..\Source\NFe\GBFR.NFe.XML.Interfaces.pas',
   GBFR.NFe.Model.Ide in '..\..\Source\NFe\GBFR.NFe.Model.Ide.pas',
   GBFR.NFe.Model.InfAdic in '..\..\Source\NFe\GBFR.NFe.Model.InfAdic.pas',
-  GBFR.NFe.Test.NFCe.OneItem in 'Source\GBFR.NFe.Test.NFCe.OneItem.pas';
+  GBFR.NFe.Test.NFCe.OneItem in 'Source\GBFR.NFe.Test.NFCe.OneItem.pas',
+  GBFR.NFe.Model.NFRef in '..\..\Source\NFe\GBFR.NFe.Model.NFRef.pas',
+  GBFR.NFe.Test.NFeReferenciada in 'Source\GBFR.NFe.Test.NFeReferenciada.pas';
 
 //
 {$IFNDEF TESTINSIGHT}

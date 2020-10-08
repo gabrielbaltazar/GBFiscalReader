@@ -3,7 +3,9 @@ unit GBFR.NFe.Model.Ide;
 interface
 
 uses
-  GBFR.NFe.Model.Types;
+  GBFR.NFe.Model.Types,
+  GBFR.NFe.Model.NFRef,
+  System.Generics.Collections;
 
 type TGBFRNFeModelIde = class
   private
@@ -18,6 +20,7 @@ type TGBFRNFeModelIde = class
     Fmod: string;
     FdSaiEnt: TDateTime;
     FcDV: String;
+    FNFRef: TObjectList<TGBFRNFeModelNFRef>;
 
   public
     property cUF: string read FcUF write FcUF;
@@ -31,8 +34,33 @@ type TGBFRNFeModelIde = class
     property cMunFG: String read FcMunFG write FcMunFG;
     property tpAmb: TNFeAmbiente read FtpAmb write FtpAmb;
     property cDV: String read FcDV write FcDV;
+    property NFRef: TObjectList<TGBFRNFeModelNFRef> read FNFRef write FNFRef;
+
+    procedure addNFRef(ARefNFe: String);
+
+    constructor create;
+    destructor  Destroy; override;
 end;
 
 implementation
+
+{ TGBFRNFeModelIde }
+
+procedure TGBFRNFeModelIde.addNFRef(ARefNFe: String);
+begin
+  NFRef.Add(TGBFRNFeModelNFRef.Create);
+  NFRef.Last.refNFe := ARefNFe;
+end;
+
+constructor TGBFRNFeModelIde.create;
+begin
+  FNFRef := TObjectList<TGBFRNFeModelNFRef>.Create;
+end;
+
+destructor TGBFRNFeModelIde.Destroy;
+begin
+  FNFRef.Free;
+  inherited;
+end;
 
 end.
