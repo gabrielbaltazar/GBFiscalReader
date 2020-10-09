@@ -1,56 +1,44 @@
-unit GBFR.NFe.Model.NotaFiscal;
+unit GBFR.NFe.Model;
 
 interface
 
 uses
   GBFR.NFe.Model.Types,
+  GBFR.NFe.Model.Ide,
   GBFR.NFe.Model.Destinatario,
   GBFR.NFe.Model.Emitente,
   GBFR.NFe.Model.ICMSTot,
+  GBFR.NFe.Model.InfAdic,
   GBFR.NFe.Model.Item,
   GBFR.NFe.Model.Pagamento,
   GBFR.NFe.Model.Protocolo,
   GBFR.NFe.Model.ResponsavelTecnico,
   System.Generics.Collections;
 
-type TGBRFNFeModelNotaFiscal = class
+type TGBRFNFeModel = class
   private
-    FcUF: string;
-    FcNF: String;
-    FnatOp: String;
-    Fmod: string;
-    Fserie: String;
-    FnNF: Integer;
-    FdhEmi: TDateTime;
-    FcMunFG: String;
-    FtpAmb: TNFeAmbiente;
+    Fide: TGBFRNFeModelIde;
     Femit: TGBFRNFeModelEmitente;
     Fdest: TGBFRNFeModelDestinatario;
     FICMSTot: TGBFRNFeModelICMSTot;
-    FinfCpl: String;
     Fitens: TObjectList<TGBFRNFeModelItem>;
     Fpag: TGBFRNFeModelPagamento;
     FinfRespTec: TGBFRNFeModelResponsavelTecnico;
     FprotNFe: TGBRFNFeModelProtocolo;
-    FdSaiEnt: TDateTime;
+    FinfAdic: TGBFRNFeModelInfAdic;
+    FId: String;
+    Fversao: String;
 
   public
-    property cUF: string read FcUF write FcUF;
-    property cNF: String read FcNF write FcNF;
-    property natOp: String read FnatOp write FnatOp;
-    property &mod: string read Fmod write Fmod;
-    property serie: String read Fserie write Fserie;
-    property nNF: Integer read FnNF write FnNF;
-    property dhEmi: TDateTime read FdhEmi write FdhEmi;
-    property dSaiEnt: TDateTime read FdSaiEnt write FdSaiEnt;
-    property cMunFG: String read FcMunFG write FcMunFG;
-    property tpAmb: TNFeAmbiente read FtpAmb write FtpAmb;
-    property infCpl: String read FinfCpl write FinfCpl;
+    property Id: String read FId write FId;
+    property versao: String read Fversao write Fversao;
+    property ide: TGBFRNFeModelIde read Fide write Fide;
     property emit: TGBFRNFeModelEmitente read Femit write Femit;
     property dest: TGBFRNFeModelDestinatario read Fdest write Fdest;
     property itens: TObjectList<TGBFRNFeModelItem> read Fitens write Fitens;
-    property pag: TGBFRNFeModelPagamento read Fpag write Fpag;
     property ICMSTot: TGBFRNFeModelICMSTot read FICMSTot write FICMSTot;
+    property pag: TGBFRNFeModelPagamento read Fpag write Fpag;
+    property infAdic: TGBFRNFeModelInfAdic read FinfAdic write FinfAdic;
     property infRespTec: TGBFRNFeModelResponsavelTecnico read FinfRespTec write FinfRespTec;
     property protNFe: TGBRFNFeModelProtocolo read FprotNFe write FprotNFe;
 
@@ -60,26 +48,30 @@ end;
 
 implementation
 
-{ TGBRFNFeModelNotaFiscal }
+{ TGBRFNFeModel }
 
-constructor TGBRFNFeModelNotaFiscal.create;
+constructor TGBRFNFeModel.create;
 begin
+  Fide        := TGBFRNFeModelIde.Create;
   Femit       := TGBFRNFeModelEmitente.create;
   Fdest       := TGBFRNFeModelDestinatario.create;
   FICMSTot    := TGBFRNFeModelICMSTot.Create;
   FprotNFe    := TGBRFNFeModelProtocolo.Create;
   FinfRespTec := TGBFRNFeModelResponsavelTecnico.Create;
   Fpag        := TGBFRNFeModelPagamento.create;
+  FinfAdic    := TGBFRNFeModelInfAdic.Create;
   Fitens      := TObjectList<TGBFRNFeModelItem>.create;
 end;
 
-destructor TGBRFNFeModelNotaFiscal.Destroy;
+destructor TGBRFNFeModel.Destroy;
 begin
+  Fide.Free;
   Femit.Free;
   Fdest.Free;
   Fitens.Free;
   FICMSTot.Free;
   Fpag.Free;
+  FinfAdic.Free;
   FinfRespTec.Free;
   FprotNFe.Free;
   inherited;
