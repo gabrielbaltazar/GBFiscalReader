@@ -43,7 +43,8 @@ uses
   GBFR.NFe.Model.InfAdic in '..\..\Source\NFe\GBFR.NFe.Model.InfAdic.pas',
   GBFR.NFe.Test.NFCe.OneItem in 'Source\GBFR.NFe.Test.NFCe.OneItem.pas',
   GBFR.NFe.Model.NFRef in '..\..\Source\NFe\GBFR.NFe.Model.NFRef.pas',
-  GBFR.NFe.Test.NFeReferenciada in 'Source\GBFR.NFe.Test.NFeReferenciada.pas';
+  GBFR.NFe.Test.NFeReferenciada in 'Source\GBFR.NFe.Test.NFeReferenciada.pas',
+  GBFR.NFe.Test.NFCeMoreItems in 'Source\GBFR.NFe.Test.NFCeMoreItems.pas';
 
 //
 {$IFNDEF TESTINSIGHT}
