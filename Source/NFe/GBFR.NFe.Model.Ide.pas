@@ -21,6 +21,14 @@ type TGBFRNFeModelIde = class
     FdSaiEnt: TDateTime;
     FcDV: String;
     FNFRef: TObjectList<TGBFRNFeModelNFRef>;
+    FtpNF: TNFeTipoOperacao;
+    FidDest: TNFeDestinoOperacao;
+    FtpImp: TNFeFormatoImpressao;
+    FtpEmis: TNFeTipoEmissao;
+    FfinNFe: TNFeFinalidadeEmissao;
+    FindFinal: TNFeOperacaoConsumidor;
+    FindPres: TNFeIndicadorPresenca;
+    FprocEmi: TNFeProcessoEmissao;
 
   public
     property cUF: string read FcUF write FcUF;
@@ -31,8 +39,16 @@ type TGBFRNFeModelIde = class
     property nNF: Integer read FnNF write FnNF;
     property dhEmi: TDateTime read FdhEmi write FdhEmi;
     property dSaiEnt: TDateTime read FdSaiEnt write FdSaiEnt;
+    property tpNF: TNFeTipoOperacao read FtpNF write FtpNF;
+    property idDest: TNFeDestinoOperacao read FidDest write FidDest;
     property cMunFG: String read FcMunFG write FcMunFG;
+    property tpImp: TNFeFormatoImpressao read FtpImp write FtpImp;
+    property tpEmis: TNFeTipoEmissao read FtpEmis write FtpEmis;
     property tpAmb: TNFeAmbiente read FtpAmb write FtpAmb;
+    property finNFe: TNFeFinalidadeEmissao read FfinNFe write FfinNFe;
+    property indFinal: TNFeOperacaoConsumidor read FindFinal write FindFinal;
+    property indPres: TNFeIndicadorPresenca read FindPres write FindPres;
+    property procEmi: TNFeProcessoEmissao read FprocEmi write FprocEmi;
     property cDV: String read FcDV write FcDV;
     property NFRef: TObjectList<TGBFRNFeModelNFRef> read FNFRef write FNFRef;
 

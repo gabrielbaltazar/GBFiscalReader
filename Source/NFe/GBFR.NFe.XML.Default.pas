@@ -334,6 +334,14 @@ begin
     if Assigned(nodeIDE) then
     begin
       FModel.ide.tpAmb.fromInteger(GetNodeInt(nodeIDE, 'tpAmb', 2));
+      FModel.ide.tpNF.fromInteger(GetNodeInt(nodeIDE, 'tpNF'));
+      FModel.ide.idDest.fromInteger(GetNodeInt(nodeIDE, 'idDest', 1));
+      FModel.ide.tpImp.fromInteger(GetNodeInt(nodeIDE, 'tpImp', 1));
+      FModel.ide.tpEmis.fromInteger(GetNodeInt(nodeIDE, 'tpEmis', 1));
+      FModel.ide.finNFe.fromInteger(GetNodeInt(nodeIDE, 'finNFe', 1));
+      FModel.ide.indFinal.fromInteger(GetNodeInt(nodeIDE, 'indFinal', 0));
+      FModel.ide.indPres.fromInteger(GetNodeInt(nodeIDE, 'indPres', 1));
+      FModel.ide.procEmi.fromInteger(GetNodeInt(nodeIDE, 'procEmi', 0));
 
       FModel.ide.cUF     := GetNodeStr(nodeIDE, 'cUF');
       FModel.ide.cNF     := GetNodeStr(nodeIDE, 'cNF');
@@ -532,16 +540,21 @@ procedure TGBFRNFeXMLDefault.loadTagInfNFe;
 var
   node : IXMLNode;
 begin
-  node := nil;
   repeat
-    if not Assigned(node) then
+    if node = nil then
       node := FXml.DocumentElement
     else
+    begin
+      if node.ChildNodes.Count = 0 then
+      begin
+        node := nil;
+        break;
+      end;
       node := node.ChildNodes.Get(0);
-
+    end;
   until (node = nil) or (node.NodeName = 'infNFe');
 
-  if not Assigned(node) then
+  if (not Assigned(node)) or (not node.NodeName.Equals( 'infNFe' )) then
     raise Exception.CreateFmt('Error on read Tag infNFe', []);
 
   FInfNFe := node;
