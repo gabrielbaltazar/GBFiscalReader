@@ -34,6 +34,9 @@ type
     [Test]
     procedure TestTagToma3;
 
+    [Test]
+    procedure TestTagCompl;
+
     constructor create;
     destructor  Destroy; override;
 
@@ -80,6 +83,16 @@ procedure TGBFRCTeTestBase.TestInfCTe;
 begin
   Assert.AreEqual('CTe35200903629957000602570010005940341265045246', FCTe.Id);
   Assert.AreEqual('3.00', FCTe.versao);
+end;
+
+procedure TGBFRCTeTestBase.TestTagCompl;
+begin
+  Assert.AreEqual('Normal', FCTe.compl.xCaracAd);
+  Assert.AreEqual('Normal', FCTe.compl.xCaracSer);
+  Assert.AreEqual('LUIS.P', FCTe.compl.xEmi);
+  Assert.AreEqual('Domingos Pacheco', FCTe.compl.origCalc);
+  Assert.AreEqual('RUA RAIMUNDO WELTER, 122, AVENTUREIRO', FCTe.compl.destCalc);
+  Assert.AreEqual('Valor Aproximado dos Tributos R$ 28,18 (26,13%)', FCTe.compl.xObs);
 end;
 
 procedure TGBFRCTeTestBase.TestTagIde;

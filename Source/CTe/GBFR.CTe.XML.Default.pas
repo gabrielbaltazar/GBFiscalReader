@@ -22,6 +22,7 @@ type TGBFRCTeXMLDefault = class(TGBFRXmlBase, IGBFRCTeXML)
     procedure loadTagInfCte;
     procedure loadTagIde;
     procedure loadTagIdeToma3(ANode: IXMLNode);
+    procedure loadTagCompl;
 
   protected
     function loadFromContent(Value: String): TGBFRCTeModel;
@@ -44,6 +45,7 @@ begin
 
     loadTagInfCte;
     loadTagIde;
+    loadTagCompl;
   except
     Result.Free;
     raise;
@@ -61,6 +63,22 @@ begin
   finally
     xmlFile.Free;
   end;
+end;
+
+procedure TGBFRCTeXMLDefault.loadTagCompl;
+var
+  nodeCompl: IXMLNode;
+begin
+  nodeCompl := FInfCTe.ChildNodes.FindNode('compl');
+  if not Assigned(nodeCompl) then
+    Exit;
+
+  FCTe.compl.xCaracAd  := GetNodeStr(nodeCompl, 'xCaracAd');
+  FCTe.compl.xCaracSer := GetNodeStr(nodeCompl, 'xCaracSer');
+  FCTe.compl.xEmi      := GetNodeStr(nodeCompl, 'xEmi');
+  FCTe.compl.origCalc  := GetNodeStr(nodeCompl, 'origCalc');
+  FCTe.compl.destCalc  := GetNodeStr(nodeCompl, 'destCalc');
+  FCTe.compl.xObs      := GetNodeStr(nodeCompl, 'xObs');
 end;
 
 procedure TGBFRCTeXMLDefault.loadTagIde;

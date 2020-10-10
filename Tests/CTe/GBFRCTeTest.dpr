@@ -25,7 +25,8 @@ uses
   GBFR.XML.Base in '..\..\Source\XML\GBFR.XML.Base.pas',
   System.Classes,
   GBFR.CTe.Model.Ide.Toma3 in '..\..\Source\CTe\GBFR.CTe.Model.Ide.Toma3.pas',
-  GBFR.CTe.Model.Ide.Toma4 in '..\..\Source\CTe\GBFR.CTe.Model.Ide.Toma4.pas';
+  GBFR.CTe.Model.Ide.Toma4 in '..\..\Source\CTe\GBFR.CTe.Model.Ide.Toma4.pas',
+  GBFR.CTe.Model.DadosComplementares in '..\..\Source\CTe\GBFR.CTe.Model.DadosComplementares.pas';
 
 //
 {$IFNDEF TESTINSIGHT}
