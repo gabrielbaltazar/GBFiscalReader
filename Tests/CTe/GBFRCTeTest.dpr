@@ -26,7 +26,9 @@ uses
   System.Classes,
   GBFR.CTe.Model.Ide.Toma3 in '..\..\Source\CTe\GBFR.CTe.Model.Ide.Toma3.pas',
   GBFR.CTe.Model.Ide.Toma4 in '..\..\Source\CTe\GBFR.CTe.Model.Ide.Toma4.pas',
-  GBFR.CTe.Model.DadosComplementares in '..\..\Source\CTe\GBFR.CTe.Model.DadosComplementares.pas';
+  GBFR.CTe.Model.DadosComplementares in '..\..\Source\CTe\GBFR.CTe.Model.DadosComplementares.pas',
+  GBFR.CTe.Model.Endereco in '..\..\Source\CTe\GBFR.CTe.Model.Endereco.pas',
+  GBFR.CTe.Model.Emitente in '..\..\Source\CTe\GBFR.CTe.Model.Emitente.pas';
 
 //
 {$IFNDEF TESTINSIGHT}

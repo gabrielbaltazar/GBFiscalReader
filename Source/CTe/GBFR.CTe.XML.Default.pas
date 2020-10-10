@@ -23,6 +23,8 @@ type TGBFRCTeXMLDefault = class(TGBFRXmlBase, IGBFRCTeXML)
     procedure loadTagIde;
     procedure loadTagIdeToma3(ANode: IXMLNode);
     procedure loadTagCompl;
+    procedure loadTagEmit;
+    procedure loadTagEndereco(ANode: IXMLNode; AEndereco: TGBFRCTeModelEndereco);
 
   protected
     function loadFromContent(Value: String): TGBFRCTeModel;
@@ -46,6 +48,7 @@ begin
     loadTagInfCte;
     loadTagIde;
     loadTagCompl;
+    loadTagEmit;
   except
     Result.Free;
     raise;
@@ -79,6 +82,41 @@ begin
   FCTe.compl.origCalc  := GetNodeStr(nodeCompl, 'origCalc');
   FCTe.compl.destCalc  := GetNodeStr(nodeCompl, 'destCalc');
   FCTe.compl.xObs      := GetNodeStr(nodeCompl, 'xObs');
+end;
+
+procedure TGBFRCTeXMLDefault.loadTagEmit;
+var
+  nodeEmit: IXMLNode;
+  nodeEndereco: IXMLNode;
+begin
+  nodeEmit := FInfCTe.ChildNodes.FindNode('emit');
+  if not Assigned(nodeEmit) then
+    Exit;
+
+  FCTe.emit.CNPJ  := GetNodeStr(nodeEmit, 'CNPJ');
+  FCTe.emit.IE    := GetNodeStr(nodeEmit, 'IE');
+  FCTe.emit.IEST  := GetNodeStr(nodeEmit, 'IEST');
+  FCTe.emit.xNome := GetNodeStr(nodeEmit, 'xNome');
+  FCTe.emit.xFant := GetNodeStr(nodeEmit, 'xFant');
+
+  nodeEndereco := nodeEmit.ChildNodes.FindNode('enderEmit');
+  loadTagEndereco(nodeEndereco, FCTe.emit.enderEmit);
+end;
+
+procedure TGBFRCTeXMLDefault.loadTagEndereco(ANode: IXMLNode; AEndereco: TGBFRCTeModelEndereco);
+begin
+  if not Assigned(ANode) then
+    Exit;
+
+  AEndereco.xLgr    := GetNodeStr(ANode, 'xLgr');
+  AEndereco.nro     := GetNodeStr(ANode, 'nro');
+  AEndereco.xCpl    := GetNodeStr(ANode, 'xCpl');
+  AEndereco.xBairro := GetNodeStr(ANode, 'xBairro');
+  AEndereco.cMun    := GetNodeStr(ANode, 'cMun');
+  AEndereco.xMun    := GetNodeStr(ANode, 'xMun');
+  AEndereco.CEP     := GetNodeStr(ANode, 'CEP');
+  AEndereco.UF      := GetNodeStr(ANode, 'UF');
+  AEndereco.fone    := GetNodeStr(ANode, 'fone');
 end;
 
 procedure TGBFRCTeXMLDefault.loadTagIde;

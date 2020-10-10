@@ -4,7 +4,8 @@ interface
 
 uses
   GBFR.CTe.Model.Ide,
-  GBFR.CTe.Model.DadosComplementares;
+  GBFR.CTe.Model.DadosComplementares,
+  GBFR.CTe.Model.Emitente;
 
 type TGBFRCTeModel = class
   private
@@ -12,12 +13,14 @@ type TGBFRCTeModel = class
     FId: string;
     Fversao: String;
     Fcompl: TGBFRCTeModelDadosComplementares;
+    Femit: TGBFRCTeModelEmitente;
 
   public
     property Id: string read FId write FId;
     property versao: String read Fversao write Fversao;
     property ide: TGBFRCTeModelIde read Fide write Fide;
     property compl: TGBFRCTeModelDadosComplementares read Fcompl write Fcompl;
+    property emit: TGBFRCTeModelEmitente read Femit write Femit;
 
     constructor create;
     destructor  Destroy; override;
@@ -31,12 +34,14 @@ constructor TGBFRCTeModel.create;
 begin
   Fide   := TGBFRCTeModelIde.Create;
   Fcompl := TGBFRCTeModelDadosComplementares.Create;
+  Femit  := TGBFRCTeModelEmitente.Create;
 end;
 
 destructor TGBFRCTeModel.Destroy;
 begin
   Fide.Free;
   Fcompl.Free;
+  Femit.Free;
   inherited;
 end;
 
