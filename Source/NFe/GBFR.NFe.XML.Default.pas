@@ -529,11 +529,22 @@ begin
 end;
 
 procedure TGBFRNFeXMLDefault.loadTagInfNFe;
+var
+  node : IXMLNode;
 begin
-  FInfNFe := FXml.DocumentElement.ChildNodes.Get(0)
-                                 .ChildNodes.Get(0);
-  if not Assigned(FInfNFe) then
+  node := nil;
+  repeat
+    if not Assigned(node) then
+      node := FXml.DocumentElement
+    else
+      node := node.ChildNodes.Get(0);
+
+  until (node = nil) or (node.NodeName = 'infNFe');
+
+  if not Assigned(node) then
     raise Exception.CreateFmt('Error on read Tag infNFe', []);
+
+  FInfNFe := node;
 
   FModel.Id     := FInfNFe.Attributes['Id'];
   FModel.versao := FInfNFe.Attributes['versao'];
