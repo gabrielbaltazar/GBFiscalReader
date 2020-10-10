@@ -8,6 +8,7 @@ uses
   System.Classes,
   Winapi.Windows,
   GBFR.CTe.Model.Classes,
+  GBFR.CTe.Model.Types,
   GBFR.CTe.XML.Interfaces;
 
 const
@@ -78,6 +79,7 @@ begin
   Assert.AreEqual('6352', FCTe.ide.CFOP);
   Assert.AreEqual('Prest.Serv.Transp.p/ Ind.', FCTe.ide.natOp);
   Assert.AreEqual(57, FCTe.ide.&mod);
+  Assert.AreEqual(CTeRetrato, FCTe.ide.tpImp);
 end;
 
 initialization

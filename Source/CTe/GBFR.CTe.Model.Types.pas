@@ -8,6 +8,8 @@ uses
 type
   TCTeAmbiente = (CTeProducao, CTeHomologacao);
 
+  TCTeFormatoImpressao = (CTeRetrato, CTePaisagem);
+
   TCTeIndicadorIE = (CTeContribuinteICMS,
                      CTeContribuinteIsentoInscricao,
                      CTeNaoContribuinte);
@@ -19,6 +21,12 @@ type
   end;
 
   TCTeIndicadorIEHelper = record helper for TCTeIndicadorIE
+  public
+    procedure fromInteger(Value: Integer);
+    function Value: Integer;
+  end;
+
+  TCTeFormatoImpressaoHelper = record helper for TCTeFormatoImpressao
   public
     procedure fromInteger(Value: Integer);
     function Value: Integer;
@@ -77,6 +85,20 @@ begin
     CTeContribuinteIsentoInscricao : result := 2;
     CTeNaoContribuinte             : result := 9;
   end;
+end;
+
+{ TCTeFormatoImpressaoHelper }
+
+procedure TCTeFormatoImpressaoHelper.fromInteger(Value: Integer);
+begin
+  Self := CTeRetrato;
+  if Value = 2 then
+    Self := CTePaisagem;
+end;
+
+function TCTeFormatoImpressaoHelper.Value: Integer;
+begin
+  result := Integer(Self) + 1;
 end;
 
 end.

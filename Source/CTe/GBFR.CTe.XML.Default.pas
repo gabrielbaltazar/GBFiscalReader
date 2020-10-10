@@ -100,6 +100,8 @@ begin
       FCTe.ide.dhEmi   := GetNodeDate(nodeIDE, 'dhEmi');
       FCTe.ide.verProc := GetNodeStr(nodeIDE, 'verProc');
       FCTe.ide.cMunEnv := GetNodeStr(nodeIDE, 'cMunEnv');
+
+      FCTe.ide.tpImp.fromInteger(GetNodeInt(nodeIDE, 'tpImp', 1));
     end;
   except
     on e : Exception do

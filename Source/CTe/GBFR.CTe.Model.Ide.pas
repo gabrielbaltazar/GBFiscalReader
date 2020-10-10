@@ -28,6 +28,7 @@ type TGBFRCTeModelIde = class
     FcMunFim: String;
     FxMunFim: String;
     FUFFim: String;
+    FtpImp: TCTeFormatoImpressao;
 
   public
     property cUF: String read FcUF write FcUF;
@@ -38,6 +39,7 @@ type TGBFRCTeModelIde = class
     property serie: string read Fserie write Fserie;
     property nCT: Integer read FnCT write FnCT;
     property dhEmi: TDateTime read FdhEmi write FdhEmi;
+    property tpImp: TCTeFormatoImpressao read FtpImp write FtpImp;
     property cDV: String read FcDV write FcDV;
     property tpAmb: TCTeAmbiente read FtpAmb write FtpAmb;
     property verProc: String read FverProc write FverProc;
