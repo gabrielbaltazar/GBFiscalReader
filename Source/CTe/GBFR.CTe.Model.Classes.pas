@@ -7,6 +7,7 @@ uses
   GBFR.CTe.Model.DadosComplementares,
   GBFR.CTe.Model.Emitente,
   GBFR.CTe.Model.Endereco,
+  GBFR.CTe.Model.Expedidor,
   GBFR.CTe.Model.Ide,
   GBFR.CTe.Model.Ide.Toma3,
   GBFR.CTe.Model.Ide.Toma4,
@@ -17,6 +18,7 @@ type
   TGBFRCTeModelDadosComplementares = GBFR.CTe.Model.DadosComplementares.TGBFRCTeModelDadosComplementares;
   TGBFRCTeModelEmitente            = GBFR.CTe.Model.Emitente.TGBFRCTeModelEmitente;
   TGBFRCTeModelEndereco            = GBFR.CTe.Model.Endereco.TGBFRCTeModelEndereco;
+  TGBFRCTeModelExpedidor           = GBFR.CTe.Model.Expedidor.TGBFRCTeModelExpedidor;
   TGBFRCTeModelIde                 = GBFR.CTe.Model.Ide.TGBFRCTeModelIde;
   TGBFRCTeModelIdeToma3            = GBFR.CTe.Model.Ide.Toma3.TGBFRCTeModelIdeToma3;
   TGBFRCTeModelIdeToma4            = GBFR.CTe.Model.Ide.Toma4.TGBFRCTeModelIdeToma4;

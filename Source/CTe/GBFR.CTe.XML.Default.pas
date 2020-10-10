@@ -25,6 +25,7 @@ type TGBFRCTeXMLDefault = class(TGBFRXmlBase, IGBFRCTeXML)
     procedure loadTagCompl;
     procedure loadTagEmit;
     procedure loadTagRem;
+    procedure loadTagExped;
     procedure loadTagEndereco(ANode: IXMLNode; AEndereco: TGBFRCTeModelEndereco);
 
   protected
@@ -51,6 +52,7 @@ begin
     loadTagCompl;
     loadTagEmit;
     loadTagRem;
+    loadTagExped;
   except
     Result.Free;
     raise;
@@ -122,6 +124,26 @@ begin
   AEndereco.xPais   := GetNodeStr(ANode, 'xPais');
   AEndereco.email   := GetNodeStr(ANode, 'email');
   AEndereco.fone    := GetNodeStr(ANode, 'fone');
+end;
+
+procedure TGBFRCTeXMLDefault.loadTagExped;
+var
+  nodeExped: IXMLNode;
+  nodeEndereco: IXMLNode;
+begin
+  nodeExped := FInfCTe.ChildNodes.FindNode('exped');
+  if not Assigned(nodeExped) then
+    Exit;
+
+  FCTe.exped.CNPJ  := GetNodeStr(nodeExped, 'CNPJ');
+  FCTe.exped.IE    := GetNodeStr(nodeExped, 'IE');
+  FCTe.exped.IEST  := GetNodeStr(nodeExped, 'IEST');
+  FCTe.exped.xNome := GetNodeStr(nodeExped, 'xNome');
+  FCTe.exped.xFant := GetNodeStr(nodeExped, 'xFant');
+  FCTe.exped.fone  := GetNodeStr(nodeExped, 'fone');
+
+  nodeEndereco := nodeExped.ChildNodes.FindNode('enderExped');
+  loadTagEndereco(nodeEndereco, FCTe.exped.enderExped);
 end;
 
 procedure TGBFRCTeXMLDefault.loadTagIde;

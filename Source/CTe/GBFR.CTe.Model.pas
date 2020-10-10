@@ -6,6 +6,7 @@ uses
   GBFR.CTe.Model.Ide,
   GBFR.CTe.Model.DadosComplementares,
   GBFR.CTe.Model.Emitente,
+  GBFR.CTe.Model.Expedidor,
   GBFR.CTe.Model.Remetente;
 
 type TGBFRCTeModel = class
@@ -16,6 +17,7 @@ type TGBFRCTeModel = class
     Fcompl: TGBFRCTeModelDadosComplementares;
     Femit: TGBFRCTeModelEmitente;
     Frem: TGBFRCTeModelRemetente;
+    Fexped: TGBFRCTeModelExpedidor;
 
   public
     property Id: string read FId write FId;
@@ -24,6 +26,7 @@ type TGBFRCTeModel = class
     property compl: TGBFRCTeModelDadosComplementares read Fcompl write Fcompl;
     property emit: TGBFRCTeModelEmitente read Femit write Femit;
     property rem: TGBFRCTeModelRemetente read Frem write Frem;
+    property exped: TGBFRCTeModelExpedidor read Fexped write Fexped;
 
     constructor create;
     destructor  Destroy; override;
@@ -39,6 +42,7 @@ begin
   Fcompl := TGBFRCTeModelDadosComplementares.Create;
   Femit  := TGBFRCTeModelEmitente.Create;
   Frem   := TGBFRCTeModelRemetente.create;
+  Fexped := TGBFRCTeModelExpedidor.create;
 end;
 
 destructor TGBFRCTeModel.Destroy;
@@ -47,6 +51,7 @@ begin
   Fcompl.Free;
   Femit.Free;
   Frem.Free;
+  Fexped.Free;
   inherited;
 end;
 

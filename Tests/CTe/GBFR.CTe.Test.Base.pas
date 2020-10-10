@@ -43,6 +43,9 @@ type
     [Test]
     procedure TestTagRem;
 
+    [Test]
+    procedure TestTagExped;
+
     constructor create;
     destructor  Destroy; override;
 
@@ -117,6 +120,26 @@ begin
   Assert.AreEqual('02162020', FCTe.emit.enderEmit.CEP);
   Assert.AreEqual('SP', FCTe.emit.enderEmit.UF);
   Assert.AreEqual('1139299088', FCTe.emit.enderEmit.fone);
+end;
+
+procedure TGBFRCTeTestBase.TestTagExped;
+begin
+  Assert.AreEqual('00507405000110', FCTe.exped.CNPJ);
+  Assert.AreEqual('114371178114', FCTe.exped.IE);
+  Assert.AreEqual('MURRELEKTRONIK DO BRASIL IND.COM.LTDA', FCTe.exped.xNome);
+  Assert.AreEqual('0056311017', FCTe.exped.fone);
+  Assert.IsEmpty(FCTe.exped.xFant);
+
+  Assert.AreEqual('AV INTERLAGOS', FCTe.exped.enderExped.xLgr);
+  Assert.AreEqual('3493', FCTe.exped.enderExped.nro);
+  Assert.AreEqual('', FCTe.exped.enderExped.xCpl);
+  Assert.AreEqual('JARDIM UMUARAMA', FCTe.exped.enderExped.xBairro);
+  Assert.AreEqual('3550308', FCTe.exped.enderExped.cMun);
+  Assert.AreEqual('SAO PAULO', FCTe.exped.enderExped.xMun);
+  Assert.AreEqual('04661200', FCTe.exped.enderExped.CEP);
+  Assert.AreEqual('SP', FCTe.exped.enderExped.UF);
+  Assert.AreEqual('1058', FCTe.exped.enderExped.cPais);
+  Assert.AreEqual('Brasil', FCTe.exped.enderExped.xPais);
 end;
 
 procedure TGBFRCTeTestBase.TestTagIde;
