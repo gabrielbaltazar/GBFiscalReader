@@ -5,6 +5,7 @@ interface
 uses
   GBFR.CTe.Model,
   GBFR.CTe.Model.DadosComplementares,
+  GBFR.CTe.Model.Destinatario,
   GBFR.CTe.Model.Emitente,
   GBFR.CTe.Model.Endereco,
   GBFR.CTe.Model.Expedidor,
@@ -16,6 +17,7 @@ uses
 type
   TGBFRCTeModel                    = GBFR.CTe.Model.TGBFRCTeModel;
   TGBFRCTeModelDadosComplementares = GBFR.CTe.Model.DadosComplementares.TGBFRCTeModelDadosComplementares;
+  TGBFRCTeModelDestinatario        = GBFR.CTe.Model.Destinatario.TGBFRCTeModelDestinatario;
   TGBFRCTeModelEmitente            = GBFR.CTe.Model.Emitente.TGBFRCTeModelEmitente;
   TGBFRCTeModelEndereco            = GBFR.CTe.Model.Endereco.TGBFRCTeModelEndereco;
   TGBFRCTeModelExpedidor           = GBFR.CTe.Model.Expedidor.TGBFRCTeModelExpedidor;

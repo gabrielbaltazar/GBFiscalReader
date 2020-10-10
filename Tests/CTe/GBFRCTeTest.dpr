@@ -30,7 +30,8 @@ uses
   GBFR.CTe.Model.Endereco in '..\..\Source\CTe\GBFR.CTe.Model.Endereco.pas',
   GBFR.CTe.Model.Emitente in '..\..\Source\CTe\GBFR.CTe.Model.Emitente.pas',
   GBFR.CTe.Model.Remetente in '..\..\Source\CTe\GBFR.CTe.Model.Remetente.pas',
-  GBFR.CTe.Model.Expedidor in '..\..\Source\CTe\GBFR.CTe.Model.Expedidor.pas';
+  GBFR.CTe.Model.Expedidor in '..\..\Source\CTe\GBFR.CTe.Model.Expedidor.pas',
+  GBFR.CTe.Model.Destinatario in '..\..\Source\CTe\GBFR.CTe.Model.Destinatario.pas';
 
 //
 {$IFNDEF TESTINSIGHT}

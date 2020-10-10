@@ -26,6 +26,7 @@ type TGBFRCTeXMLDefault = class(TGBFRXmlBase, IGBFRCTeXML)
     procedure loadTagEmit;
     procedure loadTagRem;
     procedure loadTagExped;
+    procedure loadTagDest;
     procedure loadTagEndereco(ANode: IXMLNode; AEndereco: TGBFRCTeModelEndereco);
 
   protected
@@ -53,6 +54,7 @@ begin
     loadTagEmit;
     loadTagRem;
     loadTagExped;
+    loadTagDest;
   except
     Result.Free;
     raise;
@@ -86,6 +88,27 @@ begin
   FCTe.compl.origCalc  := GetNodeStr(nodeCompl, 'origCalc');
   FCTe.compl.destCalc  := GetNodeStr(nodeCompl, 'destCalc');
   FCTe.compl.xObs      := GetNodeStr(nodeCompl, 'xObs');
+end;
+
+procedure TGBFRCTeXMLDefault.loadTagDest;
+var
+  nodeDest: IXMLNode;
+  nodeEndereco: IXMLNode;
+begin
+  nodeDest := FInfCTe.ChildNodes.FindNode('dest');
+  if not Assigned(nodeDest) then
+    Exit;
+
+  FCTe.dest.CNPJ  := GetNodeStr(nodeDest, 'CNPJ');
+  FCTe.dest.IE    := GetNodeStr(nodeDest, 'IE');
+  FCTe.dest.IEST  := GetNodeStr(nodeDest, 'IEST');
+  FCTe.dest.xNome := GetNodeStr(nodeDest, 'xNome');
+  FCTe.dest.xFant := GetNodeStr(nodeDest, 'xFant');
+  FCTe.dest.fone  := GetNodeStr(nodeDest, 'fone');
+  FCTe.dest.ISUF  := GetNodeStr(nodeDest, 'ISUF');
+
+  nodeEndereco := nodeDest.ChildNodes.FindNode('enderDest');
+  loadTagEndereco(nodeEndereco, FCTe.dest.enderDest);
 end;
 
 procedure TGBFRCTeXMLDefault.loadTagEmit;

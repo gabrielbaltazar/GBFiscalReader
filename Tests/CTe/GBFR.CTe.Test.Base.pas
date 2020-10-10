@@ -46,6 +46,9 @@ type
     [Test]
     procedure TestTagExped;
 
+    [Test]
+    procedure TestTagDest;
+
     constructor create;
     destructor  Destroy; override;
 
@@ -102,6 +105,26 @@ begin
   Assert.AreEqual('Domingos Pacheco', FCTe.compl.origCalc);
   Assert.AreEqual('RUA RAIMUNDO WELTER, 122, AVENTUREIRO', FCTe.compl.destCalc);
   Assert.AreEqual('Valor Aproximado dos Tributos R$ 28,18 (26,13%)', FCTe.compl.xObs);
+end;
+
+procedure TGBFRCTeTestBase.TestTagDest;
+begin
+  Assert.AreEqual('04356485000101', FCTe.dest.CNPJ);
+  Assert.AreEqual('254238211', FCTe.dest.IE);
+  Assert.AreEqual('BRASFER FERRAMENTARIA LTDA', FCTe.dest.xNome);
+  Assert.AreEqual('4734673679', FCTe.dest.fone);
+  Assert.IsEmpty(FCTe.dest.xFant);
+
+  Assert.AreEqual('RUA RAIMUNDO WELTER', FCTe.dest.enderDest.xLgr);
+  Assert.AreEqual('122', FCTe.dest.enderDest.nro);
+  Assert.AreEqual('', FCTe.dest.enderDest.xCpl);
+  Assert.AreEqual('AVENTUREIRO', FCTe.dest.enderDest.xBairro);
+  Assert.AreEqual('4209102', FCTe.dest.enderDest.cMun);
+  Assert.AreEqual('JOINVILLE', FCTe.dest.enderDest.xMun);
+  Assert.AreEqual('89219780', FCTe.dest.enderDest.CEP);
+  Assert.AreEqual('SC', FCTe.dest.enderDest.UF);
+  Assert.AreEqual('1058', FCTe.dest.enderDest.cPais);
+  Assert.AreEqual('Brasil', FCTe.dest.enderDest.xPais);
 end;
 
 procedure TGBFRCTeTestBase.TestTagEmit;

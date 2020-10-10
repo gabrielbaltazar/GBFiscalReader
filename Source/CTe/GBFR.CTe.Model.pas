@@ -5,6 +5,7 @@ interface
 uses
   GBFR.CTe.Model.Ide,
   GBFR.CTe.Model.DadosComplementares,
+  GBFR.CTe.Model.Destinatario,
   GBFR.CTe.Model.Emitente,
   GBFR.CTe.Model.Expedidor,
   GBFR.CTe.Model.Remetente;
@@ -18,6 +19,7 @@ type TGBFRCTeModel = class
     Femit: TGBFRCTeModelEmitente;
     Frem: TGBFRCTeModelRemetente;
     Fexped: TGBFRCTeModelExpedidor;
+    Fdest: TGBFRCTeModelDestinatario;
 
   public
     property Id: string read FId write FId;
@@ -27,6 +29,7 @@ type TGBFRCTeModel = class
     property emit: TGBFRCTeModelEmitente read Femit write Femit;
     property rem: TGBFRCTeModelRemetente read Frem write Frem;
     property exped: TGBFRCTeModelExpedidor read Fexped write Fexped;
+    property dest: TGBFRCTeModelDestinatario read Fdest write Fdest;
 
     constructor create;
     destructor  Destroy; override;
@@ -43,6 +46,7 @@ begin
   Femit  := TGBFRCTeModelEmitente.Create;
   Frem   := TGBFRCTeModelRemetente.create;
   Fexped := TGBFRCTeModelExpedidor.create;
+  Fdest  := TGBFRCTeModelDestinatario.create;
 end;
 
 destructor TGBFRCTeModel.Destroy;
@@ -52,6 +56,7 @@ begin
   Femit.Free;
   Frem.Free;
   Fexped.Free;
+  Fdest.Free;
   inherited;
 end;
 
