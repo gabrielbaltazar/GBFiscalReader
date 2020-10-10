@@ -20,9 +20,11 @@ type TGBFRXmlBase = class(TInterfacedObject)
     function GetNodeCurrency (ANode: IXMLNode; ATag: String): Currency;
     function GetNodeInt      (ANode: IXMLNode; ATag: String; ADefault: Integer = 0): Integer;
     function GetNodeDate     (ANode: IXMLNode; ATag: String): TDateTime; virtual;
+    function GetNodeBoolInt  (ANode: IXMLNode; ATag: String): Boolean;
 
     procedure loadXmlContent(Value: String);
     procedure loadXmlFile   (Value: String);
+
 
   public
     constructor create;
@@ -41,6 +43,14 @@ end;
 destructor TGBFRXmlBase.Destroy;
 begin
   inherited;
+end;
+
+function TGBFRXmlBase.GetNodeBoolInt(ANode: IXMLNode; ATag: String): Boolean;
+var
+  intVal: Integer;
+begin
+  intVal := GetNodeInt(ANode, ATag);
+  Result := intVal > 0;
 end;
 
 function TGBFRXmlBase.GetNodeCurrency(ANode: IXMLNode; ATag: String): Currency;

@@ -79,7 +79,29 @@ begin
   Assert.AreEqual('6352', FCTe.ide.CFOP);
   Assert.AreEqual('Prest.Serv.Transp.p/ Ind.', FCTe.ide.natOp);
   Assert.AreEqual(57, FCTe.ide.&mod);
+  Assert.AreEqual('1', FCTe.ide.serie);
+  Assert.AreEqual(594034, FCTe.ide.nCT);
+  Assert.AreEqual('2020-09-03 21:14:02', FormatDateTime('yyyy-MM-dd hh:mm:ss', FCTe.ide.dhEmi));
+  Assert.AreEqual('2020-09-03 21:14:02', FormatDateTime('yyyy-MM-dd hh:mm:ss', FCTe.ide.dhEmi));
   Assert.AreEqual(CTeRetrato, FCTe.ide.tpImp);
+  Assert.AreEqual(1, FCTe.ide.tpEmis.Value);
+  Assert.AreEqual('6', FCTe.ide.cDV);
+  Assert.AreEqual('1', FCTe.ide.tpAmb.Value.ToString);
+  Assert.AreEqual('0', FCTe.ide.tpCTe.Value.ToString);
+  Assert.AreEqual('0', FCTe.ide.procEmi.Value.ToString);
+  Assert.AreEqual('NDDigital CTe 4.8.5', FCTe.ide.verProc);
+  Assert.AreEqual('3550308', FCTe.ide.cMunEnv);
+  Assert.AreEqual('SAO PAULO', FCTe.ide.xMunEnv);
+  Assert.AreEqual('SP', FCTe.ide.UFEnv);
+  Assert.AreEqual('01', FCTe.ide.modal.Value);
+  Assert.AreEqual('3550308', FCTe.ide.cMunIni);
+  Assert.AreEqual('SAO PAULO', FCTe.ide.xMunIni);
+  Assert.AreEqual('SP', FCTe.ide.UFIni);
+  Assert.AreEqual('4209102', FCTe.ide.cMunFim);
+  Assert.AreEqual('JOINVILLE', FCTe.ide.xMunFim);
+  Assert.AreEqual('SC', FCTe.ide.UFFim);
+  Assert.AreEqual(False, FCTe.ide.retira);
+  Assert.AreEqual('1', FCTe.ide.indIEToma.Value.ToString);
 end;
 
 initialization

@@ -24,7 +24,8 @@ uses
   GBFR.CTe.XML.Default in '..\..\Source\CTe\GBFR.CTe.XML.Default.pas',
   GBFR.XML.Base in '..\..\Source\XML\GBFR.XML.Base.pas';
 
-{$IFDEF TESTINSIGHT}
+//
+{$IFNDEF TESTINSIGHT}
 var
   runner: ITestRunner;
   results: IRunResults;
