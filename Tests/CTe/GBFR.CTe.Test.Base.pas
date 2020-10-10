@@ -26,19 +26,33 @@ type
 
   public
     [Test]
+    procedure TestInfCTe;
+
+    [Test]
     procedure TestTagIde;
 
-    [Setup]
-    procedure Setup;
-
-    [TearDown]
-    procedure TearDown;
+    constructor create;
+    destructor  Destroy; override;
 
   end;
 
 implementation
 
 { TGBFRCTeTestBase }
+
+constructor TGBFRCTeTestBase.create;
+var
+  xml : string;
+begin
+  xml  := LoadXMLResource(XML_RES);
+  FCTe := XMLCTeReader.loadFromContent(xml);
+end;
+
+destructor TGBFRCTeTestBase.Destroy;
+begin
+  FCTe.Free;
+  inherited;
+end;
 
 function TGBFRCTeTestBase.LoadXMLResource(Name: String): string;
 var
@@ -59,17 +73,10 @@ begin
   end;
 end;
 
-procedure TGBFRCTeTestBase.Setup;
-var
-  xml : string;
+procedure TGBFRCTeTestBase.TestInfCTe;
 begin
-  xml  := LoadXMLResource(XML_RES);
-  FCTe := XMLCTeReader.loadFromContent(xml);
-end;
-
-procedure TGBFRCTeTestBase.TearDown;
-begin
-  FreeAndNil(FCTe);
+  Assert.AreEqual('CTe35200903629957000602570010005940341265045246', FCTe.Id);
+  Assert.AreEqual('3.00', FCTe.versao);
 end;
 
 procedure TGBFRCTeTestBase.TestTagIde;

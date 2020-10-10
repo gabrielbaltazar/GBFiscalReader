@@ -134,6 +134,7 @@ begin
     raise Exception.CreateFmt('Error on read Tag infCte', []);
 
   FInfCTe := node;
+  FCTe.Id := FInfCTe.Attributes[
 end;
 
 class function TGBFRCTeXMLDefault.New: IGBFRCTeXML;

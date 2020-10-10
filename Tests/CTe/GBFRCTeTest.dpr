@@ -22,7 +22,8 @@ uses
   GBFR.CTe.Model.Classes in '..\..\Source\CTe\GBFR.CTe.Model.Classes.pas',
   GBFR.CTe.XML.Interfaces in '..\..\Source\CTe\GBFR.CTe.XML.Interfaces.pas',
   GBFR.CTe.XML.Default in '..\..\Source\CTe\GBFR.CTe.XML.Default.pas',
-  GBFR.XML.Base in '..\..\Source\XML\GBFR.XML.Base.pas';
+  GBFR.XML.Base in '..\..\Source\XML\GBFR.XML.Base.pas',
+  System.Classes;
 
 //
 {$IFNDEF TESTINSIGHT}
@@ -33,6 +34,7 @@ var
   nunitLogger : ITestLogger;
 {$ENDIF}
 begin
+  ReportMemoryLeaksOnShutdown := True;
   CoInitialize(nil);
 {$IFDEF TESTINSIGHT}
   TestInsight.DUnitX.RunRegisteredTests;
