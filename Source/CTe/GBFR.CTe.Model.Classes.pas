@@ -9,7 +9,8 @@ uses
   GBFR.CTe.Model.Endereco,
   GBFR.CTe.Model.Ide,
   GBFR.CTe.Model.Ide.Toma3,
-  GBFR.CTe.Model.Ide.Toma4;
+  GBFR.CTe.Model.Ide.Toma4,
+  GBFR.CTe.Model.Remetente;
 
 type
   TGBFRCTeModel                    = GBFR.CTe.Model.TGBFRCTeModel;
@@ -19,6 +20,7 @@ type
   TGBFRCTeModelIde                 = GBFR.CTe.Model.Ide.TGBFRCTeModelIde;
   TGBFRCTeModelIdeToma3            = GBFR.CTe.Model.Ide.Toma3.TGBFRCTeModelIdeToma3;
   TGBFRCTeModelIdeToma4            = GBFR.CTe.Model.Ide.Toma4.TGBFRCTeModelIdeToma4;
+  TGBFRCTeModelRemetente           = GBFR.CTe.Model.Remetente.TGBFRCTeModelRemetente;
 
 implementation
 

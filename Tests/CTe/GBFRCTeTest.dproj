@@ -145,6 +145,7 @@
         <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.DadosComplementares.pas"/>
         <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.Endereco.pas"/>
         <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.Emitente.pas"/>
+        <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.Remetente.pas"/>
         <RcItem Include="Resources\CTe35200903629957000602570010005940341265045246_procCTe.xml">
             <ContainerId>ResourceItem</ContainerId>
             <ResourceType>RCDATA</ResourceType>

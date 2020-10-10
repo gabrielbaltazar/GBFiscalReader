@@ -13,6 +13,9 @@ type TGBFRCTeModelEndereco = class
     FCEP: String;
     FUF: String;
     Ffone: String;
+    FcPais: String;
+    FxPais: String;
+    Femail: String;
 
   public
     property xLgr: String read FxLgr write FxLgr;
@@ -24,6 +27,9 @@ type TGBFRCTeModelEndereco = class
     property CEP: String read FCEP write FCEP;
     property UF: String read FUF write FUF;
     property fone: String read Ffone write Ffone;
+    property cPais: String read FcPais write FcPais;
+    property xPais: String read FxPais write FxPais;
+    property email: String read Femail write Femail;
 end;
 
 implementation

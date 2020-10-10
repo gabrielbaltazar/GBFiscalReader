@@ -24,6 +24,7 @@ type TGBFRCTeXMLDefault = class(TGBFRXmlBase, IGBFRCTeXML)
     procedure loadTagIdeToma3(ANode: IXMLNode);
     procedure loadTagCompl;
     procedure loadTagEmit;
+    procedure loadTagRem;
     procedure loadTagEndereco(ANode: IXMLNode; AEndereco: TGBFRCTeModelEndereco);
 
   protected
@@ -49,6 +50,7 @@ begin
     loadTagIde;
     loadTagCompl;
     loadTagEmit;
+    loadTagRem;
   except
     Result.Free;
     raise;
@@ -116,6 +118,9 @@ begin
   AEndereco.xMun    := GetNodeStr(ANode, 'xMun');
   AEndereco.CEP     := GetNodeStr(ANode, 'CEP');
   AEndereco.UF      := GetNodeStr(ANode, 'UF');
+  AEndereco.cPais   := GetNodeStr(ANode, 'cPais');
+  AEndereco.xPais   := GetNodeStr(ANode, 'xPais');
+  AEndereco.email   := GetNodeStr(ANode, 'email');
   AEndereco.fone    := GetNodeStr(ANode, 'fone');
 end;
 
@@ -203,6 +208,26 @@ begin
   FInfCTe     := node;
   FCTe.Id     := FInfCTe.Attributes['Id'];
   FCTe.versao := FInfCTe.Attributes['versao'];
+end;
+
+procedure TGBFRCTeXMLDefault.loadTagRem;
+var
+  nodeRem: IXMLNode;
+  nodeEndereco: IXMLNode;
+begin
+  nodeRem := FInfCTe.ChildNodes.FindNode('rem');
+  if not Assigned(nodeRem) then
+    Exit;
+
+  FCTe.rem.CNPJ  := GetNodeStr(nodeRem, 'CNPJ');
+  FCTe.rem.IE    := GetNodeStr(nodeRem, 'IE');
+  FCTe.rem.IEST  := GetNodeStr(nodeRem, 'IEST');
+  FCTe.rem.xNome := GetNodeStr(nodeRem, 'xNome');
+  FCTe.rem.xFant := GetNodeStr(nodeRem, 'xFant');
+  FCTe.rem.fone  := GetNodeStr(nodeRem, 'fone');
+
+  nodeEndereco := nodeRem.ChildNodes.FindNode('enderReme');
+  loadTagEndereco(nodeEndereco, FCTe.rem.enderReme);
 end;
 
 class function TGBFRCTeXMLDefault.New: IGBFRCTeXML;
