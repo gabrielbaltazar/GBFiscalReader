@@ -31,6 +31,9 @@ type
     [Test]
     procedure TestTagIde;
 
+    [Test]
+    procedure TestTagToma3;
+
     constructor create;
     destructor  Destroy; override;
 
@@ -107,8 +110,13 @@ begin
   Assert.AreEqual('4209102', FCTe.ide.cMunFim);
   Assert.AreEqual('JOINVILLE', FCTe.ide.xMunFim);
   Assert.AreEqual('SC', FCTe.ide.UFFim);
-  Assert.AreEqual(False, FCTe.ide.retira);
+  Assert.AreEqual(True, FCTe.ide.retira);
   Assert.AreEqual('1', FCTe.ide.indIEToma.Value.ToString);
+end;
+
+procedure TGBFRCTeTestBase.TestTagToma3;
+begin
+  Assert.AreEqual(3, FCTe.ide.toma3.toma.Value);
 end;
 
 initialization

@@ -3,7 +3,9 @@ unit GBFR.CTe.Model.Ide;
 interface
 
 uses
-  GBFR.CTe.Model.Types;
+  GBFR.CTe.Model.Types,
+  GBFR.CTe.Model.Ide.Toma3,
+  GBFR.CTe.Model.Ide.Toma4;
 
 type TGBFRCTeModelIde = class
   private
@@ -37,6 +39,8 @@ type TGBFRCTeModelIde = class
     Fretira: Boolean;
     FxRetira: String;
     FindIEToma: TCTeIndicadorIE;
+    Ftoma3: TGBFRCTeModelIdeToma3;
+    Ftoma4: TGBFRCTeModelIdeToma4;
 
   public
     property cUF: String read FcUF write FcUF;
@@ -69,8 +73,28 @@ type TGBFRCTeModelIde = class
     property retira: Boolean read Fretira write Fretira;
     property xRetira: String read FxRetira write FxRetira;
     property indIEToma: TCTeIndicadorIE read FindIEToma write FindIEToma;
+    property toma3: TGBFRCTeModelIdeToma3 read Ftoma3 write Ftoma3;
+    property toma4: TGBFRCTeModelIdeToma4 read Ftoma4 write Ftoma4;
+
+    constructor create;
+    destructor  Destroy; override;
 end;
 
 implementation
+
+{ TGBFRCTeModelIde }
+
+constructor TGBFRCTeModelIde.create;
+begin
+  Ftoma3 := TGBFRCTeModelIdeToma3.Create;
+  Ftoma4 := TGBFRCTeModelIdeToma4.Create;
+end;
+
+destructor TGBFRCTeModelIde.Destroy;
+begin
+  Ftoma3.Free;
+  Ftoma4.Free;
+  inherited;
+end;
 
 end.

@@ -21,6 +21,7 @@ type TGBFRCTeXMLDefault = class(TGBFRXmlBase, IGBFRCTeXML)
 
     procedure loadTagInfCte;
     procedure loadTagIde;
+    procedure loadTagIdeToma3(ANode: IXMLNode);
 
   protected
     function loadFromContent(Value: String): TGBFRCTeModel;
@@ -102,6 +103,8 @@ begin
       FCTe.ide.UFFim          := GetNodeStr(nodeIDE, 'UFFim');
       FCTe.ide.retira         := GetNodeBoolInt(nodeIDE, 'retira');
       FCTe.ide.xRetira        := GetNodeStr(nodeIDE, 'xRetira');
+
+      loadTagIdeToma3(nodeIDE.ChildNodes.FindNode('toma3'));
     end;
   except
     on e : Exception do
@@ -110,6 +113,14 @@ begin
       raise;
     end;
   end;
+end;
+
+procedure TGBFRCTeXMLDefault.loadTagIdeToma3(ANode: IXMLNode);
+begin
+  if not Assigned(ANode) then
+    Exit;
+
+  FCTe.ide.toma3.toma.fromInteger(GetNodeInt(ANode, 'toma'));
 end;
 
 procedure TGBFRCTeXMLDefault.loadTagInfCte;
@@ -133,8 +144,9 @@ begin
   if (not Assigned(node)) or (not node.NodeName.Equals( 'infCte' )) then
     raise Exception.CreateFmt('Error on read Tag infCte', []);
 
-  FInfCTe := node;
-  FCTe.Id := FInfCTe.Attributes[
+  FInfCTe     := node;
+  FCTe.Id     := FInfCTe.Attributes['Id'];
+  FCTe.versao := FInfCTe.Attributes['versao'];
 end;
 
 class function TGBFRCTeXMLDefault.New: IGBFRCTeXML;

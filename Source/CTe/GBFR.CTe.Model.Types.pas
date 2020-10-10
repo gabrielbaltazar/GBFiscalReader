@@ -41,6 +41,12 @@ type
                      CTeContribuinteIsentoInscricao,
                      CTeNaoContribuinte);
 
+  TCTeTomadorServico = (CTeTomadorRemetente,
+                        CTeTomadorExpedidor,
+                        CTeRecebidor,
+                        CTeDestinatario,
+                        CTeOutros);
+
   TCTeAmbienteHelper = record helper for TCTeAmbiente
   public
     procedure fromInteger(Value: Integer);
@@ -84,6 +90,12 @@ type
   end;
 
   TCTeTipoServicoHelper = record helper for TCTeTipoServico
+  public
+    procedure fromInteger(Value: Integer);
+    function Value: Integer;
+  end;
+
+  TCTeTomadorServicoHelper = record helper for TCTeTomadorServico
   public
     procedure fromInteger(Value: Integer);
     function Value: Integer;
@@ -305,6 +317,18 @@ begin
 end;
 
 function TCTeTipoServicoHelper.Value: Integer;
+begin
+  result := Integer(Self);
+end;
+
+{ TCTeTomadorServicoHelper }
+
+procedure TCTeTomadorServicoHelper.fromInteger(Value: Integer);
+begin
+  Self := TCTeTomadorServico(Value);
+end;
+
+function TCTeTomadorServicoHelper.Value: Integer;
 begin
   result := Integer(Self);
 end;
