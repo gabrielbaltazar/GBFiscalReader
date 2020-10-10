@@ -63,13 +63,27 @@ end;
 procedure TGBFRCTeXMLDefault.loadTagIde;
 var
   nodeIDE : IXMLNode;
+  node    : IXMLNode;
 begin
   try
-    FInfCTe := FXml.DocumentElement.ChildNodes.Get(0)
-                                   .ChildNodes.Get(0);
-    if not Assigned(FInfCTe) then
-      raise Exception.CreateFmt('Error on read Tag infCTe', []);
+    repeat
+      if node = nil then
+        node := FXml.DocumentElement
+      else
+      begin
+        if node.ChildNodes.Count = 0 then
+        begin
+          node := nil;
+          break;
+        end;
+        node := node.ChildNodes.Get(0);
+      end;
+    until (node = nil) or (node.NodeName = 'infCte');
 
+    if (not Assigned(node)) or (not node.NodeName.Equals( 'infCte' )) then
+      raise Exception.CreateFmt('Error on read Tag infCte', []);
+
+    FInfCTe := node;
     nodeIDE := FInfCTe.ChildNodes.FindNode('ide');
 
     if Assigned(nodeIDE) then
