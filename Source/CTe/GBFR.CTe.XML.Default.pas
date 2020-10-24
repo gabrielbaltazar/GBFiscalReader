@@ -28,6 +28,7 @@ type TGBFRCTeXMLDefault = class(TGBFRXmlBase, IGBFRCTeXML)
     procedure loadTagExped;
     procedure loadTagDest;
     procedure loadTagEndereco(ANode: IXMLNode; AEndereco: TGBFRCTeModelEndereco);
+    procedure loadTagVPrest;
 
   protected
     function loadFromContent(Value: String): TGBFRCTeModel;
@@ -55,6 +56,7 @@ begin
     loadTagRem;
     loadTagExped;
     loadTagDest;
+    loadTagVPrest;
   except
     Result.Free;
     raise;
@@ -273,6 +275,34 @@ begin
 
   nodeEndereco := nodeRem.ChildNodes.FindNode('enderReme');
   loadTagEndereco(nodeEndereco, FCTe.rem.enderReme);
+end;
+
+procedure TGBFRCTeXMLDefault.loadTagVPrest;
+var
+  nodeVPrest : IXMLNode;
+  nodeComp   : IXMLNode;
+  name       : string;
+  value      : Currency;
+begin
+  nodeVPrest := FInfCTe.ChildNodes.FindNode('vPrest');
+  if not Assigned(nodeVPrest) then
+    Exit;
+
+  FCTe.vPrest.vTPrest := GetNodeCurrency(nodeVPrest, 'vTPrest');
+  FCTe.vPrest.vRec    := GetNodeCurrency(nodeVPrest, 'vRec');
+
+  nodeComp := nodeVPrest.ChildNodes.FindNode('Comp');
+  if not Assigned(nodeComp) then
+    Exit;
+
+  repeat
+    name := GetNodeStr(nodeComp, 'xNome');
+    value:= GetNodeCurrency(nodeComp, 'vComp');
+
+    FCTe.vPrest.AddComponente(name, value);
+
+    nodeComp := nodeComp.NextSibling;
+  until nodeComp = nil;
 end;
 
 class function TGBFRCTeXMLDefault.New: IGBFRCTeXML;

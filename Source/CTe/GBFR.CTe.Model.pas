@@ -8,6 +8,7 @@ uses
   GBFR.CTe.Model.Destinatario,
   GBFR.CTe.Model.Emitente,
   GBFR.CTe.Model.Expedidor,
+  GBFR.CTe.Model.PrestacaoServico,
   GBFR.CTe.Model.Remetente;
 
 type TGBFRCTeModel = class
@@ -20,6 +21,7 @@ type TGBFRCTeModel = class
     Frem: TGBFRCTeModelRemetente;
     Fexped: TGBFRCTeModelExpedidor;
     Fdest: TGBFRCTeModelDestinatario;
+    FvPrest: TGBFRCTeModelPrestacaoServico;
 
   public
     property Id: string read FId write FId;
@@ -30,6 +32,7 @@ type TGBFRCTeModel = class
     property rem: TGBFRCTeModelRemetente read Frem write Frem;
     property exped: TGBFRCTeModelExpedidor read Fexped write Fexped;
     property dest: TGBFRCTeModelDestinatario read Fdest write Fdest;
+    property vPrest: TGBFRCTeModelPrestacaoServico read FvPrest write FvPrest;
 
     constructor create;
     destructor  Destroy; override;
@@ -47,6 +50,7 @@ begin
   Frem   := TGBFRCTeModelRemetente.create;
   Fexped := TGBFRCTeModelExpedidor.create;
   Fdest  := TGBFRCTeModelDestinatario.create;
+  FvPrest:= TGBFRCTeModelPrestacaoServico.create;
 end;
 
 destructor TGBFRCTeModel.Destroy;
@@ -57,6 +61,7 @@ begin
   Frem.Free;
   Fexped.Free;
   Fdest.Free;
+  FvPrest.Free;
   inherited;
 end;
 

@@ -78,7 +78,6 @@
         <Icns_MainIcns>$(BDS)\bin\delphi_PROJECTICNS.icns</Icns_MainIcns>
         <DCC_UnitSearchPath>$(DUnitX);$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <SanitizedProjectName>GBFRCTeTest</SanitizedProjectName>
-        <DCC_Define>TESTINSIGHT;$(DCC_Define)</DCC_Define>
         <VerInfo_Locale>1046</VerInfo_Locale>
         <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
     </PropertyGroup>
@@ -148,6 +147,8 @@
         <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.Remetente.pas"/>
         <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.Expedidor.pas"/>
         <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.Destinatario.pas"/>
+        <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.PrestacaoServico.pas"/>
+        <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.ComponentePrestacao.pas"/>
         <RcItem Include="Resources\CTe35200903629957000602570010005940341265045246_procCTe.xml">
             <ContainerId>ResourceItem</ContainerId>
             <ResourceType>RCDATA</ResourceType>

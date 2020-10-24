@@ -13,6 +13,7 @@ uses
   TestInsight.DUnitX,
   {$ELSE}
   DUnitX.Loggers.Console,
+  DUnitX.Loggers.XML.NUnit,
   {$ENDIF }
   DUnitX.TestFramework,
   GBFR.CTe.Test.Base in 'GBFR.CTe.Test.Base.pas',
@@ -31,7 +32,9 @@ uses
   GBFR.CTe.Model.Emitente in '..\..\Source\CTe\GBFR.CTe.Model.Emitente.pas',
   GBFR.CTe.Model.Remetente in '..\..\Source\CTe\GBFR.CTe.Model.Remetente.pas',
   GBFR.CTe.Model.Expedidor in '..\..\Source\CTe\GBFR.CTe.Model.Expedidor.pas',
-  GBFR.CTe.Model.Destinatario in '..\..\Source\CTe\GBFR.CTe.Model.Destinatario.pas';
+  GBFR.CTe.Model.Destinatario in '..\..\Source\CTe\GBFR.CTe.Model.Destinatario.pas',
+  GBFR.CTe.Model.PrestacaoServico in '..\..\Source\CTe\GBFR.CTe.Model.PrestacaoServico.pas',
+  GBFR.CTe.Model.ComponentePrestacao in '..\..\Source\CTe\GBFR.CTe.Model.ComponentePrestacao.pas';
 
 //
 {$IFNDEF TESTINSIGHT}
@@ -43,6 +46,7 @@ var
 {$ENDIF}
 begin
   ReportMemoryLeaksOnShutdown := True;
+  IsConsole := False;
   CoInitialize(nil);
 {$IFDEF TESTINSIGHT}
   TestInsight.DUnitX.RunRegisteredTests;

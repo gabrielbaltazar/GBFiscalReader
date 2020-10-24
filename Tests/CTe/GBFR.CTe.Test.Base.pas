@@ -49,6 +49,9 @@ type
     [Test]
     procedure TestTagDest;
 
+    [Test]
+    procedure TestTagVPrest;
+
     constructor create;
     destructor  Destroy; override;
 
@@ -220,6 +223,25 @@ end;
 procedure TGBFRCTeTestBase.TestTagToma3;
 begin
   Assert.AreEqual(3, FCTe.ide.toma3.toma.Value);
+end;
+
+procedure TGBFRCTeTestBase.TestTagVPrest;
+begin
+  Assert.AreEqual('107,82', CurrToStr(FCTe.vPrest.vTPrest));
+  Assert.AreEqual('107,85', CurrToStr(FCTe.vPrest.vRec));
+  Assert.AreEqual(4, FCTe.vPrest.Comp.Count);
+
+  Assert.AreEqual('FRETE PESO', FCTe.vPrest.Comp[0].xNome);
+  Assert.AreEqual('46,75', CurrToStr( FCTe.vPrest.Comp[0].vComp));
+
+  Assert.AreEqual('FRETE VALOR', FCTe.vPrest.Comp[1].xNome);
+  Assert.AreEqual('37,59', CurrToStr( FCTe.vPrest.Comp[1].vComp));
+
+  Assert.AreEqual('PEDAGIO', FCTe.vPrest.Comp[2].xNome);
+  Assert.AreEqual('4,68', CurrToStr( FCTe.vPrest.Comp[2].vComp));
+
+  Assert.AreEqual('GRIS', FCTe.vPrest.Comp[3].xNome);
+  Assert.AreEqual('18,8', CurrToStr( FCTe.vPrest.Comp[3].vComp));
 end;
 
 initialization

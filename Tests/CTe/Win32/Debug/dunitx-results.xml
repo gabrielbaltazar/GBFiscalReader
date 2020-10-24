@@ -1,1 +1,25 @@
-﻿
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<test-results name="D:\Desenvolvimento\workspace\Delphi\Frameworks\GBFrameworks\GBFiscallReader\Tests\CTe\Win32\Debug\GBFRCTeTest.exe" total="9" errors="0" failures="0" ignored="0" inconclusive="0" not-run="0" skipped="0" invalid="0" date="2020-10-24" time="0.042">
+  <culture-info current-culture="en" current-uiculture="en" />
+  <test-suite type="Assembly" name="GBFRCTeTest.exe" executed="true" result="Success" success="True" time="0.042" asserts="0">
+    <results>
+        <test-suite type="Namespace" name="GBFR" executed="true" result="Success" success="True" time="0.041" asserts="0" >
+          <results>
+              <test-suite type="Fixture" name="TGBFRCTeTestBase" executed="True" result="Success" success="True" time="0.041" >
+                <results>
+                  <test-case name="TestInfCTe" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestTagIde" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestTagToma3" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestTagCompl" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestTagEmit" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestTagRem" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestTagExped" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestTagDest" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestTagVPrest" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                </results>
+              </test-suite>
+          </results>
+        </test-suite>
+    </results>
+  </test-suite>
+</test-results>
