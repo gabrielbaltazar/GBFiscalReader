@@ -29,6 +29,12 @@ type TGBFRCTeXMLDefault = class(TGBFRXmlBase, IGBFRCTeXML)
     procedure loadTagDest;
     procedure loadTagEndereco(ANode: IXMLNode; AEndereco: TGBFRCTeModelEndereco);
     procedure loadTagVPrest;
+    procedure loadTagAutXML;
+    procedure loadTagInfProt;
+    procedure loadTagInfCTeNorm;
+    procedure loadTagInfCarga(ANodeInfCTeNorm: IXMLNode);
+    procedure loadTagInfDoc  (ANodeInfCTeNorm: IXMLNode);
+    procedure loadTagInfModal(ANodeInfCTeNorm: IXMLNode);
 
   protected
     function loadFromContent(Value: String): TGBFRCTeModel;
@@ -57,6 +63,9 @@ begin
     loadTagExped;
     loadTagDest;
     loadTagVPrest;
+    loadTagInfCTeNorm;
+    loadTagAutXML;
+    loadTagInfProt;
   except
     Result.Free;
     raise;
@@ -73,6 +82,23 @@ begin
     result := loadFromContent(xmlFile.Text);
   finally
     xmlFile.Free;
+  end;
+end;
+
+procedure TGBFRCTeXMLDefault.loadTagAutXML;
+var
+  nodeAutXML : IXMLNode;
+  CPF        : string;
+  CNPJ       : string;
+begin
+  nodeAutXML := FInfCTe.ChildNodes.FindNode('autXML');
+  while nodeAutXML <> nil do
+  begin
+    CNPJ := GetNodeStr(nodeAutXML, 'CNPJ');
+    CPF := GetNodeStr (nodeAutXML, 'CPF');
+
+    FCTe.addAutXML(CNPJ, CPF);
+    nodeAutXML := nodeAutXML.NextSibling;
   end;
 end;
 
@@ -231,6 +257,41 @@ begin
   FCTe.ide.toma3.toma.fromInteger(GetNodeInt(ANode, 'toma'));
 end;
 
+procedure TGBFRCTeXMLDefault.loadTagInfCarga(ANodeInfCTeNorm: IXMLNode);
+var
+  nodeCarga: IXMLNode;
+  nodeInfQ : IXMLNode;
+begin
+  if not Assigned(ANodeInfCTeNorm) then
+    exit;
+
+  nodeCarga := ANodeInfCTeNorm.ChildNodes.FindNode('infCarga');
+  if not Assigned(nodeCarga) then
+    exit;
+
+  FCTe.infCTeNorm.infCarga.vCarga      := GetNodeCurrency(nodeCarga, 'vCarga');
+  FCTe.infCTeNorm.infCarga.proPred     := GetNodeStr(nodeCarga, 'proPred');
+  FCTe.infCTeNorm.infCarga.xOutCat     := GetNodeStr(nodeCarga, 'xOutCat');
+  FCTe.infCTeNorm.infCarga.vCargaAverb := GetNodeCurrency(nodeCarga, 'vCargaAverb');
+
+  nodeInfQ := nodeCarga.ChildNodes.FindNode('infQ');
+  while nodeInfQ <> nil do
+  begin
+    if not GetNodeStr(nodeInfQ, 'tpMed').Trim.IsEmpty then
+    begin
+      FCTe.infCTeNorm.infCarga.AddInfoQuantidade;
+
+      FCTe.infCTeNorm.infCarga.infQ.Last.tpMed  := GetNodeStr(nodeInfQ, 'tpMed');
+      FCTe.infCTeNorm.infCarga.infQ.Last.qCarga := GetNodeCurrency(nodeInfQ, 'qCarga');
+
+      FCTe.infCTeNorm.infCarga.infQ.Last.cUnid.fromString(GetNodeStr(nodeInfQ, 'cUnid'));
+      nodeInfQ := nodeInfQ.NextSibling;
+    end
+    else
+      nodeInfQ := nil;
+  end;
+end;
+
 procedure TGBFRCTeXMLDefault.loadTagInfCte;
 var
   node : IXMLNode;
@@ -255,6 +316,92 @@ begin
   FInfCTe     := node;
   FCTe.Id     := FInfCTe.Attributes['Id'];
   FCTe.versao := FInfCTe.Attributes['versao'];
+end;
+
+procedure TGBFRCTeXMLDefault.loadTagInfCTeNorm;
+var
+  nodeNorm: IXMLNode;
+begin
+  nodeNorm := FInfCTe.ChildNodes.FindNode('infCTeNorm');
+
+  if not Assigned(nodeNorm) then
+    Exit;
+
+  loadTagInfCarga(nodeNorm);
+  loadTagInfDoc(nodeNorm);
+  loadTagInfModal(nodeNorm);
+end;
+
+procedure TGBFRCTeXMLDefault.loadTagInfDoc(ANodeInfCTeNorm: IXMLNode);
+var
+  nodeInfDoc: IXMLNode;
+  nodeInfNFe: IXMLNode;
+begin
+  if not Assigned(ANodeInfCTeNorm) then
+    Exit;
+
+  nodeInfDoc := ANodeInfCTeNorm.ChildNodes.FindNode('infDoc');
+  if not Assigned(nodeInfDoc) then
+    Exit;
+
+  nodeInfNFe := nodeInfDoc.ChildNodes.FindNode('infNFe');
+  while nodeInfNFe <> nil do
+  begin
+    FCTe.infCTeNorm.infDoc.infoNFe.Add(TGBFRCTeModelInfoNFe.Create);
+    FCTe.infCTeNorm.infDoc.infoNFe.Last.chave := GetNodeStr(nodeInfNFe, 'chave');
+    FCTe.infCTeNorm.infDoc.infoNFe.Last.PIN   := GetNodeStr(nodeInfNFe, 'PIN');
+    FCTe.infCTeNorm.infDoc.infoNFe.Last.dPrev := GetNodeDate(nodeInfNFe, 'dPrev');
+    nodeInfNFe := nodeInfNFe.NextSibling;
+  end;
+end;
+
+procedure TGBFRCTeXMLDefault.loadTagInfModal(ANodeInfCTeNorm: IXMLNode);
+var
+  nodeModal: IXMLNode;
+  nodeRodo : IXMLNode;
+begin
+  if not Assigned(ANodeInfCTeNorm) then
+    Exit;
+
+  nodeModal := ANodeInfCTeNorm.ChildNodes.FindNode('infModal');
+  if not Assigned(nodeModal) then
+    Exit;
+
+  FCTe.infCTeNorm.infModal.versaoModal := nodeModal.Attributes['versaoModal'];
+
+  nodeRodo := nodeModal.ChildNodes.FindNode('rodo');
+  if not Assigned(nodeRodo) then
+    Exit;
+
+  FCTe.infCTeNorm.infModal.rodo.RNTRC := GetNodeStr(nodeRodo, 'RNTRC');
+end;
+
+procedure TGBFRCTeXMLDefault.loadTagInfProt;
+var
+  nodeCTeProc: IXMLNode;
+  nodeProtCTe: IXMLNode;
+  nodeInfProt: IXMLNode;
+begin
+  nodeCTeProc := FXml.DocumentElement;
+  if not Assigned(nodeCTeProc) then
+    Exit;
+
+  nodeProtCTe := nodeCTeProc.ChildNodes.FindNode('protCTe');
+  if not Assigned(nodeProtCTe) then
+    Exit;
+
+  nodeInfProt := nodeProtCTe.ChildNodes.FindNode('infProt');
+  if not Assigned(nodeInfProt) then
+    Exit;
+
+  FCTe.infProt.tpAmb.fromInteger(GetNodeInt(nodeInfProt, 'tpAmb'));
+  FCTe.infProt.verAplic := GetNodeStr(nodeInfProt, 'verAplic');
+  FCTe.infProt.chCTe    := GetNodeStr(nodeInfProt, 'chCTe');
+  FCTe.infProt.dhRecbto := GetNodeDate(nodeInfProt, 'dhRecbto');
+  FCTe.infProt.nProt    := GetNodeStr(nodeInfProt, 'nProt');
+  FCTe.infProt.digVal   := GetNodeStr(nodeInfProt, 'digVal');
+  FCTe.infProt.cStat    := GetNodeInt(nodeInfProt, 'cStat');
+  FCTe.infProt.xMotivo  := GetNodeStr(nodeInfProt, 'xMotivo');
 end;
 
 procedure TGBFRCTeXMLDefault.loadTagRem;

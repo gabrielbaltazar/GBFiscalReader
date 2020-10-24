@@ -149,6 +149,15 @@
         <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.Destinatario.pas"/>
         <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.PrestacaoServico.pas"/>
         <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.ComponentePrestacao.pas"/>
+        <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.InfoQuantidade.pas"/>
+        <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.InfoCarga.pas"/>
+        <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.InfoNFe.pas"/>
+        <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.InfoDoc.pas"/>
+        <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.ModalRodoviario.pas"/>
+        <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.InfoModal.pas"/>
+        <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.InfoCTeNormal.pas"/>
+        <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.AutDownloadXML.pas"/>
+        <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.InfProt.pas"/>
         <RcItem Include="Resources\CTe35200903629957000602570010005940341265045246_procCTe.xml">
             <ContainerId>ResourceItem</ContainerId>
             <ResourceType>RCDATA</ResourceType>

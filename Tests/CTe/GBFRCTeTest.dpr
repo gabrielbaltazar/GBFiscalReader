@@ -34,7 +34,16 @@ uses
   GBFR.CTe.Model.Expedidor in '..\..\Source\CTe\GBFR.CTe.Model.Expedidor.pas',
   GBFR.CTe.Model.Destinatario in '..\..\Source\CTe\GBFR.CTe.Model.Destinatario.pas',
   GBFR.CTe.Model.PrestacaoServico in '..\..\Source\CTe\GBFR.CTe.Model.PrestacaoServico.pas',
-  GBFR.CTe.Model.ComponentePrestacao in '..\..\Source\CTe\GBFR.CTe.Model.ComponentePrestacao.pas';
+  GBFR.CTe.Model.ComponentePrestacao in '..\..\Source\CTe\GBFR.CTe.Model.ComponentePrestacao.pas',
+  GBFR.CTe.Model.InfoQuantidade in '..\..\Source\CTe\GBFR.CTe.Model.InfoQuantidade.pas',
+  GBFR.CTe.Model.InfoCarga in '..\..\Source\CTe\GBFR.CTe.Model.InfoCarga.pas',
+  GBFR.CTe.Model.InfoNFe in '..\..\Source\CTe\GBFR.CTe.Model.InfoNFe.pas',
+  GBFR.CTe.Model.InfoDoc in '..\..\Source\CTe\GBFR.CTe.Model.InfoDoc.pas',
+  GBFR.CTe.Model.ModalRodoviario in '..\..\Source\CTe\GBFR.CTe.Model.ModalRodoviario.pas',
+  GBFR.CTe.Model.InfoModal in '..\..\Source\CTe\GBFR.CTe.Model.InfoModal.pas',
+  GBFR.CTe.Model.InfoCTeNormal in '..\..\Source\CTe\GBFR.CTe.Model.InfoCTeNormal.pas',
+  GBFR.CTe.Model.AutDownloadXML in '..\..\Source\CTe\GBFR.CTe.Model.AutDownloadXML.pas',
+  GBFR.CTe.Model.InfProt in '..\..\Source\CTe\GBFR.CTe.Model.InfProt.pas';
 
 //
 {$IFNDEF TESTINSIGHT}

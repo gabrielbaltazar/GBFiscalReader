@@ -52,6 +52,21 @@ type
     [Test]
     procedure TestTagVPrest;
 
+    [Test]
+    procedure TestInfCarga;
+
+    [Test]
+    procedure TestTagInfDoc;
+
+    [Test]
+    procedure TestTagInfModal;
+
+    [Test]
+    procedure TestTagAutXML;
+
+    [Test]
+    procedure TestTagInfProt;
+
     constructor create;
     destructor  Destroy; override;
 
@@ -94,10 +109,42 @@ begin
   end;
 end;
 
+procedure TGBFRCTeTestBase.TestInfCarga;
+begin
+  Assert.AreEqual('11026,7', CurrToStr(FCTe.infCTeNorm.infCarga.vCarga));
+  Assert.AreEqual('PROD. DIVERSOS', FCTe.infCTeNorm.infCarga.proPred);
+  Assert.AreEqual('CAIXA(S)', FCTe.infCTeNorm.infCarga.xOutCat);
+  Assert.AreEqual('11026,71', CurrToStr(FCTe.infCTeNorm.infCarga.vCargaAverb));
+
+  Assert.AreEqual(3, FCTe.infCTeNorm.infCarga.infQ.Count);
+
+  Assert.AreEqual('01', FCTe.infCTeNorm.infCarga.infQ[0].cUnid.Value);
+  Assert.AreEqual('PESO DECLARADO', FCTe.infCTeNorm.infCarga.infQ[0].tpMed);
+  Assert.AreEqual('14,31', CurrToStr(FCTe.infCTeNorm.infCarga.infQ[0].qCarga));
+
+  Assert.AreEqual('01', FCTe.infCTeNorm.infCarga.infQ[1].cUnid.Value);
+  Assert.AreEqual('PESO BASE DE CALCULO', FCTe.infCTeNorm.infCarga.infQ[1].tpMed);
+  Assert.AreEqual('14,31', CurrToStr(FCTe.infCTeNorm.infCarga.infQ[1].qCarga));
+
+  Assert.AreEqual('03', FCTe.infCTeNorm.infCarga.infQ[2].cUnid.Value);
+  Assert.AreEqual('CAIXAS E ETC', FCTe.infCTeNorm.infCarga.infQ[2].tpMed);
+  Assert.AreEqual('2', CurrToStr(FCTe.infCTeNorm.infCarga.infQ[2].qCarga));
+end;
+
 procedure TGBFRCTeTestBase.TestInfCTe;
 begin
   Assert.AreEqual('CTe35200903629957000602570010005940341265045246', FCTe.Id);
   Assert.AreEqual('3.00', FCTe.versao);
+end;
+
+procedure TGBFRCTeTestBase.TestTagAutXML;
+begin
+  Assert.AreEqual(2, FCTe.autXML.Count);
+  Assert.AreEqual('04898488000177', FCTe.autXML[0].CNPJ);
+  Assert.AreEqual('76371582000184', FCTe.autXML[1].CNPJ);
+
+  Assert.IsEmpty(FCTe.autXML[0].CPF);
+  Assert.IsEmpty(FCTe.autXML[1].CPF);
 end;
 
 procedure TGBFRCTeTestBase.TestTagCompl;
@@ -198,6 +245,31 @@ begin
   Assert.AreEqual('SC', FCTe.ide.UFFim);
   Assert.AreEqual(True, FCTe.ide.retira);
   Assert.AreEqual('1', FCTe.ide.indIEToma.Value.ToString);
+end;
+
+procedure TGBFRCTeTestBase.TestTagInfDoc;
+begin
+  Assert.AreEqual(2, FCTe.infCTeNorm.infDoc.infoNFe.Count);
+  Assert.AreEqual('35200900507405000110550020002244301100136434', FCTe.infCTeNorm.infDoc.infoNFe[0].chave);
+  Assert.AreEqual('35200900507405000110550020002244311100076560', FCTe.infCTeNorm.infDoc.infoNFe[1].chave);
+end;
+
+procedure TGBFRCTeTestBase.TestTagInfModal;
+begin
+  Assert.AreEqual('3.00', FCTe.infCTeNorm.infModal.versaoModal);
+  Assert.AreEqual('02661898', FCTe.infCTeNorm.infModal.rodo.RNTRC);
+end;
+
+procedure TGBFRCTeTestBase.TestTagInfProt;
+begin
+  Assert.AreEqual(1, FCTe.infProt.tpAmb.Value);
+  Assert.AreEqual('SP-CTe-2020-07-30-1', FCTe.infProt.verAplic);
+  Assert.AreEqual('35200903629957000602570010005940341265045246', FCTe.infProt.chCTe);
+  Assert.AreEqual('2020-09-03 21:14:23', FormatDateTime('yyyy-MM-dd hh:mm:ss', FCTe.infProt.dhRecbto));
+  Assert.AreEqual('135202542091439', FCTe.infProt.nProt);
+  Assert.AreEqual('0S1cw4RU3NtxYKf26+U/QVB0oN0=', FCTe.infProt.digVal);
+  Assert.AreEqual('Autorizado o uso do CT-e', FCTe.infProt.xMotivo);
+  Assert.AreEqual(100, FCTe.infProt.cStat);
 end;
 
 procedure TGBFRCTeTestBase.TestTagRem;

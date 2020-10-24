@@ -47,6 +47,13 @@ type
                         CTeDestinatario,
                         CTeOutros);
 
+  TCTeUnidadeMedida = (CTeM3,
+                       CTeKG,
+                       CTeTON,
+                       CTeUNIDADE,
+                       CTeLitros,
+                       CTeMMBTU);
+
   TCTeAmbienteHelper = record helper for TCTeAmbiente
   public
     procedure fromInteger(Value: Integer);
@@ -99,6 +106,12 @@ type
   public
     procedure fromInteger(Value: Integer);
     function Value: Integer;
+  end;
+
+  TCTeUnidadeMedidaHelper = record helper for TCTeUnidadeMedida
+  public
+    procedure fromString(Value: String);
+    function Value: String;
   end;
 
 implementation
@@ -331,6 +344,60 @@ end;
 function TCTeTomadorServicoHelper.Value: Integer;
 begin
   result := Integer(Self);
+end;
+
+{ TCTeUnidadeMedidaHelper }
+
+procedure TCTeUnidadeMedidaHelper.fromString(Value: String);
+begin
+  if Value.Equals('00') then
+  begin
+    Self := CTeM3;
+    Exit;
+  end;
+
+  if Value.Equals('01') then
+  begin
+    Self := CTeKG;
+    Exit;
+  end;
+
+  if Value.Equals('02') then
+  begin
+    Self := CTeTON;
+    Exit;
+  end;
+
+  if Value.Equals('03') then
+  begin
+    Self := CTeUNIDADE;
+    Exit;
+  end;
+
+  if Value.Equals('04') then
+  begin
+    Self := CTeLitros;
+    Exit;
+  end;
+
+  if Value.Equals('05') then
+  begin
+    Self := CTeMMBTU;
+    Exit;
+  end;
+end;
+
+function TCTeUnidadeMedidaHelper.Value: String;
+begin
+  result := EmptyStr;
+  case Self of
+    CTeM3      : result := '00';
+    CTeKG      : result := '01';
+    CTeTON     : result := '02';
+    CTeUNIDADE : result := '03';
+    CTeLitros  : result := '04';
+    CTeMMBTU   : result := '05';
+  end;
 end;
 
 end.
