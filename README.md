@@ -30,7 +30,8 @@ end;
 ```
 
 
-## NFe
+
+## NFe / NFCe
 
 #### Add Uses
 ```delphi
