@@ -21,6 +21,7 @@ uses
   GBFR.CTe.Model.InfoNFe,
   GBFR.CTe.Model.InfProt,
   GBFR.CTe.Model.InfoQuantidade,
+  GBFR.CTe.Model.InfoSuplementar,
   GBFR.CTe.Model.PrestacaoServico,
   GBFR.CTe.Model.Remetente,
   GBFR.CTe.Model.ModalRodoviario;
@@ -44,6 +45,7 @@ type
   TGBFRCTeModelInfoNFe             = GBFR.CTe.Model.InfoNFe.TGBFRCTeModelInfoNFe;
   TGBFRCTeModelInfProt             = GBFR.CTe.Model.InfProt.TGBFRCTeModelInfProt;
   TGBFRCTeModelInfoQuantidade      = GBFR.CTe.Model.InfoQuantidade.TGBFRCTeModelInfoQuantidade;
+  TGBFRCTeModelInfoSuplementar     = GBFR.CTe.Model.InfoSuplementar.TGBFRCTeModelInfoSuplementar;
   TGBFRCTeModelPrestacaoServico    = GBFR.CTe.Model.PrestacaoServico.TGBFRCTeModelPrestacaoServico;
   TGBFRCTeModelRemetente           = GBFR.CTe.Model.Remetente.TGBFRCTeModelRemetente;
   TGBFRCTeModelModalRodoviario     = GBFR.CTe.Model.ModalRodoviario.TGBFRCTeModelModalRodoviario;

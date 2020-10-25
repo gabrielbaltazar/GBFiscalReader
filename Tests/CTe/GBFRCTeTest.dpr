@@ -43,7 +43,8 @@ uses
   GBFR.CTe.Model.InfoModal in '..\..\Source\CTe\GBFR.CTe.Model.InfoModal.pas',
   GBFR.CTe.Model.InfoCTeNormal in '..\..\Source\CTe\GBFR.CTe.Model.InfoCTeNormal.pas',
   GBFR.CTe.Model.AutDownloadXML in '..\..\Source\CTe\GBFR.CTe.Model.AutDownloadXML.pas',
-  GBFR.CTe.Model.InfProt in '..\..\Source\CTe\GBFR.CTe.Model.InfProt.pas';
+  GBFR.CTe.Model.InfProt in '..\..\Source\CTe\GBFR.CTe.Model.InfProt.pas',
+  GBFR.CTe.Model.InfoSuplementar in '..\..\Source\CTe\GBFR.CTe.Model.InfoSuplementar.pas';
 
 //
 {$IFNDEF TESTINSIGHT}

@@ -12,6 +12,7 @@ uses
   GBFR.CTe.Model.InfoCTeNormal,
   GBFR.CTe.Model.PrestacaoServico,
   GBFR.CTe.Model.InfProt,
+  GBFR.CTe.Model.InfoSuplementar,
   GBFR.CTe.Model.Remetente,
   System.Generics.Collections;
 
@@ -29,6 +30,7 @@ type TGBFRCTeModel = class
     FinfCTeNorm: TGBFRCTeModelInfoCTeNormal;
     FautXML: TObjectList<TGBFRCTeModelAutDownloadXML>;
     FinfProt: TGBFRCTeModelInfProt;
+    FinfCTeSupl: TGBFRCTeModelInfoSuplementar;
 
   public
     property Id: string read FId write FId;
@@ -43,6 +45,7 @@ type TGBFRCTeModel = class
     property infCTeNorm: TGBFRCTeModelInfoCTeNormal read FinfCTeNorm write FinfCTeNorm;
     property autXML: TObjectList<TGBFRCTeModelAutDownloadXML> read FautXML write FautXML;
     property infProt: TGBFRCTeModelInfProt read FinfProt write FinfProt;
+    property infCTeSupl: TGBFRCTeModelInfoSuplementar read FinfCTeSupl write FinfCTeSupl;
 
     procedure addAutXML(CNPJ, CPF: String);
 
@@ -72,6 +75,7 @@ begin
   FvPrest     := TGBFRCTeModelPrestacaoServico.create;
   FinfCTeNorm := TGBFRCTeModelInfoCTeNormal.create;
   FautXML     := TObjectList<TGBFRCTeModelAutDownloadXML>.create;
+  FinfCTeSupl := TGBFRCTeModelInfoSuplementar.Create;
   FinfProt    := TGBFRCTeModelInfProt.Create;
 end;
 
@@ -87,6 +91,7 @@ begin
   FinfCTeNorm.Free;
   FautXML.Free;
   FinfProt.Free;
+  FinfCTeSupl.Free;
   inherited;
 end;
 

@@ -31,6 +31,7 @@ type TGBFRCTeXMLDefault = class(TGBFRXmlBase, IGBFRCTeXML)
     procedure loadTagVPrest;
     procedure loadTagAutXML;
     procedure loadTagInfProt;
+    procedure loadTagInfCTeSupl;
     procedure loadTagInfCTeNorm;
     procedure loadTagInfCarga(ANodeInfCTeNorm: IXMLNode);
     procedure loadTagInfDoc  (ANodeInfCTeNorm: IXMLNode);
@@ -66,6 +67,7 @@ begin
     loadTagInfCTeNorm;
     loadTagAutXML;
     loadTagInfProt;
+    loadTagInfCTeSupl;
   except
     Result.Free;
     raise;
@@ -330,6 +332,27 @@ begin
   loadTagInfCarga(nodeNorm);
   loadTagInfDoc(nodeNorm);
   loadTagInfModal(nodeNorm);
+end;
+
+procedure TGBFRCTeXMLDefault.loadTagInfCTeSupl;
+var
+  nodeCTeProc: IXMLNode;
+  nodeCTe: IXMLNode;
+  nodeInfSupl: IXMLNode;
+begin
+  nodeCTeProc := FXml.DocumentElement;
+  if not Assigned(nodeCTeProc) then
+    Exit;
+
+  nodeCTe := nodeCTeProc.ChildNodes.FindNode('CTe');
+  if not Assigned(nodeCTe) then
+    Exit;
+
+  nodeInfSupl := nodeCTe.ChildNodes.FindNode('infCTeSupl');
+  if not Assigned(nodeInfSupl) then
+    Exit;
+
+  FCTe.infCTeSupl.qrCodCTe := GetNodeStr(nodeInfSupl, 'qrCodCTe');
 end;
 
 procedure TGBFRCTeXMLDefault.loadTagInfDoc(ANodeInfCTeNorm: IXMLNode);

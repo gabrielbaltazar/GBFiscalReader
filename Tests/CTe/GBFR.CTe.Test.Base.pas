@@ -67,6 +67,9 @@ type
     [Test]
     procedure TestTagInfProt;
 
+    [Test]
+    procedure TestTagInfCTeSupl;
+
     constructor create;
     destructor  Destroy; override;
 
@@ -245,6 +248,12 @@ begin
   Assert.AreEqual('SC', FCTe.ide.UFFim);
   Assert.AreEqual(True, FCTe.ide.retira);
   Assert.AreEqual('1', FCTe.ide.indIEToma.Value.ToString);
+end;
+
+procedure TGBFRCTeTestBase.TestTagInfCTeSupl;
+begin
+  Assert.AreEqual(FCTe.infCTeSupl.qrCodCTe,
+    'https://nfe.fazenda.sp.gov.br/CTeConsulta/qrCode?chCTe=35200903629957000602570010005940341265045246&tpAmb=1');
 end;
 
 procedure TGBFRCTeTestBase.TestTagInfDoc;
