@@ -44,7 +44,9 @@ uses
   GBFR.CTe.Model.InfoCTeNormal in '..\..\Source\CTe\GBFR.CTe.Model.InfoCTeNormal.pas',
   GBFR.CTe.Model.AutDownloadXML in '..\..\Source\CTe\GBFR.CTe.Model.AutDownloadXML.pas',
   GBFR.CTe.Model.InfProt in '..\..\Source\CTe\GBFR.CTe.Model.InfProt.pas',
-  GBFR.CTe.Model.InfoSuplementar in '..\..\Source\CTe\GBFR.CTe.Model.InfoSuplementar.pas';
+  GBFR.CTe.Model.InfoSuplementar in '..\..\Source\CTe\GBFR.CTe.Model.InfoSuplementar.pas',
+  GBFR.CTe.Model.Imposto.ICMS in '..\..\Source\CTe\GBFR.CTe.Model.Imposto.ICMS.pas',
+  GBFR.CTe.Model.Imposto in '..\..\Source\CTe\GBFR.CTe.Model.Imposto.pas';
 
 //
 {$IFNDEF TESTINSIGHT}

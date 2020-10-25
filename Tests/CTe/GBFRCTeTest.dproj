@@ -159,6 +159,8 @@
         <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.AutDownloadXML.pas"/>
         <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.InfProt.pas"/>
         <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.InfoSuplementar.pas"/>
+        <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.Imposto.ICMS.pas"/>
+        <DCCReference Include="..\..\Source\CTe\GBFR.CTe.Model.Imposto.pas"/>
         <RcItem Include="Resources\CTe35200903629957000602570010005940341265045246_procCTe.xml">
             <ContainerId>ResourceItem</ContainerId>
             <ResourceType>RCDATA</ResourceType>

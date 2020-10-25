@@ -11,6 +11,7 @@ uses
   GBFR.CTe.Model.Expedidor,
   GBFR.CTe.Model.InfoCTeNormal,
   GBFR.CTe.Model.PrestacaoServico,
+  GBFR.CTe.Model.Imposto,
   GBFR.CTe.Model.InfProt,
   GBFR.CTe.Model.InfoSuplementar,
   GBFR.CTe.Model.Remetente,
@@ -31,6 +32,7 @@ type TGBFRCTeModel = class
     FautXML: TObjectList<TGBFRCTeModelAutDownloadXML>;
     FinfProt: TGBFRCTeModelInfProt;
     FinfCTeSupl: TGBFRCTeModelInfoSuplementar;
+    Fimp: TGBFRCTeModelImposto;
 
   public
     property Id: string read FId write FId;
@@ -42,6 +44,7 @@ type TGBFRCTeModel = class
     property exped: TGBFRCTeModelExpedidor read Fexped write Fexped;
     property dest: TGBFRCTeModelDestinatario read Fdest write Fdest;
     property vPrest: TGBFRCTeModelPrestacaoServico read FvPrest write FvPrest;
+    property imp: TGBFRCTeModelImposto read Fimp write Fimp;
     property infCTeNorm: TGBFRCTeModelInfoCTeNormal read FinfCTeNorm write FinfCTeNorm;
     property autXML: TObjectList<TGBFRCTeModelAutDownloadXML> read FautXML write FautXML;
     property infProt: TGBFRCTeModelInfProt read FinfProt write FinfProt;
@@ -73,6 +76,7 @@ begin
   Fexped      := TGBFRCTeModelExpedidor.create;
   Fdest       := TGBFRCTeModelDestinatario.create;
   FvPrest     := TGBFRCTeModelPrestacaoServico.create;
+  Fimp        := TGBFRCTeModelImposto.create;
   FinfCTeNorm := TGBFRCTeModelInfoCTeNormal.create;
   FautXML     := TObjectList<TGBFRCTeModelAutDownloadXML>.create;
   FinfCTeSupl := TGBFRCTeModelInfoSuplementar.Create;
@@ -88,6 +92,7 @@ begin
   Fexped.Free;
   Fdest.Free;
   FvPrest.Free;
+  Fimp.Free;
   FinfCTeNorm.Free;
   FautXML.Free;
   FinfProt.Free;

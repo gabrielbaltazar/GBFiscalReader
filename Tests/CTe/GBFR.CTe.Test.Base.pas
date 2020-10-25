@@ -53,6 +53,12 @@ type
     procedure TestTagVPrest;
 
     [Test]
+    procedure TestTagImp;
+
+    [Test]
+    procedure TestTagImpICMS;
+
+    [Test]
     procedure TestInfCarga;
 
     [Test]
@@ -248,6 +254,20 @@ begin
   Assert.AreEqual('SC', FCTe.ide.UFFim);
   Assert.AreEqual(True, FCTe.ide.retira);
   Assert.AreEqual('1', FCTe.ide.indIEToma.Value.ToString);
+end;
+
+procedure TGBFRCTeTestBase.TestTagImp;
+begin
+  Assert.AreEqual('28,18', CurrToStr(FCTe.imp.vTotTrib));
+  Assert.AreEqual('ad fisco', FCTe.imp.infAdFisco);
+end;
+
+procedure TGBFRCTeTestBase.TestTagImpICMS;
+begin
+  Assert.AreEqual('00', FCTe.imp.ICMS.CST);
+  Assert.AreEqual('107,82', CurrToStr( FCTe.imp.ICMS.vBC) );
+  Assert.AreEqual('12', CurrToStr( FCTe.imp.ICMS.pICMS) );
+  Assert.AreEqual('12,94', CurrToStr( FCTe.imp.ICMS.vICMS) );
 end;
 
 procedure TGBFRCTeTestBase.TestTagInfCTeSupl;

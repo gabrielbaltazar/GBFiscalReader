@@ -14,6 +14,8 @@ uses
   GBFR.CTe.Model.Ide,
   GBFR.CTe.Model.Ide.Toma3,
   GBFR.CTe.Model.Ide.Toma4,
+  GBFR.CTe.Model.Imposto,
+  GBFR.CTe.Model.Imposto.ICMS,
   GBFR.CTe.Model.InfoCarga,
   GBFR.CTe.Model.InfoCTeNormal,
   GBFR.CTe.Model.InfoDoc,
@@ -38,6 +40,8 @@ type
   TGBFRCTeModelIde                 = GBFR.CTe.Model.Ide.TGBFRCTeModelIde;
   TGBFRCTeModelIdeToma3            = GBFR.CTe.Model.Ide.Toma3.TGBFRCTeModelIdeToma3;
   TGBFRCTeModelIdeToma4            = GBFR.CTe.Model.Ide.Toma4.TGBFRCTeModelIdeToma4;
+  TGBFRCTeModelImposto             = GBFR.CTe.Model.Imposto.TGBFRCTeModelImposto;
+  TGBFRCTeModelImpostoICMS         = GBFR.CTe.Model.Imposto.ICMS.TGBFRCTeModelImpostoICMS;
   TGBFRCTeModelInfoCarga           = GBFR.CTe.Model.InfoCarga.TGBFRCTeModelInfoCarga;
   TGBFRCTeModelInfoCTeNormal       = GBFR.CTe.Model.InfoCTeNormal.TGBFRCTeModelInfoCTeNormal;
   TGBFRCTeModelInfoDoc             = GBFR.CTe.Model.InfoDoc.TGBFRCTeModelInfoDoc;

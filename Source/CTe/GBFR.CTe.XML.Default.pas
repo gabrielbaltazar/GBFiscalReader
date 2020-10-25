@@ -29,6 +29,7 @@ type TGBFRCTeXMLDefault = class(TGBFRXmlBase, IGBFRCTeXML)
     procedure loadTagDest;
     procedure loadTagEndereco(ANode: IXMLNode; AEndereco: TGBFRCTeModelEndereco);
     procedure loadTagVPrest;
+    procedure loadTagImp;
     procedure loadTagAutXML;
     procedure loadTagInfProt;
     procedure loadTagInfCTeSupl;
@@ -64,6 +65,7 @@ begin
     loadTagExped;
     loadTagDest;
     loadTagVPrest;
+    loadTagImp;
     loadTagInfCTeNorm;
     loadTagAutXML;
     loadTagInfProt;
@@ -257,6 +259,39 @@ begin
     Exit;
 
   FCTe.ide.toma3.toma.fromInteger(GetNodeInt(ANode, 'toma'));
+end;
+
+procedure TGBFRCTeXMLDefault.loadTagImp;
+var
+  nodeImp: IXMLNode;
+  nodeICMS: IXMLNode;
+begin
+  nodeImp := FInfCTe.ChildNodes.FindNode('imp');
+  if not Assigned(nodeImp) then
+    Exit;
+
+  FCTe.imp.vTotTrib   := GetNodeCurrency(nodeImp, 'vTotTrib');
+  FCTe.imp.infAdFisco := GetNodeStr(nodeImp, 'infAdFisco');
+
+  nodeICMS := nodeImp.ChildNodes.FindNode('ICMS');
+  if not Assigned(nodeICMS) then
+    Exit;
+
+  nodeICMS := nodeICMS.ChildNodes.First;
+  if not Assigned(nodeICMS) then
+    Exit;
+
+  FCTe.imp.ICMS.CST           := GetNodeStr(nodeICMS, 'CST');
+  FCTe.imp.ICMS.vBC           := GetNodeCurrency(nodeICMS, 'vBC');
+  FCTe.imp.ICMS.pICMS         := GetNodeCurrency(nodeICMS, 'pICMS');
+  FCTe.imp.ICMS.vICMS         := GetNodeCurrency(nodeICMS, 'vICMS');
+  FCTe.imp.ICMS.pRedBC        := GetNodeCurrency(nodeICMS, 'pRedBC');
+  FCTe.imp.ICMS.vCred         := GetNodeCurrency(nodeICMS, 'vCred');
+  FCTe.imp.ICMS.pRedBCOutraUF := GetNodeCurrency(nodeICMS, 'pRedBCOutraUF');
+  FCTe.imp.ICMS.vBCOutraUF    := GetNodeCurrency(nodeICMS, 'vBCOutraUF');
+  FCTe.imp.ICMS.pICMSOutraUF  := GetNodeCurrency(nodeICMS, 'pICMSOutraUF');
+  FCTe.imp.ICMS.vICMSOutraUF  := GetNodeCurrency(nodeICMS, 'vICMSOutraUF');
+  FCTe.imp.ICMS.indSN         := GetNodeStr(nodeICMS, 'indSN') = '1';
 end;
 
 procedure TGBFRCTeXMLDefault.loadTagInfCarga(ANodeInfCTeNorm: IXMLNode);
