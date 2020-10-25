@@ -3,52 +3,55 @@ Leitor XML Notas Fiscais
 
 [![img/PagSeguro.png](img/PagSeguro.png)](https://pag.ae/7WreVnPYG)
 
-## NFe Read From Content 
+## CTe
+
+#### Add Uses
 ```delphi
-
 uses
-  GBFR.NFe.XML.Interfaces;
-  
-procedure ReadXml(AXmlContent: String);
-
-implementation
-
-procedure ReadXml(AXmlContent: String);
-var
-  nfe : TGBRFNFeModel;
-begin
-  nfe := XMLNFeReader.loadFromContent(AXmlContent);
-  try
-    //
-  finally
-    nfe.Free;
-  end;
-end;
-
+  GBFR.CTe.XML.Interfaces;
 ```
 
-## NFe Read From File 
+#### Read From XML Content
 ```delphi
-
-uses
-  GBFR.NFe.XML.Interfaces;
-  
-procedure ReadXml(AXmlFile: String);
-
-implementation
-
-procedure ReadXml(AXmlFile: String);
 var
-  nfe : TGBRFNFeModel;
+  cte : TGBFRCTeModel;
 begin
-  nfe := XMLNFeReader.loadFromFile(xmlFile);
-  try
-    //
-  finally
-    nfe.Free;
-  end;
+  cte := XMLCTeReader.loadFromContent('<?xml version="1.0" encoding="UTF-8"?><cteProc...');
 end;
+```
 
+#### Read From XML Content
+```delphi
+var
+  cte : TGBFRCTeModel;
+begin
+  cte := XMLCTeReader.loadFromFile('c:\cte.xml');
+end;
 ```
 
 
+## NFe
+
+#### Add Uses
+```delphi
+uses
+  GBFR.NFe.XML.Interfaces;
+```
+
+#### Read From XML Content
+```delphi
+var
+  nfe : TGBRFNFeModel;
+begin
+  nfe := XMLNFeReader.loadFromContent('<?xml version="1.0" encoding="UTF-8"?><nfeProc...');
+end;
+```
+
+#### Read From XML Content
+```delphi
+var
+  nfe : TGBRFNFeModel;
+begin
+  nfe := XMLNFeReader.loadFromFile('c:\nfe.xml');
+end;
+```
