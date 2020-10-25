@@ -6,12 +6,12 @@ uses
   GBFR.NFe.Model.Classes;
 
 type
-  TGBRFNFeModelNotaFiscal = GBFR.NFe.Model.Classes.TGBRFNFeModelNotaFiscal;
+  TGBRFNFeModel = GBFR.NFe.Model.Classes.TGBRFNFeModel;
 
   IGBFRNFeXML = interface
     ['{F77AAF88-CEA4-4534-AEF5-A43103A785EF}']
-    function loadFromContent(Value: String): TGBRFNFeModelNotaFiscal;
-    function loadFromFile   (Value: String): TGBRFNFeModelNotaFiscal;
+    function loadFromContent(Value: String): TGBRFNFeModel;
+    function loadFromFile   (Value: String): TGBRFNFeModel;
   end;
 
 function XMLNFeReader: IGBFRNFeXML;

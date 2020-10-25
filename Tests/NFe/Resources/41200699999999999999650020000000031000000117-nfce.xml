@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nfeProc versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+	<NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+		<infNFe Id="NFe41200699999999999999650020000000031000000117" versao="4.00">
+			<ide>
+				<cUF>41</cUF>
+				<cNF>00000011</cNF>
+				<natOp>VENDA</natOp>
+				<mod>65</mod>
+				<serie>2</serie>
+				<nNF>3</nNF>
+				<dhEmi>2020-06-09T08:51:46-03:00</dhEmi>
+				<tpNF>1</tpNF>
+				<idDest>1</idDest>
+				<cMunFG>4110805</cMunFG>
+				<tpImp>4</tpImp>
+				<tpEmis>1</tpEmis>
+				<cDV>7</cDV>
+				<tpAmb>2</tpAmb>
+				<finNFe>1</finNFe>
+				<indFinal>1</indFinal>
+				<indPres>1</indPres>
+				<procEmi>0</procEmi>
+				<verProc>1.0.0</verProc>
+			</ide>
+			<emit>
+				<CNPJ>99999999999999</CNPJ>
+				<xNome>Company Test</xNome>
+				<xFant>Company Test</xFant>
+				<enderEmit>
+					<xLgr>VILA Test</xLgr>
+					<nro>.</nro>
+					<xBairro>Bairro Test</xBairro>
+					<cMun>9999845</cMun>
+					<xMun>Test</xMun>
+					<UF>PR</UF>
+					<CEP>12345678</CEP>
+					<cPais>1058</cPais>
+					<xPais>Brasil</xPais>
+					<fone>9999999999</fone>
+				</enderEmit>
+				<IE>8080099999</IE>
+				<IM>888</IM>
+				<CNAE>5510000</CNAE>
+				<CRT>3</CRT>
+			</emit>
+			<dest>
+				<CPF>84752264188</CPF>
+				<xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>
+				<enderDest>
+					<xLgr>Rua Professor Otacilio</xLgr>
+					<nro>50</nro>
+					<xCpl>Apto 101</xCpl>
+					<xBairro>Santa Rosa</xBairro>
+					<cMun>3303302</cMun>
+					<xMun>Niteroi</xMun>
+					<UF>RJ</UF>
+					<CEP>24240670</CEP>
+					<cPais>1058</cPais>
+					<xPais>Brasil</xPais>
+					<fone>999888777</fone>
+				</enderDest>
+				<indIEDest>9</indIEDest>
+				<email>destinatario@email.com.br</email>
+			</dest>
+			<det nItem="1">
+				<prod>
+					<cProd>000092</cProd>
+					<cEAN>SEM GTIN</cEAN>
+					<xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+					<NCM>08011900</NCM>
+					<CFOP>5102</CFOP>
+					<uCom>UN</uCom>
+					<qCom>2</qCom>
+					<vUnCom>50.000</vUnCom>
+					<vProd>100.00</vProd>
+					<cEANTrib>SEM GTIN</cEANTrib>
+					<uTrib>UN</uTrib>
+					<qTrib>2</qTrib>
+					<vUnTrib>50.000</vUnTrib>
+					<indTot>1</indTot>
+				</prod>
+				<imposto>
+					<ICMS>
+						<ICMS00>
+							<orig>0</orig>
+							<CST>00</CST>
+							<modBC>3</modBC>
+							<vBC>100.00</vBC>
+							<pICMS>12.00</pICMS>
+							<vICMS>12.00</vICMS>
+						</ICMS00>
+					</ICMS>
+					<PIS>
+						<PISAliq>
+							<CST>01</CST>
+							<vBC>100.00</vBC>
+							<pPIS>1.65</pPIS>
+							<vPIS>1.65</vPIS>
+						</PISAliq>
+					</PIS>
+					<COFINS>
+						<COFINSAliq>
+							<CST>01</CST>
+							<vBC>100.00</vBC>
+							<pCOFINS>7.60</pCOFINS>
+							<vCOFINS>7.60</vCOFINS>
+						</COFINSAliq>
+					</COFINS>
+				</imposto>
+			</det>
+			<total>
+				<ICMSTot>
+					<vBC>100.00</vBC>
+					<vICMS>12.00</vICMS>
+					<vICMSDeson>0.00</vICMSDeson>
+					<vFCP>0.00</vFCP>
+					<vBCST>0.00</vBCST>
+					<vST>0.00</vST>
+					<vFCPST>0.00</vFCPST>
+					<vFCPSTRet>0.00</vFCPSTRet>
+					<vProd>100.00</vProd>
+					<vFrete>0.00</vFrete>
+					<vSeg>0.00</vSeg>
+					<vDesc>0.00</vDesc>
+					<vII>0.00</vII>
+					<vIPI>0.00</vIPI>
+					<vIPIDevol>0.00</vIPIDevol>
+					<vPIS>1.65</vPIS>
+					<vCOFINS>7.60</vCOFINS>
+					<vOutro>0.00</vOutro>
+					<vNF>100.00</vNF>
+				</ICMSTot>
+			</total>
+			<transp>
+				<modFrete>9</modFrete>
+			</transp>
+			<pag>
+				<detPag>
+					<tPag>01</tPag>
+					<vPag>100.00</vPag>
+				</detPag>
+			</pag>
+			<infAdic>
+				<infCpl>Informacoes da Nota</infCpl>
+			</infAdic>
+			<infRespTec>
+				<CNPJ>12345678901234</CNPJ>
+				<xContato>Resp Contato</xContato>
+				<email>relacionamento@email.com.br</email>
+				<fone>2130030999</fone>
+			</infRespTec>
+		</infNFe>
+		<infNFeSupl>
+			<qrCode>
+				<![CDATA[http://www.fazenda.pr.gov.br/nfce/qrcode/?p=41200699999999999999650020000000031000000117|2|2|1|5666F11B394FDB9B41D7A1905B3104DDE2356341]]>
+			</qrCode>
+			<urlChave>http://www.fazenda.pr.gov.br/nfce/consulta</urlChave>
+		</infNFeSupl>
+		<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+			<SignedInfo>
+				<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+				<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+				<Reference URI="#NFe41200699999999999999650020000000031000000117">
+					<Transforms>
+						<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+						<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					</Transforms>
+					<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+					<DigestValue>+Y9Hf+WRJHskywUjLOJ0AiSd6NA=</DigestValue>
+				</Reference>
+			</SignedInfo>
+			<SignatureValue>j/u2J+75u4xhNfnWvIvAxsVZEjvBIn5uCu7e8DDQhbZj3rjOK96S4bYa+z/cOe2AZm8+ItMxFJ6YIWC3PQ22umefuZAObYK7q9gmbMjTq0m2URXTn+IWptYRY6DbAcBBiLzcQUcUlCycYla0oiuBiJslT40QV/GQ7nCf6Ijd50LXXnuvJThQ3o2+YvhlB2vzWfgGM8ZLkVzpGAK4X8+G1s/upB3KfiX0J2787h4CuCjgnP2JZB8PjtnUR5AKKNuOSqh0MnHprL14hJF396wT9cJYypjALUHipLMFCb4J5wlS12kUfc3Xdc+/c+LSVzoOsEGTF+MTSA73L8z2wfarUg==</SignatureValue>
+			<KeyInfo>
+				<X509Data>
+					<X509Certificate>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</X509Certificate>
+				</X509Data>
+			</KeyInfo>
+		</Signature>
+	</NFe>
+	<protNFe xmlns="http://www.portalfiscal.inf.br/nfe" versao="4.00">
+		<infProt>
+			<tpAmb>2</tpAmb>
+			<verAplic>PR-v4_4_2</verAplic>
+			<chNFe>41200699999999999999650020000000031000000117</chNFe>
+			<dhRecbto>2020-06-09T08:51:48-03:00</dhRecbto>
+			<nProt>141200000291046</nProt>
+			<digVal>+Y9Hf+WRJHskywUjLOJ0AiSd6NA=</digVal>
+			<cStat>100</cStat>
+			<xMotivo>Autorizado o uso da NF-e</xMotivo>
+		</infProt>
+	</protNFe>
+</nfeProc>

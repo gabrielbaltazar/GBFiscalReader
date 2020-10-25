@@ -8,6 +8,48 @@ uses
 type
   TNFeAmbiente = (NFeProducao, NFeHomologacao);
 
+  TNFeTipoOperacao = (NFeEntrada, NFeSaida);
+
+  TNFeDestinoOperacao = (NFeInterna,
+                         NFeInterestadual,
+                         NFeExterior);
+
+  TNFeFormatoImpressao = (NFeSemGeracao,
+                          NFeRetrato,
+                          NFePaisagem,
+                          NFeSimplificado,
+                          NFeDanfeNFCe,
+                          NFeDanfeNFCeMensagemEletronica);
+
+  TNFeTipoEmissao = (NFeEmissaoNormal,
+                     NFeContingenciaFSIA,
+                     NFeContingenciaScan,
+                     NFeContingenciaDPEC,
+                     NFeContingenciaFSDA,
+                     NFeContingenciaSVCAN,
+                     NFeContingenciaSVCRS,
+                     NFeContingenciaOffline);
+
+  TNFeFinalidadeEmissao = (NFeNormal,
+                           NFeComplementar,
+                           NFeAjuste,
+                           NFeDevolucaoMercadoria);
+
+  TNFeOperacaoConsumidor = (NFeOperacaoNormal,
+                            NFeConsumidorFinal);
+
+  TNFeIndicadorPresenca = (NFeNaoSeAplica,
+                           NFeOperacaoPresencial,
+                           NFeInternet,
+                           NFeTeleatendimento,
+                           NFeNFCeDomicilio,
+                           NFeNaoPresencialOutros);
+
+  TNFeProcessoEmissao = (NFeAplicativoContribuinte,
+                         NFeAvulsaPeloFisco,
+                         NFeContribuinteComCertificado,
+                         NFeContribuinteAppFisco);
+
   TNFeCRT = (NFeSimplesNacional,
             NFeSimplesNacionalExcessoDeSublimiteDeReceitaBruta,
             NFeRegimeNormal);
@@ -16,7 +58,7 @@ type
                     NFeContribuinteIsentoInscricao,
                     NFeNaoContribuinte);
 
-  TNFeIndicadorTotal = (NFeCompoe, NFeNaoCompoe);
+  TNFeIndicadorTotal = (NFeNaoCompoe, NFeCompoe);
 
   TNFeModalidadeBC = (NFeMargemValorAgregado,
                       NFePauta,
@@ -57,6 +99,54 @@ type
   TNFeTipoIntegracaoPagamento = (NFeIntegrado, NFeNaoIntegrado);
 
   TNFeAmbienteHelper = record helper for TNFeAmbiente
+  public
+    procedure fromInteger(Value: Integer);
+    function Value: Integer;
+  end;
+
+  TNFeTipoOperacaoHelper = record helper for TNFeTipoOperacao
+  public
+    procedure fromInteger(Value: Integer);
+    function Value: Integer;
+  end;
+
+  TNFeDestinoOperacaoHelper = record helper for TNFeDestinoOperacao
+  public
+    procedure fromInteger(Value: Integer);
+    function Value: Integer;
+  end;
+
+  TNFeFormatoImpressaoHelper = record helper for TNFeFormatoImpressao
+  public
+    procedure fromInteger(Value: Integer);
+    function Value: Integer;
+  end;
+
+  TNFeTipoEmissaoHelper = record helper for TNFeTipoEmissao
+  public
+    procedure fromInteger(Value: Integer);
+    function Value: Integer;
+  end;
+
+  TNFeFinalidadeEmissaoHelper = record helper for TNFeFinalidadeEmissao
+  public
+    procedure fromInteger(Value: Integer);
+    function Value: Integer;
+  end;
+
+  TNFeOperacaoConsumidorHelper = record helper for TNFeOperacaoConsumidor
+  public
+    procedure fromInteger(Value: Integer);
+    function Value: Integer;
+  end;
+
+  TNFeIndicadorPresencaHelper = record helper for TNFeIndicadorPresenca
+  public
+    procedure fromInteger(Value: Integer);
+    function Value: Integer;
+  end;
+
+  TNFeProcessoEmissaoHelper = record helper for TNFeProcessoEmissao
   public
     procedure fromInteger(Value: Integer);
     function Value: Integer;
@@ -194,8 +284,8 @@ function TNFeIndicadorTotalHelper.Value: Integer;
 begin
   result := -1;
   case Self of
-    NFeCompoe   : result := 0;
-    NFeNaoCompoe: result := 1;
+    NFeNaoCompoe: result := 0;
+    NFeCompoe   : result := 1;
   end;
 end;
 
@@ -429,6 +519,168 @@ begin
     NFeIntegrado    : result := 1;
     NFeNaoIntegrado : result := 2;
   end;
+end;
+
+{ TNFeTipoOperacaoHelper }
+
+procedure TNFeTipoOperacaoHelper.fromInteger(Value: Integer);
+begin
+  Self := TNFeTipoOperacao(Value);
+end;
+
+function TNFeTipoOperacaoHelper.Value: Integer;
+begin
+  result := Integer(Self);
+end;
+
+{ TNFeDestinoOperacaoHelper }
+
+procedure TNFeDestinoOperacaoHelper.fromInteger(Value: Integer);
+begin
+  Self := TNFeDestinoOperacao(Value - 1);
+end;
+
+function TNFeDestinoOperacaoHelper.Value: Integer;
+begin
+  result := Integer(Self) + 1;
+end;
+
+{ TNFeFormatoImpressaoHelper }
+
+procedure TNFeFormatoImpressaoHelper.fromInteger(Value: Integer);
+begin
+  Self := TNFeFormatoImpressao(Value);
+end;
+
+function TNFeFormatoImpressaoHelper.Value: Integer;
+begin
+  result := Integer(Self);
+end;
+
+{ TNFeTipoEmissaoHelper }
+
+procedure TNFeTipoEmissaoHelper.fromInteger(Value: Integer);
+begin
+  if Value = 1 then
+  begin
+    Self := NFeEmissaoNormal;
+    Exit;
+  end;
+
+  if Value = 2 then
+  begin
+    Self := NFeContingenciaFSIA;
+    Exit;
+  end;
+
+  if Value = 3 then
+  begin
+    Self := NFeContingenciaScan;
+    Exit;
+  end;
+
+  if Value = 4 then
+  begin
+    Self := NFeContingenciaDPEC;
+    Exit;
+  end;
+
+  if Value = 5 then
+  begin
+    Self := NFeContingenciaFSDA;
+    Exit;
+  end;
+
+  if Value = 6 then
+  begin
+    Self := NFeContingenciaSVCAN;
+    Exit;
+  end;
+
+  if Value = 7 then
+  begin
+    Self := NFeContingenciaSVCRS;
+    Exit;
+  end;
+
+  if Value = 9 then
+  begin
+    Self := NFeContingenciaOffline;
+    Exit;
+  end;
+end;
+
+function TNFeTipoEmissaoHelper.Value: Integer;
+begin
+  Result := 1;
+  case Self of
+    NFeEmissaoNormal       : Result := 1;
+    NFeContingenciaFSIA    : Result := 2;
+    NFeContingenciaScan    : Result := 3;
+    NFeContingenciaDPEC    : Result := 4;
+    NFeContingenciaFSDA    : Result := 5;
+    NFeContingenciaSVCAN   : Result := 6;
+    NFeContingenciaSVCRS   : Result := 7;
+    NFeContingenciaOffline : Result := 9;
+  end;
+end;
+
+{ TNFeFinalidadeEmissaoHelper }
+
+procedure TNFeFinalidadeEmissaoHelper.fromInteger(Value: Integer);
+begin
+  Self := TNFeFinalidadeEmissao(Value - 1);
+end;
+
+function TNFeFinalidadeEmissaoHelper.Value: Integer;
+begin
+  result := Integer(Self) + 1;
+end;
+
+{ TNFeOperacaoConsumidorHelper }
+
+procedure TNFeOperacaoConsumidorHelper.fromInteger(Value: Integer);
+begin
+  Self := TNFeOperacaoConsumidor(Value)
+end;
+
+function TNFeOperacaoConsumidorHelper.Value: Integer;
+begin
+  result := Integer(Self);
+end;
+
+{ TNFeIndicadorPresencaHelper }
+
+procedure TNFeIndicadorPresencaHelper.fromInteger(Value: Integer);
+begin
+  Self := TNFeIndicadorPresenca(Value);
+  if Value = 9 then
+    Self := NFeNaoPresencialOutros;
+end;
+
+function TNFeIndicadorPresencaHelper.Value: Integer;
+begin
+  result := 0;
+  case Self of
+    NFeNaoSeAplica         : result := 0;
+    NFeOperacaoPresencial  : result := 1;
+    NFeInternet            : result := 2;
+    NFeTeleatendimento     : result := 3;
+    NFeNFCeDomicilio       : result := 4;
+    NFeNaoPresencialOutros : result := 9;
+  end;
+end;
+
+{ TNFeProcessoEmissaoHelper }
+
+procedure TNFeProcessoEmissaoHelper.fromInteger(Value: Integer);
+begin
+  Self := TNFeProcessoEmissao(Value);
+end;
+
+function TNFeProcessoEmissaoHelper.Value: Integer;
+begin
+  result := Integer(Self);
 end;
 
 end.

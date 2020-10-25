@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{A7C8053A-55FE-45D2-811E-1FBAD06CE113}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="CTe\GBCTeReader.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NFe\GBNFeReader.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="GBCTeReader">
+        <MSBuild Projects="CTe\GBCTeReader.dproj"/>
+    </Target>
+    <Target Name="GBCTeReader:Clean">
+        <MSBuild Projects="CTe\GBCTeReader.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GBCTeReader:Make">
+        <MSBuild Projects="CTe\GBCTeReader.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GBNFeReader">
+        <MSBuild Projects="NFe\GBNFeReader.dproj"/>
+    </Target>
+    <Target Name="GBNFeReader:Clean">
+        <MSBuild Projects="NFe\GBNFeReader.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GBNFeReader:Make">
+        <MSBuild Projects="NFe\GBNFeReader.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="GBCTeReader;GBNFeReader"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="GBCTeReader:Clean;GBNFeReader:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="GBCTeReader:Make;GBNFeReader:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

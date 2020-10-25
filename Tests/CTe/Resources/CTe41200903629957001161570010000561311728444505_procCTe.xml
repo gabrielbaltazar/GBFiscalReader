@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cteProc versao="3.00" xmlns="http://www.portalfiscal.inf.br/cte">
+	<CTe xmlns="http://www.portalfiscal.inf.br/cte">
+		<infCte Id="CTe41200903629957001161570010000561311728444505" versao="3.00">
+			<ide>
+				<cUF>41</cUF>
+				<cCT>72844450</cCT>
+				<CFOP>6352</CFOP>
+				<natOp>Prest.Serv.Transp.p/ Ind.</natOp>
+				<mod>57</mod>
+				<serie>1</serie>
+				<nCT>56131</nCT>
+				<dhEmi>2020-09-03T19:41:20-03:00</dhEmi>
+				<tpImp>1</tpImp>
+				<tpEmis>1</tpEmis>
+				<cDV>5</cDV>
+				<tpAmb>1</tpAmb>
+				<tpCTe>0</tpCTe>
+				<procEmi>0</procEmi>
+				<verProc>NDDigital CTe 4.8.5</verProc>
+				<cMunEnv>4125506</cMunEnv>
+				<xMunEnv>Sao Jose dos Pinhais</xMunEnv>
+				<UFEnv>PR</UFEnv>
+				<modal>01</modal>
+				<tpServ>0</tpServ>
+				<cMunIni>4106902</cMunIni>
+				<xMunIni>CURITIBA</xMunIni>
+				<UFIni>PR</UFIni>
+				<cMunFim>4209102</cMunFim>
+				<xMunFim>JOINVILLE</xMunFim>
+				<UFFim>SC</UFFim>
+				<retira>0</retira>
+				<indIEToma>1</indIEToma>
+				<toma3>
+					<toma>3</toma>
+				</toma3>
+			</ide>
+			<compl>
+				<xCaracAd>Normal</xCaracAd>
+				<xCaracSer>Normal</xCaracSer>
+				<xEmi>LUIS.CESAR</xEmi>
+				<fluxo>
+					<xOrig>SJP</xOrig>
+					<xDest>JVL</xDest>
+				</fluxo>
+				<destCalc>RUA RAIMUNDO WELTER, 122, AVENTUREIRO</destCalc>
+				<xObs>Valor Aproximado dos Tributos R$ 83,30 (26,13%)</xObs>
+				<ObsCont xCampo="DirArqXML">
+					<xTexto>\\STTSD01SEN\GravaPDFProducao$\Parana\XML\Historico-03-09-2020</xTexto>
+				</ObsCont>
+				<ObsCont xCampo="DirArqPDF">
+					<xTexto>\\STTSD01SEN\GravaPDFProducao$\Parana\PDF\Historico-03-09-2020</xTexto>
+				</ObsCont>
+				<ObsCont xCampo="infSeg">
+					<xTexto>Numero Apolice: 0654.52.856-6 ** Nome Seguradora: PORTO SEGURO COMPANHIA DE SEGUROS GERAIS ** Responsavel: Empresa Emitente</xTexto>
+				</ObsCont>
+			</compl>
+			<emit>
+				<CNPJ>03629957001161</CNPJ>
+				<IE>9071084148</IE>
+				<xNome>Transligue Transportes e Servicos Ltda</xNome>
+				<enderEmit>
+					<xLgr>Alameda Bom Pastor, Galpao 1 - Mod. 3</xLgr>
+					<nro>1816</nro>
+					<xBairro>Ouro Fino</xBairro>
+					<cMun>4125506</cMun>
+					<xMun>Sao Jose dos Pinhais</xMun>
+					<CEP>83015140</CEP>
+					<UF>PR</UF>
+					<fone>4140421060</fone>
+				</enderEmit>
+			</emit>
+			<rem>
+				<CNPJ>20357689000113</CNPJ>
+				<IE>9066591821</IE>
+				<xNome>KBR BRASIL COMERCIO</xNome>
+				<xFant>KBR</xFant>
+				<fone>4131480108</fone>
+				<enderReme>
+					<xLgr>AV BRASILIA</xLgr>
+					<nro>6131</nro>
+					<xCpl>LOJA 06</xCpl>
+					<xBairro>NOVO MUNDO</xBairro>
+					<cMun>4106902</cMun>
+					<xMun>CURITIBA</xMun>
+					<CEP>81020010</CEP>
+					<UF>PR</UF>
+					<cPais>1058</cPais>
+					<xPais>Brasil</xPais>
+				</enderReme>
+			</rem>
+			<exped>
+				<CNPJ>20357689000113</CNPJ>
+				<IE>9066591821</IE>
+				<xNome>KBR BRASIL COMERCIO</xNome>
+				<fone>4131480108</fone>
+				<enderExped>
+					<xLgr>AV BRASILIA</xLgr>
+					<nro>6131</nro>
+					<xCpl>LOJA 06</xCpl>
+					<xBairro>NOVO MUNDO</xBairro>
+					<cMun>4106902</cMun>
+					<xMun>CURITIBA</xMun>
+					<CEP>81020010</CEP>
+					<UF>PR</UF>
+					<cPais>1058</cPais>
+					<xPais>Brasil</xPais>
+				</enderExped>
+			</exped>
+			<dest>
+				<CNPJ>04356485000101</CNPJ>
+				<IE>254238211</IE>
+				<xNome>BRASFER FERRAMENTARIA LTDA</xNome>
+				<fone>4734673679</fone>
+				<enderDest>
+					<xLgr>RUA RAIMUNDO WELTER</xLgr>
+					<nro>122</nro>
+					<xBairro>AVENTUREIRO</xBairro>
+					<cMun>4209102</cMun>
+					<xMun>JOINVILLE</xMun>
+					<CEP>89219780</CEP>
+					<UF>SC</UF>
+					<cPais>1058</cPais>
+					<xPais>Brasil</xPais>
+				</enderDest>
+			</dest>
+			<vPrest>
+				<vTPrest>318.75</vTPrest>
+				<vRec>318.75</vRec>
+				<Comp>
+					<xNome>FRETE PESO</xNome>
+					<vComp>41.55</vComp>
+				</Comp>
+				<Comp>
+					<xNome>FRETE VALOR</xNome>
+					<vComp>181.68</vComp>
+				</Comp>
+				<Comp>
+					<xNome>PEDAGIO</xNome>
+					<vComp>4.68</vComp>
+				</Comp>
+				<Comp>
+					<xNome>GRIS</xNome>
+					<vComp>90.84</vComp>
+				</Comp>
+			</vPrest>
+			<imp>
+				<ICMS>
+					<ICMS00>
+						<CST>00</CST>
+						<vBC>318.75</vBC>
+						<pICMS>12.00</pICMS>
+						<vICMS>38.25</vICMS>
+					</ICMS00>
+				</ICMS>
+				<vTotTrib>83.30</vTotTrib>
+			</imp>
+			<infCTeNorm>
+				<infCarga>
+					<vCarga>53293.12</vCarga>
+					<proPred>PROD. DIVERSOS</proPred>
+					<xOutCat>CAIXA(S)</xOutCat>
+					<infQ>
+						<cUnid>01</cUnid>
+						<tpMed>PESO DECLARADO</tpMed>
+						<qCarga>7.3000</qCarga>
+					</infQ>
+					<infQ>
+						<cUnid>01</cUnid>
+						<tpMed>PESO BASE DE CALCULO</tpMed>
+						<qCarga>7.3000</qCarga>
+					</infQ>
+					<infQ>
+						<cUnid>03</cUnid>
+						<tpMed>CAIXAS E ETC</tpMed>
+						<qCarga>1.0000</qCarga>
+					</infQ>
+					<vCargaAverb>53293.12</vCargaAverb>
+				</infCarga>
+				<infDoc>
+					<infNFe>
+						<chave>41200920357689000113550010000008861000088603</chave>
+					</infNFe>
+					<infNFe>
+						<chave>41200920357689000113550010000008881000088802</chave>
+					</infNFe>
+					<infNFe>
+						<chave>41200920357689000113550010000008891000088907</chave>
+					</infNFe>
+				</infDoc>
+				<infModal versaoModal="3.00">
+					<rodo>
+						<RNTRC>02661898</RNTRC>
+					</rodo>
+				</infModal>
+			</infCTeNorm>
+			<autXML>
+				<CNPJ>04898488000177</CNPJ>
+			</autXML>
+			<autXML>
+				<CNPJ>76371582000184</CNPJ>
+			</autXML>
+			<infRespTec>
+				<CNPJ>06255692000103</CNPJ>
+				<xContato>Jackson Antonio Cenci</xContato>
+				<email>produtos.edocs@ndd.com.br</email>
+				<fone>554932518000</fone>
+			</infRespTec>
+		</infCte>
+		<infCTeSupl>
+			<qrCodCTe>http://www.fazenda.pr.gov.br/cte/qrcode?chCTe=41200903629957001161570010000561311728444505&amp;tpAmb=1</qrCodCTe>
+		</infCTeSupl>
+		<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+			<SignedInfo>
+				<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+				<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+				<Reference URI="#CTe41200903629957001161570010000561311728444505">
+					<Transforms>
+						<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+						<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+					</Transforms>
+					<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+					<DigestValue>F6Z1vj9OfP1bHgm9gzx90Kghg1c=</DigestValue>
+				</Reference>
+			</SignedInfo>
+			<SignatureValue>W7N8bmrfxsKz7ngnm9zZvCIIDeuDLFGvu/cdQIgoBh3SctSHiFatn9K+3Dc58r9j/l5er7tt1eP1Xse1OWfSks2ULAzodakskBoJXwvmN/tG2nmZ7yQjxaiMtlf9dcwMz73/iX2Y4ukp/5W/d1f6+wMltn6w+G2573OPdzcrxGrSwzZSvcNaY6HGJEwqHlMdGd+pKMsT7Pz0n53tI/bu2GBc8qr5pe3HsnhCH+b/ho4RJFR1LlWdT5B4dgNrv5YdFfaT5w/etlg5zsaqX4ybLwAxNrWlRMOQTLyD+5podeGBXqPkdLhBqS552Gkv7HOzG7Zj0UyFDAnSDcEq3JwtCg==</SignatureValue>
+			<KeyInfo>
+				<X509Data>
+					<X509Certificate>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</X509Certificate>
+				</X509Data>
+			</KeyInfo>
+		</Signature>
+	</CTe>
+	<protCTe versao="3.00">
+		<infProt>
+			<tpAmb>1</tpAmb>
+			<verAplic>PR-v3_1_21</verAplic>
+			<chCTe>41200903629957001161570010000561311728444505</chCTe>
+			<dhRecbto>2020-09-03T19:41:38-03:00</dhRecbto>
+			<nProt>141200087625404</nProt>
+			<digVal>F6Z1vj9OfP1bHgm9gzx90Kghg1c=</digVal>
+			<cStat>100</cStat>
+			<xMotivo>Autorizado o uso do CT-e</xMotivo>
+		</infProt>
+	</protCTe>
+</cteProc>

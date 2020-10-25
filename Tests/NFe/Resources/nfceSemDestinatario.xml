@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nfeProc versao="4.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+	<NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+		<infNFe versao="4.00" Id="NFe35200699999999999999655230000020471619202120">
+			<ide>
+				<cUF>35</cUF>
+				<cNF>61920212</cNF>
+				<natOp>VENDA</natOp>
+				<mod>65</mod>
+				<serie>523</serie>
+				<nNF>2047</nNF>
+				<dhEmi>2020-06-23T09:31:52-03:00</dhEmi>
+				<tpNF>1</tpNF>
+				<idDest>1</idDest>
+				<cMunFG>3550308</cMunFG>
+				<tpImp>4</tpImp>
+				<tpEmis>1</tpEmis>
+				<cDV>0</cDV>
+				<tpAmb>2</tpAmb>
+				<finNFe>1</finNFe>
+				<indFinal>1</indFinal>
+				<indPres>1</indPres>
+				<procEmi>0</procEmi>
+				<verProc>6.10.01.15</verProc>
+			</ide>
+			<emit>
+				<CNPJ>99999999999999</CNPJ>
+				<xNome>Emit 99999</xNome>
+				<xFant>Emit Fant</xFant>
+				<enderEmit>
+					<xLgr>VILA </xLgr>
+					<nro>.</nro>
+					<xBairro>Bairro Test</xBairro>
+					<cMun>4110805</cMun>
+					<xMun>IRETAMA</xMun>
+					<UF>PR</UF>
+					<CEP>87289999</CEP>
+					<cPais>1058</cPais>
+					<xPais>BRASIL</xPais>
+					<fone>999888</fone>
+				</enderEmit>
+				<IE>808123</IE>
+				<IM>444</IM>
+				<CNAE>5510000</CNAE>
+				<CRT>3</CRT>
+			</emit>
+			<det nItem="1">
+				<prod>
+					<cProd>910953</cProd>
+					<cEAN>SEM GTIN</cEAN>
+					<xProd>NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xProd>
+					<NCM>21069090</NCM>
+					<CFOP>5102</CFOP>
+					<uCom>UN</uCom>
+					<qCom>1.0000</qCom>
+					<vUnCom>199.0000000000</vUnCom>
+					<vProd>199.00</vProd>
+					<cEANTrib>SEM GTIN</cEANTrib>
+					<uTrib>UN</uTrib>
+					<qTrib>1.0000</qTrib>
+					<vUnTrib>199.0000000000</vUnTrib>
+					<vDesc>99.50</vDesc>
+					<indTot>1</indTot>
+				</prod>
+				<imposto>
+					<ICMS>
+						<ICMS00>
+							<orig>0</orig>
+							<CST>00</CST>
+							<modBC>3</modBC>
+							<vBC>99.50</vBC>
+							<pICMS>3.2000</pICMS>
+							<vICMS>3.18</vICMS>
+						</ICMS00>
+					</ICMS>
+					<PIS>
+						<PISAliq>
+							<CST>01</CST>
+							<vBC>99.50</vBC>
+							<pPIS>1.6500</pPIS>
+							<vPIS>1.64</vPIS>
+						</PISAliq>
+					</PIS>
+					<COFINS>
+						<COFINSAliq>
+							<CST>01</CST>
+							<vBC>99.50</vBC>
+							<pCOFINS>7.6000</pCOFINS>
+							<vCOFINS>7.56</vCOFINS>
+						</COFINSAliq>
+					</COFINS>
+				</imposto>
+			</det>
+			<det nItem="2">
+				<prod>
+					<cProd>920044</cProd>
+					<cEAN>SEM GTIN</cEAN>
+					<xProd>PRD REDUCAO</xProd>
+					<NCM>21069090</NCM>
+					<CEST>1902100</CEST>
+					<cBenef>PR820000</cBenef>
+					<CFOP>5102</CFOP>
+					<uCom>UN</uCom>
+					<qCom>1.0000</qCom>
+					<vUnCom>13.0000000000</vUnCom>
+					<vProd>13.00</vProd>
+					<cEANTrib>SEM GTIN</cEANTrib>
+					<uTrib>UN</uTrib>
+					<qTrib>1.0000</qTrib>
+					<vUnTrib>13.0000000000</vUnTrib>
+					<vDesc>6.50</vDesc>
+					<indTot>1</indTot>
+				</prod>
+				<imposto>
+					<ICMS>
+						<ICMS20>
+							<orig>0</orig>
+							<CST>20</CST>
+							<modBC>3</modBC>
+							<pRedBC>61.1111</pRedBC>
+							<vBC>2.53</vBC>
+							<pICMS>18.0000</pICMS>
+							<vICMS>0.46</vICMS>
+							<vICMSDeson>1.74</vICMSDeson>
+							<motDesICMS>9</motDesICMS>
+						</ICMS20>
+					</ICMS>
+					<PIS>
+						<PISAliq>
+							<CST>01</CST>
+							<vBC>6.50</vBC>
+							<pPIS>1.6500</pPIS>
+							<vPIS>0.11</vPIS>
+						</PISAliq>
+					</PIS>
+					<COFINS>
+						<COFINSAliq>
+							<CST>01</CST>
+							<vBC>6.50</vBC>
+							<pCOFINS>7.6000</pCOFINS>
+							<vCOFINS>0.49</vCOFINS>
+						</COFINSAliq>
+					</COFINS>
+				</imposto>
+			</det>
+			<det nItem="3">
+				<prod>
+					<cProd>930427</cProd>
+					<cEAN>SEM GTIN</cEAN>
+					<xProd>PRD ISENTO</xProd>
+					<NCM>22089000</NCM>
+					<CEST>0200100</CEST>
+					<cBenef>PR810000</cBenef>
+					<CFOP>5102</CFOP>
+					<uCom>UN</uCom>
+					<qCom>1.0000</qCom>
+					<vUnCom>17.0000000000</vUnCom>
+					<vProd>17.00</vProd>
+					<cEANTrib>SEM GTIN</cEANTrib>
+					<uTrib>UN</uTrib>
+					<qTrib>1.0000</qTrib>
+					<vUnTrib>17.0000000000</vUnTrib>
+					<vDesc>8.50</vDesc>
+					<indTot>1</indTot>
+				</prod>
+				<imposto>
+					<ICMS>
+						<ICMS40>
+							<orig>0</orig>
+							<CST>40</CST>
+							<vICMSDeson>3.73</vICMSDeson>
+							<motDesICMS>9</motDesICMS>
+						</ICMS40>
+					</ICMS>
+					<PIS>
+						<PISOutr>
+							<CST>49</CST>
+							<vBC>0.00</vBC>
+							<pPIS>0.0000</pPIS>
+							<vPIS>0.00</vPIS>
+						</PISOutr>
+					</PIS>
+					<COFINS>
+						<COFINSOutr>
+							<CST>49</CST>
+							<vBC>0.00</vBC>
+							<pCOFINS>0.0000</pCOFINS>
+							<vCOFINS>0.00</vCOFINS>
+						</COFINSOutr>
+					</COFINS>
+				</imposto>
+			</det>
+			<det nItem="4">
+				<prod>
+					<cProd>960002</cProd>
+					<cEAN>7894900039849</cEAN>
+					<xProd>PRD ICMSST 423</xProd>
+					<NCM>22030000</NCM>
+					<CEST>0301200</CEST>
+					<CFOP>5405</CFOP>
+					<uCom>UN</uCom>
+					<qCom>1.0000</qCom>
+					<vUnCom>8.0000000000</vUnCom>
+					<vProd>8.00</vProd>
+					<cEANTrib>7894900039849</cEANTrib>
+					<uTrib>UN</uTrib>
+					<qTrib>1.0000</qTrib>
+					<vUnTrib>8.0000000000</vUnTrib>
+					<vDesc>4.00</vDesc>
+					<indTot>1</indTot>
+				</prod>
+				<imposto>
+					<ICMS>
+						<ICMS60>
+							<orig>0</orig>
+							<CST>60</CST>
+						</ICMS60>
+					</ICMS>
+					<PIS>
+						<PISNT>
+							<CST>04</CST>
+						</PISNT>
+					</PIS>
+					<COFINS>
+						<COFINSNT>
+							<CST>04</CST>
+						</COFINSNT>
+					</COFINS>
+				</imposto>
+			</det>
+			<det nItem="5">
+				<prod>
+					<cProd>920005</cProd>
+					<cEAN>SEM GTIN</cEAN>
+					<xProd>PRD ICMSST 419</xProd>
+					<NCM>22021000</NCM>
+					<CEST>0300800</CEST>
+					<CFOP>5405</CFOP>
+					<uCom>UN</uCom>
+					<qCom>1.0000</qCom>
+					<vUnCom>6.0000000000</vUnCom>
+					<vProd>6.00</vProd>
+					<cEANTrib>SEM GTIN</cEANTrib>
+					<uTrib>UN</uTrib>
+					<qTrib>1.0000</qTrib>
+					<vUnTrib>6.0000000000</vUnTrib>
+					<vDesc>3.00</vDesc>
+					<indTot>1</indTot>
+				</prod>
+				<imposto>
+					<ICMS>
+						<ICMS60>
+							<orig>0</orig>
+							<CST>60</CST>
+						</ICMS60>
+					</ICMS>
+					<PIS>
+						<PISNT>
+							<CST>04</CST>
+						</PISNT>
+					</PIS>
+					<COFINS>
+						<COFINSNT>
+							<CST>04</CST>
+						</COFINSNT>
+					</COFINS>
+				</imposto>
+			</det>
+			<det nItem="6">
+				<prod>
+					<cProd>920010</cProd>
+					<cEAN>SEM GTIN</cEAN>
+					<xProd>PRD ICMSST 415</xProd>
+					<NCM>22011000</NCM>
+					<CEST>0300200</CEST>
+					<CFOP>5405</CFOP>
+					<uCom>UN</uCom>
+					<qCom>1.0000</qCom>
+					<vUnCom>35.1000000000</vUnCom>
+					<vProd>35.10</vProd>
+					<cEANTrib>SEM GTIN</cEANTrib>
+					<uTrib>UN</uTrib>
+					<qTrib>1.0000</qTrib>
+					<vUnTrib>35.1000000000</vUnTrib>
+					<vDesc>17.55</vDesc>
+					<indTot>1</indTot>
+				</prod>
+				<imposto>
+					<ICMS>
+						<ICMS60>
+							<orig>0</orig>
+							<CST>60</CST>
+						</ICMS60>
+					</ICMS>
+					<PIS>
+						<PISNT>
+							<CST>04</CST>
+						</PISNT>
+					</PIS>
+					<COFINS>
+						<COFINSNT>
+							<CST>04</CST>
+						</COFINSNT>
+					</COFINS>
+				</imposto>
+			</det>
+			<det nItem="7">
+				<prod>
+					<cProd>950024</cProd>
+					<cEAN>SEM GTIN</cEAN>
+					<xProd>TAXA DE SERVICO</xProd>
+					<NCM>00000000</NCM>
+					<cBenef>PR800004</cBenef>
+					<CFOP>5102</CFOP>
+					<uCom>UN</uCom>
+					<qCom>1.0000</qCom>
+					<vUnCom>13.9000000000</vUnCom>
+					<vProd>13.90</vProd>
+					<cEANTrib>SEM GTIN</cEANTrib>
+					<uTrib>UN</uTrib>
+					<qTrib>1.0000</qTrib>
+					<vUnTrib>13.9000000000</vUnTrib>
+					<indTot>1</indTot>
+				</prod>
+				<imposto>
+					<ICMS>
+						<ICMS40>
+							<orig>0</orig>
+							<CST>41</CST>
+							<vICMSDeson>3.05</vICMSDeson>
+							<motDesICMS>9</motDesICMS>
+						</ICMS40>
+					</ICMS>
+					<PIS>
+						<PISNT>
+							<CST>08</CST>
+						</PISNT>
+					</PIS>
+					<COFINS>
+						<COFINSNT>
+							<CST>08</CST>
+						</COFINSNT>
+					</COFINS>
+				</imposto>
+			</det>
+			<total>
+				<ICMSTot>
+					<vBC>102.03</vBC>
+					<vICMS>3.64</vICMS>
+					<vICMSDeson>8.52</vICMSDeson>
+					<vFCP>0.00</vFCP>
+					<vBCST>0.00</vBCST>
+					<vST>0.00</vST>
+					<vFCPST>0.00</vFCPST>
+					<vFCPSTRet>0.00</vFCPSTRet>
+					<vProd>292.00</vProd>
+					<vFrete>0.00</vFrete>
+					<vSeg>0.00</vSeg>
+					<vDesc>139.05</vDesc>
+					<vII>0.00</vII>
+					<vIPI>0.00</vIPI>
+					<vIPIDevol>0.00</vIPIDevol>
+					<vPIS>1.75</vPIS>
+					<vCOFINS>8.05</vCOFINS>
+					<vOutro>0.00</vOutro>
+					<vNF>152.95</vNF>
+				</ICMSTot>
+			</total>
+			<transp>
+				<modFrete>9</modFrete>
+			</transp>
+			<pag>
+				<detPag>
+					<tPag>01</tPag>
+					<vPag>152.95</vPag>
+				</detPag>
+			</pag>
+			<infAdic>
+				<infCpl>aaaa</infCpl>
+			</infAdic>
+			<infRespTec>
+				<CNPJ>88888888888888</CNPJ>
+				<xContato>Resp Tecnico</xContato>
+				<email>relacionamento.suporte@email.com.br</email>
+				<fone>21308888</fone>
+			</infRespTec>
+		</infNFe>
+		<infNFeSupl>
+			<qrCode>
+				<![CDATA[https://www.homologacao.nfce.fazenda.sp.gov.br/qrcode?p=35200682373077000171655230000020471619202120|2|2|3|14EE9CCAF8FDC0DD2979BAA9AF3D726B8CA03DF0]]>
+			</qrCode>
+			<urlChave>https://www.homologacao.nfce.fazenda.sp.gov.br/consulta</urlChave>
+		</infNFeSupl>
+		<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+			<SignedInfo>
+				<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+				<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+				<Reference URI="#NFe35200682373077000171655230000020471619202120">
+					<Transforms>
+						<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+						<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					</Transforms>
+					<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+					<DigestValue>cs2fypQpL/3Gg9HRESdjIydmQ1I=</DigestValue>
+				</Reference>
+			</SignedInfo>
+			<SignatureValue>S6yV36UKVTu8AfHyBJ7vcB9Gmx0gvNJ8KsEB67TGDV5KN5uVVSAeXy8DD//IDjltao5wK7LW5o9SHyO57eR9wDcBNJAyo4Q9BD1YgdZXUpY2M42nl9Ul/DzEEoJTGbpaB8iwT6K8cnaG7ozUwoVyrR+EEGqLF/RYOLJpgOAIoe5V1OLQ32lPF4zHMrV3m4EnrsZJS7P+JmXbMVTVMgPnxCbQii6u2AAq+mIy1sgI8PXf8jwYkwdrovBUENlROVx3drqnhk4GFJ6Ek3rQXTH/Tl4FcpGBaByvsTbFmkShnMkYKIt4nXuN3QFNDUUyXwJ44w/lJaMfA3F+BceLsFH9nA==</SignatureValue>
+			<KeyInfo>
+				<X509Data>
+					<X509Certificate>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</X509Certificate>
+				</X509Data>
+			</KeyInfo>
+		</Signature>
+	</NFe>
+	<protNFe versao="4.00">
+		<infProt>
+			<tpAmb>2</tpAmb>
+			<verAplic>SP_NFCE_PL_009_V400</verAplic>
+			<chNFe>35200699999999999999655230000020471619202120</chNFe>
+			<dhRecbto>2020-06-23T09:31:56-03:00</dhRecbto>
+			<nProt>135200000181452</nProt>
+			<digVal>cs2fypQpL/3Gg9HRESdjIydmQ1I=</digVal>
+			<cStat>100</cStat>
+			<xMotivo>Autorizado o uso da NF-e</xMotivo>
+		</infProt>
+	</protNFe>
+</nfeProc>

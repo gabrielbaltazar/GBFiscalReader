@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{F20A4225-0F3E-4540-BBCC-D961697AEFE4}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="NFe\GBFRNFeTest.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="CTe\GBFRCTeTest.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="GBFRNFeTest">
+        <MSBuild Projects="NFe\GBFRNFeTest.dproj"/>
+    </Target>
+    <Target Name="GBFRNFeTest:Clean">
+        <MSBuild Projects="NFe\GBFRNFeTest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GBFRNFeTest:Make">
+        <MSBuild Projects="NFe\GBFRNFeTest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GBFRCTeTest">
+        <MSBuild Projects="CTe\GBFRCTeTest.dproj"/>
+    </Target>
+    <Target Name="GBFRCTeTest:Clean">
+        <MSBuild Projects="CTe\GBFRCTeTest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GBFRCTeTest:Make">
+        <MSBuild Projects="CTe\GBFRCTeTest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="GBFRNFeTest;GBFRCTeTest"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="GBFRNFeTest:Clean;GBFRCTeTest:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="GBFRNFeTest:Make;GBFRCTeTest:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
