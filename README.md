@@ -15,13 +15,13 @@ implementation
 
 procedure ReadXml(AXmlContent: String);
 var
-  nota : TGBRFNFeModelNotaFiscal;
+  nfe : TGBRFNFeModel;
 begin
-  nota := XMLNFeReader.loadFromContent(xmlFile);
+  nfe := XMLNFeReader.loadFromContent(AXmlContent);
   try
     //
   finally
-    nota.Free;
+    nfe.Free;
   end;
 end;
 
@@ -39,13 +39,13 @@ implementation
 
 procedure ReadXml(AXmlFile: String);
 var
-  nota : TGBRFNFeModelNotaFiscal;
+  nfe : TGBRFNFeModel;
 begin
-  nota := XMLNFeReader.loadFromFile(xmlFile);
+  nfe := XMLNFeReader.loadFromFile(xmlFile);
   try
     //
   finally
-    nota.Free;
+    nfe.Free;
   end;
 end;
 
