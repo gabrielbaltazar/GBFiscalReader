@@ -20,7 +20,7 @@ begin
 end;
 ```
 
-#### Read From XML Content
+#### Read From XML File
 ```delphi
 var
   cte : TGBFRCTeModel;
@@ -47,7 +47,7 @@ begin
 end;
 ```
 
-#### Read From XML Content
+#### Read From XML File
 ```delphi
 var
   nfe : TGBRFNFeModel;
