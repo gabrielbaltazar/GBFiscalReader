@@ -1,4 +1,4 @@
-unit FMain;
+unit FNFeReader;
 
 interface
 
@@ -16,7 +16,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure lstFilesDblClick(Sender: TObject);
   private
-    procedure writeNota(Value: TGBRFNFeModelNotaFiscal);
+    procedure writeNota(Value: TGBRFNFeModel);
     { Private declarations }
   public
     { Public declarations }
@@ -37,18 +37,18 @@ end;
 procedure TfrmMain.lstFilesDblClick(Sender: TObject);
 var
   xmlFile: string;
-  nota   : TGBRFNFeModelNotaFiscal;
+  nfe    : TGBRFNFeModel;
 begin
   xmlFile := lstFiles.Directory + '\' + lstFiles.Items[lstFiles.ItemIndex];
-  nota    := XMLNFeReader.loadFromFile(xmlFile);
+  nfe     := XMLNFeReader.loadFromFile(xmlFile);
   try
-    writeNota(nota);
+    writeNota(nfe);
   finally
-    nota.Free;
+    nfe.Free;
   end;
 end;
 
-procedure TfrmMain.writeNota(Value: TGBRFNFeModelNotaFiscal);
+procedure TfrmMain.writeNota(Value: TGBRFNFeModel);
 var
   I: Integer;
 begin
@@ -57,9 +57,9 @@ begin
     Clear;
     Add('Chave: '   + Value.protNFe.chNFe);
     Add('Protocolo: ' + Value.protNFe.nProt);
-    Add('Numero: '  + Value.nNF.ToString);
-    Add('Codigo: '  + Value.cNF);
-    Add('Emissão: ' + FormatDateTime('dd/MM/yyyy', Value.dhEmi));
+    Add('Numero: '  + Value.ide.nNF.ToString);
+    Add('Codigo: '  + Value.ide.cNF);
+    Add('Emissão: ' + FormatDateTime('dd/MM/yyyy', Value.ide.dhEmi));
     Add('');
     Add('Emitente: '     + Value.emit.xNome + ' ' + Value.emit.CNPJ);
     Add('Destinatario: ' + Value.dest.xNome);

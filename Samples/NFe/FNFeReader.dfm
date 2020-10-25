@@ -31,9 +31,6 @@ object frmMain: TfrmMain
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    ExplicitLeft = 240
-    ExplicitTop = 152
-    ExplicitWidth = 185
   end
   object lstFiles: TFileListBox
     Left = 0
@@ -52,13 +49,7 @@ object frmMain: TfrmMain
     Width = 652
     Height = 157
     Align = alClient
-    Lines.Strings = (
-      'mmoNota')
     ScrollBars = ssBoth
     TabOrder = 2
-    ExplicitLeft = -80
-    ExplicitTop = 135
-    ExplicitWidth = 732
-    ExplicitHeight = 183
   end
 end

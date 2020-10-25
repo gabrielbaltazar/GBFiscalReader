@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<test-results name="D:\Desenvolvimento\workspace\Delphi\Frameworks\GBFrameworks\GBFiscallReader\Tests\CTe\Win32\Debug\GBFRCTeTest.exe" total="17" errors="0" failures="0" ignored="0" inconclusive="0" not-run="0" skipped="0" invalid="0" date="2020-10-25" time="0.078">
+<test-results name="D:\Desenvolvimento\workspace\Delphi\Frameworks\GBFrameworks\GBFiscallReader\Tests\CTe\Win32\Debug\GBFRCTeTest.exe" total="17" errors="0" failures="0" ignored="0" inconclusive="0" not-run="0" skipped="0" invalid="0" date="2020-10-25" time="0.104">
   <culture-info current-culture="en" current-uiculture="en" />
-  <test-suite type="Assembly" name="GBFRCTeTest.exe" executed="true" result="Success" success="True" time="0.078" asserts="0">
+  <test-suite type="Assembly" name="GBFRCTeTest.exe" executed="true" result="Success" success="True" time="0.104" asserts="0">
     <results>
-        <test-suite type="Namespace" name="GBFR" executed="true" result="Success" success="True" time="0.077" asserts="0" >
+        <test-suite type="Namespace" name="GBFR" executed="true" result="Success" success="True" time="0.103" asserts="0" >
           <results>
-              <test-suite type="Fixture" name="TGBFRCTeTestBase" executed="True" result="Success" success="True" time="0.077" >
+              <test-suite type="Fixture" name="TGBFRCTeTestBase" executed="True" result="Success" success="True" time="0.103" >
                 <results>
                   <test-case name="TestInfCTe" executed="True" result="Success" success="True" time="0.000" asserts="0" />
                   <test-case name="TestTagIde" executed="True" result="Success" success="True" time="0.000" asserts="0" />
@@ -22,7 +22,7 @@
                   <test-case name="TestTagInfDoc" executed="True" result="Success" success="True" time="0.000" asserts="0" />
                   <test-case name="TestTagInfModal" executed="True" result="Success" success="True" time="0.000" asserts="0" />
                   <test-case name="TestTagAutXML" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                  <test-case name="TestTagInfProt" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                  <test-case name="TestTagInfProt" executed="True" result="Success" success="True" time="0.000" asserts="0" />
                   <test-case name="TestTagInfCTeSupl" executed="True" result="Success" success="True" time="0.000" asserts="0" />
                 </results>
               </test-suite>
