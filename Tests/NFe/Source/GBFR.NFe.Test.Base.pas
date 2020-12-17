@@ -1,4 +1,4 @@
-unit GBFR.NFe.Test.Base;
+﻿unit GBFR.NFe.Test.Base;
 
 interface
 
@@ -29,7 +29,8 @@ begin
     stream := TStringStream.Create;
     try
       stream.LoadFromStream(resource);
-      result := stream.DataString.Replace('﻿', '');
+      result := stream.DataString;
+      result := result.Replace('ï»¿', '');
     finally
       stream.Free;
     end;
