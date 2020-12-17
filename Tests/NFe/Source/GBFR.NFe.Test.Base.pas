@@ -29,7 +29,7 @@ begin
     stream := TStringStream.Create;
     try
       stream.LoadFromStream(resource);
-      result := stream.DataString;
+      result := stream.DataString.Replace('﻿', '');
     finally
       stream.Free;
     end;

@@ -4,12 +4,7 @@ interface
 
 uses
   GBFR.NFe.Model.Types,
-  GBFR.NFe.Model.Imposto.ICMS,
-  GBFR.NFe.Model.Imposto.PIS,
-  GBFR.NFe.Model.Imposto.COFINS,
-  GBFR.NFe.Model.Imposto.II,
-  GBFR.NFe.Model.Imposto.ISSQN,
-  GBFR.NFe.Model.Imposto.IPI;
+  GBFR.NFe.Model.Item.Imposto;
 
 type TGBFRNFeModelItem = class
   private
@@ -28,12 +23,6 @@ type TGBFRNFeModelItem = class
     FqTrib: Double;
     FvUnTrib: Currency;
     FindTot: TNFeIndicadorTotal;
-    FICMS: TGBFRNFeModelICMS;
-    FPIS: TGBFRNFeModelPIS;
-    FCOFINS: TGBFRNFeModelCOFINS;
-    FIPI: TGBFRNFeModelIPI;
-    FII: TGBFRNFeModelII;
-    FISSQN: TGBFRNFeModelISSQN;
     FCEST: String;
     FinfAdProd: String;
     FvDesc: Currency;
@@ -43,6 +32,7 @@ type TGBFRNFeModelItem = class
     FvOutro: Currency;
     FxPed: String;
     FnItemPed: String;
+    Fimposto: TGBFRNFeItemImposto;
 
   public
     property nItem: Integer read FnItem write FnItem;
@@ -69,12 +59,7 @@ type TGBFRNFeModelItem = class
     property xPed: String read FxPed write FxPed;
     property nItemPed: String read FnItemPed write FnItemPed;
     property indTot: TNFeIndicadorTotal read FindTot write FindTot;
-    property ICMS: TGBFRNFeModelICMS read FICMS write FICMS;
-    property PIS: TGBFRNFeModelPIS read FPIS write FPIS;
-    property COFINS: TGBFRNFeModelCOFINS read FCOFINS write FCOFINS;
-    property IPI: TGBFRNFeModelIPI read FIPI write FIPI;
-    property II: TGBFRNFeModelII read FII write FII;
-    property ISSQN: TGBFRNFeModelISSQN read FISSQN write FISSQN;
+    property imposto: TGBFRNFeItemImposto read Fimposto write Fimposto;
 
     constructor create;
     destructor  Destroy; override;
@@ -86,22 +71,12 @@ implementation
 
 constructor TGBFRNFeModelItem.create;
 begin
-  FICMS   := TGBFRNFeModelICMS.Create;
-  FPIS    := TGBFRNFeModelPIS.Create;
-  FCOFINS := TGBFRNFeModelCOFINS.Create;
-  FIPI    := TGBFRNFeModelIPI.Create;
-  FISSQN  := TGBFRNFeModelISSQN.Create;
-  FII     := TGBFRNFeModelII.Create;
+  Fimposto := TGBFRNFeItemImposto.Create;
 end;
 
 destructor TGBFRNFeModelItem.Destroy;
 begin
-  FICMS.Free;
-  FPIS.Free;
-  FCOFINS.Free;
-  FIPI.Free;
-  FISSQN.Free;
-  FII.Free;
+  Fimposto.Free;
   inherited;
 end;
 

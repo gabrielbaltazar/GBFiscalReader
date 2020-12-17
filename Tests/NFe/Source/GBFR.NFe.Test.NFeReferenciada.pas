@@ -39,6 +39,9 @@ type
     procedure TestDest;
 
     [Test]
+    procedure TestImposto;
+
+    [Test]
     procedure TestICMS;
 
     constructor create;
@@ -114,11 +117,11 @@ begin
   item := FModel.itens[0];
 
   Assert.IsNotNull(item);
-  Assert.AreEqual('0', item.ICMS.orig);
-  Assert.AreEqual('41', item.ICMS.CST);
-  Assert.AreEqual(StrToCurr('0'), item.ICMS.vBC);
-  Assert.AreEqual(StrToCurr('0'), item.ICMS.pICMS);
-  Assert.AreEqual(StrToCurr('0'), item.ICMS.vICMS);
+  Assert.AreEqual('0', item.imposto.ICMS.orig);
+  Assert.AreEqual('41', item.imposto.ICMS.CST);
+  Assert.AreEqual(StrToCurr('0'), item.imposto.ICMS.vBC);
+  Assert.AreEqual(StrToCurr('0'), item.imposto.ICMS.pICMS);
+  Assert.AreEqual(StrToCurr('0'), item.imposto.ICMS.vICMS);
 end;
 
 procedure TGBFRNFeTestNFeReferenciada.TestIde;
@@ -142,6 +145,11 @@ begin
   Assert.AreEqual('53190937069853000190655010000001511101259820', FModel.ide.NFRef[1].refNFe);
   Assert.AreEqual('53190937069853000190655010000001491855056051', FModel.ide.NFRef[2].refNFe);
   Assert.AreEqual('53190937069853000190655010000001501336520645', FModel.ide.NFRef[3].refNFe);
+end;
+
+procedure TGBFRNFeTestNFeReferenciada.TestImposto;
+begin
+  Assert.AreEqual(StrToCurr('4'), FModel.itens[0].imposto.vTotTrib);
 end;
 
 procedure TGBFRNFeTestNFeReferenciada.TestInfNFe;

@@ -9,6 +9,7 @@ uses
   GBFR.NFe.Model.Emitente,
   GBFR.NFe.Model.ICMSTot,
   GBFR.NFe.Model.InfAdic,
+  GBFR.NFe.Model.ISSQNTot,
   GBFR.NFe.Model.Item,
   GBFR.NFe.Model.Pagamento,
   GBFR.NFe.Model.Protocolo,
@@ -28,6 +29,7 @@ type TGBRFNFeModel = class
     FinfAdic: TGBFRNFeModelInfAdic;
     FId: String;
     Fversao: String;
+    FISSQNTot: TGBFRNFeModelISSQNTot;
 
   public
     property Id: String read FId write FId;
@@ -37,6 +39,7 @@ type TGBRFNFeModel = class
     property dest: TGBFRNFeModelDestinatario read Fdest write Fdest;
     property itens: TObjectList<TGBFRNFeModelItem> read Fitens write Fitens;
     property ICMSTot: TGBFRNFeModelICMSTot read FICMSTot write FICMSTot;
+    property ISSQNTot: TGBFRNFeModelISSQNTot read FISSQNTot write FISSQNTot;
     property pag: TGBFRNFeModelPagamento read Fpag write Fpag;
     property infAdic: TGBFRNFeModelInfAdic read FinfAdic write FinfAdic;
     property infRespTec: TGBFRNFeModelResponsavelTecnico read FinfRespTec write FinfRespTec;
@@ -55,6 +58,7 @@ begin
   Fide        := TGBFRNFeModelIde.Create;
   Femit       := TGBFRNFeModelEmitente.create;
   Fdest       := TGBFRNFeModelDestinatario.create;
+  FISSQNTot   := TGBFRNFeModelISSQNTot.Create;
   FICMSTot    := TGBFRNFeModelICMSTot.Create;
   FprotNFe    := TGBRFNFeModelProtocolo.Create;
   FinfRespTec := TGBFRNFeModelResponsavelTecnico.Create;
@@ -69,6 +73,7 @@ begin
   Femit.Free;
   Fdest.Free;
   Fitens.Free;
+  FISSQNTot.Free;
   FICMSTot.Free;
   Fpag.Free;
   FinfAdic.Free;

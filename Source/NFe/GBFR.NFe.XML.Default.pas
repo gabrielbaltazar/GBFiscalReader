@@ -29,6 +29,8 @@ type TGBFRNFeXMLDefault = class(TGBFRXmlBase, IGBFRNFeXML)
     procedure loadTagDetItem;
     procedure loadTagPag;
     procedure loadTagTotal;
+    procedure loadTagTotalICMSTot(ANodeTotal: IXMLNode);
+    procedure loadTagTotalISSQNTot(ANodeTotal: IXMLNode);
     procedure loadTagInfAdic;
     procedure loadTagInfRespTec;
     procedure loadTagProtNFe;
@@ -62,9 +64,12 @@ begin
   if not Assigned(result) then
     Exit;
 
-  result := result.ChildNodes.Get(0);
-  if not Assigned(result) then
-    Exit;
+  if not ATag.ToLower.Equals('issqn') then
+  begin
+    result := result.ChildNodes.Get(0);
+    if not Assigned(result) then
+      Exit;
+  end;
 end;
 
 procedure TGBFRNFeXMLDefault.loadTagDest;
@@ -142,15 +147,19 @@ end;
 procedure TGBFRNFeXMLDefault.loadTagImposto(ANodeDet: IXMLNode);
 var
   item : TGBFRNFeModelItem;
+  nodeImposto: IXMLNode;
 begin
   item := FModel.itens.Last;
+
+  nodeImposto := ANodeDet.ChildNodes.FindNode('imposto');
+  item.imposto.vTotTrib := GetNodeCurrency(nodeImposto, 'vTotTrib');
 
   loadTagImpostoICMS   (ANodeDet, item);
   loadTagImpostoIPI    (ANodeDet, item);
   loadTagImpostoPIS    (ANodeDet, item);
   loadTagImpostoCOFINS (ANodeDet, item);
-  loadTagImpostoII     (ANodeDet, item);
   loadTagImpostoISSQN  (ANodeDet, item);
+  loadTagImpostoII     (ANodeDet, item);
 end;
 
 procedure TGBFRNFeXMLDefault.loadTagImpostoCOFINS(ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
@@ -162,10 +171,10 @@ begin
   if not Assigned(nodeImposto) then
     Exit;
 
-  AItem.COFINS.CST     := GetNodeStr(nodeImposto, 'CST');
-  AItem.COFINS.vBC     := GetNodeCurrency(nodeImposto, 'vBC');
-  AItem.COFINS.pCOFINS := GetNodeCurrency(nodeImposto, 'pCOFINS');
-  AItem.COFINS.vCOFINS := GetNodeCurrency(nodeImposto, 'vCOFINS');
+  AItem.imposto.COFINS.CST     := GetNodeStr(nodeImposto, 'CST');
+  AItem.imposto.COFINS.vBC     := GetNodeCurrency(nodeImposto, 'vBC');
+  AItem.imposto.COFINS.pCOFINS := GetNodeCurrency(nodeImposto, 'pCOFINS');
+  AItem.imposto.COFINS.vCOFINS := GetNodeCurrency(nodeImposto, 'vCOFINS');
 end;
 
 procedure TGBFRNFeXMLDefault.loadTagImpostoICMS(ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
@@ -176,28 +185,28 @@ begin
   if not Assigned(nodeImposto) then
     Exit;
 
-  AItem.ICMS.CST        := GetNodeStr(nodeImposto, 'CST');
-  AItem.ICMS.orig       := GetNodeStr(nodeImposto, 'orig');
-  AItem.ICMS.vBC        := GetNodeCurrency(nodeImposto, 'vBC');
-  AItem.ICMS.pICMS      := GetNodeCurrency(nodeImposto, 'pICMS');
-  AItem.ICMS.vICMS      := GetNodeCurrency(nodeImposto, 'vICMS');
-  AItem.ICMS.pRedBC     := GetNodeCurrency(nodeImposto, 'pRedBC');
-  AItem.ICMS.vICMSDeson := GetNodeCurrency(nodeImposto, 'vICMSDeson');
-  AItem.ICMS.vBCSTRet   := GetNodeCurrency(nodeImposto, 'vBCSTRet');
+  AItem.imposto.ICMS.CST        := GetNodeStr(nodeImposto, 'CST');
+  AItem.imposto.ICMS.orig       := GetNodeStr(nodeImposto, 'orig');
+  AItem.imposto.ICMS.vBC        := GetNodeCurrency(nodeImposto, 'vBC');
+  AItem.imposto.ICMS.pICMS      := GetNodeCurrency(nodeImposto, 'pICMS');
+  AItem.imposto.ICMS.vICMS      := GetNodeCurrency(nodeImposto, 'vICMS');
+  AItem.imposto.ICMS.pRedBC     := GetNodeCurrency(nodeImposto, 'pRedBC');
+  AItem.imposto.ICMS.vICMSDeson := GetNodeCurrency(nodeImposto, 'vICMSDeson');
+  AItem.imposto.ICMS.vBCSTRet   := GetNodeCurrency(nodeImposto, 'vBCSTRet');
 
-  AItem.ICMS.modBC.fromInteger( GetNodeInt(nodeImposto, 'modBC'));
-  AItem.ICMS.modBCST.fromInteger(GetNodeInt(nodeImposto, 'modBCST'));
+  AItem.imposto.ICMS.modBC.fromInteger( GetNodeInt(nodeImposto, 'modBC'));
+  AItem.imposto.ICMS.modBCST.fromInteger(GetNodeInt(nodeImposto, 'modBCST'));
 
-  if AItem.ICMS.vBCST > 0 then
+  if AItem.imposto.ICMS.vBCST > 0 then
   begin
-    AItem.ICMS.pST        := GetNodeCurrency(nodeImposto, 'pST');
-    AItem.ICMS.vICMSSTRet := GetNodeCurrency(nodeImposto, 'vICMSSTRet');
+    AItem.imposto.ICMS.pST        := GetNodeCurrency(nodeImposto, 'pST');
+    AItem.imposto.ICMS.vICMSSTRet := GetNodeCurrency(nodeImposto, 'vICMSSTRet');
   end
   else
   begin
-    AItem.ICMS.vBCST   := GetNodeCurrency(nodeImposto, 'vBCST');
-    AItem.ICMS.pICMSST := GetNodeCurrency(nodeImposto, 'pICMSST');
-    AItem.ICMS.vICMSST := GetNodeCurrency(nodeImposto, 'vICMSST');
+    AItem.imposto.ICMS.vBCST   := GetNodeCurrency(nodeImposto, 'vBCST');
+    AItem.imposto.ICMS.pICMSST := GetNodeCurrency(nodeImposto, 'pICMSST');
+    AItem.imposto.ICMS.vICMSST := GetNodeCurrency(nodeImposto, 'vICMSST');
   end;
 end;
 
@@ -210,10 +219,10 @@ begin
   if not Assigned(nodeImposto) then
     Exit;
 
-  AItem.II.CST  := GetNodeStr(nodeImposto, 'CST');
-  AItem.II.vBC  := GetNodeCurrency(nodeImposto, 'vBC');
-  AItem.II.vII  := GetNodeCurrency(nodeImposto, 'vII');
-  AItem.II.vIOF := GetNodeCurrency(nodeImposto, 'vIOF');
+  AItem.imposto.II.CST  := GetNodeStr(nodeImposto, 'CST');
+  AItem.imposto.II.vBC  := GetNodeCurrency(nodeImposto, 'vBC');
+  AItem.imposto.II.vII  := GetNodeCurrency(nodeImposto, 'vII');
+  AItem.imposto.II.vIOF := GetNodeCurrency(nodeImposto, 'vIOF');
 end;
 
 procedure TGBFRNFeXMLDefault.loadTagImpostoIPI(ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
@@ -224,11 +233,11 @@ begin
   if not Assigned(nodeImposto) then
     Exit;
 
-  AItem.IPI.CST  := GetNodeStr(nodeImposto, 'CST');
-  AItem.IPI.cEnq := GetNodeStr(nodeImposto, 'cEnq');
-  AItem.IPI.vBC  := GetNodeCurrency(nodeImposto, 'vBC');
-  AItem.IPI.pIPI := GetNodeCurrency(nodeImposto, 'pIPI');
-  AItem.IPI.vIPI := GetNodeCurrency(nodeImposto, 'vIPI');
+  AItem.imposto.IPI.CST  := GetNodeStr(nodeImposto, 'CST');
+  AItem.imposto.IPI.cEnq := GetNodeStr(nodeImposto, 'cEnq');
+  AItem.imposto.IPI.vBC  := GetNodeCurrency(nodeImposto, 'vBC');
+  AItem.imposto.IPI.pIPI := GetNodeCurrency(nodeImposto, 'pIPI');
+  AItem.imposto.IPI.vIPI := GetNodeCurrency(nodeImposto, 'vIPI');
 end;
 
 procedure TGBFRNFeXMLDefault.loadTagImpostoISSQN(ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
@@ -239,9 +248,14 @@ begin
   if not Assigned(nodeImposto) then
     Exit;
 
-  AItem.ISSQN.vBC    := GetNodeCurrency(nodeImposto, 'vBC');
-  AItem.ISSQN.vISSQN := GetNodeCurrency(nodeImposto, 'vISSQN');
-  AItem.ISSQN.vAliq  := GetNodeCurrency(nodeImposto, 'vAliq');
+  AItem.imposto.ISSQN.vBC       := GetNodeCurrency(nodeImposto, 'vBC');
+  AItem.imposto.ISSQN.vAliq     := GetNodeCurrency(nodeImposto, 'vAliq');
+  AItem.imposto.ISSQN.vISSQN    := GetNodeCurrency(nodeImposto, 'vISSQN');
+  AItem.imposto.ISSQN.cMunFG    := GetNodeStr(nodeImposto, 'cMunFG');
+  AItem.imposto.ISSQN.cListServ := GetNodeStr(nodeImposto, 'cListServ');
+
+  AItem.imposto.ISSQN.indISS.fromInteger(GetNodeInt(nodeImposto, 'indISS', 1));
+  AItem.imposto.ISSQN.indIncentivo.fromInteger(GetNodeInt(nodeImposto, 'indIncentivo', 1));
 end;
 
 procedure TGBFRNFeXMLDefault.loadTagImpostoPIS(ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
@@ -252,10 +266,10 @@ begin
   if not Assigned(nodeImposto) then
     Exit;
 
-  AItem.PIS.CST  := GetNodeStr(nodeImposto, 'CST');
-  AItem.PIS.vBC  := GetNodeFloat(nodeImposto, 'vBC');
-  AItem.PIS.pPIS := GetNodeFloat(nodeImposto, 'pPIS');
-  AItem.PIS.vPIS := GetNodeFloat(nodeImposto, 'vPIS');
+  AItem.imposto.PIS.CST  := GetNodeStr(nodeImposto, 'CST');
+  AItem.imposto.PIS.vBC  := GetNodeFloat(nodeImposto, 'vBC');
+  AItem.imposto.PIS.pPIS := GetNodeFloat(nodeImposto, 'pPIS');
+  AItem.imposto.PIS.vPIS := GetNodeFloat(nodeImposto, 'vPIS');
 end;
 
 procedure TGBFRNFeXMLDefault.loadTagInfAdic;
@@ -459,13 +473,20 @@ end;
 procedure TGBFRNFeXMLDefault.loadTagTotal;
 var
   nodeTotal: IXMLNode;
-  nodeICMSTot: IXMLNode;
 begin
   nodeTotal := FInfNFe.ChildNodes.FindNode('total');
   if not Assigned(nodeTotal) then
     Exit;
 
-  nodeICMSTot := nodeTotal.ChildNodes.FindNode('ICMSTot');
+  loadTagTotalICMSTot(nodeTotal);
+  loadTagTotalISSQNTot(nodeTotal);
+end;
+
+procedure TGBFRNFeXMLDefault.loadTagTotalICMSTot(ANodeTotal: IXMLNode);
+var
+  nodeICMSTot: IXMLNode;
+begin
+  nodeICMSTot := ANodeTotal.ChildNodes.FindNode('ICMSTot');
   if not Assigned(nodeICMSTot) then
     Exit;
 
@@ -492,6 +513,22 @@ begin
   FModel.ICMSTot.vCOFINS      := GetNodeCurrency(nodeICMSTot, 'vCOFINS');
   FModel.ICMSTot.vOutro       := GetNodeCurrency(nodeICMSTot, 'vOutro');
   FModel.ICMSTot.vNF          := GetNodeCurrency(nodeICMSTot, 'vNF');
+end;
+
+procedure TGBFRNFeXMLDefault.loadTagTotalISSQNTot(ANodeTotal: IXMLNode);
+var
+  nodeISSQNTot: IXMLNode;
+begin
+  nodeISSQNTot := ANodeTotal.ChildNodes.FindNode('ISSQNtot');
+  if not Assigned(nodeISSQNTot) then
+    Exit;
+
+  FModel.ISSQNTot.vServ   := GetNodeCurrency(nodeISSQNTot, 'vServ');
+  FModel.ISSQNTot.vBC     := GetNodeCurrency(nodeISSQNTot, 'vBC');
+  FModel.ISSQNTot.vISS    := GetNodeCurrency(nodeISSQNTot, 'vISS');
+  FModel.ISSQNTot.vPIS    := GetNodeCurrency(nodeISSQNTot, 'vPIS');
+  FModel.ISSQNTot.vCOFINS := GetNodeCurrency(nodeISSQNTot, 'vCOFINS');
+  FModel.ISSQNTot.dCompet := GetNodeDate(nodeISSQNTot, 'dCompet');
 end;
 
 class function TGBFRNFeXMLDefault.New: IGBFRNFeXML;
