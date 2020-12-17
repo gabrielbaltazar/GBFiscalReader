@@ -98,6 +98,19 @@ type
 
   TNFeTipoIntegracaoPagamento = (NFeIntegrado, NFeNaoIntegrado);
 
+  TNFeIndicadorExigilidadeISS = (
+    NFeExigivel,
+    NFeNaoIncidencia,
+    NFeIsencao,
+    NFeExportacao,
+    NFeImunidade,
+    NFeSuspensaDecisaoJudicial,
+    NFeSuspensaProcessoAdministrativo);
+
+  TNFeIndicadorIncentivoFiscal = (
+    NFeIIFSim,
+    NFeIIFNao);
+
   TNFeAmbienteHelper = record helper for TNFeAmbiente
   public
     procedure fromInteger(Value: Integer);
@@ -195,6 +208,18 @@ type
   end;
 
   TNFeTipoIntegracaoPagamentoHelper = record helper for TNFeTipoIntegracaoPagamento
+  public
+    procedure fromInteger(Value: Integer);
+    function Value: Integer;
+  end;
+
+  TNFeIndicadorExigilidadeISSHelper = record helper for TNFeIndicadorExigilidadeISS
+  public
+    procedure fromInteger(Value: Integer);
+    function Value: Integer;
+  end;
+
+  TNFeIndicadorIncentivoFiscalHelper = record helper for TNFeIndicadorIncentivoFiscal
   public
     procedure fromInteger(Value: Integer);
     function Value: Integer;
@@ -681,6 +706,30 @@ end;
 function TNFeProcessoEmissaoHelper.Value: Integer;
 begin
   result := Integer(Self);
+end;
+
+{ TNFeIndicadorExigilidadeISSHelper }
+
+procedure TNFeIndicadorExigilidadeISSHelper.fromInteger(Value: Integer);
+begin
+  Self := TNFeIndicadorExigilidadeISS(Value - 1);
+end;
+
+function TNFeIndicadorExigilidadeISSHelper.Value: Integer;
+begin
+  result := Integer(Self) + 1;
+end;
+
+{ TNFeIndicadorIncentivoFiscalHelper }
+
+procedure TNFeIndicadorIncentivoFiscalHelper.fromInteger(Value: Integer);
+begin
+  Self := TNFeIndicadorIncentivoFiscal(Value - 1);
+end;
+
+function TNFeIndicadorIncentivoFiscalHelper.Value: Integer;
+begin
+  result := Integer(Self) + 1;
 end;
 
 end.

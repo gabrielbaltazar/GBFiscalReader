@@ -136,10 +136,10 @@ begin
   item := FModel.itens[0];
 
   Assert.IsNotNull(item);
-  Assert.AreEqual('01', item.COFINS.CST);
-  Assert.AreEqual(StrToCurr('100'), item.COFINS.vBC);
-  Assert.AreEqual(StrToCurr('7,6'), item.COFINS.pCOFINS);
-  Assert.AreEqual(StrToCurr('7,6'), item.COFINS.vCOFINS);
+  Assert.AreEqual('01', item.imposto.COFINS.CST);
+  Assert.AreEqual(StrToCurr('100'), item.imposto.COFINS.vBC);
+  Assert.AreEqual(StrToCurr('7,6'), item.imposto.COFINS.pCOFINS);
+  Assert.AreEqual(StrToCurr('7,6'), item.imposto.COFINS.vCOFINS);
 end;
 
 procedure TGBFRNFeTestNFCeOneItem.TestImpostoICMS;
@@ -149,12 +149,12 @@ begin
   item := FModel.itens[0];
 
   Assert.IsNotNull(item);
-  Assert.AreEqual('0', item.ICMS.orig);
-  Assert.AreEqual('00', item.ICMS.CST);
-  Assert.AreEqual(NFeValorOperacao, item.ICMS.modBC);
-  Assert.AreEqual(StrToCurr('100'), item.ICMS.vBC);
-  Assert.AreEqual(StrToCurr('12'), item.ICMS.pICMS);
-  Assert.AreEqual(StrToCurr('12'), item.ICMS.vICMS);
+  Assert.AreEqual('0', item.imposto.ICMS.orig);
+  Assert.AreEqual('00', item.imposto.ICMS.CST);
+  Assert.AreEqual(NFeValorOperacao, item.imposto.ICMS.modBC);
+  Assert.AreEqual(StrToCurr('100'), item.imposto.ICMS.vBC);
+  Assert.AreEqual(StrToCurr('12'), item.imposto.ICMS.pICMS);
+  Assert.AreEqual(StrToCurr('12'), item.imposto.ICMS.vICMS);
 end;
 
 procedure TGBFRNFeTestNFCeOneItem.TestImpostoPIS;
@@ -164,10 +164,10 @@ begin
   item := FModel.itens[0];
 
   Assert.IsNotNull(item);
-  Assert.AreEqual('01', item.PIS.CST);
-  Assert.AreEqual(StrToCurr('100'), item.PIS.vBC);
-  Assert.AreEqual(StrToCurr('1,65'), item.PIS.pPIS);
-  Assert.AreEqual(StrToCurr('1,65'), item.PIS.vPIS);
+  Assert.AreEqual('01', item.imposto.PIS.CST);
+  Assert.AreEqual(StrToCurr('100'), item.imposto.PIS.vBC);
+  Assert.AreEqual(StrToCurr('1,65'), item.imposto.PIS.pPIS);
+  Assert.AreEqual(StrToCurr('1,65'), item.imposto.PIS.vPIS);
 end;
 
 procedure TGBFRNFeTestNFCeOneItem.TestICMSTot;
