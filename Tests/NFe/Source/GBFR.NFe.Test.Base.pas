@@ -11,7 +11,8 @@ type
   TGBFRNFeTestBase = class
 
   protected
-    function LoadXMLResource(Name: String): string;
+    function LoadXMLResource      (Name: String): string;
+    function LoadXMLResourceStream(Name: String): TStream;
 
   end;
 
@@ -37,6 +38,11 @@ begin
   finally
     resource.Free;
   end;
+end;
+
+function TGBFRNFeTestBase.LoadXMLResourceStream(Name: String): TStream;
+begin
+  result := TStringStream.Create(LoadXMLResource(Name));
 end;
 
 end.

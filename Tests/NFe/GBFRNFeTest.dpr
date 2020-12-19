@@ -48,7 +48,8 @@ uses
   GBFR.NFe.Test.NFCeMoreItems in 'Source\GBFR.NFe.Test.NFCeMoreItems.pas' {/},
   GBFR.NFe.Model.ISSQNTot in '..\..\Source\NFe\GBFR.NFe.Model.ISSQNTot.pas',
   GBFR.NFe.Test.NFeComISSQN in 'Source\GBFR.NFe.Test.NFeComISSQN.pas',
-  GBFR.NFe.Model.Item.Imposto in '..\..\Source\NFe\GBFR.NFe.Model.Item.Imposto.pas';
+  GBFR.NFe.Model.Item.Imposto in '..\..\Source\NFe\GBFR.NFe.Model.Item.Imposto.pas',
+  GBFR.NFe.Test.NFCe.OneItem.Stream in 'Source\GBFR.NFe.Test.NFCe.OneItem.Stream.pas';
 
 //
 {$IFNDEF TESTINSIGHT}

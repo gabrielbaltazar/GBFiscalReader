@@ -1,4 +1,4 @@
-unit GBFR.NFe.Test.NFCe.OneItem;
+unit GBFR.NFe.Test.NFCe.OneItem.Stream;
 
 interface
 
@@ -17,7 +17,7 @@ const
 
 type
   [TestFixture]
-  TGBFRNFeTestNFCeOneItem = class(TGBFRNFeTestBase)
+  TGBFRNFeTestNFCeOneItemStream = class(TGBFRNFeTestBase)
 
   private
     FModel : TGBFRNFeModel;
@@ -68,23 +68,27 @@ type
 
 implementation
 
-{ TGBFRNFeTestNFCeOneItem }
+{ TGBFRNFeTestNFCeOneItemStream }
 
-constructor TGBFRNFeTestNFCeOneItem.create;
+constructor TGBFRNFeTestNFCeOneItemStream.create;
 var
-  xml : string;
+  stream : TStream;
 begin
-  xml    := LoadXMLResource(XML_NFCe);
-  FModel := XMLNFeReader.loadFromContent(xml);
+  stream := LoadXMLResourceStream(XML_NFCe);
+  try
+    FModel := XMLNFeReader.loadFromStream(stream);
+  finally
+    stream.Free;
+  end;
 end;
 
-destructor TGBFRNFeTestNFCeOneItem.Destroy;
+destructor TGBFRNFeTestNFCeOneItemStream.Destroy;
 begin
   FModel.Free;
   inherited;
 end;
 
-procedure TGBFRNFeTestNFCeOneItem.TestDest;
+procedure TGBFRNFeTestNFCeOneItemStream.TestDest;
 begin
   Assert.IsEmpty(FModel.dest.CNPJ);
   Assert.AreEqual('84752264188', FModel.dest.CPF);
@@ -105,7 +109,7 @@ begin
   Assert.AreEqual('999888777', FModel.dest.enderDest.fone);
 end;
 
-procedure TGBFRNFeTestNFCeOneItem.TestEmit;
+procedure TGBFRNFeTestNFCeOneItemStream.TestEmit;
 begin
   Assert.IsEmpty(FModel.emit.CPF);
   Assert.AreEqual('99999999999999', FModel.emit.CNPJ);
@@ -129,7 +133,7 @@ begin
   Assert.AreEqual('9999999999', FModel.emit.enderEmit.fone);
 end;
 
-procedure TGBFRNFeTestNFCeOneItem.TestImpostoCOFINS;
+procedure TGBFRNFeTestNFCeOneItemStream.TestImpostoCOFINS;
 var
   item : TGBFRNFeModelItem;
 begin
@@ -142,7 +146,7 @@ begin
   Assert.AreEqual(StrToCurr('7,6'), item.imposto.COFINS.vCOFINS);
 end;
 
-procedure TGBFRNFeTestNFCeOneItem.TestImpostoICMS;
+procedure TGBFRNFeTestNFCeOneItemStream.TestImpostoICMS;
 var
   item : TGBFRNFeModelItem;
 begin
@@ -157,7 +161,7 @@ begin
   Assert.AreEqual(StrToCurr('12'), item.imposto.ICMS.vICMS);
 end;
 
-procedure TGBFRNFeTestNFCeOneItem.TestImpostoPIS;
+procedure TGBFRNFeTestNFCeOneItemStream.TestImpostoPIS;
 var
   item : TGBFRNFeModelItem;
 begin
@@ -170,7 +174,7 @@ begin
   Assert.AreEqual(StrToCurr('1,65'), item.imposto.PIS.vPIS);
 end;
 
-procedure TGBFRNFeTestNFCeOneItem.TestICMSTot;
+procedure TGBFRNFeTestNFCeOneItemStream.TestICMSTot;
 begin
   Assert.AreEqual(StrToCurr('100'), FModel.ICMSTot.vBC);
   Assert.AreEqual(StrToCurr('12'), FModel.ICMSTot.vICMS);
@@ -193,7 +197,7 @@ begin
   Assert.AreEqual(StrToCurr('100'), FModel.ICMSTot.vNF);
 end;
 
-procedure TGBFRNFeTestNFCeOneItem.TestIde;
+procedure TGBFRNFeTestNFCeOneItemStream.TestIde;
 begin
   Assert.AreEqual('41', FModel.ide.cUF);
   Assert.AreEqual('00000011', FModel.ide.cNF);
@@ -216,19 +220,19 @@ begin
   Assert.AreEqual(NFeAplicativoContribuinte, FModel.ide.procEmi);
 end;
 
-procedure TGBFRNFeTestNFCeOneItem.TestInfAdic;
+procedure TGBFRNFeTestNFCeOneItemStream.TestInfAdic;
 begin
   Assert.AreEqual('Informacoes da Nota', FModel.infAdic.infCpl);
   Assert.IsEmpty(FModel.infAdic.infAdFisco);
 end;
 
-procedure TGBFRNFeTestNFCeOneItem.TestInfNFe;
+procedure TGBFRNFeTestNFCeOneItemStream.TestInfNFe;
 begin
   Assert.AreEqual('NFe41200699999999999999650020000000031000000117', FModel.Id);
   Assert.AreEqual('4.00', FModel.versao);
 end;
 
-procedure TGBFRNFeTestNFCeOneItem.TestInfProt;
+procedure TGBFRNFeTestNFCeOneItemStream.TestInfProt;
 begin
   Assert.AreEqual(NFeHomologacao, FModel.protNFe.tpAmb);
   Assert.AreEqual('PR-v4_4_2', FModel.protNFe.verAplic);
@@ -240,7 +244,7 @@ begin
   Assert.AreEqual('Autorizado o uso da NF-e', FModel.protNFe.xMotivo);
 end;
 
-procedure TGBFRNFeTestNFCeOneItem.TestInfRespTec;
+procedure TGBFRNFeTestNFCeOneItemStream.TestInfRespTec;
 begin
   Assert.AreEqual('12345678901234', FModel.infRespTec.CNPJ);
   Assert.AreEqual('Resp Contato', FModel.infRespTec.xContato);
@@ -248,7 +252,7 @@ begin
   Assert.AreEqual('2130030999', FModel.infRespTec.fone);
 end;
 
-procedure TGBFRNFeTestNFCeOneItem.TestItem;
+procedure TGBFRNFeTestNFCeOneItemStream.TestItem;
 begin
   Assert.AreEqual(1, FModel.itens.Count);
   Assert.AreEqual('000092', FModel.itens[0].cProd);
@@ -267,7 +271,7 @@ begin
   Assert.AreEqual(NFeCompoe, FModel.itens[0].indTot);
 end;
 
-procedure TGBFRNFeTestNFCeOneItem.TestPag;
+procedure TGBFRNFeTestNFCeOneItemStream.TestPag;
 begin
   Assert.AreEqual(1, FModel.pag.detPag.Count);
   Assert.AreEqual(StrToCurr('0'), FModel.pag.vTroco);
@@ -276,6 +280,6 @@ begin
 end;
 
 initialization
-  TDUnitX.RegisterTestFixture(TGBFRNFeTestBase);
+  TDUnitX.RegisterTestFixture(TGBFRNFeTestNFCeOneItemStream);
 
 end.

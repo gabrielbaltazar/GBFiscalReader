@@ -16,7 +16,7 @@ uses
   GBFR.NFe.Model.ResponsavelTecnico,
   System.Generics.Collections;
 
-type TGBRFNFeModel = class
+type TGBFRNFeModel = class
   private
     Fide: TGBFRNFeModelIde;
     Femit: TGBFRNFeModelEmitente;
@@ -25,7 +25,7 @@ type TGBRFNFeModel = class
     Fitens: TObjectList<TGBFRNFeModelItem>;
     Fpag: TGBFRNFeModelPagamento;
     FinfRespTec: TGBFRNFeModelResponsavelTecnico;
-    FprotNFe: TGBRFNFeModelProtocolo;
+    FprotNFe: TGBFRNFeModelProtocolo;
     FinfAdic: TGBFRNFeModelInfAdic;
     FId: String;
     Fversao: String;
@@ -43,7 +43,7 @@ type TGBRFNFeModel = class
     property pag: TGBFRNFeModelPagamento read Fpag write Fpag;
     property infAdic: TGBFRNFeModelInfAdic read FinfAdic write FinfAdic;
     property infRespTec: TGBFRNFeModelResponsavelTecnico read FinfRespTec write FinfRespTec;
-    property protNFe: TGBRFNFeModelProtocolo read FprotNFe write FprotNFe;
+    property protNFe: TGBFRNFeModelProtocolo read FprotNFe write FprotNFe;
 
     constructor create;
     destructor  Destroy; override;
@@ -53,21 +53,21 @@ implementation
 
 { TGBRFNFeModel }
 
-constructor TGBRFNFeModel.create;
+constructor TGBFRNFeModel.create;
 begin
   Fide        := TGBFRNFeModelIde.Create;
   Femit       := TGBFRNFeModelEmitente.create;
   Fdest       := TGBFRNFeModelDestinatario.create;
   FISSQNTot   := TGBFRNFeModelISSQNTot.Create;
   FICMSTot    := TGBFRNFeModelICMSTot.Create;
-  FprotNFe    := TGBRFNFeModelProtocolo.Create;
+  FprotNFe    := TGBFRNFeModelProtocolo.Create;
   FinfRespTec := TGBFRNFeModelResponsavelTecnico.Create;
   Fpag        := TGBFRNFeModelPagamento.create;
   FinfAdic    := TGBFRNFeModelInfAdic.Create;
   Fitens      := TObjectList<TGBFRNFeModelItem>.create;
 end;
 
-destructor TGBRFNFeModel.Destroy;
+destructor TGBFRNFeModel.Destroy;
 begin
   Fide.Free;
   Femit.Free;

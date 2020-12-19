@@ -25,7 +25,6 @@ type TGBFRXmlBase = class(TInterfacedObject)
     procedure loadXmlContent(Value: String);
     procedure loadXmlFile   (Value: String);
 
-
   public
     constructor create;
     destructor Destroy; override;

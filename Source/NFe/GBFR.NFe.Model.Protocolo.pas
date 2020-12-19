@@ -5,7 +5,7 @@ interface
 uses
   GBFR.NFe.Model.Types;
 
-type TGBRFNFeModelProtocolo = class
+type TGBFRNFeModelProtocolo = class
   private
     FchNFe: String;
     FnProt: String;

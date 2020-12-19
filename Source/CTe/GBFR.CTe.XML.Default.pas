@@ -41,6 +41,7 @@ type TGBFRCTeXMLDefault = class(TGBFRXmlBase, IGBFRCTeXML)
   protected
     function loadFromContent(Value: String): TGBFRCTeModel;
     function loadFromFile   (Value: String): TGBFRCTeModel;
+    function loadFromStream (Value: TStream): TGBFRCTeModel;
 
   public
     class function New: IGBFRCTeXML;
@@ -86,6 +87,21 @@ begin
     result := loadFromContent(xmlFile.Text);
   finally
     xmlFile.Free;
+  end;
+end;
+
+function TGBFRCTeXMLDefault.loadFromStream(Value: TStream): TGBFRCTeModel;
+var
+  stringStream: TStringStream;
+  content: string;
+begin
+  stringStream := TStringStream.Create;
+  try
+    stringStream.LoadFromStream(Value);
+    content := stringStream.DataString;
+    result  := loadFromContent(content);
+  finally
+    stringStream.Free;
   end;
 end;
 
