@@ -1,4 +1,4 @@
-unit GBFR.NFe.Test.Base;
+﻿unit GBFR.NFe.Test.Base;
 
 interface
 
@@ -11,7 +11,8 @@ type
   TGBFRNFeTestBase = class
 
   protected
-    function LoadXMLResource(Name: String): string;
+    function LoadXMLResource      (Name: String): string;
+    function LoadXMLResourceStream(Name: String): TStream;
 
   end;
 
@@ -29,13 +30,19 @@ begin
     stream := TStringStream.Create;
     try
       stream.LoadFromStream(resource);
-      result := stream.DataString.Replace('﻿', '');
+      result := stream.DataString;
+      result := result.Replace('ï»¿', '');
     finally
       stream.Free;
     end;
   finally
     resource.Free;
   end;
+end;
+
+function TGBFRNFeTestBase.LoadXMLResourceStream(Name: String): TStream;
+begin
+  result := TStringStream.Create(LoadXMLResource(Name));
 end;
 
 end.

@@ -20,7 +20,7 @@ type
   TGBFRNFeTestNFCeMoreItems = class(TGBFRNFeTestBase)
 
   private
-    FModel : TGBRFNFeModel;
+    FModel : TGBFRNFeModel;
 
   public
     [Test]

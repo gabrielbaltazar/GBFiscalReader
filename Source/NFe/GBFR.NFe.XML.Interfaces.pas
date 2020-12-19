@@ -3,15 +3,17 @@ unit GBFR.NFe.XML.Interfaces;
 interface
 
 uses
-  GBFR.NFe.Model.Classes;
+  GBFR.NFe.Model.Classes,
+  System.Classes;
 
 type
-  TGBRFNFeModel = GBFR.NFe.Model.Classes.TGBRFNFeModel;
+  TGBFRNFeModel = GBFR.NFe.Model.Classes.TGBFRNFeModel;
 
   IGBFRNFeXML = interface
     ['{F77AAF88-CEA4-4534-AEF5-A43103A785EF}']
-    function loadFromContent(Value: String): TGBRFNFeModel;
-    function loadFromFile   (Value: String): TGBRFNFeModel;
+    function loadFromContent(Value: String): TGBFRNFeModel;
+    function loadFromFile   (Value: String): TGBFRNFeModel;
+    function loadFromStream (Value: TStream): TGBFRNFeModel;
   end;
 
 function XMLNFeReader: IGBFRNFeXML;

@@ -122,6 +122,7 @@
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.ISSQNTot.pas"/>
         <DCCReference Include="Source\GBFR.NFe.Test.NFeComISSQN.pas"/>
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.Item.Imposto.pas"/>
+        <DCCReference Include="Source\GBFR.NFe.Test.NFCe.OneItem.Stream.pas"/>
         <RcItem Include="Resources\41200699999999999999650020000000031000000117-nfce.xml">
             <ContainerId>ResourceItem</ContainerId>
             <ResourceType>RCDATA</ResourceType>
@@ -169,7 +170,7 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="Resources\nfeComNotaReferenciada.xml" Configuration="Debug" Class="ProjectFile">
+                <DeployFile LocalName="Resources\41200999999999999999650020000000481000000659-nfce.xml" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win32">
                         <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
@@ -208,7 +209,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Resources\41200999999999999999650020000000481000000659-nfce.xml" Configuration="Debug" Class="ProjectFile">
+                <DeployFile LocalName="Resources\nfeComNotaReferenciada.xml" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win32">
                         <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>

@@ -39,9 +39,9 @@ type
   TGBFRNFeModelISSQNTot           = GBFR.NFe.Model.ISSQNTot.TGBFRNFeModelISSQNTot;
   TGBFRNFeModelItem               = GBFR.NFe.Model.Item.TGBFRNFeModelItem;
   TGBFRNFeModelNFRef              = GBFR.NFe.Model.NFRef.TGBFRNFeModelNFRef;
-  TGBRFNFeModel                   = GBFR.NFe.Model.TGBRFNFeModel;
+  TGBFRNFeModel                   = GBFR.NFe.Model.TGBFRNFeModel;
   TGBFRNFeModelPagamento          = GBFR.NFe.Model.Pagamento.TGBFRNFeModelPagamento;
-  TGBRFNFeModelProtocolo          = GBFR.NFe.Model.Protocolo.TGBRFNFeModelProtocolo;
+  TGBFRNFeModelProtocolo          = GBFR.NFe.Model.Protocolo.TGBFRNFeModelProtocolo;
   TGBFRNFeModelResponsavelTecnico = GBFR.NFe.Model.ResponsavelTecnico.TGBFRNFeModelResponsavelTecnico;
 
 implementation

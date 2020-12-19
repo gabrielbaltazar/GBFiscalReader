@@ -15,7 +15,7 @@ uses
 type TGBFRNFeXMLDefault = class(TGBFRXmlBase, IGBFRNFeXML)
 
   private
-    FModel: TGBRFNFeModel;
+    FModel: TGBFRNFeModel;
     [Weak]
     FInfNFe: IXMLNode;
 
@@ -43,8 +43,9 @@ type TGBFRNFeXMLDefault = class(TGBFRXmlBase, IGBFRNFeXML)
     procedure loadTagImpostoII     (ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
     procedure loadTagImpostoISSQN  (ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
   protected
-    function loadFromContent(Value: String): TGBRFNFeModel;
-    function loadFromFile   (Value: String): TGBRFNFeModel;
+    function loadFromContent(Value: String): TGBFRNFeModel;
+    function loadFromFile   (Value: String): TGBFRNFeModel;
+    function loadFromStream (Value: TStream): TGBFRNFeModel;
 
   public
     class function New: IGBFRNFeXML;
@@ -536,11 +537,11 @@ begin
   result := Self.create;
 end;
 
-function TGBFRNFeXMLDefault.loadFromContent(Value: String): TGBRFNFeModel;
+function TGBFRNFeXMLDefault.loadFromContent(Value: String): TGBFRNFeModel;
 begin
   loadXmlContent(Value);
 
-  result := TGBRFNFeModel.create;
+  result := TGBFRNFeModel.create;
   try
     FModel := Result;
 
@@ -560,7 +561,7 @@ begin
   end;
 end;
 
-function TGBFRNFeXMLDefault.loadFromFile(Value: String): TGBRFNFeModel;
+function TGBFRNFeXMLDefault.loadFromFile(Value: String): TGBFRNFeModel;
 var
   xmlFile: TStrings;
 begin
@@ -570,6 +571,21 @@ begin
     result := loadFromContent(xmlFile.Text);
   finally
     xmlFile.Free;
+  end;
+end;
+
+function TGBFRNFeXMLDefault.loadFromStream(Value: TStream): TGBFRNFeModel;
+var
+  stringStream: TStringStream;
+  content : string;
+begin
+  stringStream := TStringStream.Create;
+  try
+    stringStream.LoadFromStream(Value);
+    content := stringStream.DataString.Replace('﻿', '');
+    Result  := loadFromContent(content)
+  finally
+    stringStream.Free;
   end;
 end;
 
