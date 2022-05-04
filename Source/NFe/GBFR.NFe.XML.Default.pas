@@ -1,4 +1,4 @@
-unit GBFR.NFe.XML.Default;
+﻿unit GBFR.NFe.XML.Default;
 
 interface
 
@@ -35,17 +35,17 @@ type TGBFRNFeXMLDefault = class(TGBFRXmlBase, IGBFRNFeXML)
     procedure loadTagInfRespTec;
     procedure loadTagProtNFe;
 
-    procedure loadTagImposto       (ANodeDet: IXMLNode);
-    procedure loadTagImpostoICMS   (ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
-    procedure loadTagImpostoPIS    (ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
-    procedure loadTagImpostoCOFINS (ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
-    procedure loadTagImpostoIPI    (ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
-    procedure loadTagImpostoII     (ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
-    procedure loadTagImpostoISSQN  (ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
+    procedure loadTagImposto(ANodeDet: IXMLNode);
+    procedure loadTagImpostoICMS(ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
+    procedure loadTagImpostoPIS(ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
+    procedure loadTagImpostoCOFINS(ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
+    procedure loadTagImpostoIPI(ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
+    procedure loadTagImpostoII(ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
+    procedure loadTagImpostoISSQN(ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
   protected
     function loadFromContent(Value: String): TGBFRNFeModel;
-    function loadFromFile   (Value: String): TGBFRNFeModel;
-    function loadFromStream (Value: TStream): TGBFRNFeModel;
+    function loadFromFile(Value: String): TGBFRNFeModel;
+    function loadFromStream(Value: TStream): TGBFRNFeModel;
 
   public
     class function New: IGBFRNFeXML;
@@ -186,26 +186,30 @@ begin
   if not Assigned(nodeImposto) then
     Exit;
 
-  AItem.imposto.ICMS.CST        := GetNodeStr(nodeImposto, 'CST');
-  AItem.imposto.ICMS.orig       := GetNodeStr(nodeImposto, 'orig');
-  AItem.imposto.ICMS.vBC        := GetNodeCurrency(nodeImposto, 'vBC');
-  AItem.imposto.ICMS.pICMS      := GetNodeCurrency(nodeImposto, 'pICMS');
-  AItem.imposto.ICMS.vICMS      := GetNodeCurrency(nodeImposto, 'vICMS');
-  AItem.imposto.ICMS.pRedBC     := GetNodeCurrency(nodeImposto, 'pRedBC');
+  AItem.imposto.ICMS.CST := GetNodeStr(nodeImposto, 'CST');
+  AItem.imposto.ICMS.CSOSN := GetNodeStr(nodeImposto, 'CSOSN');
+  AItem.imposto.ICMS.orig := GetNodeStr(nodeImposto, 'orig');
+  AItem.imposto.ICMS.vBC := GetNodeCurrency(nodeImposto, 'vBC');
+  AItem.imposto.ICMS.pICMS := GetNodeCurrency(nodeImposto, 'pICMS');
+  AItem.imposto.ICMS.vICMS := GetNodeCurrency(nodeImposto, 'vICMS');
+  AItem.imposto.ICMS.pRedBC := GetNodeCurrency(nodeImposto, 'pRedBC');
   AItem.imposto.ICMS.vICMSDeson := GetNodeCurrency(nodeImposto, 'vICMSDeson');
-  AItem.imposto.ICMS.vBCSTRet   := GetNodeCurrency(nodeImposto, 'vBCSTRet');
+  AItem.imposto.ICMS.vBCSTRet := GetNodeCurrency(nodeImposto, 'vBCSTRet');
+  AItem.imposto.ICMS.vBCFCP := GetNodeCurrency(nodeImposto, 'vBCFCP');
+  AItem.imposto.ICMS.pFCP := GetNodeCurrency(nodeImposto, 'pFCP');
 
   AItem.imposto.ICMS.modBC.fromInteger( GetNodeInt(nodeImposto, 'modBC'));
   AItem.imposto.ICMS.modBCST.fromInteger(GetNodeInt(nodeImposto, 'modBCST'));
+  AItem.imposto.ICMS.motDesICMS.fromInteger(GetNodeInt(nodeImposto, 'motDesICMS'));
 
   if AItem.imposto.ICMS.vBCST > 0 then
   begin
-    AItem.imposto.ICMS.pST        := GetNodeCurrency(nodeImposto, 'pST');
+    AItem.imposto.ICMS.pST := GetNodeCurrency(nodeImposto, 'pST');
     AItem.imposto.ICMS.vICMSSTRet := GetNodeCurrency(nodeImposto, 'vICMSSTRet');
   end
   else
   begin
-    AItem.imposto.ICMS.vBCST   := GetNodeCurrency(nodeImposto, 'vBCST');
+    AItem.imposto.ICMS.vBCST := GetNodeCurrency(nodeImposto, 'vBCST');
     AItem.imposto.ICMS.pICMSST := GetNodeCurrency(nodeImposto, 'pICMSST');
     AItem.imposto.ICMS.vICMSST := GetNodeCurrency(nodeImposto, 'vICMSST');
   end;

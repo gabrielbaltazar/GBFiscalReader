@@ -72,6 +72,23 @@ type
                         NFeSTMargemValorAgregado,
                         NFeSTPauta);
 
+  TNFeMotivoDesoneracao = (
+    NFeMdTaxi,
+    NFeMdDeficienteFisico,
+    NFeMdProdutorAgropecuario,
+    NFeMdFrotista,
+    NFeMdDiplomatico,
+    NFeMdUtilitarios,
+    NFeMdSuframa,
+    NFeMdVendaOrgaoPublico,
+    NFeMdOutros,
+    NFeMdDeficienciaCondutor,
+    NFeMdDeficienciaNaoCondutor,
+    NFeMdOrgaoFomento,
+    NFeMdOlimpiadas,
+    NFeMdSolicitadoPeloFisco
+  );
+
   TNFeFormaPagamento = (NFeFPDinheiro,
                         NFeFPCheque,
                         NFeFPCartaoCredito,
@@ -112,6 +129,12 @@ type
     NFeIIFNao);
 
   TNFeAmbienteHelper = record helper for TNFeAmbiente
+  public
+    procedure fromInteger(Value: Integer);
+    function Value: Integer;
+  end;
+
+  TNFeMotivoDesoneracaoHelper = record helper for TNFeMotivoDesoneracao
   public
     procedure fromInteger(Value: Integer);
     function Value: Integer;
@@ -289,9 +312,9 @@ function TNFeIndicadorIEHelper.Value: Integer;
 begin
   result := -1;
   case Self of
-    NFeContribuinteICMS            : result := 1;
+    NFeContribuinteICMS : result := 1;
     NFeContribuinteIsentoInscricao : result := 2;
-    NFeNaoContribuinte             : result := 9;
+    NFeNaoContribuinte : result := 9;
   end;
 end;
 
@@ -730,6 +753,33 @@ end;
 function TNFeIndicadorIncentivoFiscalHelper.Value: Integer;
 begin
   result := Integer(Self) + 1;
+end;
+
+{ TNFeMotivoDesoneracaoHelper }
+
+procedure TNFeMotivoDesoneracaoHelper.fromInteger(Value: Integer);
+begin
+  Self := TNFeMotivoDesoneracao(Value - 1);
+end;
+
+function TNFeMotivoDesoneracaoHelper.Value: Integer;
+begin
+  case Self of
+    NFeMdTaxi: result := 1;
+    NFeMdDeficienteFisico: result := 2;
+    NFeMdProdutorAgropecuario: result := 3;
+    NFeMdFrotista: result := 4;
+    NFeMdDiplomatico: result := 5;
+    NFeMdUtilitarios: result := 6;
+    NFeMdSuframa: result := 7;
+    NFeMdVendaOrgaoPublico: result := 8;
+    NFeMdOutros: result := 9;
+    NFeMdDeficienciaCondutor: result := 10;
+    NFeMdDeficienciaNaoCondutor: result := 11;
+    NFeMdOrgaoFomento: result := 12;
+    NFeMdOlimpiadas: result := 16;
+    NFeMdSolicitadoPeloFisco: result := 90;
+  end;
 end;
 
 end.
