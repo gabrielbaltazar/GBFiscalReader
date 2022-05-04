@@ -22,10 +22,15 @@ type TGBFRNFeModelICMS = class
     FvBCST: Currency;
     FpICMSST: Currency;
     FvICMSST: Currency;
+    FCSOSN: String;
+    FmotDesICMS: TNFeMotivoDesoneracao;
+    FpFCP: Currency;
+    FvBCFCP: Currency;
 
   public
     property orig: string read Forig write Forig;
     property CST: String read FCST write FCST;
+    property CSOSN: String read FCSOSN write FCSOSN;
     property modBC: TNFeModalidadeBC read FmodBC write FmodBC;
     property vBC: Currency read FvBC write FvBC;
     property pICMS: Currency read FpICMS write FpICMS;
@@ -36,9 +41,12 @@ type TGBFRNFeModelICMS = class
     property vBCSTRet: Currency read FvBCSTRet write FvBCSTRet;
     property pST: Currency read FpST write FpST;
     property vICMSSTRet: Currency read FvICMSSTRet write FvICMSSTRet;
+    property motDesICMS: TNFeMotivoDesoneracao read FmotDesICMS write FmotDesICMS;
     property vBCST: Currency read FvBCST write FvBCST;
     property pICMSST: Currency read FpICMSST write FpICMSST;
     property vICMSST: Currency read FvICMSST write FvICMSST;
+    property vBCFCP: Currency read FvBCFCP write FvBCFCP;
+    property pFCP: Currency read FpFCP write FpFCP;
 end;
 
 implementation
