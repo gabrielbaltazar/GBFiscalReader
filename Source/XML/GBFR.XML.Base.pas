@@ -60,7 +60,7 @@ begin
   {$IF CompilerVersion >= 35.0}
   Result := StrToCurrDef(LStr.Replace('.', FormatSettings.DecimalSeparator), 0);
   {$ELSE}
-  Result := StrToCurrDef(str.Replace('.', ','), 0);
+  Result := StrToCurrDef(LStr.Replace('.', ','), 0);
   {$ENDIF}
 end;
 
@@ -82,7 +82,7 @@ begin
   {$IF CompilerVersion >= 35.0}
   Result := StrToFloatDef(LStr.Replace('.', FormatSettings.DecimalSeparator), 0);
   {$ELSE}
-  Result := StrToFloatDef(str.Replace('.', ','), 0);
+  Result := StrToFloatDef(LStr.Replace('.', ','), 0);
   {$ENDIF}
 end;
 

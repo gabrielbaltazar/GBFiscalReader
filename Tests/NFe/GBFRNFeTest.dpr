@@ -15,7 +15,6 @@ uses
   TestInsight.DUnitX,
   {$ELSE}
   DUnitX.Loggers.Console,
-  DUnitX.Loggers.XML.NUnit,
   {$ENDIF }
   DUnitX.TestFramework,
   GBFR.NFe.Test.Base in 'Source\GBFR.NFe.Test.Base.pas',
@@ -49,7 +48,8 @@ uses
   GBFR.NFe.Model.ISSQNTot in '..\..\Source\NFe\GBFR.NFe.Model.ISSQNTot.pas',
   GBFR.NFe.Test.NFeComISSQN in 'Source\GBFR.NFe.Test.NFeComISSQN.pas',
   GBFR.NFe.Model.Item.Imposto in '..\..\Source\NFe\GBFR.NFe.Model.Item.Imposto.pas',
-  GBFR.NFe.Test.NFCe.OneItem.Stream in 'Source\GBFR.NFe.Test.NFCe.OneItem.Stream.pas';
+  GBFR.NFe.Test.NFCe.OneItem.Stream in 'Source\GBFR.NFe.Test.NFCe.OneItem.Stream.pas',
+  GBFR.NFe.Test.NFCePayments in 'Source\GBFR.NFe.Test.NFCePayments.pas';
 
 //
 {$IFNDEF TESTINSIGHT}

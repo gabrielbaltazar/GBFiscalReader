@@ -408,18 +408,18 @@ var
   LPagamento: TGBFRNFeModelFormaPagamento;
   LNodePag: IXMLNode;
   LNodeDetPag: IXMLNode;
-  I: Integer;
+  LNodeCard: IXMLNode;
 begin
   LNodePag := FInfNFe.ChildNodes.FindNode('pag');
   if not Assigned(LNodePag) then
     Exit;
 
   FModel.pag.vTroco := GetNodeCurrency(LNodePag, 'vTroco');
+  LNodeDetPag := LNodePag.ChildNodes.FindNode('detPag');
+  if not Assigned(LNodeDetPag) then
+    Exit;
 
-  LNodePag.ChildNodes.First;
-  for I := 0 to Pred(LNodePag.ChildNodes.Count) do
-  begin
-    LNodeDetPag := LNodePag.ChildNodes.Get(I);
+  repeat
     LPagamento := TGBFRNFeModelFormaPagamento.Create;
     try
       LPagamento.vPag := GetNodeCurrency(LNodeDetPag, 'vPag');
@@ -430,12 +430,23 @@ begin
       LPagamento.tpIntegra.fromInteger(GetNodeInt(LNodeDetPag, 'tpIntegra', 1));
       LPagamento.tBand.fromString(GetNodeStr(LNodeDetPag, 'tBand', '99'));
 
+      LNodeCard := LNodeDetPag.ChildNodes.FindNode('card');
+      if Assigned(LNodeCard) then
+      begin
+        LPagamento.CNPJ := GetNodeStr(LNodeCard, 'CNPJ');
+        LPagamento.cAut := GetNodeStr(LNodeCard, 'cAut');
+        LPagamento.tpIntegra.fromInteger(GetNodeInt(LNodeCard, 'tpIntegra', 1));
+        LPagamento.tBand.fromString(GetNodeStr(LNodeCard, 'tBand', '99'));
+      end;
+
       FModel.pag.detPag.Add(LPagamento);
     except
       LPagamento.Free;
       raise;
     end;
-  end;
+
+    LNodeDetPag := LNodeDetPag.NextSibling;
+  until (LNodeDetPag = nil) or (LNodeDetPag.ChildNodes.FindNode('vPag') = nil);
 end;
 
 procedure TGBFRNFeXMLDefault.loadTagProtNFe;

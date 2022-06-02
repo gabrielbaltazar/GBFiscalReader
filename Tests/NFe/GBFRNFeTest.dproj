@@ -55,6 +55,7 @@
         <SanitizedProjectName>GBFRNFeTest</SanitizedProjectName>
         <VerInfo_Locale>1046</VerInfo_Locale>
         <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <DCC_Define>TESTINSIGHT;$(DCC_Define)</DCC_Define>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <DCC_UsePackage>DBXSqliteDriver;IndyIPCommon;RESTComponents;bindcompdbx;DBXInterBaseDriver;vcl;IndyIPServer;vclactnband;ZComponent;vclFireDAC;IndySystem;IconFontsImageListFMX;ZCore;frxDB26;tethering;svnui;dsnapcon;FireDACADSDriver;FireDACMSAccDriver;fmxFireDAC;vclimg;ZDbc;FireDAC;IconFontsImageList;vcltouch;vcldb;bindcompfmx;svn;frxe26;FireDACSqliteDriver;FireDACPgDriver;inetdb;soaprtl;DbxCommonDriver;fmx;FireDACIBDriver;fmxdae;xmlrtl;soapmidas;fmxobj;vclwinx;rtl;RFindUnit;DbxClientDriver;CustomIPTransport;vcldsnap;dbexpress;IndyCore;MobilePermissions;DOSCommandDR;vclx;boss_ide;bindcomp;appanalytics;dsnap;ZPlain;ZParseSql;FireDACCommon;IndyIPClient;bindcompvcl;RESTBackendComponents;VCLRESTComponents;dmvcframeworkRT;soapserver;dbxcds;VclSmp;adortl;dmvcframeworkDT;vclie;bindengine;DBXMySQLDriver;CloudService;dsnapxml;FireDACMySQLDriver;dbrtl;IndyProtocols;inetdbxpress;frx26;FireDACCommonODBC;FireDACCommonDriver;inet;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
@@ -123,6 +124,7 @@
         <DCCReference Include="Source\GBFR.NFe.Test.NFeComISSQN.pas"/>
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.Item.Imposto.pas"/>
         <DCCReference Include="Source\GBFR.NFe.Test.NFCe.OneItem.Stream.pas"/>
+        <DCCReference Include="Source\GBFR.NFe.Test.NFCePayments.pas"/>
         <RcItem Include="Resources\41200699999999999999650020000000031000000117-nfce.xml">
             <ContainerId>ResourceItem</ContainerId>
             <ResourceType>RCDATA</ResourceType>
@@ -142,6 +144,16 @@
             <ContainerId>ResourceItem</ContainerId>
             <ResourceType>RCDATA</ResourceType>
             <ResourceId>nfeComISSQN</ResourceId>
+        </RcItem>
+        <RcItem Include="Resources\nfceCom2Pagamentos.xml">
+            <ContainerId>ResourceItem</ContainerId>
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>nfceCom2Pagamentos</ResourceId>
+        </RcItem>
+        <RcItem Include="Resources\nfceCom2PagamentosETroco.xml">
+            <ContainerId>ResourceItem</ContainerId>
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>nfceCom2PagamentosETroco</ResourceId>
         </RcItem>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
@@ -192,6 +204,18 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="Resources\41200999999999999999650020000000481000000659-nfce.xml" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Resources\nfceCom2Pagamentos.xml" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Resources\nfceCom2PagamentosETroco.xml" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win32">
                         <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
