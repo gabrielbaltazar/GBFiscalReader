@@ -56,3 +56,30 @@ begin
   nfe := XMLNFeReader.loadFromFile('c:\nfe.xml');
 end;
 ```
+
+## SAT
+
+#### Add Uses
+```delphi
+uses
+  GBFR.SAT.Model.Types,
+  GBFR.SAT.XML.Interfaces;
+```
+
+#### Read From XML Content
+```delphi
+var
+  cfe : TGBFRSATModelCFe;
+begin
+  cfe := XMLSATReader.LoadFromContent('<?xml version="1.0" encoding="UTF-8"?><CFe...');
+end;
+```
+
+#### Read From XML File
+```delphi
+var
+  cfe : TGBFRSATModelCFe;
+begin
+  cfe := XMLSATReader.loadFromFile('c:\cfe.xml');
+end;
+```
