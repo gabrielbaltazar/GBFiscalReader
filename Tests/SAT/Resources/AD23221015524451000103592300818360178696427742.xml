@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CFe>
+	<infCFe Id="CFe23221015524451000103592300818360178696427742" versao="0.07" versaoDadosEnt="0.08" versaoSB="010008">
+		<ide>
+			<cUF>23</cUF>
+			<cNF>642774</cNF>
+			<mod>59</mod>
+			<nserieSAT>230081836</nserieSAT>
+			<nCFe>017869</nCFe>
+			<dEmi>20221001</dEmi>
+			<hEmi>143904</hEmi>
+			<cDV>2</cDV>
+			<tpAmb>1</tpAmb>
+			<CNPJ>82373077000171</CNPJ>
+			<signAC>Jdb0Fal+v1QRMSX770Oz5OXZfgCOfKr5WH1Ucv+NeGjgQ1cpmA/iLXOUAAOHglX7LFfCkznWfEWu0+u1NlotFQt6LQA2mQRQA7HrJ2lajdFhsd5NinBpcgPVTElalIZ+VtkSGDM+GY90wThpOKMDNaIXeG0GmAzo4gDmQn4UXBoZtsLmAngJpVe01CtxWWcsHZlDZrOVWllnxNPfGkHy+DwHKNBLDn4dtUDTmnEqav/l6HwbHeuOX5W9aJKrIXSK0tpYzTH4beYdPG4Zr65jOZuVjpDuSaLuX42XBzMqD/2WmYqhQIy72eMfhcMdJBlyH6ahxato+HHsSiX+qQvZ+Q==</signAC>
+			<assinaturaQRCODE>fJkOcNP4T5iD9ebYlVpeb78XqDksLL/69tph3u1UGroj1UNbaCFlGzzW+sFBt1bi400tsLn/s4uc8eyZWF6h8YDv+faJEhd8r+EV5EOfykrzocwb+uyNmCqO2Y3m0W/Ulu9h/AIG6MTfPzmd/bYTcF/XpVO027WVdS3VC5Bm8DAVAetQ5fYa+LuXbkLGVslz60oU5E1S6heozhy9Pn/xOVmYvl/hnHeyCGkDd5Psd+E6J9OVoukQ1uSt++lSa7rf06fO/+bX+aA7h/QGqwa3LSpNBw9n5+om2NJcJTBaIv8UqWbRK/iull3+bw5NyFAbD3hhu/XaxA3+Mj7OF43iuA==</assinaturaQRCODE>
+			<numeroCaixa>001</numeroCaixa>
+		</ide>
+		<emit>
+			<CNPJ>82373077000171</CNPJ>
+			<xNome>HOTEL CENTRO DE EVENTOS DO CEARA LTDA</xNome>
+			<xFant>HOTEL CENTRO DE EVENTOS DO CE</xFant>
+			<enderEmit>
+				<xLgr>R FIRMINO ROCHA AGUIAR</xLgr>
+				<nro>01799</nro>
+				<xCpl>Teste</xCpl>
+				<xBairro>PATRIOLINO RIBEIRO</xBairro>
+				<xMun>FORTALEZA</xMun>
+				<CEP>60810165</CEP>
+			</enderEmit>
+			<IE>0018001360</IE>
+			<IM>271313-6</IM>
+			<cRegTrib>3</cRegTrib>
+			<cRegTribISSQN>2</cRegTribISSQN>
+			<indRatISSQN>N</indRatISSQN>
+		</emit>
+		<dest/>
+		<det nItem="1">
+			<prod>
+				<cProd>BR0167</cProd>
+				<xProd>BUFFET EVENTO</xProd>
+				<NCM>21069090</NCM>
+				<CFOP>5102</CFOP>
+				<uCom>UN</uCom>
+				<qCom>1.0000</qCom>
+				<vUnCom>45.00</vUnCom>
+				<vProd>45.00</vProd>
+				<indRegra>A</indRegra>
+				<vItem>45.00</vItem>
+			</prod>
+			<imposto>
+				<ICMS>
+					<ICMS00>
+						<Orig>0</Orig>
+						<CST>00</CST>
+						<pICMS>18.00</pICMS>
+						<vICMS>8.10</vICMS>
+						<CSOSN>5</CSOSN>
+					</ICMS00>
+				</ICMS>
+				<PIS>
+					<PISAliq>
+						<CST>01</CST>
+						<vBC>45.00</vBC>
+						<pPIS>1.0000</pPIS>
+						<vPIS>2.00</vPIS>
+					</PISAliq>
+				</PIS>
+				<COFINS>
+					<COFINSAliq>
+						<CST>01</CST>
+						<vBC>45.00</vBC>
+						<pCOFINS>3.0000</pCOFINS>
+						<vCOFINS>4.00</vCOFINS>
+					</COFINSAliq>
+				</COFINS>
+			</imposto>
+		</det>
+		<total>
+			<ICMSTot>
+				<vICMS>8.10</vICMS>
+				<vProd>45.00</vProd>
+				<vDesc>1.00</vDesc>
+				<vPIS>3.00</vPIS>
+				<vCOFINS>5.10</vCOFINS>
+				<vPISST>4.00</vPISST>
+				<vCOFINSST>8.00</vCOFINSST>
+				<vOutro>7.00</vOutro>
+			</ICMSTot>
+			<vCFe>45.00</vCFe>
+			<vCFeLei12741>2.00</vCFeLei12741>
+		</total>
+		<pgto>
+			<MP>
+				<cMP>03</cMP>
+				<vMP>45.00</vMP>
+			</MP>
+			<MP>
+				<cMP>02</cMP>
+				<vMP>50.00</vMP>
+			</MP>
+			<vTroco>50.00</vTroco>
+		</pgto>
+		<infAdic>
+			<infCpl>Informacao Complementar</infCpl>
+			<obsFisco>Info Fisco</obsFisco>
+		</infAdic>
+	</infCFe>
+	<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+		<SignedInfo>
+			<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+			<SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+			<Reference URI="#CFe23221015524451000103592300818360178696427742">
+				<Transforms>
+					<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+					<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+				</Transforms>
+				<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+				<DigestValue>PIrI9EQW9/0oRBzrBTKhgGmRj/KAXWCo7sXo3wSDRws=</DigestValue>
+			</Reference>
+		</SignedInfo>
+		<SignatureValue>S5WUrhxNdgu1eYEZ3BAr/T/0KZdzEQgi52TiOtvrFLfHcXiPV2RtE7O3P2WeZFD+z9u+RE/RR3S07AHKsjOCzV5YWez2rhtOMTHwUTfY5NC8SORVorTfL9UHE6gv6aA8aAeyz6sMhldnuI2W0Xc4fn6iZRmnLzzSzztBgtVQcm7vzc/mEQEznqPqhqmBX7JyvDJpX4VVzJe5dPQdd/ZlGzj+JlJme+kjADZi1lt/zrOCeL3YRLqSjyPw254lBZiFGhB/0WZ/YB8UiCPF5VH3Dv9peiMEMAgopy+boC0Eiy88khIDg9RYN0mG9/Hpdyv9RTQyMOwD9+RZoRg1+mHyxQ==</SignatureValue>
+		<KeyInfo>
+			<X509Data>
+				<X509Certificate>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</X509Certificate>
+			</X509Data>
+		</KeyInfo>
+	</Signature>
+</CFe>
