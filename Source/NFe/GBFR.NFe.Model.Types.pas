@@ -764,6 +764,7 @@ end;
 
 function TNFeMotivoDesoneracaoHelper.Value: Integer;
 begin
+  Result := -1;
   case Self of
     NFeMdTaxi: result := 1;
     NFeMdDeficienteFisico: result := 2;

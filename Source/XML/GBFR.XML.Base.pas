@@ -15,15 +15,15 @@ type TGBFRXmlBase = class(TInterfacedObject)
 
     function Iso8601ToDateTime(AValue: String): TDateTime;
 
-    function GetNodeStr      (ANode: IXMLNode; ATag: String; ADefault: String = ''): string;
-    function GetNodeFloat    (ANode: IXMLNode; ATag: String): Double;
-    function GetNodeCurrency (ANode: IXMLNode; ATag: String): Currency;
-    function GetNodeInt      (ANode: IXMLNode; ATag: String; ADefault: Integer = 0): Integer;
-    function GetNodeDate     (ANode: IXMLNode; ATag: String): TDateTime; virtual;
-    function GetNodeBoolInt  (ANode: IXMLNode; ATag: String): Boolean;
+    function GetNodeStr(ANode: IXMLNode; ATag: String; ADefault: String = ''): string;
+    function GetNodeFloat(ANode: IXMLNode; ATag: String): Double;
+    function GetNodeCurrency(ANode: IXMLNode; ATag: String): Currency;
+    function GetNodeInt(ANode: IXMLNode; ATag: String; ADefault: Integer = 0): Integer;
+    function GetNodeDate(ANode: IXMLNode; ATag: String): TDateTime; virtual;
+    function GetNodeBoolInt(ANode: IXMLNode; ATag: String): Boolean;
 
     procedure loadXmlContent(Value: String);
-    procedure loadXmlFile   (Value: String);
+    procedure loadXmlFile(Value: String);
 
   public
     constructor create;
@@ -46,51 +46,59 @@ end;
 
 function TGBFRXmlBase.GetNodeBoolInt(ANode: IXMLNode; ATag: String): Boolean;
 var
-  intVal: Integer;
+  LIntVal: Integer;
 begin
-  intVal := GetNodeInt(ANode, ATag);
-  Result := intVal > 0;
+  LIntVal := GetNodeInt(ANode, ATag);
+  Result := LIntVal > 0;
 end;
 
 function TGBFRXmlBase.GetNodeCurrency(ANode: IXMLNode; ATag: String): Currency;
 var
-  str: string;
+  LStr: string;
 begin
-  str    := GetNodeStr(ANode, ATag).Replace('.', ',');
-  Result := StrToCurrDef(str, 0);
+  LStr := GetNodeStr(ANode, ATag);
+  {$IF CompilerVersion >= 35.0}
+  Result := StrToCurrDef(LStr.Replace('.', FormatSettings.DecimalSeparator), 0);
+  {$ELSE}
+  Result := StrToCurrDef(LStr.Replace('.', ','), 0);
+  {$ENDIF}
 end;
 
 function TGBFRXmlBase.GetNodeDate(ANode: IXMLNode; ATag: String): TDateTime;
 var
-  str: string;
+  LStr: string;
 begin
-  result := 0;
-  str    := GetNodeStr(ANode, ATag);
-  if not str.IsEmpty then
-    Result := Iso8601ToDateTime(str);
+  Result := 0;
+  LStr := GetNodeStr(ANode, ATag);
+  if not LStr.IsEmpty then
+    Result := Iso8601ToDateTime(LStr);
 end;
 
 function TGBFRXmlBase.GetNodeFloat(ANode: IXMLNode; ATag: String): Double;
 var
-  str: string;
+  LStr: string;
 begin
-  str    := GetNodeStr(ANode, ATag).Replace('.', ',');
-  Result := StrToFloatDef(str, 0);
+  LStr := GetNodeStr(ANode, ATag);
+  {$IF CompilerVersion >= 35.0}
+  Result := StrToFloatDef(LStr.Replace('.', FormatSettings.DecimalSeparator), 0);
+  {$ELSE}
+  Result := StrToFloatDef(LStr.Replace('.', ','), 0);
+  {$ENDIF}
 end;
 
 function TGBFRXmlBase.GetNodeInt(ANode: IXMLNode; ATag: String; ADefault: Integer = 0): Integer;
 var
-  str: string;
+  LStr: string;
 begin
-  str    := GetNodeStr(ANode, ATag);
-  Result := StrToIntDef(str, ADefault);
+  LStr := GetNodeStr(ANode, ATag);
+  Result := StrToIntDef(LStr, ADefault);
 end;
 
 function TGBFRXmlBase.GetNodeStr(ANode: IXMLNode; ATag: String; ADefault: String = ''): string;
 begin
-  result := ADefault;
+  Result := ADefault;
   if ANode.ChildNodes.FindNode(ATag) <> nil then
-    result := ANode.ChildNodes.FindNode(ATag).Text;
+    Result := ANode.ChildNodes.FindNode(ATag).Text;
 end;
 
 function TGBFRXmlBase.Iso8601ToDateTime(AValue: String): TDateTime;
@@ -144,28 +152,28 @@ end;
 
 procedure TGBFRXmlBase.loadXmlContent(Value: String);
 var
-  xml : string;
+  LXml : string;
 begin
-  xml := Value.Replace(#$D#$A#9, '')
-              .Replace(#$A#9, '')
-              .Replace(#9, '')
-              .Replace(#$D, '')
-              .Replace(#$A, '');
+  LXml := Value.Replace(#$D#$A#9, '')
+               .Replace(#$A#9, '')
+               .Replace(#9, '')
+               .Replace(#$D, '')
+               .Replace(#$A, '');
 
   FXml.Active := False;
-  FXml.LoadFromXML(xml);
+  FXml.LoadFromXML(LXml);
 end;
 
 procedure TGBFRXmlBase.loadXmlFile(Value: String);
 var
-  arquivo: TStringList;
+  LArquivo: TStringList;
 begin
-  arquivo := TStringList.Create;
+  LArquivo := TStringList.Create;
   try
-    arquivo.LoadFromFile(Value);
-    loadXmlContent(arquivo.Text);
+    LArquivo.LoadFromFile(Value);
+    loadXmlContent(LArquivo.Text);
   finally
-    arquivo.Free;
+    LArquivo.Free;
   end;
 end;
 
