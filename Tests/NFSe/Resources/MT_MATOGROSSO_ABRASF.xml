@@ -44,15 +44,15 @@
               <Servico>
                 <Valores>
                   <ValorServicos>1512.00</ValorServicos>
-                  <ValorDeducoes>0.00</ValorDeducoes>
-                  <ValorPis>0.00</ValorPis>
-                  <ValorCofins>0.00</ValorCofins>
-                  <ValorInss>0.00</ValorInss>
-                  <ValorIr>0.00</ValorIr>
-                  <ValorCsll>0.00</ValorCsll>
-                  <OutrasRetencoes>0.00</OutrasRetencoes>
-                  <DescontoIncondicionado>0.00</DescontoIncondicionado>
-                  <DescontoCondicionado>0.00</DescontoCondicionado>
+                  <ValorDeducoes>1.00</ValorDeducoes>
+                  <ValorPis>2.00</ValorPis>
+                  <ValorCofins>4.00</ValorCofins>
+                  <ValorInss>3.00</ValorInss>
+                  <ValorIr>5.00</ValorIr>
+                  <ValorCsll>6.00</ValorCsll>
+                  <OutrasRetencoes>7.00</OutrasRetencoes>
+                  <DescontoIncondicionado>8.00</DescontoIncondicionado>
+                  <DescontoCondicionado>9.00</DescontoCondicionado>
                 </Valores>
                 <IssRetido>2</IssRetido>
                 <ItemListaServico>09.01</ItemListaServico>

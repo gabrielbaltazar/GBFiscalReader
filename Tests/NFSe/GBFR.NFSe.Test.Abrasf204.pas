@@ -125,15 +125,15 @@ begin
     .InfDeclaracaoPrestacaoServico.Servico.Valores;
 
   Assert.AreEqual<Currency>(1512, LValores.ValorServicos);
-  Assert.AreEqual<Currency>(0, LValores.ValorDeducoes);
-  Assert.AreEqual<Currency>(0, LValores.ValorPis);
-  Assert.AreEqual<Currency>(0, LValores.ValorCofins);
-  Assert.AreEqual<Currency>(0, LValores.ValorInss);
-  Assert.AreEqual<Currency>(0, LValores.ValorIr);
-  Assert.AreEqual<Currency>(0, LValores.ValorCsll);
-  Assert.AreEqual<Currency>(0, LValores.OutrasRetencoes);
-  Assert.AreEqual<Currency>(0, LValores.DescontoCondicionado);
-  Assert.AreEqual<Currency>(0, LValores.DescontoIncondicionado);
+  Assert.AreEqual<Currency>(1, LValores.ValorDeducoes);
+  Assert.AreEqual<Currency>(2, LValores.ValorPis);
+  Assert.AreEqual<Currency>(4, LValores.ValorCofins);
+  Assert.AreEqual<Currency>(3, LValores.ValorInss);
+  Assert.AreEqual<Currency>(5, LValores.ValorIr);
+  Assert.AreEqual<Currency>(6, LValores.ValorCsll);
+  Assert.AreEqual<Currency>(7, LValores.OutrasRetencoes);
+  Assert.AreEqual<Currency>(8, LValores.DescontoIncondicionado);
+  Assert.AreEqual<Currency>(9, LValores.DescontoCondicionado);
 end;
 
 procedure TGBFRNFSeTestAbrasf204.Setup;
