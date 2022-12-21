@@ -4,6 +4,7 @@ interface
 
 uses
   GBFR.NFSe.Model.Types,
+  GBFR.NFSe.Model.Classes,
   System.SysUtils,
   System.Generics.Collections,
   System.Classes;
@@ -76,6 +77,8 @@ type
   public
     constructor Create;
     destructor Destroy; override;
+
+    function ToModelNFSe: TGBFRNFSeModel;
 
     property InfNfse: TGBFRNFSeModelIssNetOnlineNFSeInfo read FInfNfse write FInfNfse;
   end;
@@ -310,6 +313,123 @@ destructor TGBFRNFSeModelIssNetOnlineNFSe.Destroy;
 begin
   FInfNfse.Free;
   inherited;
+end;
+
+function TGBFRNFSeModelIssNetOnlineNFSe.ToModelNFSe: TGBFRNFSeModel;
+var
+  LTomador: TGBFRNFSeModelIssNetOnlineTomador;
+  LServico: TGBFRNFSeModelIssNetOnlineServico;
+  LNFSeServico: TGBFRNFSeModelServico;
+begin
+  Result := TGBFRNFSeModel.Create;
+  try
+    {$REGION 'PRESTADOR'}
+    Result.Prestador.RazaoSocial := Self.FInfNfse.PrestadorServico.RazaoSocial;
+    Result.Prestador.NomeFantasia := Self.FInfNfse.PrestadorServico.NomeFantasia;
+    Result.Prestador.NumeroDocumento := Self.FInfNfse.PrestadorServico.IdentificacaoPrestador.FCpfCnpj.Cnpj;
+    if Result.Prestador.NumeroDocumento = EmptyStr then
+      Result.Prestador.NumeroDocumento := Self.FInfNfse.PrestadorServico.IdentificacaoPrestador.FCpfCnpj.Cpf;
+
+    Result.Prestador.InscricaoMunicipal := Self.FInfNfse.PrestadorServico.IdentificacaoPrestador.InscricaoMunicipal;
+    Result.Prestador.Telefone := Self.FInfNfse.PrestadorServico.Contato.Telefone;
+    Result.Prestador.Email := Self.FInfNfse.PrestadorServico.Contato.Email;
+    Result.Prestador.Endereco.Logradouro := Self.FInfNfse.PrestadorServico.Endereco.Endereco;
+    Result.Prestador.Endereco.Numero := Self.FInfNfse.PrestadorServico.Endereco.Numero;
+    Result.Prestador.Endereco.Complemento := Self.FInfNfse.PrestadorServico.Endereco.Complemento;
+    Result.Prestador.Endereco.CEP := Self.FInfNfse.PrestadorServico.Endereco.CEP;
+    Result.Prestador.Endereco.Bairro := Self.FInfNfse.PrestadorServico.Endereco.Bairro;
+    Result.Prestador.Endereco.CodigoCidade := Self.FInfNfse.PrestadorServico.Endereco.Cidade;
+    Result.Prestador.Endereco.UF := Self.FInfNfse.PrestadorServico.Endereco.Estado;
+    Result.Prestador.Endereco.CodigoPais := '1058';
+    Result.Prestador.Endereco.NomePais := 'Brasil';
+    {$ENDREGION}
+
+    {$REGION 'TOMADOR'}
+    LTomador := FInfNfse.TomadorServico;
+    Result.Tomador.RazaoSocial := LTomador.RazaoSocial;
+    Result.Tomador.NomeFantasia := LTomador.RazaoSocial;
+    Result.Tomador.NumeroDocumento := LTomador.IdentificacaoTomador.CpfCnpj.Cnpj;
+    if Result.Tomador.NumeroDocumento = EmptyStr then
+      Result.Tomador.NumeroDocumento := LTomador.IdentificacaoTomador.CpfCnpj.Cpf;
+
+    Result.Tomador.InscricaoMunicipal := LTomador.IdentificacaoTomador.InscricaoMunicipal;
+    Result.Tomador.Endereco.Logradouro := LTomador.Endereco.Endereco;
+    Result.Tomador.Endereco.Numero := LTomador.Endereco.Numero;
+    Result.Tomador.Endereco.Complemento := LTomador.Endereco.Complemento;
+    Result.Tomador.Endereco.CEP := LTomador.Endereco.CEP;
+    Result.Tomador.Endereco.Bairro := LTomador.Endereco.Bairro;
+    Result.Tomador.Endereco.CodigoCidade := LTomador.Endereco.Cidade;
+    Result.Tomador.Endereco.UF := LTomador.Endereco.Estado;
+    Result.Tomador.Telefone := LTomador.Contato.Telefone;
+    Result.Tomador.Email := LTomador.Contato.Email;
+    if Result.Tomador.Endereco.UF <> 'EX' then
+    begin
+      Result.Tomador.Endereco.CodigoPais := '1058';
+      Result.Tomador.Endereco.NomePais := 'Brasil';
+    end;
+    {$ENDREGION}
+
+    {$REGION 'SERVICOS'}
+    LServico := Self.InfNfse.Servico;
+    LNFSeServico := TGBFRNFSeModelServico.Create;
+    Result.Servicos.Add(LNFSeServico);
+    LNFSeServico.ItemListaServico := LServico.ItemListaServico;
+    LNFSeServico.Discriminacao := LServico.Discriminacao;
+    LNFSeServico.CodigoCnae := LServico.CodigoCnae;
+    LNFSeServico.CodigoTributacaoMunicipio := LServico.CodigoTributacaoMunicipio;
+    LNFSeServico.MunicipioPrestacao := LServico.MunicipioPrestacaoServico;
+    LNFSeServico.Valor := LServico.Valores.ValorServicos;
+    LNFSeServico.ValorIss := LServico.Valores.ValorIss;
+    LNFSeServico.ValorIssRetido := LServico.Valores.ValorIssRetido;
+    LNFSeServico.BaseCalculo := LServico.Valores.BaseCalculo;
+    LNFSeServico.Aliquota := LServico.Valores.Aliquota;
+    LNFSeServico.ValorLiquido := LServico.Valores.ValorLiquidoNfse;
+    LNFSeServico.ValorDeducoes := LServico.Valores.ValorDeducoes;
+    LNFSeServico.ValorPis := LServico.Valores.ValorPis;
+    LNFSeServico.ValorCofins := LServico.Valores.ValorCofins;
+    LNFSeServico.ValorInss := LServico.Valores.ValorInss;
+    LNFSeServico.ValorIr := LServico.Valores.ValorIr;
+    LNFSeServico.ValorCsll := LServico.Valores.ValorCsll;
+    LNFSeServico.OutrasRetencoes := LServico.Valores.OutrasRetencoes;
+    LNFSeServico.DescontoCondicionado := LServico.Valores.DescontoCondicionado;
+    LNFSeServico.DescontoIncondicionado := LServico.Valores.DescontoIncondicionado;
+    LNFSeServico.IssRetido := LServico.Valores.IssRetido;
+    {$ENDREGION}
+
+    {$REGION 'NFSe VALORES'}
+    Result.ValorCredito := Self.InfNfse.ValorCredito;
+    Result.Valor := LServico.Valores.ValorServicos;
+    Result.ValorIss := LServico.Valores.ValorIss;
+    Result.ValorIssRetido := LServico.Valores.ValorIssRetido;
+    Result.BaseCalculo := LServico.Valores.BaseCalculo;
+    Result.ValorLiquido := LServico.Valores.ValorLiquidoNfse;
+    Result.ValorDeducoes := LServico.Valores.ValorDeducoes;
+    Result.ValorPis := LServico.Valores.ValorPis;
+    Result.ValorCofins := LServico.Valores.ValorCofins;
+    Result.ValorInss := LServico.Valores.ValorInss;
+    Result.ValorIr := LServico.Valores.ValorIr;
+    Result.ValorCsll := LServico.Valores.ValorCsll;
+    Result.OutrasRetencoes := LServico.Valores.OutrasRetencoes;
+    Result.DescontoCondicionado := LServico.Valores.DescontoCondicionado;
+    Result.DescontoIncondicionado := LServico.Valores.DescontoIncondicionado;
+    {$ENDREGION}
+
+    {$REGION 'NFSE'}
+    Result.RPS := EmptyStr;
+    Result.Serie := EmptyStr;
+    Result.TipoRPS := EmptyStr;
+    Result.Situacao := sNormal;
+    Result.Numero := FInfNfse.Numero;
+    Result.CodigoVerificacao := FInfNfse.CodigoVerificacao;
+    Result.DataEmissao := FInfNfse.DataEmissao;
+    Result.OutrasInformacoes := FInfNfse.OutrasInformacoes;
+    Result.OptanteSimplesNacional := FInfNfse.OptanteSimplesNacional;
+    Result.IncentivadorCultural := FInfNfse.IncentivadorCultural;
+    {$ENDREGION}
+  except
+    Result.Free;
+    raise;
+  end;
 end;
 
 end.

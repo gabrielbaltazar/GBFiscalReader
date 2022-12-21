@@ -4,6 +4,7 @@ interface
 
 uses
   GBFR.NFSe.Model.Types,
+  GBFR.NFSe.Model.Classes,
   System.SysUtils,
   System.Generics.Collections,
   System.Classes;
@@ -113,6 +114,8 @@ type
     constructor Create;
     destructor Destroy; override;
 
+    function ToModelNFSe: TGBFRNFSeModel;
+
     property Versao: string read FVersao write FVersao;
     property InfNfse: TGBFRNFSeModelAbrasf204NFSeInfo read FInfNfse write FInfNfse;
   end;
@@ -202,13 +205,13 @@ type
     FStatus: string;
     FNumero: string;
     FSerie: string;
-    FTipo: Integer;
+    FTipo: string;
     FDataEmissaoRps: TDateTime;
     function GetSituacao: TNFSeSituacao;
   public
     property Numero: string read FNumero write FNumero;
     property Serie: string read FSerie write FSerie;
-    property Tipo: Integer read FTipo write FTipo;
+    property Tipo: string read FTipo write FTipo;
     property DataEmissaoRps: TDateTime read FDataEmissaoRps write FDataEmissaoRps;
     property Status: string read FStatus write FStatus;
     property Situacao: TNFSeSituacao read GetSituacao;
@@ -268,8 +271,6 @@ type
     FDescontoIncondicionado: Currency;
     FDescontoCondicionado: Currency;
     FValTotTributos: Currency;
-    FValorIss: Currency;
-    FAliquota: Currency;
   public
     property ValorServicos: Currency read FValorServicos write FValorServicos;
     property ValorDeducoes: Currency read FValorDeducoes write FValorDeducoes;
@@ -280,8 +281,6 @@ type
     property ValorCsll: Currency read FValorCsll write FValorCsll;
     property OutrasRetencoes: Currency read FOutrasRetencoes write FOutrasRetencoes;
     property ValTotTributos: Currency read FValTotTributos write FValTotTributos;
-    property ValorIss: Currency read FValorIss write FValorIss;
-    property Aliquota: Currency read FAliquota write FAliquota;
     property DescontoIncondicionado: Currency read FDescontoIncondicionado write FDescontoIncondicionado;
     property DescontoCondicionado: Currency read FDescontoCondicionado write FDescontoCondicionado;
   end;
@@ -442,6 +441,122 @@ destructor TGBFRNFSeModelAbrasf204NFSe.Destroy;
 begin
   FInfNfse.Free;
   inherited;
+end;
+
+function TGBFRNFSeModelAbrasf204NFSe.ToModelNFSe: TGBFRNFSeModel;
+var
+  LTomador: TGBFRNFSeModelAbrasf204Tomador;
+  LServico: TGBFRNFSeModelAbrasf204Servico;
+  LNFSeServico: TGBFRNFSeModelServico;
+  LRPS: TGBFRNFSeModelAbrasf204RPS;
+begin
+  Result := TGBFRNFSeModel.Create;
+  try
+    {$REGION 'PRESTADOR'}
+    Result.Prestador.RazaoSocial := Self.FInfNfse.PrestadorServico.RazaoSocial;
+    Result.Prestador.NomeFantasia := Self.FInfNfse.PrestadorServico.NomeFantasia;
+    Result.Prestador.NumeroDocumento := Self.FInfNfse.PrestadorServico.Identificacao.FCpfCnpj.Cnpj;
+    if Result.Prestador.NumeroDocumento = EmptyStr then
+      Result.Prestador.NumeroDocumento := Self.FInfNfse.PrestadorServico.Identificacao.FCpfCnpj.Cpf;
+
+    Result.Prestador.InscricaoMunicipal := Self.FInfNfse.PrestadorServico.FIdentificacao.FInscricaoMunicipal;
+    Result.Prestador.Telefone := Self.FInfNfse.PrestadorServico.Contato.Telefone;
+    Result.Prestador.Email := Self.FInfNfse.PrestadorServico.Contato.Email;
+    Result.Prestador.Endereco.Logradouro := Self.FInfNfse.PrestadorServico.Endereco.Endereco;
+    Result.Prestador.Endereco.Numero := Self.FInfNfse.PrestadorServico.Endereco.Numero;
+    Result.Prestador.Endereco.Complemento := Self.FInfNfse.PrestadorServico.Endereco.Complemento;
+    Result.Prestador.Endereco.CEP := Self.FInfNfse.PrestadorServico.Endereco.CEP;
+    Result.Prestador.Endereco.Bairro := Self.FInfNfse.PrestadorServico.Endereco.Bairro;
+    Result.Prestador.Endereco.CodigoCidade := Self.FInfNfse.PrestadorServico.Endereco.CodigoMunicipio;
+    Result.Prestador.Endereco.UF := Self.FInfNfse.PrestadorServico.Endereco.UF;
+    Result.Prestador.Endereco.CodigoPais := '1058';
+    Result.Prestador.Endereco.NomePais := 'Brasil';
+    {$ENDREGION}
+
+    {$REGION 'TOMADOR'}
+    LTomador := FInfNfse.DeclaracaoPrestacaoServico.InfDeclaracaoPrestacaoServico.TomadorServico;
+    Result.Tomador.RazaoSocial := LTomador.RazaoSocial;
+    Result.Tomador.NomeFantasia := LTomador.RazaoSocial;
+    Result.Tomador.Nif := LTomador.NifTomador;
+    Result.Tomador.NumeroDocumento := LTomador.IdentificacaoTomador.CpfCnpj.Cnpj;
+    if Result.Tomador.NumeroDocumento = EmptyStr then
+      Result.Tomador.NumeroDocumento := LTomador.IdentificacaoTomador.CpfCnpj.Cpf;
+
+    Result.Tomador.InscricaoMunicipal := LTomador.IdentificacaoTomador.InscricaoMunicipal;
+    Result.Tomador.Endereco.Logradouro := LTomador.Endereco.Endereco;
+    Result.Tomador.Endereco.Numero := LTomador.Endereco.Numero;
+    Result.Tomador.Endereco.Complemento := LTomador.Endereco.Complemento;
+    Result.Tomador.Endereco.CEP := LTomador.Endereco.CEP;
+    Result.Tomador.Endereco.Bairro := LTomador.Endereco.Bairro;
+    Result.Tomador.Endereco.CodigoCidade := LTomador.Endereco.CodigoMunicipio;
+    Result.Tomador.Endereco.UF := LTomador.Endereco.UF;
+    if LTomador.NifTomador = EmptyStr then
+    begin
+      Result.Tomador.Endereco.CodigoPais := '1058';
+      Result.Tomador.Endereco.NomePais := 'Brasil';
+    end;
+    {$ENDREGION}
+
+    {$REGION 'SERVICOS'}
+    LServico := Self.InfNfse.DeclaracaoPrestacaoServico.InfDeclaracaoPrestacaoServico.Servico;
+    LNFSeServico := TGBFRNFSeModelServico.Create;
+    Result.Servicos.Add(LNFSeServico);
+    LNFSeServico.ItemListaServico := LServico.ItemListaServico;
+    LNFSeServico.Discriminacao := LServico.Discriminacao;
+    LNFSeServico.CodigoCnae := LServico.CodigoCnae;
+    LNFSeServico.CodigoTributacaoMunicipio := LServico.CodigoTributacaoMunicipio;
+    LNFSeServico.MunicipioPrestacao := LServico.MunicipioIncidencia;
+    LNFSeServico.Valor := LServico.Valores.ValorServicos;
+    LNFSeServico.ValorIss := Self.InfNfse.ValoresNfse.ValorIss;
+    LNFSeServico.BaseCalculo := Self.InfNfse.ValoresNfse.BaseCalculo;
+    LNFSeServico.Aliquota := Self.InfNfse.ValoresNfse.Aliquota;
+    LNFSeServico.ValorLiquido := Self.InfNfse.ValoresNfse.ValorLiquidoNfse;
+    LNFSeServico.ValorDeducoes := LServico.Valores.ValorDeducoes;
+    LNFSeServico.ValorPis := LServico.Valores.ValorPis;
+    LNFSeServico.ValorCofins := LServico.Valores.ValorCofins;
+    LNFSeServico.ValorInss := LServico.Valores.ValorInss;
+    LNFSeServico.ValorIr := LServico.Valores.ValorIr;
+    LNFSeServico.ValorCsll := LServico.Valores.ValorCsll;
+    LNFSeServico.OutrasRetencoes := LServico.Valores.OutrasRetencoes;
+    LNFSeServico.DescontoCondicionado := LServico.Valores.DescontoCondicionado;
+    LNFSeServico.DescontoIncondicionado := LServico.Valores.DescontoIncondicionado;
+    LNFSeServico.IssRetido := LServico.IssRetido;
+    {$ENDREGION}
+
+    {$REGION 'NFSe VALORES'}
+    Result.ValorCredito := Self.InfNfse.ValorCredito;
+    Result.Valor := LServico.Valores.ValorServicos;
+    Result.ValorIss := Self.InfNfse.ValoresNfse.ValorIss;
+    Result.BaseCalculo := Self.InfNfse.ValoresNfse.BaseCalculo;
+    Result.ValorLiquido := Self.InfNfse.ValoresNfse.ValorLiquidoNfse;
+    Result.ValorDeducoes := LServico.Valores.ValorDeducoes;
+    Result.ValorPis := LServico.Valores.ValorPis;
+    Result.ValorCofins := LServico.Valores.ValorCofins;
+    Result.ValorInss := LServico.Valores.ValorInss;
+    Result.ValorIr := LServico.Valores.ValorIr;
+    Result.ValorCsll := LServico.Valores.ValorCsll;
+    Result.OutrasRetencoes := LServico.Valores.OutrasRetencoes;
+    Result.DescontoCondicionado := LServico.Valores.DescontoCondicionado;
+    Result.DescontoIncondicionado := LServico.Valores.DescontoIncondicionado;
+    {$ENDREGION}
+
+    {$REGION 'NFSE'}
+    LRPS := FInfNfse.DeclaracaoPrestacaoServico.FInfDeclaracaoPrestacaoServico.Rps;
+    Result.RPS := LRPS.FNumero;
+    Result.Serie := LRPS.Serie;
+    Result.TipoRPS := LRPS.Tipo;
+    Result.Situacao := LRPS.GetSituacao;
+    Result.Numero := FInfNfse.Numero;
+    Result.CodigoVerificacao := FInfNfse.CodigoVerificacao;
+    Result.DataEmissao := FInfNfse.DataEmissao;
+    Result.OutrasInformacoes := FInfNfse.OutrasInformacoes;
+    Result.OptanteSimplesNacional := FInfNfse.DeclaracaoPrestacaoServico.FInfDeclaracaoPrestacaoServico.OptanteSimplesNacional;
+    Result.IncentivadorCultural := False;
+    {$ENDREGION}
+  except
+    Result.Free;
+    raise;
+  end;
 end;
 
 { TGBFRNFSeModelAbrasf204RPS }

@@ -22,6 +22,7 @@ type
     function GetNodeDate(ANode: IXMLNode; ATag: string): TDateTime; virtual;
     function GetNodeBoolInt(ANode: IXMLNode; ATag: string): Boolean;
 
+    function LoadTag(ANodePai: IXMLNode; ATag: string): IXMLNode;
     procedure LoadXmlContent(AValue: string);
     procedure LoadXmlFile(AValue: string);
   public
@@ -146,6 +147,23 @@ begin
         if (Y <= 9999) and ((M - 1) < 12) and ((D - 1) < 31) and (HH < 24) and (MI < 60) and (SS < 60) then
           Result := EncodeDate(Y, M, D) + EncodeTime(HH, MI, SS, 0);
       end;
+  end;
+end;
+
+function TGBFRXmlBase.LoadTag(ANodePai: IXMLNode; ATag: string): IXMLNode;
+var
+  LSplit: TArray<string>;
+  I: Integer;
+begin
+  LSplit := ATag.Split([',']);
+  Result := ANodePai.ChildNodes.FindNode(LSplit[0]);
+  if not Assigned(Result) then
+    Exit;
+  for I := 1 to Pred(Length(LSplit)) do
+  begin
+    Result := Result.ChildNodes.FindNode(LSplit[I]);
+    if not Assigned(Result) then
+      Exit;
   end;
 end;
 

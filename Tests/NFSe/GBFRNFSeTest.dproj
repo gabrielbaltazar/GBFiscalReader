@@ -122,6 +122,11 @@
         <DCCReference Include="..\..\Source\NFSe\GBFR.NFSe.XML.Abrasf204.Interfaces.pas"/>
         <DCCReference Include="..\..\Source\NFSe\GBFR.NFSe.XML.Abrasf204.pas"/>
         <DCCReference Include="GBFR.NFSe.Test.Abrasf204.pas"/>
+        <DCCReference Include="..\..\Source\NFSe\GBFR.NFSe.XML.IssNetOnline.Interfaces.pas"/>
+        <DCCReference Include="..\..\Source\NFSe\GBFR.NFSe.XML.IssNetOnline.pas"/>
+        <DCCReference Include="GBFR.NFSe.Test.IssNetOnline.pas"/>
+        <DCCReference Include="..\..\Source\NFSe\GBFR.NFSe.Model.Classes.pas"/>
+        <DCCReference Include="..\..\Source\NFSe\GBFR.NFSe.XML.Interfaces.pas"/>
         <RcItem Include="Resources\MT_MATOGROSSO_ABRASF.xml">
             <ContainerId>ResourceItem</ContainerId>
             <ResourceType>RCDATA</ResourceType>

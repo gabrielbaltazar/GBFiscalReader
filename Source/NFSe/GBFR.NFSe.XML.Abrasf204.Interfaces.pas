@@ -4,6 +4,8 @@ interface
 
 uses
   System.Classes,
+  GBFR.NFSe.XML.Interfaces,
+  GBFR.NFSe.Model.Classes,
   GBFR.NFSe.Model.Abrasf204,
   GBFR.NFSe.Model.Types;
 

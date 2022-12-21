@@ -21,7 +21,12 @@ uses
   GBFR.NFSe.Model.IssNetOnline in '..\..\Source\NFSe\GBFR.NFSe.Model.IssNetOnline.pas',
   GBFR.NFSe.XML.Abrasf204.Interfaces in '..\..\Source\NFSe\GBFR.NFSe.XML.Abrasf204.Interfaces.pas',
   GBFR.NFSe.XML.Abrasf204 in '..\..\Source\NFSe\GBFR.NFSe.XML.Abrasf204.pas',
-  GBFR.NFSe.Test.Abrasf204 in 'GBFR.NFSe.Test.Abrasf204.pas';
+  GBFR.NFSe.Test.Abrasf204 in 'GBFR.NFSe.Test.Abrasf204.pas',
+  GBFR.NFSe.XML.IssNetOnline.Interfaces in '..\..\Source\NFSe\GBFR.NFSe.XML.IssNetOnline.Interfaces.pas',
+  GBFR.NFSe.XML.IssNetOnline in '..\..\Source\NFSe\GBFR.NFSe.XML.IssNetOnline.pas',
+  GBFR.NFSe.Test.IssNetOnline in 'GBFR.NFSe.Test.IssNetOnline.pas',
+  GBFR.NFSe.Model.Classes in '..\..\Source\NFSe\GBFR.NFSe.Model.Classes.pas',
+  GBFR.NFSe.XML.Interfaces in '..\..\Source\NFSe\GBFR.NFSe.XML.Interfaces.pas';
 
 { keep comment here to protect the following conditional from being removed by the IDE when adding a unit }
 begin

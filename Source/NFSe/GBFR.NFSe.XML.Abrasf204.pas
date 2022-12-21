@@ -7,20 +7,20 @@ uses
   GBFR.NFSe.Model.Types,
   GBFR.NFSe.Model.Abrasf204,
   GBFR.XML.Base,
+  GBFR.NFSe.XML.Interfaces,
+  GBFR.NFSe.Model.Classes,
   System.Classes,
   System.SysUtils,
   Xml.XMLIntf,
   Xml.XMLDoc;
 
 type
-  TGBFRNFSeXMLAbrasf204 = class(TGBFRXmlBase, IGBFRNFSeXMLAbrasf204)
+  TGBFRNFSeXMLAbrasf204 = class(TGBFRXmlBase, IGBFRNFSeXMLAbrasf204, IGBFRNFSeXML)
   private
     [Weak]
     FNodeInfNfse: IXMLNode;
     FNFSe: TGBFRNFSeModelAbrasf204NFSe;
     FInfNFSe: TGBFRNFSeModelAbrasf204NFSeInfo;
-
-    function LoadTag(ANodePai: IXMLNode; ATag: string): IXMLNode;
 
     procedure LoadTagInfNFSe;
     procedure LoadTagValoresNFSe;
@@ -29,13 +29,17 @@ type
     procedure LoadTagPrestador;
     procedure LoadTagServico;
     procedure LoadTagTomador;
-
   protected
     function LoadFromContent(AValue: string): TGBFRNFSeModelAbrasf204NFSe;
     function LoadFromFile(AValue: string): TGBFRNFSeModelAbrasf204NFSe;
     function LoadFromStream(AValue: TStream): TGBFRNFSeModelAbrasf204NFSe;
+
+    function LoadNFSeFromContent(AValue: string): TGBFRNFSeModel;
+    function LoadNFSeFromFile(AValue: string): TGBFRNFSeModel;
+    function LoadNFSeFromStream(AValue: TStream): TGBFRNFSeModel;
   public
     class function New: IGBFRNFSeXMLAbrasf204;
+    class function NewNFSe: IGBFRNFSeXML;
   end;
 
 implementation
@@ -91,20 +95,39 @@ begin
   end;
 end;
 
-function TGBFRNFSeXMLAbrasf204.LoadTag(ANodePai: IXMLNode; ATag: string): IXMLNode;
+function TGBFRNFSeXMLAbrasf204.LoadNFSeFromContent(AValue: string): TGBFRNFSeModel;
 var
-  LSplit: TArray<string>;
-  I: Integer;
+  LAbrasf: TGBFRNFSeModelAbrasf204NFSe;
 begin
-  LSplit := ATag.Split([',']);
-  Result := ANodePai.ChildNodes.FindNode(LSplit[0]);
-  if not Assigned(Result) then
-    Exit;
-  for I := 1 to Pred(Length(LSplit)) do
-  begin
-    Result := Result.ChildNodes.FindNode(LSplit[I]);
-    if not Assigned(Result) then
-      Exit;
+  LAbrasf := LoadFromContent(AValue);
+  try
+    Result := LAbrasf.ToModelNFSe;
+  finally
+    LAbrasf.Free;
+  end;
+end;
+
+function TGBFRNFSeXMLAbrasf204.LoadNFSeFromFile(AValue: string): TGBFRNFSeModel;
+var
+  LAbrasf: TGBFRNFSeModelAbrasf204NFSe;
+begin
+  LAbrasf := LoadFromFile(AValue);
+  try
+    Result := LAbrasf.ToModelNFSe;
+  finally
+    LAbrasf.Free;
+  end;
+end;
+
+function TGBFRNFSeXMLAbrasf204.LoadNFSeFromStream(AValue: TStream): TGBFRNFSeModel;
+var
+  LAbrasf: TGBFRNFSeModelAbrasf204NFSe;
+begin
+  LAbrasf := LoadFromStream(AValue);
+  try
+    Result := LAbrasf.ToModelNFSe;
+  finally
+    LAbrasf.Free;
   end;
 end;
 
@@ -173,7 +196,7 @@ begin
   begin
     LPrestacao.Rps.Numero := GetNodeStr(LNodeRPS, 'Numero');
     LPrestacao.Rps.Serie := GetNodeStr(LNodeRPS, 'Serie');
-    LPrestacao.Rps.Tipo := GetNodeInt(LNodeRPS, 'Tipo');
+    LPrestacao.Rps.Tipo := GetNodeStr(LNodeRPS, 'Tipo');
     LPrestacao.Rps.DataEmissaoRps := GetNodeDate(LNodeRPS, 'DataEmissaoRps');
   end;
 
@@ -267,15 +290,12 @@ begin
   LServico.Valores.ValorCsll := GetNodeCurrency(LNode, 'ValorCsll');
   LServico.Valores.OutrasRetencoes := GetNodeCurrency(LNode, 'OutrasRetencoes');
   LServico.Valores.ValTotTributos := GetNodeCurrency(LNode, 'ValTotTributos');
-  LServico.Valores.ValorIss := GetNodeCurrency(LNode, 'ValorIss');
-  LServico.Valores.Aliquota := GetNodeCurrency(LNode, 'Aliquota');
   LServico.Valores.DescontoIncondicionado := GetNodeCurrency(LNode, 'DescontoIncondicionado');
   LServico.Valores.DescontoCondicionado := GetNodeCurrency(LNode, 'DescontoCondicionado');
 end;
 
 procedure TGBFRNFSeXMLAbrasf204.LoadTagTomador;
 var
-  LNode: IXMLNode;
   LNodeTomador: IXMLNode;
   LNodeIdentTomador: IXMLNode;
   LNodeEndereco: IXMLNode;
@@ -337,6 +357,11 @@ begin
 end;
 
 class function TGBFRNFSeXMLAbrasf204.New: IGBFRNFSeXMLAbrasf204;
+begin
+  Result := Self.Create;
+end;
+
+class function TGBFRNFSeXMLAbrasf204.NewNFSe: IGBFRNFSeXML;
 begin
   Result := Self.Create;
 end;

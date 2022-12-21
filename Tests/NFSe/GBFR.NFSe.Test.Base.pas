@@ -21,17 +21,26 @@ implementation
 function TGBFRNFSeTestBase.LoadXMLResource(AName: string): string;
 var
   LResource: TResourceStream;
-  LStream: TStringStream;
-begin
-  LResource := TResourceStream.Create(HInstance, AName, RT_RCDATA);
-  try
-    LStream := TStringStream.Create('', TEncoding.UTF8);
+
+  function LoadStream(AEncoding: TEncoding): string;
+  var
+    LStream: TStringStream;
+  begin
+    LStream := TStringStream.Create('', AEncoding);
     try
       LStream.LoadFromStream(LResource);
       Result := LStream.DataString;
-      Result := Result.Replace('﻿', '');
     finally
       LStream.Free;
+    end;
+  end;
+begin
+  LResource := TResourceStream.Create(HInstance, AName, RT_RCDATA);
+  try
+    try
+      Result := LoadStream(TEncoding.UTF8);
+    except
+      Result := LoadStream(TEncoding.ANSI);
     end;
   finally
     LResource.Free;

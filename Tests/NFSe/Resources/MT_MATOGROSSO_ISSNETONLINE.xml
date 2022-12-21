@@ -11,7 +11,7 @@
         <tc:OptanteSimplesNacional>2</tc:OptanteSimplesNacional>
         <tc:IncentivadorCultural>2</tc:IncentivadorCultural>
         <tc:Competencia>202211</tc:Competencia>
-        <tc:OutrasInformacoes>  PROCON/MT- Rua Baltazar Navarros, 567 - Bairro Bandeirantes CEP: 78010-020 Fone:151 e (65)3613-2100- PROCON MUNICIPAL-FONE:3641-8325</tc:OutrasInformacoes>
+        <tc:OutrasInformacoes>  PROCON/MT- Rua Baltazar Navarros, 567 </tc:OutrasInformacoes>
         <tc:Servico>
           <tc:ItemListaServico>901</tc:ItemListaServico>
           <tc:CodigoCnae>5510801</tc:CodigoCnae>
@@ -20,21 +20,21 @@
           <tc:MunicipioPrestacaoServico>5103403</tc:MunicipioPrestacaoServico>
           <tc:Valores>
             <tc:ValorServicos>135630</tc:ValorServicos>
-            <tc:ValorDeducoes>0</tc:ValorDeducoes>
-            <tc:ValorPis>0</tc:ValorPis>
-            <tc:ValorCofins>0</tc:ValorCofins>
-            <tc:ValorInss>0</tc:ValorInss>
-            <tc:ValorIr>0</tc:ValorIr>
-            <tc:ValorCsll>0</tc:ValorCsll>
-            <tc:IssRetido>2</tc:IssRetido>
-            <tc:OutrasRetencoes>0</tc:OutrasRetencoes>
+            <tc:ValorDeducoes>1</tc:ValorDeducoes>
+            <tc:ValorPis>2</tc:ValorPis>
+            <tc:ValorCofins>3</tc:ValorCofins>
+            <tc:ValorInss>4</tc:ValorInss>
+            <tc:ValorIr>5</tc:ValorIr>
+            <tc:ValorCsll>6</tc:ValorCsll>
+            <tc:IssRetido>1</tc:IssRetido>
+            <tc:OutrasRetencoes>7</tc:OutrasRetencoes>
             <tc:BaseCalculo>135630</tc:BaseCalculo>
             <tc:Aliquota>3</tc:Aliquota>
             <tc:ValorLiquidoNfse>135630</tc:ValorLiquidoNfse>
-            <tc:ValorIssRetido>0</tc:ValorIssRetido>
+            <tc:ValorIssRetido>8</tc:ValorIssRetido>
             <tc:ValorIss>4068.9</tc:ValorIss>
-            <tc:DescontoCondicionado>0</tc:DescontoCondicionado>
-            <tc:DescontoIncondicionado>0</tc:DescontoIncondicionado>
+            <tc:DescontoCondicionado>9</tc:DescontoCondicionado>
+            <tc:DescontoIncondicionado>10</tc:DescontoIncondicionado>
           </tc:Valores>
         </tc:Servico>
         <tc:PrestadorServico>
@@ -45,7 +45,7 @@
             <tc:InscricaoMunicipal>42782</tc:InscricaoMunicipal>
           </tc:IdentificacaoPrestador>
           <tc:RazaoSocial>PAIAGUÁS HOTÉIS LTDA</tc:RazaoSocial>
-          <tc:NomeFantasia>PAIAGUAIS HOTEIS                                            </tc:NomeFantasia>
+          <tc:NomeFantasia>PAIAGUAIS HOTEIS  </tc:NomeFantasia>
           <tc:Endereco>
             <tc:Endereco>Avenida Historiador Rubens de Mendonça</tc:Endereco>
             <tc:Numero>1718</tc:Numero>
@@ -63,6 +63,7 @@
           <tc:IdentificacaoTomador>
             <tc:CpfCnpj>
               <tc:Cnpj>15054480000140</tc:Cnpj>
+			  <tc:Cpf>15054480000141</tc:Cpf>
             </tc:CpfCnpj>
           </tc:IdentificacaoTomador>
           <tc:RazaoSocial>MEGA COMERCIALIZADORA DE ENERGIA ELETRICA LTDA  </tc:RazaoSocial>
@@ -84,7 +85,7 @@
           <tc:CodigoMunicipio>5103403</tc:CodigoMunicipio>
           <tc:Uf>MT</tc:Uf>
         </tc:OrgaoGerador>
-        <tc:ValorCredito>0</tc:ValorCredito>
+        <tc:ValorCredito>2</tc:ValorCredito>
       </tc:InfNfse>
       <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
         <SignedInfo>
