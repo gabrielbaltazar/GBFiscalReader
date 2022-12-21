@@ -1,0 +1,96 @@
+<ConsultarNfseServicoPrestadoResposta xmlns="http://www.abrasf.org.br/nfse.xsd">
+  <ListaNfse>
+    <CompNfse>
+      <Nfse versao="2.04">
+        <InfNfse>
+          <Numero>96398</Numero>
+          <CodigoVerificacao>3CAC2A7E9</CodigoVerificacao>
+          <DataEmissao>2022-12-13T13:11:22.480</DataEmissao>
+          <OutrasInformacoes> .</OutrasInformacoes>
+          <ValoresNfse>
+            <BaseCalculo>1512.00</BaseCalculo>
+            <Aliquota>3</Aliquota>
+            <ValorIss>45.36</ValorIss>
+            <ValorLiquidoNfse>1512.00</ValorLiquidoNfse>
+          </ValoresNfse>
+          <DescricaoCodigoTributacaoMunicípio>Hotel com Restaurante</DescricaoCodigoTributacaoMunicípio>
+          <ValorCredito>1.00</ValorCredito>
+          <PrestadorServico>
+            <RazaoSocial>PAIAGUÁS HOTÉIS LTDA</RazaoSocial>
+            <NomeFantasia>PAIAGUAIS HOTEIS    </NomeFantasia>
+            <Endereco>
+              <Endereco>Avenida Historiador Rubens de Mendonça</Endereco>
+              <Numero>1718</Numero>
+              <Bairro>Bosque da Saúde</Bairro>
+              <CodigoMunicipio>5103403</CodigoMunicipio>
+              <Uf>MT</Uf>
+              <Cep>78050000</Cep>
+            </Endereco>
+            <Contato>
+              <Telefone>656425353           </Telefone>
+              <Email>edduran@paiaguas.com.br</Email>
+            </Contato>
+          </PrestadorServico>
+          <OrgaoGerador>
+            <CodigoMunicipio>5103403</CodigoMunicipio>
+            <Uf>MT</Uf>
+          </OrgaoGerador>
+          <DeclaracaoPrestacaoServico>
+            <InfDeclaracaoPrestacaoServico>
+              <Rps>
+                <Status>1</Status>
+              </Rps>
+              <Competencia>2022-12-13</Competencia>
+              <Servico>
+                <Valores>
+                  <ValorServicos>1512.00</ValorServicos>
+                  <ValorDeducoes>0.00</ValorDeducoes>
+                  <ValorPis>0.00</ValorPis>
+                  <ValorCofins>0.00</ValorCofins>
+                  <ValorInss>0.00</ValorInss>
+                  <ValorIr>0.00</ValorIr>
+                  <ValorCsll>0.00</ValorCsll>
+                  <OutrasRetencoes>0.00</OutrasRetencoes>
+                  <DescontoIncondicionado>0.00</DescontoIncondicionado>
+                  <DescontoCondicionado>0.00</DescontoCondicionado>
+                </Valores>
+                <IssRetido>2</IssRetido>
+                <ItemListaServico>09.01</ItemListaServico>
+                <CodigoCnae>5510801</CodigoCnae>
+                <CodigoTributacaoMunicipio>5511501</CodigoTributacaoMunicipio>
+                <Discriminacao>DESPESAS COM HOSPEDAGEM CONFORME ABAIXO:</Discriminacao>
+                <CodigoMunicipio>5103403</CodigoMunicipio>
+                <ExigibilidadeISS>1</ExigibilidadeISS>
+                <MunicipioIncidencia>5103403</MunicipioIncidencia>
+              </Servico>
+              <Prestador>
+                <CpfCnpj>
+                  <Cnpj>01982156000188</Cnpj>
+                </CpfCnpj>
+                <InscricaoMunicipal>42782</InscricaoMunicipal>
+              </Prestador>
+              <TomadorServico>
+                <IdentificacaoTomador>
+                  <CpfCnpj>
+                    <Cnpj>00520556000109</Cnpj>
+                  </CpfCnpj>
+                </IdentificacaoTomador>
+                <RazaoSocial>SM TURISMO LTDA</RazaoSocial>
+                <Endereco>
+                  <Endereco>Rua Curt Hering</Endereco>
+                  <Numero>154</Numero>
+                  <Bairro>Centro</Bairro>
+                  <CodigoMunicipio>4202404</CodigoMunicipio>
+                  <Uf>SC</Uf>
+                  <Cep>89010030</Cep>
+                </Endereco>
+              </TomadorServico>
+              <OptanteSimplesNacional>2</OptanteSimplesNacional>
+            </InfDeclaracaoPrestacaoServico>
+          </DeclaracaoPrestacaoServico>
+        </InfNfse>
+      </Nfse>
+    </CompNfse>
+    <Pagina>1</Pagina>
+  </ListaNfse>
+</ConsultarNfseServicoPrestadoResposta>
