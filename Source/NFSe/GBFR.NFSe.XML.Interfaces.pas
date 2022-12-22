@@ -8,6 +8,11 @@ uses
   System.Classes;
 
 type
+  TGBFRNFSeModel = GBFR.NFSe.Model.Classes.TGBFRNFSeModel;
+  TGBFRNFSeModelEndereco = GBFR.NFSe.Model.Classes.TGBFRNFSeModelEndereco;
+  TGBFRNFSeModelPessoa = GBFR.NFSe.Model.Classes.TGBFRNFSeModelPessoa;
+  TGBFRNFSeModelServico = GBFR.NFSe.Model.Classes.TGBFRNFSeModelServico;
+
   IGBFRNFSeXML = interface
     ['{F2ACAB51-E7F8-4A26-B1BA-CFD01FD4FB2C}']
     function LoadNFSeFromContent(AValue: string): TGBFRNFSeModel;
