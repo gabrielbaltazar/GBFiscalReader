@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<ConsultarNfseRpsResposta xmlns:tc="http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_complexos.xsd" xmlns:ts="http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_simples.xsd" xmlns="http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_consultar_nfse_rps_resposta.xsd">
+  <CompNfse>
+    <tc:Nfse>
+      <tc:InfNfse>
+        <tc:Numero>96019</tc:Numero>
+        <tc:CodigoVerificacao> 86 FF D6</tc:CodigoVerificacao>
+        <tc:DataEmissao>2022-11-30T16:27:23</tc:DataEmissao>
+        <tc:NaturezaOperacao>1</tc:NaturezaOperacao>
+        <tc:RegimeEspecialTributacao>1</tc:RegimeEspecialTributacao>
+        <tc:OptanteSimplesNacional>2</tc:OptanteSimplesNacional>
+        <tc:IncentivadorCultural>2</tc:IncentivadorCultural>
+        <tc:Competencia>202211</tc:Competencia>
+        <tc:OutrasInformacoes>  PROCON/MT- Rua Baltazar Navarros, 567 </tc:OutrasInformacoes>
+        <tc:Servico>
+          <tc:ItemListaServico>901</tc:ItemListaServico>
+          <tc:CodigoCnae>5510801</tc:CodigoCnae>
+          <tc:CodigoTributacaoMunicipio>5510801</tc:CodigoTributacaoMunicipio>
+          <tc:Discriminacao>HOSPEDAGEM COM PENSÃO COMPLETA</tc:Discriminacao>
+          <tc:MunicipioPrestacaoServico>5103403</tc:MunicipioPrestacaoServico>
+          <tc:Valores>
+            <tc:ValorServicos>135630</tc:ValorServicos>
+            <tc:ValorDeducoes>1</tc:ValorDeducoes>
+            <tc:ValorPis>2</tc:ValorPis>
+            <tc:ValorCofins>3</tc:ValorCofins>
+            <tc:ValorInss>4</tc:ValorInss>
+            <tc:ValorIr>5</tc:ValorIr>
+            <tc:ValorCsll>6</tc:ValorCsll>
+            <tc:IssRetido>1</tc:IssRetido>
+            <tc:OutrasRetencoes>7</tc:OutrasRetencoes>
+            <tc:BaseCalculo>135630</tc:BaseCalculo>
+            <tc:Aliquota>3</tc:Aliquota>
+            <tc:ValorLiquidoNfse>135630</tc:ValorLiquidoNfse>
+            <tc:ValorIssRetido>8</tc:ValorIssRetido>
+            <tc:ValorIss>4068.9</tc:ValorIss>
+            <tc:DescontoCondicionado>9</tc:DescontoCondicionado>
+            <tc:DescontoIncondicionado>10</tc:DescontoIncondicionado>
+          </tc:Valores>
+        </tc:Servico>
+        <tc:PrestadorServico>
+          <tc:IdentificacaoPrestador>
+            <tc:CpfCnpj>
+              <tc:Cnpj>01982156000188</tc:Cnpj>
+            </tc:CpfCnpj>
+            <tc:InscricaoMunicipal>42782</tc:InscricaoMunicipal>
+          </tc:IdentificacaoPrestador>
+          <tc:RazaoSocial>PAIAGUÁS HOTÉIS LTDA</tc:RazaoSocial>
+          <tc:NomeFantasia>PAIAGUAIS HOTEIS  </tc:NomeFantasia>
+          <tc:Endereco>
+            <tc:Endereco>Avenida Historiador Rubens de Mendonça</tc:Endereco>
+            <tc:Numero>1718</tc:Numero>
+            <tc:Bairro>Bosque da Saúde</tc:Bairro>
+            <tc:Cidade>5103403</tc:Cidade>
+            <tc:Estado>MT</tc:Estado>
+            <tc:Cep>78050000</tc:Cep>
+          </tc:Endereco>
+          <tc:Contato>
+            <tc:Telefone>656425353</tc:Telefone>
+            <tc:Email>edduran@paiaguas.com.br</tc:Email>
+          </tc:Contato>
+        </tc:PrestadorServico>
+        <tc:TomadorServico>
+          <tc:IdentificacaoTomador>
+            <tc:CpfCnpj>
+              <tc:Cnpj>15054480000140</tc:Cnpj>
+			  <tc:Cpf>15054480000141</tc:Cpf>
+            </tc:CpfCnpj>
+          </tc:IdentificacaoTomador>
+          <tc:RazaoSocial>MEGA COMERCIALIZADORA DE ENERGIA ELETRICA LTDA  </tc:RazaoSocial>
+          <tc:Endereco>
+            <tc:Endereco>Rua Alvorada</tc:Endereco>
+            <tc:Numero>1289</tc:Numero>
+            <tc:Complemento>conj 904</tc:Complemento>
+            <tc:Bairro>Vila Olímpia</tc:Bairro>
+            <tc:Cidade>3550308</tc:Cidade>
+            <tc:Estado>SP</tc:Estado>
+            <tc:Cep>04550004</tc:Cep>
+          </tc:Endereco>
+          <tc:Contato>
+            <tc:Telefone>1138584329</tc:Telefone>
+            <tc:Email>CONTABILIDADE@FEMAX.COM.BR</tc:Email>
+          </tc:Contato>
+        </tc:TomadorServico>
+        <tc:OrgaoGerador>
+          <tc:CodigoMunicipio>5103403</tc:CodigoMunicipio>
+          <tc:Uf>MT</tc:Uf>
+        </tc:OrgaoGerador>
+        <tc:ValorCredito>2</tc:ValorCredito>
+      </tc:InfNfse>
+      <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <SignedInfo>
+          <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+          <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+          <Reference URI="http://www.w3.org/TR/2000/REC-xhtml1-20000126/">
+            <Transforms>
+              <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+            </Transforms>
+            <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+            <DigestValue>okyZhKEuDILRj0DXGDQMfN7TkWU=</DigestValue>
+          </Reference>
+        </SignedInfo>
+        <SignatureValue>
+        </SignatureValue>
+        <KeyInfo>
+          <X509Data>
+            <X509Certificate>
+            </X509Certificate>
+          </X509Data>
+        </KeyInfo>
+      </Signature>
+    </tc:Nfse>
+  </CompNfse>
+</ConsultarNfseRpsResposta>

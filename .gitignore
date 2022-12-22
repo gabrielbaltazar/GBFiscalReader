@@ -70,3 +70,4 @@ modules/
 Tests/NFe/Win32/
 Tests/CTe/Win32/
 Tests/SAT/Win32/Debug/TestInsightSettings.ini
+Tests/NFSe/Win32/Debug/TestInsightSettings.ini
