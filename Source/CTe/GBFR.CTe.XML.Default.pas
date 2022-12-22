@@ -53,7 +53,7 @@ implementation
 
 function TGBFRCTeXMLDefault.loadFromContent(Value: String): TGBFRCTeModel;
 begin
-  loadXmlContent(Value);
+  LoadXmlContent(Value);
   Result := TGBFRCTeModel.create;
   try
     FCTe := Result;
