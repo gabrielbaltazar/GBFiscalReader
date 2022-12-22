@@ -323,6 +323,7 @@ var
 begin
   Result := TGBFRNFSeModel.Create;
   try
+    Result.Padrao := 'IssNetOnline';
     {$REGION 'PRESTADOR'}
     Result.Prestador.RazaoSocial := Self.FInfNfse.PrestadorServico.RazaoSocial;
     Result.Prestador.NomeFantasia := Self.FInfNfse.PrestadorServico.NomeFantasia;

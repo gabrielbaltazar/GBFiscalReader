@@ -127,6 +127,8 @@
         <DCCReference Include="GBFR.NFSe.Test.IssNetOnline.pas"/>
         <DCCReference Include="..\..\Source\NFSe\GBFR.NFSe.Model.Classes.pas"/>
         <DCCReference Include="..\..\Source\NFSe\GBFR.NFSe.XML.Interfaces.pas"/>
+        <DCCReference Include="..\..\Source\NFSe\GBFR.NFSe.XML.pas"/>
+        <DCCReference Include="GBFR.NFSe.Test.Padroes.pas"/>
         <RcItem Include="Resources\MT_MATOGROSSO_ABRASF.xml">
             <ContainerId>ResourceItem</ContainerId>
             <ResourceType>RCDATA</ResourceType>

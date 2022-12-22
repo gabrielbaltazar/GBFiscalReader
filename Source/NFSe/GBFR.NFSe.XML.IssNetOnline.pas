@@ -37,6 +37,7 @@ type
     function LoadNFSeFromStream(AValue: TStream): TGBFRNFSeModel;
   public
     class function New: IGBFRNFSeXMLIssNetOnline;
+    class function NewNFSe: IGBFRNFSeXML;
   end;
 
 implementation
@@ -69,7 +70,7 @@ begin
   LXmlFile := TStringList.Create;
   try
     LXmlFile.LoadFromFile(AValue);
-    Result := loadFromContent(LXmlFile.Text);
+    Result := LoadFromContent(LXmlFile.Text);
   finally
     LXmlFile.Free;
   end;
@@ -302,6 +303,11 @@ begin
 end;
 
 class function TGBFRNFSeXMLIssNetOnline.New: IGBFRNFSeXMLIssNetOnline;
+begin
+  Result := Self.Create;
+end;
+
+class function TGBFRNFSeXMLIssNetOnline.NewNFSe: IGBFRNFSeXML;
 begin
   Result := Self.Create;
 end;

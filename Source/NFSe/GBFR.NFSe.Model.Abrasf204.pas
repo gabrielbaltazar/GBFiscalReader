@@ -452,6 +452,7 @@ var
 begin
   Result := TGBFRNFSeModel.Create;
   try
+    Result.Padrao := 'Abrasf 2.04';
     {$REGION 'PRESTADOR'}
     Result.Prestador.RazaoSocial := Self.FInfNfse.PrestadorServico.RazaoSocial;
     Result.Prestador.NomeFantasia := Self.FInfNfse.PrestadorServico.NomeFantasia;

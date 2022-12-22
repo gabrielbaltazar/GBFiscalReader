@@ -15,6 +15,16 @@ type
     function LoadNFSeFromStream(AValue: TStream): TGBFRNFSeModel;
   end;
 
+function GetNFSeXML: IGBFRNFSeXML;
+
 implementation
+
+uses
+  GBFR.NFSe.XML;
+
+function GetNFSeXML: IGBFRNFSeXML;
+begin
+  Result := TGBFRNFSeXML.New;
+end;
 
 end.

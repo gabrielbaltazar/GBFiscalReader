@@ -26,7 +26,9 @@ uses
   GBFR.NFSe.XML.IssNetOnline in '..\..\Source\NFSe\GBFR.NFSe.XML.IssNetOnline.pas',
   GBFR.NFSe.Test.IssNetOnline in 'GBFR.NFSe.Test.IssNetOnline.pas',
   GBFR.NFSe.Model.Classes in '..\..\Source\NFSe\GBFR.NFSe.Model.Classes.pas',
-  GBFR.NFSe.XML.Interfaces in '..\..\Source\NFSe\GBFR.NFSe.XML.Interfaces.pas';
+  GBFR.NFSe.XML.Interfaces in '..\..\Source\NFSe\GBFR.NFSe.XML.Interfaces.pas',
+  GBFR.NFSe.XML in '..\..\Source\NFSe\GBFR.NFSe.XML.pas',
+  GBFR.NFSe.Test.Padroes in 'GBFR.NFSe.Test.Padroes.pas';
 
 { keep comment here to protect the following conditional from being removed by the IDE when adding a unit }
 begin

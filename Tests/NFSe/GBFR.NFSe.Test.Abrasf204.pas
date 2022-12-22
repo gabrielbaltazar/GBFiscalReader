@@ -93,6 +93,7 @@ end;
 
 procedure TGBFRNFSeTestAbrasf204.ModelNFSe;
 begin
+  Assert.AreEqual('Abrasf 2.04', FModel.Padrao);
   Assert.AreEqual('96398', FModel.Numero);
   Assert.AreEqual('', FModel.RPS);
   Assert.AreEqual('', FModel.Serie);

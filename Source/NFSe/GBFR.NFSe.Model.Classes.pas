@@ -43,11 +43,13 @@ type
     FServicos: TObjectList<TGBFRNFSeModelServico>;
     FValorCredito: Currency;
     FSituacao: TNFSeSituacao;
+    FPadrao: string;
     function GetDiscriminacaoServicos: string;
   public
     constructor Create;
     destructor Destroy; override;
 
+    property Padrao: string read FPadrao write FPadrao;
     property Prestador: TGBFRNFSeModelPessoa read FPrestador write FPrestador;
     property Tomador: TGBFRNFSeModelPessoa read FTomador write FTomador;
     property Numero: string read FNumero write FNumero;

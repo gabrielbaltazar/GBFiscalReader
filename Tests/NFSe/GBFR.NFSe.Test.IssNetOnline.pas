@@ -75,6 +75,7 @@ end;
 
 procedure TGBFRNFSeTestIssNetOnline.ModelNFSe;
 begin
+  Assert.AreEqual('IssNetOnline', FModel.Padrao);
   Assert.AreEqual('96019', FModel.Numero);
   Assert.AreEqual(' 86 FF D6', FModel.CodigoVerificacao);
   Assert.AreEqual('2022-11-30 16:27:23', FormatDateTime('yyyy-MM-dd hh:mm:ss', FModel.DataEmissao));
