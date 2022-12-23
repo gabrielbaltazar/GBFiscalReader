@@ -50,8 +50,12 @@ implementation
 { TGBFRNFSeXMLAbrasf204 }
 
 function TGBFRNFSeXMLAbrasf204.LoadFromContent(AValue: string): TGBFRNFSeModelAbrasf204CompNFSe;
+var
+  LXml: string;
 begin
-  LoadXmlContent(AValue);
+  LXml := AValue.Replace('DescricaoCodigoTributacaoMunicípio',
+    'DescricaoCodigoTributacaoMunicipio');
+  LoadXmlContent(LXml);
   Result := TGBFRNFSeModelAbrasf204CompNFSe.Create;
   try
     FCompNFSe := Result;
@@ -78,7 +82,11 @@ var
 begin
   LXmlFile := TStringList.Create;
   try
-    LXmlFile.LoadFromFile(AValue);
+    try
+      LXmlFile.LoadFromFile(AValue, TEncoding.UTF8);
+    except
+      LXmlFile.LoadFromFile(AValue);
+    end;
     Result := loadFromContent(LXmlFile.Text);
   finally
     LXmlFile.Free;
@@ -186,7 +194,7 @@ begin
   FInfNFSe.CodigoVerificacao := GetNodeStr(FNodeInfNfse, 'CodigoVerificacao');
   FInfNFSe.DataEmissao := GetNodeDate(FNodeInfNfse, 'DataEmissao');
   FInfNFSe.OutrasInformacoes := GetNodeStr(FNodeInfNfse, 'OutrasInformacoes');
-  FInfNFSe.DescricaoCodigoTributacaoMunicipio := GetNodeStr(FNodeInfNfse, 'DescricaoCodigoTributacaoMunicípio');
+  FInfNFSe.DescricaoCodigoTributacaoMunicipio := GetNodeStr(FNodeInfNfse, 'DescricaoCodigoTributacaoMunicipio');
   FInfNFSe.ValorCredito := GetNodeCurrency(FNodeInfNfse, 'ValorCredito');
 end;
 
