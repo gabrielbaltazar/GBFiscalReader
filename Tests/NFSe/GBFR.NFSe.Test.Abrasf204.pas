@@ -18,6 +18,7 @@ type
   [TestFixture]
   TGBFRNFSeTestAbrasf204 = class(TGBFRNFSeTestBase)
   private
+    FCompNFSe: TGBFRNFSeModelAbrasf204CompNFSe;
     FNFSe: TGBFRNFSeModelAbrasf204NFSe;
     FModel: TGBFRNFSeModel;
   public
@@ -253,14 +254,15 @@ var
 begin
   CoInitialize(nil);
   LXml := LoadXMLResource('MT_MATOGROSSO_ABRASF');
-  FNFSe := TGBFRNFSeXMLAbrasf204.New.LoadFromContent(LXml);
-  FModel := FNFSe.ToModelNFSe;
+  FCompNFSe := TGBFRNFSeXMLAbrasf204.New.LoadFromContent(LXml);
+  FNFSe := FCompNFSe.NFSe;
+  FModel := FCompNFSe.ToModelNFSe;
 end;
 
 procedure TGBFRNFSeTestAbrasf204.Teardown;
 begin
   CoUninitialize;
-  FreeAndNil(FNFSe);
+  FreeAndNil(FCompNFSe);
   FreeAndNil(FModel);
 end;
 

@@ -19,6 +19,8 @@ type
   private
     [Weak]
     FNodeInfNfse: IXMLNode;
+    FNodeCompNFSe: IXMLNode;
+    FCompNFSe: TGBFRNFSeModelAbrasf204CompNFSe;
     FNFSe: TGBFRNFSeModelAbrasf204NFSe;
     FInfNFSe: TGBFRNFSeModelAbrasf204NFSeInfo;
 
@@ -29,10 +31,11 @@ type
     procedure LoadTagPrestador;
     procedure LoadTagServico;
     procedure LoadTagTomador;
+    procedure LoadTagCancelamento;
   protected
-    function LoadFromContent(AValue: string): TGBFRNFSeModelAbrasf204NFSe;
-    function LoadFromFile(AValue: string): TGBFRNFSeModelAbrasf204NFSe;
-    function LoadFromStream(AValue: TStream): TGBFRNFSeModelAbrasf204NFSe;
+    function LoadFromContent(AValue: string): TGBFRNFSeModelAbrasf204CompNFSe;
+    function LoadFromFile(AValue: string): TGBFRNFSeModelAbrasf204CompNFSe;
+    function LoadFromStream(AValue: TStream): TGBFRNFSeModelAbrasf204CompNFSe;
 
     function LoadNFSeFromContent(AValue: string): TGBFRNFSeModel;
     function LoadNFSeFromFile(AValue: string): TGBFRNFSeModel;
@@ -46,13 +49,14 @@ implementation
 
 { TGBFRNFSeXMLAbrasf204 }
 
-function TGBFRNFSeXMLAbrasf204.LoadFromContent(AValue: string): TGBFRNFSeModelAbrasf204NFSe;
+function TGBFRNFSeXMLAbrasf204.LoadFromContent(AValue: string): TGBFRNFSeModelAbrasf204CompNFSe;
 begin
   LoadXmlContent(AValue);
-  Result := TGBFRNFSeModelAbrasf204NFSe.Create;
+  Result := TGBFRNFSeModelAbrasf204CompNFSe.Create;
   try
-    FNFSe := Result;
-    FInfNFSe := Result.InfNfse;
+    FCompNFSe := Result;
+    FNFSe := FCompNFSe.NFSe;
+    FInfNFSe := FCompNFSe.NFSe.InfNfse;
 
     LoadTagInfNFSe;
     LoadTagValoresNFSe;
@@ -61,13 +65,14 @@ begin
     LoadTagPrestador;
     LoadTagTomador;
     LoadTagPrestacaoServico;
+    LoadTagCancelamento;
   except
     Result.Free;
     raise;
   end;
 end;
 
-function TGBFRNFSeXMLAbrasf204.LoadFromFile(AValue: string): TGBFRNFSeModelAbrasf204NFSe;
+function TGBFRNFSeXMLAbrasf204.LoadFromFile(AValue: string): TGBFRNFSeModelAbrasf204CompNFSe;
 var
   LXmlFile: TStrings;
 begin
@@ -80,7 +85,7 @@ begin
   end;
 end;
 
-function TGBFRNFSeXMLAbrasf204.LoadFromStream(AValue: TStream): TGBFRNFSeModelAbrasf204NFSe;
+function TGBFRNFSeXMLAbrasf204.LoadFromStream(AValue: TStream): TGBFRNFSeModelAbrasf204CompNFSe;
 var
   LStringStream: TStringStream;
   LContent: string;
@@ -97,7 +102,7 @@ end;
 
 function TGBFRNFSeXMLAbrasf204.LoadNFSeFromContent(AValue: string): TGBFRNFSeModel;
 var
-  LAbrasf: TGBFRNFSeModelAbrasf204NFSe;
+  LAbrasf: TGBFRNFSeModelAbrasf204CompNFSe;
 begin
   LAbrasf := LoadFromContent(AValue);
   try
@@ -109,7 +114,7 @@ end;
 
 function TGBFRNFSeXMLAbrasf204.LoadNFSeFromFile(AValue: string): TGBFRNFSeModel;
 var
-  LAbrasf: TGBFRNFSeModelAbrasf204NFSe;
+  LAbrasf: TGBFRNFSeModelAbrasf204CompNFSe;
 begin
   LAbrasf := LoadFromFile(AValue);
   try
@@ -121,13 +126,31 @@ end;
 
 function TGBFRNFSeXMLAbrasf204.LoadNFSeFromStream(AValue: TStream): TGBFRNFSeModel;
 var
-  LAbrasf: TGBFRNFSeModelAbrasf204NFSe;
+  LAbrasf: TGBFRNFSeModelAbrasf204CompNFSe;
 begin
   LAbrasf := LoadFromStream(AValue);
   try
     Result := LAbrasf.ToModelNFSe;
   finally
     LAbrasf.Free;
+  end;
+end;
+
+procedure TGBFRNFSeXMLAbrasf204.LoadTagCancelamento;
+var
+  LNode: IXMLNode;
+begin
+  if not Assigned(FNodeCompNFSe) then
+    Exit;
+
+  LNode := Self.LoadTag(FNodeCompNFSe, 'NfseCancelamento,Confirmacao');
+  if Assigned(LNode) then
+  begin
+    FCompNFSe.NFSeCancelamento.Confirmacao.DataHora := GetNodeDate(LNode, 'DataHora');
+    LNode := LoadTag(LNode, 'Pedido,InfPedidoCancelamento');
+    if Assigned(LNode) then
+      FCompNFSe.NFSeCancelamento.Confirmacao.Pedido
+        .InfPedidoCancelamento.CodigoCancelamento := GetNodeStr(LNode, 'CodigoCancelamento');
   end;
 end;
 
@@ -147,6 +170,8 @@ begin
       end;
       LNode := LNode.ChildNodes.Get(0);
     end;
+    if LNode.NodeName = 'CompNfse' then
+      FNodeCompNFSe := LNode;
   until (LNode = nil) or (LNode.NodeName = 'Nfse');
 
   if (not Assigned(LNode)) or (not LNode.NodeName.Equals( 'Nfse' )) then

@@ -44,6 +44,8 @@ type
     FValorCredito: Currency;
     FSituacao: TNFSeSituacao;
     FPadrao: string;
+    FDataCancelamento: TDateTime;
+    FCodigoCancelamento: string;
     function GetDiscriminacaoServicos: string;
   public
     constructor Create;
@@ -60,6 +62,8 @@ type
     property CodigoVerificacao: string read FCodigoVerificacao write FCodigoVerificacao;
     property DiscriminacaoServicos: string read GetDiscriminacaoServicos;
     property DataEmissao: TDateTime read FDataEmissao write FDataEmissao;
+    property DataCancelamento: TDateTime read FDataCancelamento write FDataCancelamento;
+    property CodigoCancelamento: string read FCodigoCancelamento write FCodigoCancelamento;
     property OutrasInformacoes: string read FOutrasInformacoes write FOutrasInformacoes;
     property OptanteSimplesNacional: Boolean read FOptanteSimplesNacional write FOptanteSimplesNacional;
     property IncentivadorCultural: Boolean read FIncentivadorCultural write FIncentivadorCultural;
