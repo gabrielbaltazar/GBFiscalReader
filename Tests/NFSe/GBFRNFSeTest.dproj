@@ -129,6 +129,7 @@
         <DCCReference Include="..\..\Source\NFSe\GBFR.NFSe.XML.Interfaces.pas"/>
         <DCCReference Include="..\..\Source\NFSe\GBFR.NFSe.XML.pas"/>
         <DCCReference Include="GBFR.NFSe.Test.Padroes.pas"/>
+        <DCCReference Include="GBFR.NFSe.Test.Abrasf204.Cancelada.pas"/>
         <RcItem Include="Resources\MT_MATOGROSSO_ABRASF.xml">
             <ContainerId>ResourceItem</ContainerId>
             <ResourceType>RCDATA</ResourceType>
@@ -138,6 +139,11 @@
             <ContainerId>ResourceItem</ContainerId>
             <ResourceType>RCDATA</ResourceType>
             <ResourceId>MT_MATOGROSSO_ISSNETONLINE</ResourceId>
+        </RcItem>
+        <RcItem Include="Resources\DF_BRASILIA_ABRASF_CANCELADA.xml">
+            <ContainerId>ResourceItem</ContainerId>
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>DF_BRASILIA_ABRASF_CANCELADA</ResourceId>
         </RcItem>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
@@ -173,6 +179,12 @@
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">
                     <Platform Name="OSX32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Resources\DF_BRASILIA_ABRASF_CANCELADA.xml" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

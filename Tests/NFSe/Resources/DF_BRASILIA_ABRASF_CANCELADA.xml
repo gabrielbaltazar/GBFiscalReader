@@ -1,0 +1,160 @@
+<CompNfse xmlns="http://www.abrasf.org.br/nfse.xsd">
+	<Nfse versao="2.04">
+		<InfNfse>
+			<Numero>2</Numero>
+			<CodigoVerificacao>3DFBB7FCC</CodigoVerificacao>
+			<DataEmissao>2022-12-22T15:54:31.98</DataEmissao>
+			<OutrasInformacoes>.</OutrasInformacoes>
+			<ValoresNfse>
+				<BaseCalculo>1.00</BaseCalculo>
+				<ValorLiquidoNfse>1.00</ValorLiquidoNfse>
+			</ValoresNfse>
+			<DescricaoCodigoTributacaoMunicípio>Prestação de Serviços</DescricaoCodigoTributacaoMunicípio>
+			<ValorCredito>0</ValorCredito>
+			<PrestadorServico>
+				<RazaoSocial>The Union Hotel Ltda</RazaoSocial>
+				<NomeFantasia>The Union Hotel Ltda</NomeFantasia>
+				<Endereco>
+					<Endereco>Setor SMAS</Endereco>
+					<Numero>SN</Numero>
+					<Bairro>Zona Industrial (Guará)</Bairro>
+					<CodigoMunicipio>5300108</CodigoMunicipio>
+					<Uf>DF</Uf>
+					<Cep>71215300</Cep>
+				</Endereco>
+				<Contato>
+					<Telefone>6137745600</Telefone>
+					<Email>controller.qhsb@atlanticahotels.com.br</Email>
+				</Contato>
+			</PrestadorServico>
+			<OrgaoGerador>
+				<CodigoMunicipio>5002704</CodigoMunicipio>
+				<Uf>MS</Uf>
+			</OrgaoGerador>
+			<DeclaracaoPrestacaoServico>
+				<InfDeclaracaoPrestacaoServico Id="5_8_1">
+					<Rps>
+						<IdentificacaoRps>
+							<Numero>5</Numero>
+							<Serie>8</Serie>
+							<Tipo>1</Tipo>
+						</IdentificacaoRps>
+						<DataEmissao>2022-12-22</DataEmissao>
+						<Status>1</Status>
+					</Rps>
+					<Competencia>2022-12-22</Competencia>
+					<Servico>
+						<Valores>
+							<ValorServicos>1.00</ValorServicos>
+							<ValorDeducoes>0.00</ValorDeducoes>
+							<ValorPis>0.00</ValorPis>
+							<ValorCofins>0.00</ValorCofins>
+							<ValorInss>0.00</ValorInss>
+							<ValorIr>0.00</ValorIr>
+							<ValorCsll>0.00</ValorCsll>
+							<ValorIss>0.03</ValorIss>
+							<Aliquota>3</Aliquota>
+							<DescontoIncondicionado>0.00</DescontoIncondicionado>
+							<DescontoCondicionado>0.00</DescontoCondicionado>
+						</Valores>
+						<IssRetido>2</IssRetido>
+						<ItemListaServico>13.05</ItemListaServico>
+						<CodigoCnae>6399200</CodigoCnae>
+						<CodigoTributacaoMunicipio>170</CodigoTributacaoMunicipio>
+						<Discriminacao>Diaria 1,00
+Test Unitario</Discriminacao>
+						<CodigoMunicipio>5300108</CodigoMunicipio>
+						<ExigibilidadeISS>1</ExigibilidadeISS>
+						<MunicipioIncidencia>5300108</MunicipioIncidencia>
+					</Servico>
+					<Prestador>
+						<CpfCnpj>
+							<Cnpj>18098062000143</Cnpj>
+						</CpfCnpj>
+						<InscricaoMunicipal>0764261100131</InscricaoMunicipal>
+					</Prestador>
+					<TomadorServico>
+						<IdentificacaoTomador>
+							<CpfCnpj>
+								<Cpf>13155767758</Cpf>
+							</CpfCnpj>
+						</IdentificacaoTomador>
+						<RazaoSocial>Almir Souza</RazaoSocial>
+						<Endereco>
+							<Endereco>Estrada da Liturna</Endereco>
+							<Numero>377</Numero>
+							<Bairro>Santa Isabel</Bairro>
+							<CodigoMunicipio>5300108</CodigoMunicipio>
+							<Uf>DF</Uf>
+							<Cep>71215300</Cep>
+						</Endereco>
+						<Contato>
+							<Telefone>99999888777</Telefone>
+							<Email>almir@email.com</Email>
+						</Contato>
+					</TomadorServico>
+					<OptanteSimplesNacional>2</OptanteSimplesNacional>
+					<IncentivoFiscal>2</IncentivoFiscal>
+				</InfDeclaracaoPrestacaoServico>
+				<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+					<SignedInfo>
+						<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+						<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+						<Reference URI="#5_8_1">
+							<Transforms>
+								<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+								<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+							</Transforms>
+							<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+							<DigestValue>2vA/SezUv0rDQtC8crFiD4h9PWI=</DigestValue>
+						</Reference>
+					</SignedInfo>
+					<SignatureValue>g9LDbaZxNOsbH5nXDXGIUOOGuV6u3g3uYewn9Q5hrH5/NLwMwZKoTFQHYmTx5VYSICop2Zs17Zn+NjgE31wSj7E2iFpBPwBK/aBHczlJNeR94+DEpwmne20UASwrRrH/xoekVnhM1ThgL9uE2DOqBcc2dWcA1qg7m9G7d0+Wa4domkdzbQVDi9TGi+PM41+KYiwahUgVkED0y4Rqrmp5HS5yLpe+WUYWex6Rg159JaLg3gvG9b47Owmo9VF0MZW2YzhBGKnDIb/UGOPvYE9m1GcnH8aafUZa2TsZ6gCpm8YZ8Ph4X2W927g4ASAmuxY3PwRWt5H3HDZCdoy2yySZKQ==</SignatureValue>
+					<KeyInfo>
+						<X509Data>
+							<X509Certificate>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</X509Certificate>
+						</X509Data>
+					</KeyInfo>
+				</Signature>
+			</DeclaracaoPrestacaoServico>
+		</InfNfse>
+	</Nfse>
+	<NfseCancelamento>
+		<Confirmacao>
+			<Pedido>
+				<InfPedidoCancelamento Id="s01">
+					<IdentificacaoNfse>
+						<Numero>2</Numero>
+						<CpfCnpj>
+							<Cnpj>18098062000143</Cnpj>
+						</CpfCnpj>
+						<InscricaoMunicipal>0764261100131</InscricaoMunicipal>
+						<CodigoMunicipio>5002704</CodigoMunicipio>
+					</IdentificacaoNfse>
+					<CodigoCancelamento>2</CodigoCancelamento>
+				</InfPedidoCancelamento>
+				<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+					<SignedInfo>
+						<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+						<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+						<Reference URI="#s01">
+							<Transforms>
+								<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+								<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+							</Transforms>
+							<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+							<DigestValue>kpyJUmxUPUCRpNauKinTF6i6kqo=</DigestValue>
+						</Reference>
+					</SignedInfo>
+					<SignatureValue>EP8ISHingt4YPtXc9JGJUcjt4H3RWop/u3vhFZGIJT0AQwI8bwiK1EELUH3DVCEgEqNNo37CnsqQXFqutyx0y8vxyfsHNwelxVAc1SOE7KFT4z5pxAR4q6JCuulhME7KZiv1/qZHTD0wqRCbumCsirTv992yHk8cPYnAC22Tt9nOjD/sG6b7jpb4bIwnQD/lcP5qy5u4lwr+cVKRMNSZ+t2nfZNVqOPjNeCojgszPamaJCc7Moai9wxI6Qna1xx9PEtlYKSSqRWSUwi+IZlH8RCBATdX2onjlzYUK0JCUMYEKTagXsI37o0b4koOf1hCNp0FvY6ec3tGnAlX4q7LSA==</SignatureValue>
+					<KeyInfo>
+						<X509Data>
+							<X509Certificate>MIIH2DCCBcCgAwIBAgIIUqcCMxHDVBUwDQYJKoZIhvcNAQELBQAwdjELMAkGA1UEBhMCQlIxEzARBgNVBAoTCklDUC1CcmFzaWwxNjA0BgNVBAsTLVNlY3JldGFyaWEgZGEgUmVjZWl0YSBGZWRlcmFsIGRvIEJyYXNpbCAtIFJGQjEaMBgGA1UEAxMRQUMgU0FGRVdFQiBSRkIgdjUwHhcNMjIxMjA5MTc1MjA3WhcNMjMxMjA5MTc1MjA3WjCB7jELMAkGA1UEBhMCQlIxEzARBgNVBAoTCklDUC1CcmFzaWwxCzAJBgNVBAgTAkRGMREwDwYDVQQHEwhCUkFTSUxJQTE2MDQGA1UECxMtU2VjcmV0YXJpYSBkYSBSZWNlaXRhIEZlZGVyYWwgZG8gQnJhc2lsIC0gUkZCMRYwFAYDVQQLEw1SRkIgZS1DTlBKIEExMRcwFQYDVQQLEw4yMjY3NzQyNzAwMDE2MTETMBEGA1UECxMKcHJlc2VuY2lhbDEsMCoGA1UEAxMjVEhFIFVOSU9OIEhPVEVMIExUREE6MTgwOTgwNjIwMDAxNDMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCd/Up/t1VRfCew/5zRPg/e+PKaRJSh8e5d2gUpplb/HLO2UqbSjSWVOnVjX9cuczlBXzH8Fo/W8zZ+z7F0ewJK3EWV6I4wlDzjjEryfVRj0LPsy/1/S5ar7rxxtsvw0xQWS+g8EyGpt+70/o6Jg2iTu00gN5eU2aHS8k9oyemjLATrKAU1wdMULaKRmFmxu+yhWuougT321mfldavs5035BCkNYc51zx8SnHQb9inqWNfcwSjJ/InXeRNk14iVXjCIi46yLH5fVuepU04zSm00I+yhLTJ2vcr7GTOy5ReaiMQgV+WLZMGhxuIsXC82AEUDEVkvEhP67wAcs6baVDotAgMBAAGjggLvMIIC6zAfBgNVHSMEGDAWgBQpXkvVRky7/hanY8EdxCby3djzBTAOBgNVHQ8BAf8EBAMCBeAwaQYDVR0gBGIwYDBeBgZgTAECATMwVDBSBggrBgEFBQcCARZGaHR0cDovL3JlcG9zaXRvcmlvLmFjc2FmZXdlYi5jb20uYnIvYWMtc2FmZXdlYnJmYi9kcGMtYWNzYWZld2VicmZiLnBkZjCBrgYDVR0fBIGmMIGjME+gTaBLhklodHRwOi8vcmVwb3NpdG9yaW8uYWNzYWZld2ViLmNvbS5ici9hYy1zYWZld2VicmZiL2xjci1hYy1zYWZld2VicmZidjUuY3JsMFCgTqBMhkpodHRwOi8vcmVwb3NpdG9yaW8yLmFjc2FmZXdlYi5jb20uYnIvYWMtc2FmZXdlYnJmYi9sY3ItYWMtc2FmZXdlYnJmYnY1LmNybDCBtwYIKwYBBQUHAQEEgaowgacwUQYIKwYBBQUHMAKGRWh0dHA6Ly9yZXBvc2l0b3Jpby5hY3NhZmV3ZWIuY29tLmJyL2FjLXNhZmV3ZWJyZmIvYWMtc2FmZXdlYnJmYnY1LnA3YjBSBggrBgEFBQcwAoZGaHR0cDovL3JlcG9zaXRvcmlvMi5hY3NhZmV3ZWIuY29tLmJyL2FjLXNhZmV3ZWJyZmIvYWMtc2FmZXdlYnJmYnY1LnA3YjCBtwYDVR0RBIGvMIGsgR1DT05TVFJVVE9SQUxVTkVSQExVTkVSLkNPTS5CUqAdBgVgTAEDAqAUExJORUxTT04gUkFNRVogRkFSQUigGQYFYEwBAwOgEBMOMTgwOTgwNjIwMDAxNDOgOAYFYEwBAwSgLxMtMDcxMDE5NTkyMzQwNDE0MDE2ODAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwoBcGBWBMAQMHoA4TDDAwMDAwMDAwMDAwMDAdBgNVHSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwQwCQYDVR0TBAIwADANBgkqhkiG9w0BAQsFAAOCAgEAP2D+ieqy7cjFnkhM26prQUV6p0qnsnJ9r/3VgtQ8RAcb+rc+qMfoD6wpdCWl9K/kMsdc29yjrpL9f87O/ITK3yHE8jxzSraHFAyYgWMUjf2Qb/tUVYZN7ywXRJql8fxchEZmLzZGngicN2e0hS4w4FTLniP8usPAUcaPuKPJVWUmBAM9nsmT9o0/NyrGdkpbXRIzCVLg8WLWV/881LoKkT45mw/YuCDc//nCnSqPW/yUOeyVaDcP32rxijVh/+9xYmcdrT7Fh+qsITR7WPJDWlg9MZO+l6HkTfjRaV3fVShn6A17o5a0rvZUc/acaf0Zv1YKnNzAJ9lkmLFkyl+gG67OAVysagGCx9ishUvS9LdEVUkBrASUMy/YxtHhiMVXwvX5/q+LFgWukJPvrlZHTnPllgpToKIF35QyNDPH8bMr/0csrai8pOqEBUMLjXNIU77O0hE/hS5ieH7tMDzN4BZ4nhLSqZKK2/22fGqjsH8SnPrv86CmhEWEXWztm6sAXsdiqIRkQGAciQP35nJRPh60RbqaEhvAI9l+DzRfhjdP04DlQGHpZ04+eRpugrtn+wnMECmDiapYm1+hHctFwRIeQMAoOijJVI1Lenxr1hceJEyKkrow1x2UT9VF9NCQ8AZsfDaAamIi+L5KoDDQ50YvdFF0c//rxWPkJ7hFC3U=</X509Certificate>
+						</X509Data>
+					</KeyInfo>
+				</Signature>
+			</Pedido>
+			<DataHora>2022-12-23T13:34:10.707</DataHora>
+		</Confirmacao>
+	</NfseCancelamento>
+</CompNfse>

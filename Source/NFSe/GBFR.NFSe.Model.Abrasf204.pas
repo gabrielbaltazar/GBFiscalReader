@@ -10,6 +10,7 @@ uses
   System.Classes;
 
 type
+  TGBFRNFSeModelAbrasf204CompNFSe = class;
   TGBFRNFSeModelAbrasf204Contato = class;
   TGBFRNFSeModelAbrasf204CPFCNPJ = class;
   TGBFRNFSeModelAbrasf204Endereco = class;
@@ -17,7 +18,11 @@ type
   TGBFRNFSeModelAbrasf204IdentificacaoPessoa = class;
   TGBFRNFSeModelAbrasf204InfPrestacaoServico = class;
   TGBFRNFSeModelAbrasf204NFSe = class;
+  TGBFRNFSeModelAbrasf204NFSeCancelamento = class;
+  TGBFRNFSeModelAbrasf204NFSeConfirmacaoCancelamento = class;
   TGBFRNFSeModelAbrasf204NFSeInfo = class;
+  TGBFRNFSeModelAbrasf204NFSeInfoCancelamento = class;
+  TGBFRNFSeModelAbrasf204NFSePedidoCancelamento = class;
   TGBFRNFSeModelAbrasf204NFSeValores = class;
   TGBFRNFSeModelAbrasf204OrgaoGerador = class;
   TGBFRNFSeModelAbrasf204PrestacaoServico = class;
@@ -27,6 +32,21 @@ type
   TGBFRNFSeModelAbrasf204Servico = class;
   TGBFRNFSeModelAbrasf204ServicoValores = class;
   TGBFRNFSeModelAbrasf204Tomador = class;
+
+  TGBFRNFSeModelAbrasf204CompNFSe = class
+  private
+    FNFSe: TGBFRNFSeModelAbrasf204NFSe;
+    FNFSeCancelamento: TGBFRNFSeModelAbrasf204NFSeCancelamento;
+  public
+    constructor Create;
+    destructor Destroy; override;
+
+    function ToModelNFSe: TGBFRNFSeModel;
+    function GetSituacao: TNFSeSituacao;
+
+    property NFSe: TGBFRNFSeModelAbrasf204NFSe read FNFSe write FNFSe;
+    property NFSeCancelamento: TGBFRNFSeModelAbrasf204NFSeCancelamento read FNFSeCancelamento write FNFSeCancelamento;
+  end;
 
   TGBFRNFSeModelAbrasf204Contato = class
   private
@@ -108,16 +128,35 @@ type
 
   TGBFRNFSeModelAbrasf204NFSe = class
   private
-    FVersao: string;
     FInfNfse: TGBFRNFSeModelAbrasf204NFSeInfo;
+    FVersao: string;
+  public
+    constructor Create;
+    destructor Destroy; override;
+    property Versao: string read FVersao write FVersao;
+    property InfNfse: TGBFRNFSeModelAbrasf204NFSeInfo read FInfNfse write FInfNfse;
+  end;
+
+  TGBFRNFSeModelAbrasf204NFSeCancelamento = class
+  private
+    FConfirmacao: TGBFRNFSeModelAbrasf204NFSeConfirmacaoCancelamento;
   public
     constructor Create;
     destructor Destroy; override;
 
-    function ToModelNFSe: TGBFRNFSeModel;
+    property Confirmacao: TGBFRNFSeModelAbrasf204NFSeConfirmacaoCancelamento read FConfirmacao write FConfirmacao;
+  end;
 
-    property Versao: string read FVersao write FVersao;
-    property InfNfse: TGBFRNFSeModelAbrasf204NFSeInfo read FInfNfse write FInfNfse;
+  TGBFRNFSeModelAbrasf204NFSeConfirmacaoCancelamento = class
+  private
+    FPedido: TGBFRNFSeModelAbrasf204NFSePedidoCancelamento;
+    FDataHora: TDateTime;
+  public
+    constructor Create;
+    destructor Destroy; override;
+
+    property Pedido: TGBFRNFSeModelAbrasf204NFSePedidoCancelamento read FPedido write FPedido;
+    property DataHora: TDateTime read FDataHora write FDataHora;
   end;
 
   TGBFRNFSeModelAbrasf204NFSeInfo = class
@@ -148,6 +187,23 @@ type
     property PrestadorServico: TGBFRNFSeModelAbrasf204Prestador read FPrestadorServico write FPrestadorServico;
     property OrgaoGerador: TGBFRNFSeModelAbrasf204OrgaoGerador read FOrgaoGerador write FOrgaoGerador;
     property DeclaracaoPrestacaoServico: TGBFRNFSeModelAbrasf204PrestacaoServico read FDeclaracaoPrestacaoServico write FDeclaracaoPrestacaoServico;
+  end;
+
+  TGBFRNFSeModelAbrasf204NFSeInfoCancelamento = class
+  private
+    FCodigoCancelamento: string;
+  public
+    property CodigoCancelamento: string read FCodigoCancelamento write FCodigoCancelamento;
+  end;
+
+  TGBFRNFSeModelAbrasf204NFSePedidoCancelamento = class
+  private
+    FInfPedidoCancelamento: TGBFRNFSeModelAbrasf204NFSeInfoCancelamento;
+  public
+    constructor Create;
+    destructor Destroy; override;
+
+    property InfPedidoCancelamento: TGBFRNFSeModelAbrasf204NFSeInfoCancelamento read FInfPedidoCancelamento write FInfPedidoCancelamento;
   end;
 
   TGBFRNFSeModelAbrasf204NFSeValores = class
@@ -443,7 +499,78 @@ begin
   inherited;
 end;
 
-function TGBFRNFSeModelAbrasf204NFSe.ToModelNFSe: TGBFRNFSeModel;
+{ TGBFRNFSeModelAbrasf204RPS }
+
+function TGBFRNFSeModelAbrasf204RPS.GetSituacao: TNFSeSituacao;
+begin
+  Result := sNormal;
+  if FStatus = '2' then
+    Result := sCancelado;
+end;
+
+{ TGBFRNFSeModelAbrasf204NFSePedidoCancelamento }
+
+constructor TGBFRNFSeModelAbrasf204NFSePedidoCancelamento.Create;
+begin
+  FInfPedidoCancelamento := TGBFRNFSeModelAbrasf204NFSeInfoCancelamento.Create;
+end;
+
+destructor TGBFRNFSeModelAbrasf204NFSePedidoCancelamento.Destroy;
+begin
+  FInfPedidoCancelamento.Free;
+  inherited;
+end;
+
+{ TGBFRNFSeModelAbrasf204NFSeConfirmacaoCancelamento }
+
+constructor TGBFRNFSeModelAbrasf204NFSeConfirmacaoCancelamento.Create;
+begin
+  FPedido := TGBFRNFSeModelAbrasf204NFSePedidoCancelamento.Create;
+end;
+
+destructor TGBFRNFSeModelAbrasf204NFSeConfirmacaoCancelamento.Destroy;
+begin
+  FPedido.Free;
+  inherited;
+end;
+
+{ TGBFRNFSeModelAbrasf204NFSeCancelamento }
+
+constructor TGBFRNFSeModelAbrasf204NFSeCancelamento.Create;
+begin
+  FConfirmacao := TGBFRNFSeModelAbrasf204NFSeConfirmacaoCancelamento.Create;
+end;
+
+destructor TGBFRNFSeModelAbrasf204NFSeCancelamento.Destroy;
+begin
+  FConfirmacao.Free;
+  inherited;
+end;
+
+{ TGBFRNFSeModelAbrasf204CompNFSe }
+
+constructor TGBFRNFSeModelAbrasf204CompNFSe.Create;
+begin
+  FNFSe := TGBFRNFSeModelAbrasf204NFSe.Create;
+  FNFSeCancelamento := TGBFRNFSeModelAbrasf204NFSeCancelamento.Create;
+end;
+
+destructor TGBFRNFSeModelAbrasf204CompNFSe.Destroy;
+begin
+  FNFSe.Free;
+  FNFSeCancelamento.Free;
+  inherited;
+end;
+
+function TGBFRNFSeModelAbrasf204CompNFSe.GetSituacao: TNFSeSituacao;
+begin
+  Result := FNFSe.InfNfse.DeclaracaoPrestacaoServico.InfDeclaracaoPrestacaoServico
+    .Rps.GetSituacao;
+  if FNFSeCancelamento.Confirmacao.DataHora > 0 then
+    Result := sCancelado;
+end;
+
+function TGBFRNFSeModelAbrasf204CompNFSe.ToModelNFSe: TGBFRNFSeModel;
 var
   LTomador: TGBFRNFSeModelAbrasf204Tomador;
   LServico: TGBFRNFSeModelAbrasf204Servico;
@@ -454,28 +581,28 @@ begin
   try
     Result.Padrao := 'Abrasf 2.04';
     {$REGION 'PRESTADOR'}
-    Result.Prestador.RazaoSocial := Self.FInfNfse.PrestadorServico.RazaoSocial;
-    Result.Prestador.NomeFantasia := Self.FInfNfse.PrestadorServico.NomeFantasia;
-    Result.Prestador.NumeroDocumento := Self.FInfNfse.PrestadorServico.Identificacao.FCpfCnpj.Cnpj;
+    Result.Prestador.RazaoSocial := FNFSe.FInfNfse.PrestadorServico.RazaoSocial;
+    Result.Prestador.NomeFantasia := FNFSe.FInfNfse.PrestadorServico.NomeFantasia;
+    Result.Prestador.NumeroDocumento := FNFSe.FInfNfse.PrestadorServico.Identificacao.FCpfCnpj.Cnpj;
     if Result.Prestador.NumeroDocumento = EmptyStr then
-      Result.Prestador.NumeroDocumento := Self.FInfNfse.PrestadorServico.Identificacao.FCpfCnpj.Cpf;
+      Result.Prestador.NumeroDocumento := FNFSe.FInfNfse.PrestadorServico.Identificacao.FCpfCnpj.Cpf;
 
-    Result.Prestador.InscricaoMunicipal := Self.FInfNfse.PrestadorServico.FIdentificacao.FInscricaoMunicipal;
-    Result.Prestador.Telefone := Self.FInfNfse.PrestadorServico.Contato.Telefone;
-    Result.Prestador.Email := Self.FInfNfse.PrestadorServico.Contato.Email;
-    Result.Prestador.Endereco.Logradouro := Self.FInfNfse.PrestadorServico.Endereco.Endereco;
-    Result.Prestador.Endereco.Numero := Self.FInfNfse.PrestadorServico.Endereco.Numero;
-    Result.Prestador.Endereco.Complemento := Self.FInfNfse.PrestadorServico.Endereco.Complemento;
-    Result.Prestador.Endereco.CEP := Self.FInfNfse.PrestadorServico.Endereco.CEP;
-    Result.Prestador.Endereco.Bairro := Self.FInfNfse.PrestadorServico.Endereco.Bairro;
-    Result.Prestador.Endereco.CodigoCidade := Self.FInfNfse.PrestadorServico.Endereco.CodigoMunicipio;
-    Result.Prestador.Endereco.UF := Self.FInfNfse.PrestadorServico.Endereco.UF;
+    Result.Prestador.InscricaoMunicipal := FNFSe.FInfNfse.PrestadorServico.FIdentificacao.FInscricaoMunicipal;
+    Result.Prestador.Telefone := FNFSe.FInfNfse.PrestadorServico.Contato.Telefone;
+    Result.Prestador.Email := FNFSe.FInfNfse.PrestadorServico.Contato.Email;
+    Result.Prestador.Endereco.Logradouro := FNFSe.FInfNfse.PrestadorServico.Endereco.Endereco;
+    Result.Prestador.Endereco.Numero := FNFSe.FInfNfse.PrestadorServico.Endereco.Numero;
+    Result.Prestador.Endereco.Complemento := FNFSe.FInfNfse.PrestadorServico.Endereco.Complemento;
+    Result.Prestador.Endereco.CEP := FNFSe.FInfNfse.PrestadorServico.Endereco.CEP;
+    Result.Prestador.Endereco.Bairro := FNFSe.FInfNfse.PrestadorServico.Endereco.Bairro;
+    Result.Prestador.Endereco.CodigoCidade := FNFSe.FInfNfse.PrestadorServico.Endereco.CodigoMunicipio;
+    Result.Prestador.Endereco.UF := FNFSe.FInfNfse.PrestadorServico.Endereco.UF;
     Result.Prestador.Endereco.CodigoPais := '1058';
     Result.Prestador.Endereco.NomePais := 'Brasil';
     {$ENDREGION}
 
     {$REGION 'TOMADOR'}
-    LTomador := FInfNfse.DeclaracaoPrestacaoServico.InfDeclaracaoPrestacaoServico.TomadorServico;
+    LTomador := FNFSe.FInfNfse.DeclaracaoPrestacaoServico.InfDeclaracaoPrestacaoServico.TomadorServico;
     Result.Tomador.RazaoSocial := LTomador.RazaoSocial;
     Result.Tomador.NomeFantasia := LTomador.RazaoSocial;
     Result.Tomador.Nif := LTomador.NifTomador;
@@ -499,7 +626,7 @@ begin
     {$ENDREGION}
 
     {$REGION 'SERVICOS'}
-    LServico := Self.InfNfse.DeclaracaoPrestacaoServico.InfDeclaracaoPrestacaoServico.Servico;
+    LServico := FNFSe.InfNfse.DeclaracaoPrestacaoServico.InfDeclaracaoPrestacaoServico.Servico;
     LNFSeServico := TGBFRNFSeModelServico.Create;
     Result.Servicos.Add(LNFSeServico);
     LNFSeServico.ItemListaServico := LServico.ItemListaServico;
@@ -508,10 +635,10 @@ begin
     LNFSeServico.CodigoTributacaoMunicipio := LServico.CodigoTributacaoMunicipio;
     LNFSeServico.MunicipioPrestacao := LServico.MunicipioIncidencia;
     LNFSeServico.Valor := LServico.Valores.ValorServicos;
-    LNFSeServico.ValorIss := Self.InfNfse.ValoresNfse.ValorIss;
-    LNFSeServico.BaseCalculo := Self.InfNfse.ValoresNfse.BaseCalculo;
-    LNFSeServico.Aliquota := Self.InfNfse.ValoresNfse.Aliquota;
-    LNFSeServico.ValorLiquido := Self.InfNfse.ValoresNfse.ValorLiquidoNfse;
+    LNFSeServico.ValorIss := FNFSe.InfNfse.ValoresNfse.ValorIss;
+    LNFSeServico.BaseCalculo := FNFSe.InfNfse.ValoresNfse.BaseCalculo;
+    LNFSeServico.Aliquota := FNFSe.InfNfse.ValoresNfse.Aliquota;
+    LNFSeServico.ValorLiquido := FNFSe.InfNfse.ValoresNfse.ValorLiquidoNfse;
     LNFSeServico.ValorDeducoes := LServico.Valores.ValorDeducoes;
     LNFSeServico.ValorPis := LServico.Valores.ValorPis;
     LNFSeServico.ValorCofins := LServico.Valores.ValorCofins;
@@ -525,11 +652,11 @@ begin
     {$ENDREGION}
 
     {$REGION 'NFSe VALORES'}
-    Result.ValorCredito := Self.InfNfse.ValorCredito;
+    Result.ValorCredito := FNFSe.InfNfse.ValorCredito;
     Result.Valor := LServico.Valores.ValorServicos;
-    Result.ValorIss := Self.InfNfse.ValoresNfse.ValorIss;
-    Result.BaseCalculo := Self.InfNfse.ValoresNfse.BaseCalculo;
-    Result.ValorLiquido := Self.InfNfse.ValoresNfse.ValorLiquidoNfse;
+    Result.ValorIss := FNFSe.InfNfse.ValoresNfse.ValorIss;
+    Result.BaseCalculo := FNFSe.InfNfse.ValoresNfse.BaseCalculo;
+    Result.ValorLiquido := FNFSe.InfNfse.ValoresNfse.ValorLiquidoNfse;
     Result.ValorDeducoes := LServico.Valores.ValorDeducoes;
     Result.ValorPis := LServico.Valores.ValorPis;
     Result.ValorCofins := LServico.Valores.ValorCofins;
@@ -542,31 +669,31 @@ begin
     {$ENDREGION}
 
     {$REGION 'NFSE'}
-    LRPS := FInfNfse.DeclaracaoPrestacaoServico.FInfDeclaracaoPrestacaoServico.Rps;
-    Result.RPS := LRPS.FNumero;
+    LRPS := FNFSe.InfNfse.DeclaracaoPrestacaoServico.FInfDeclaracaoPrestacaoServico.Rps;
+    Result.RPS := LRPS.Numero;
     Result.Serie := LRPS.Serie;
     Result.TipoRPS := LRPS.Tipo;
-    Result.Situacao := LRPS.GetSituacao;
-    Result.Numero := FInfNfse.Numero;
-    Result.CodigoVerificacao := FInfNfse.CodigoVerificacao;
-    Result.DataEmissao := FInfNfse.DataEmissao;
-    Result.OutrasInformacoes := FInfNfse.OutrasInformacoes;
-    Result.OptanteSimplesNacional := FInfNfse.DeclaracaoPrestacaoServico.FInfDeclaracaoPrestacaoServico.OptanteSimplesNacional;
+    Result.Situacao := Self.GetSituacao;
+    Result.Numero := FNFSe.InfNfse.Numero;
+    Result.CodigoVerificacao := FNFSe.InfNfse.CodigoVerificacao;
+    Result.DataEmissao := FNFSe.InfNfse.DataEmissao;
+    Result.OutrasInformacoes := FNFSe.InfNfse.OutrasInformacoes;
+    Result.OptanteSimplesNacional := FNFSe.InfNfse.DeclaracaoPrestacaoServico.FInfDeclaracaoPrestacaoServico.OptanteSimplesNacional;
     Result.IncentivadorCultural := False;
+    {$ENDREGION}
+
+    {$REGION 'CANCELAMENTO'}
+    if FNFSeCancelamento.Confirmacao.DataHora > 0 then
+    begin
+      Result.Situacao := sCancelado;
+      Result.DataCancelamento := FNFSeCancelamento.Confirmacao.DataHora;
+      Result.CodigoCancelamento := FNFSeCancelamento.Confirmacao.Pedido.InfPedidoCancelamento.CodigoCancelamento;
+    end;
     {$ENDREGION}
   except
     Result.Free;
     raise;
   end;
-end;
-
-{ TGBFRNFSeModelAbrasf204RPS }
-
-function TGBFRNFSeModelAbrasf204RPS.GetSituacao: TNFSeSituacao;
-begin
-  Result := sNormal;
-  if FStatus = '2' then
-    Result := sCancelado;
 end;
 
 end.
