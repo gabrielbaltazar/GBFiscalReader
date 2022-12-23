@@ -19,7 +19,6 @@ type
   TGBFRNFSeTestAbrasf204Cancelada = class(TGBFRNFSeTestBase)
   private
     FCompNFSe: TGBFRNFSeModelAbrasf204CompNFSe;
-    FNFSe: TGBFRNFSeModelAbrasf204NFSe;
     FModel: TGBFRNFSeModel;
   public
     [Setup]
