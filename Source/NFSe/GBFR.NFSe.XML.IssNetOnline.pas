@@ -69,7 +69,11 @@ var
 begin
   LXmlFile := TStringList.Create;
   try
-    LXmlFile.LoadFromFile(AValue);
+    try
+      LXmlFile.LoadFromFile(AValue, TEncoding.UTF8);
+    except
+      LXmlFile.LoadFromFile(AValue);
+    end;
     Result := LoadFromContent(LXmlFile.Text);
   finally
     LXmlFile.Free;
