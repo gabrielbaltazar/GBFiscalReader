@@ -234,7 +234,7 @@ var
   LNodeIDE: IXMLNode;
   LData: string;
   LHora: string;
-  LFormat: TFormatSettings;
+//  LFormat: TFormatSettings;
 begin
   try
     LNodeIDE := FInfCFe.ChildNodes.FindNode('ide');
@@ -246,7 +246,7 @@ begin
       FCFe.infCFe.ide.cUF := GetNodeInt(LNodeIDE, 'cUF');
       FCFe.infCFe.ide.cNF := GetNodeInt(LNodeIDE, 'cNF');
       FCFe.infCFe.ide.&mod := GetNodeStr(LNodeIDE, 'mod');
-      FCFe.infCFe.ide.nserieSAT := GetNodeInt(LNodeIDE, 'nserieSAT');
+      FCFe.infCFe.ide.nserieSAT := GetNodeStr(LNodeIDE, 'nserieSAT');
       FCFe.infCFe.ide.nCFe := GetNodeStr(LNodeIDE, 'nCFe');
       FCFe.infCFe.ide.cDV := GetNodeInt(LNodeIDE, 'cDV');
       FCFe.infCFe.ide.CNPJ := GetNodeStr(LNodeIDE, 'CNPJ');
@@ -256,13 +256,23 @@ begin
 
       LData := GetNodeStr(LNodeIDE, 'dEmi');
       LHora := GetNodeStr(LNodeIDE, 'hEmi');
-      LFormat := TFormatSettings.Create;
-      LFormat.ShortDateFormat := 'yyyyMMdd';
-      LFormat.LongTimeFormat := 'hhmmss';
-      LFormat.ShortTimeFormat := 'hhmmss';
+//      LFormat := TFormatSettings.Create;
+//      LFormat.ShortDateFormat := 'yyyyMMdd';
+//      LFormat.LongTimeFormat := 'hhmmss';
+//      LFormat.ShortTimeFormat := 'hhmmss';
+//      FCFe.infCFe.ide.dEmi := StrToDate(LData, LFormat);
+//      FCFe.infCFe.ide.hEmi := StrToTime(LHora, LFormat);
 
-      FCFe.infCFe.ide.dEmi := StrToDate(LData, LFormat);
-      FCFe.infCFe.ide.hEmi := StrToTime(LHora, LFormat);
+      FCFe.infCFe.ide.dEmi := EncodeDate(StrToInt(Copy(LData,  1, 4)),
+                                         StrToInt(Copy(LData,  5, 2)),
+                                         StrToInt(Copy(LData,  7, 2)));
+
+      FCFe.infCFe.ide.hEmi := EncodeTime(StrToInt(Copy(LHora, 1, 2)),
+                                         StrToInt(Copy(LHora, 3, 2)),
+                                         StrToInt(Copy(LHora, 5, 2)),
+                                         0);
+
+
     end;
   except
     on E: Exception do
@@ -377,13 +387,20 @@ end;
 procedure TGBFRSATXMLDefault.LoadTagInfAdic;
 var
   LNodeInfAdic: IXMLNode;
+  LNodeObsFisco: IXMLNode;
 begin
   LNodeInfAdic := FInfCFe.ChildNodes.FindNode('infAdic');
   if not Assigned(LNodeInfAdic) then
     Exit;
 
-  FCFe.infCFe.infAdic.obsFisco := GetNodeStr(LNodeInfAdic, 'obsFisco');
   FCFe.infCFe.infAdic.infCpl := GetNodeStr(LNodeInfAdic, 'infCpl');
+
+  LNodeObsFisco := LNodeInfAdic.ChildNodes.FindNode('obsFisco');
+  if Assigned(LNodeObsFisco) then
+  begin
+    FCFe.infCFe.infAdic.obsFisco.xTexto := GetNodeStr(LNodeObsFisco, 'xTexto');
+    FCFe.infCFe.infAdic.obsFisco.xCampo := LNodeObsFisco.AttributeNodes['xCampo'].Text;
+  end;
 end;
 
 procedure TGBFRSATXMLDefault.LoadTagInfCFe;

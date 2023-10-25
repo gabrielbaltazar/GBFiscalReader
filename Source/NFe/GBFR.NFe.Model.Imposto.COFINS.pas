@@ -5,13 +5,13 @@ interface
 type TGBFRNFeModelCOFINS = class
   private
     FCST: string;
-    FpCOFINS: Currency;
+    FpCOFINS: Double;
     FvCofins: Currency;
     FvBC: Currency;
 
   public
     property CST: string read FCST write FCST;
-    property pCOFINS: Currency read FpCOFINS write FpCOFINS;
+    property pCOFINS: Double read FpCOFINS write FpCOFINS;
     property vCOFINS: Currency read FvCofins write FvCofins;
     property vBC: Currency read FvBC write FvBC;
 end;
