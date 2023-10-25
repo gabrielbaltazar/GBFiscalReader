@@ -205,7 +205,7 @@ type
     FcUF: Integer;
     FcNF: Integer;
     Fmod: string;
-    FnSerieSAT: Integer;
+    FnSerieSAT: string;
     FnCFe: string;
     FdEmi: TDate;
     FhEmi: TTime;
@@ -219,7 +219,7 @@ type
     property cUF: Integer read FcUF write FcUF;
     property cNF: Integer read FcNF write FcNF;
     property &mod: string read Fmod write Fmod;
-    property nSerieSAT: Integer read FnSerieSAT write FnSerieSAT;
+    property nSerieSAT: string read FnSerieSAT write FnSerieSAT;
     property nCFe: string read FnCFe write FnCFe;
     property dEmi: TDate read FdEmi write FdEmi;
     property hEmi: TTime read FhEmi write FhEmi;
@@ -261,13 +261,25 @@ type
     property infAdic: TGBFRSATModelInformacaoAdicional read FinfAdic write FinfAdic;
   end;
 
+  TGBFRSATModelObsFisco = class
+  private
+    FxCampo: string;
+    FxTexto: string;
+  public
+    property xCampo: string read FxCampo write FxCampo;
+    property xTexto: string read FxTexto write FxTexto;
+  end;
+
   TGBFRSATModelInformacaoAdicional = class
   private
-    FobsFisco: string;
+    FobsFisco: TGBFRSATModelObsFisco;
     FinfCpl: string;
   public
+    constructor Create;
+    destructor Destroy; override;
+
     property infCpl: string read FinfCpl write FinfCpl;
-    property obsFisco: string read FobsFisco write FobsFisco;
+    property obsFisco: TGBFRSATModelObsFisco read FobsFisco write FobsFisco;
   end;
 
   TGBFRSATModelISSQNTotal = class
@@ -547,5 +559,19 @@ begin
   Fimposto.Free;
   inherited;
 end;
+
+{ TGBFRSATModelInformacaoAdicional }
+
+constructor TGBFRSATModelInformacaoAdicional.Create;
+begin
+  FobsFisco := TGBFRSATModelObsFisco.Create;
+end;
+
+destructor TGBFRSATModelInformacaoAdicional.Destroy;
+begin
+  FobsFisco.Free;
+  inherited;
+end;
+
 
 end.

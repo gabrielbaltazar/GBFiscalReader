@@ -45,6 +45,12 @@ type
                            NFeNFCeDomicilio,
                            NFeNaoPresencialOutros);
 
+  TNFeIndicadorOrigemProcesso = (NFeOrigemProcessoSEFAZ,
+                                 NFeOrigemProcessoJusticaFederal,
+                                 NFeOrigemProcessoJusticaEstadual,
+                                 NFeOrigemProcessoSecexRFB,
+                                 NFeOrigemProcessoOutros);
+
   TNFeProcessoEmissao = (NFeAplicativoContribuinte,
                          NFeAvulsaPeloFisco,
                          NFeContribuinteComCertificado,
@@ -86,8 +92,11 @@ type
     NFeMdDeficienciaNaoCondutor,
     NFeMdOrgaoFomento,
     NFeMdOlimpiadas,
-    NFeMdSolicitadoPeloFisco
+    NFeMdSolicitadoPeloFisco,
+    NFeMdVazio
   );
+
+  TNFeIndicadorPagamento = (NFeIPAvista, NFeIPAprazo, NFeVazio);
 
   TNFeFormaPagamento = (NFeFPDinheiro,
                         NFeFPCheque,
@@ -99,8 +108,13 @@ type
                         NFeFPValePresente,
                         NFeFPValeCombustivel,
                         NFeFPBoletoBancario,
+                        NFeFPDepositoBancario,
+                        NFeFPPIX,
+                        NFeFPTransferenciaBancaria,
+                        NFeFPProgFidelidadeCashbackCredVirt,
                         NFeFPSemPagamento,
                         NFeFPOutros);
+
 
   TNFeBandeiraOperadora = (NFeVisa,
                            NFeMastercard,
@@ -128,6 +142,25 @@ type
     NFeIIFSim,
     NFeIIFNao);
 
+  TNFeDIIndicadorIntermedio = (
+    NFeDIPorContaPropria,
+    NFeDIPorContaEordem,
+    NFeDIPorEncomenda);
+
+  TNFeDIIndicadorViaTransp = (
+    NFeDIMaritima,
+    NFeDIFluvial,
+    NFeDILacustre,
+    NFeDIAerea,
+    NFeDIPostal,
+    NFeDIFerroviaria,
+    NFeDIRodoviaria,
+    NFeDIConduto,
+    NFeDIMeiosProprios,
+    NFeDIEntradaSaidaFicta,
+    NFeDICourier,
+    NFeDIHandcarry);
+
   TNFeAmbienteHelper = record helper for TNFeAmbiente
   public
     procedure fromInteger(Value: Integer);
@@ -136,8 +169,8 @@ type
 
   TNFeMotivoDesoneracaoHelper = record helper for TNFeMotivoDesoneracao
   public
-    procedure fromInteger(Value: Integer);
-    function Value: Integer;
+    procedure fromString(Value: string);
+    function Value: string;
   end;
 
   TNFeTipoOperacaoHelper = record helper for TNFeTipoOperacao
@@ -194,6 +227,12 @@ type
     function Value: Integer;
   end;
 
+  TNFeIndicadorOrigemProcessoHelper = record helper for TNFeIndicadorOrigemProcesso
+  public
+    procedure fromInteger(Value: Integer);
+    function Value: Integer;
+  end;
+
   TNFeIndicadorIEHelper = record helper for TNFeIndicadorIE
   public
     procedure fromInteger(Value: Integer);
@@ -224,6 +263,12 @@ type
     function Value: String;
   end;
 
+  TNFeIndicadorPagamentoHelper = record helper for TNFeIndicadorPagamento
+  public
+    procedure fromString(Value: String);
+    function Value: String;
+  end;
+
   TNFeBandeiraOperadoraHelper = record helper for TNFeBandeiraOperadora
   public
     procedure fromString(Value: String);
@@ -248,9 +293,27 @@ type
     function Value: Integer;
   end;
 
+  TNFeDIIndicadorIntermedioHelper = record helper for TNFeDIIndicadorIntermedio
+  public
+    procedure fromInteger(Value: Integer);
+    function Value: Integer;
+  end;
+
+  TNFeDIIndicadorViaTranspHelper = record helper for TNFeDIIndicadorViaTransp
+  public
+    procedure fromInteger(Value: Integer);
+    function Value: Integer;
+  end;
+
+
 implementation
 
-{ NFeAmbienteHelper }
+var
+  aStrMotivoDesoneracao: array of string = ['1','2','3','4','5','6','7','8','9','11','12','16','90'];
+  aStrFormaPagamento: array of string = ['01','02','03','04','05','10','11','12','13','15','16','17','18','19','90','99'];
+
+
+{ TNFeAmbienteHelper }
 
 procedure TNFeAmbienteHelper.fromInteger(Value: Integer);
 begin
@@ -268,7 +331,7 @@ begin
   end;
 end;
 
-{ NFeCRTHelper }
+{ TNFeCRTHelper }
 
 procedure TNFeCRTHelper.fromInteger(Value: Integer);
 begin
@@ -283,7 +346,7 @@ begin
   Result := Integer(Self) + 1;
 end;
 
-{ NFeIndicadorIEHelper }
+{ TNFeIndicadorIEHelper }
 
 procedure TNFeIndicadorIEHelper.fromInteger(Value: Integer);
 begin
@@ -318,7 +381,56 @@ begin
   end;
 end;
 
-{ NFeIndicadorTotalHelper }
+{ TNFeIndicadorOrigemProcessoHelper }
+
+procedure TNFeIndicadorOrigemProcessoHelper.fromInteger(Value: Integer);
+begin
+  if Value = 0 then
+  begin
+    Self := NFeOrigemProcessoSEFAZ;
+    Exit;
+  end;
+
+  if Value = 1 then
+  begin
+    Self := NFeOrigemProcessoJusticaFederal;
+    Exit;
+  end;
+
+  if Value = 2 then
+  begin
+    Self := NFeOrigemProcessoJusticaEstadual;
+    Exit;
+  end;
+
+  if Value = 3 then
+  begin
+    Self := NFeOrigemProcessoSecexRFB;
+    Exit;
+  end;
+
+  if Value = 9 then
+  begin
+    Self := NFeOrigemProcessoOutros;
+    Exit;
+  end;
+
+  raise Exception.CreateFmt('Invalid Value for NFeIndicadorOrigemProcesso, must be in 0, 1, 2, 3 or 9.', []);
+end;
+
+function TNFeIndicadorOrigemProcessoHelper.Value: Integer;
+begin
+  result := -1;
+  case Self of
+    NFeOrigemProcessoSEFAZ : result := 0;
+    NFeOrigemProcessoJusticaFederal : result := 1;
+    NFeOrigemProcessoJusticaEstadual : result := 2;
+    NFeOrigemProcessoSecexRFB : result := 3;
+    NFeOrigemProcessoOutros : result := 9;
+  end;
+end;
+
+{ TNFeIndicadorTotalHelper }
 
 procedure TNFeIndicadorTotalHelper.fromInteger(Value: Integer);
 begin
@@ -370,95 +482,32 @@ end;
 { TNFeFormaPagamentoHelper }
 
 procedure TNFeFormaPagamentoHelper.fromString(Value: String);
+var i: Integer;
 begin
-  if Value = '01' then
-  begin
-    Self := NFeFPDinheiro;
-    Exit;
-  end;
-
-  if Value = '02' then
-  begin
-    Self := NFeFPCheque;
-    Exit;
-  end;
-
-  if Value = '03' then
-  begin
-    Self := NFeFPCartaoCredito;
-    Exit;
-  end;
-
-  if Value = '04' then
-  begin
-    Self := NFeFPCartaoDebito;
-    Exit;
-  end;
-
-  if Value = '05' then
-  begin
-    Self := NFeFPCreditoLoja;
-    Exit;
-  end;
-
-  if Value = '10' then
-  begin
-    Self := NFeFPValeAlimentacao;
-    Exit;
-  end;
-
-  if Value = '11' then
-  begin
-    Self := NFeFPValeRefeicao;
-    Exit;
-  end;
-
-  if Value = '12' then
-  begin
-    Self := NFeFPValePresente;
-    Exit;
-  end;
-
-  if Value = '13' then
-  begin
-    Self := NFeFPValeCombustivel;
-    Exit;
-  end;
-
-  if Value = '15' then
-  begin
-    Self := NFeFPBoletoBancario;
-    Exit;
-  end;
-
-  if Value = '90' then
-  begin
-    Self := NFeFPSemPagamento;
-    Exit;
-  end;
-
-  if Value = '99' then
-  begin
-    Self := NFeFPOutros;
-    Exit;
-  end;
+  for i := Low(aStrFormaPagamento) to high(aStrFormaPagamento) do
+    if AnsiSameText(Value, aStrFormaPagamento[i]) then
+      Self := TNFeFormaPagamento(i);
 end;
 
 function TNFeFormaPagamentoHelper.Value: String;
 begin
   case Self of
-    NFeFPDinheiro        : Result := '01';
-    NFeFPCheque          : Result := '02';
-    NFeFPCartaoCredito   : Result := '03';
-    NFeFPCartaoDebito    : Result := '04';
-    NFeFPCreditoLoja     : Result := '05';
-    NFeFPValeAlimentacao : Result := '10';
-    NFeFPValeRefeicao    : Result := '11';
-    NFeFPValePresente    : Result := '12';
-    NFeFPValeCombustivel : Result := '13';
-    NFeFPBoletoBancario  : Result := '15';
-    NFeFPSemPagamento    : Result := '90';
-    NFeFPOutros          : Result := '99';
+    NFeFPDinheiro                       : Result := '01';
+    NFeFPCheque                         : Result := '02';
+    NFeFPCartaoCredito                  : Result := '03';
+    NFeFPCartaoDebito                   : Result := '04';
+    NFeFPCreditoLoja                    : Result := '05';
+    NFeFPValeAlimentacao                : Result := '10';
+    NFeFPValeRefeicao                   : Result := '11';
+    NFeFPValePresente                   : Result := '12';
+    NFeFPValeCombustivel                : Result := '13';
+    NFeFPBoletoBancario                 : Result := '15';
+    NFeFPDepositoBancario               : Result := '16';
+    NFeFPPIX                            : Result := '17';
+    NFeFPTransferenciaBancaria          : Result := '18';
+    NFeFPProgFidelidadeCashbackCredVirt : Result := '19';
+    NFeFPSemPagamento                   : Result := '90';
+    NFeFPOutros                         : Result := '99';
   end;
 end;
 
@@ -757,30 +806,85 @@ end;
 
 { TNFeMotivoDesoneracaoHelper }
 
-procedure TNFeMotivoDesoneracaoHelper.fromInteger(Value: Integer);
+procedure TNFeMotivoDesoneracaoHelper.fromString(Value: string);
+var i: Integer;
 begin
-  Self := TNFeMotivoDesoneracao(Value - 1);
+  Self := NFeMdVazio;
+  for i := Low(aStrMotivoDesoneracao) to high(aStrMotivoDesoneracao) do
+    if AnsiSameText(Value, aStrMotivoDesoneracao[i]) then
+      Self := TNFeMotivoDesoneracao(i);
 end;
 
-function TNFeMotivoDesoneracaoHelper.Value: Integer;
+function TNFeMotivoDesoneracaoHelper.Value: string;
 begin
-  Result := -1;
   case Self of
-    NFeMdTaxi: result := 1;
-    NFeMdDeficienteFisico: result := 2;
-    NFeMdProdutorAgropecuario: result := 3;
-    NFeMdFrotista: result := 4;
-    NFeMdDiplomatico: result := 5;
-    NFeMdUtilitarios: result := 6;
-    NFeMdSuframa: result := 7;
-    NFeMdVendaOrgaoPublico: result := 8;
-    NFeMdOutros: result := 9;
-    NFeMdDeficienciaCondutor: result := 10;
-    NFeMdDeficienciaNaoCondutor: result := 11;
-    NFeMdOrgaoFomento: result := 12;
-    NFeMdOlimpiadas: result := 16;
-    NFeMdSolicitadoPeloFisco: result := 90;
+    NFeMdTaxi                  : result := '1';
+    NFeMdDeficienteFisico      : result := '2';
+    NFeMdProdutorAgropecuario  : result := '3';
+    NFeMdFrotista              : result := '4';
+    NFeMdDiplomatico           : result := '5';
+    NFeMdUtilitarios           : result := '6';
+    NFeMdSuframa               : result := '7';
+    NFeMdVendaOrgaoPublico     : result := '8';
+    NFeMdOutros                : result := '9';
+    NFeMdDeficienciaCondutor   : result := '10';
+    NFeMdDeficienciaNaoCondutor: result := '11';
+    NFeMdOrgaoFomento          : result := '12';
+    NFeMdOlimpiadas            : result := '16';
+    NFeMdSolicitadoPeloFisco   : result := '90';
+  else
+    result := EmptyStr;
+  end;
+end;
+
+
+{ TNFeDIIndicadorIntermedioHelper }
+
+procedure TNFeDIIndicadorIntermedioHelper.fromInteger(Value: Integer);
+begin
+  Self := TNFeDIIndicadorIntermedio(Value - 1);
+end;
+
+function TNFeDIIndicadorIntermedioHelper.Value: Integer;
+begin
+  result := Integer(Self) + 1;
+end;
+
+{ TNFeDIIndicadorViaTranspHelper }
+
+procedure TNFeDIIndicadorViaTranspHelper.fromInteger(Value: Integer);
+begin
+  Self := TNFeDIIndicadorViaTransp(Value - 1);
+end;
+
+function TNFeDIIndicadorViaTranspHelper.Value: Integer;
+begin
+  result := Integer(Self) + 1;
+end;
+
+{ TNFeIndicadorPagamentoHelper }
+
+procedure TNFeIndicadorPagamentoHelper.fromString(Value: String);
+begin
+  Self := NFeVazio;
+
+  if Value = '0' then
+    Self := NFeIPAvista;
+
+  if Value = '1' then
+    Self := NFeIPAprazo;
+end;
+
+function TNFeIndicadorPagamentoHelper.Value: String;
+begin
+  case Self of
+    NFeIPAvista : Result := '0';
+    NFeIPAprazo : Result := '1';
+  else
+    Result := EmptyStr;
   end;
 end;
 
 end.
+
+

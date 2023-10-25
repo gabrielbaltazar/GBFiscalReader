@@ -11,9 +11,9 @@ type
 
   IGBFRNFeXML = interface
     ['{F77AAF88-CEA4-4534-AEF5-A43103A785EF}']
-    function loadFromContent(Value: String): TGBFRNFeModel;
-    function loadFromFile(Value: String): TGBFRNFeModel;
-    function loadFromStream(Value: TStream): TGBFRNFeModel;
+    function loadFromContent(Value: WideString): TGBFRNFeModel;
+    function loadFromFile   (Value: WideString): TGBFRNFeModel;
+    function loadFromStream (Value: TStream): TGBFRNFeModel;
   end;
 
 function XMLNFeReader: IGBFRNFeXML;

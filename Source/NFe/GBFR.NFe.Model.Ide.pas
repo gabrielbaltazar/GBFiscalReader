@@ -29,6 +29,7 @@ type TGBFRNFeModelIde = class
     FindFinal: TNFeOperacaoConsumidor;
     FindPres: TNFeIndicadorPresenca;
     FprocEmi: TNFeProcessoEmissao;
+    FverProc: string;
 
   public
     property cUF: string read FcUF write FcUF;
@@ -50,6 +51,7 @@ type TGBFRNFeModelIde = class
     property indPres: TNFeIndicadorPresenca read FindPres write FindPres;
     property procEmi: TNFeProcessoEmissao read FprocEmi write FprocEmi;
     property cDV: String read FcDV write FcDV;
+    property verProc: String read FverProc write FverProc;
     property NFRef: TObjectList<TGBFRNFeModelNFRef> read FNFRef write FNFRef;
 
     procedure addNFRef(ARefNFe: String);

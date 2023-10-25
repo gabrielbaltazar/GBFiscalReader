@@ -13,8 +13,10 @@ type TGBFRNFeModelFormaPagamento = class
     FCNPJ: String;
     FtBand: TNFeBandeiraOperadora;
     FcAut: String;
+    FindPag: TNFeIndicadorPagamento;
 
   public
+    property indPag: TNFeIndicadorPagamento read FindPag write FindPag;
     property tPag: TNFeFormaPagamento read FtPag write FtPag;
     property vPag: Currency read FvPag write FvPag;
     property tpIntegra: TNFeTipoIntegracaoPagamento read FtpIntegra write FtpIntegra;
