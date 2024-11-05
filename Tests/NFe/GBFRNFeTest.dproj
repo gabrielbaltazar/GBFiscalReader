@@ -151,6 +151,7 @@
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.Types.pas"/>
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.XML.Default.pas"/>
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.XML.Interfaces.pas"/>
+        <DCCReference Include="Source\GBFR.NFe.Test.NFCe.Cancelled.pas"/>
         <RcItem Include="Resources\41200699999999999999650020000000031000000117-nfce.xml">
             <ContainerId>ResourceItem</ContainerId>
             <ResourceType>RCDATA</ResourceType>
@@ -180,6 +181,11 @@
             <ContainerId>ResourceItem</ContainerId>
             <ResourceType>RCDATA</ResourceType>
             <ResourceId>nfceCom2PagamentosETroco</ResourceId>
+        </RcItem>
+        <RcItem Include="Resources\41200999999999999999650020000000481000000659-nfce_can.xml">
+            <ContainerId>ResourceItem</ContainerId>
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>NFCe41200999999999999999650020000000481000000659_CANCELADA</ResourceId>
         </RcItem>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
@@ -232,6 +238,12 @@
                 </DeployFile>
                 <DeployFile LocalName="Resources\41200999999999999999650020000000481000000659-nfce.xml" Configuration="Debug" Class="ProjectFile"/>
                 <DeployFile LocalName="Resources\41200999999999999999650020000000481000000659-nfce.xml" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Resources\41200999999999999999650020000000481000000659-nfce_can.xml" Configuration="Debug" Class="ProjectFile">
                     <Platform Name="Win32">
                         <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
