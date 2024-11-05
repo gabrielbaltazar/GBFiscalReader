@@ -137,9 +137,9 @@ begin
 
   Assert.IsNotNull(item);
   Assert.AreEqual('01', item.imposto.COFINS.CST);
-  Assert.AreEqual(StrToCurr('100'), item.imposto.COFINS.vBC);
-  Assert.AreEqual(StrToCurr('7,6'), item.imposto.COFINS.pCOFINS);
-  Assert.AreEqual(StrToCurr('7,6'), item.imposto.COFINS.vCOFINS);
+  Assert.AreEqual<Double>(100, item.imposto.COFINS.vBC);
+  Assert.AreEqual<Double>(7.6, item.imposto.COFINS.pCOFINS);
+  Assert.AreEqual<Double>(7.6, item.imposto.COFINS.vCOFINS);
 end;
 
 procedure TGBFRNFeTestNFCeOneItem.TestImpostoICMS;
@@ -152,9 +152,9 @@ begin
   Assert.AreEqual('0', item.imposto.ICMS.orig);
   Assert.AreEqual('00', item.imposto.ICMS.CST);
   Assert.AreEqual(NFeValorOperacao, item.imposto.ICMS.modBC);
-  Assert.AreEqual(StrToCurr('100'), item.imposto.ICMS.vBC);
-  Assert.AreEqual(StrToCurr('12'), item.imposto.ICMS.pICMS);
-  Assert.AreEqual(StrToCurr('12'), item.imposto.ICMS.vICMS);
+  Assert.AreEqual<Double>(100, item.imposto.ICMS.vBC);
+  Assert.AreEqual<Double>(12, item.imposto.ICMS.pICMS);
+  Assert.AreEqual<Double>(12, item.imposto.ICMS.vICMS);
 end;
 
 procedure TGBFRNFeTestNFCeOneItem.TestImpostoPIS;
@@ -165,32 +165,32 @@ begin
 
   Assert.IsNotNull(item);
   Assert.AreEqual('01', item.imposto.PIS.CST);
-  Assert.AreEqual(StrToCurr('100'), item.imposto.PIS.vBC);
-  Assert.AreEqual(StrToCurr('1,65'), item.imposto.PIS.pPIS);
-  Assert.AreEqual(StrToCurr('1,65'), item.imposto.PIS.vPIS);
+  Assert.AreEqual<Double>(100, item.imposto.PIS.vBC);
+  Assert.AreEqual<Currency>(1.65, item.imposto.PIS.pPIS);
+  Assert.AreEqual<Currency>(1.65, item.imposto.PIS.vPIS);
 end;
 
 procedure TGBFRNFeTestNFCeOneItem.TestICMSTot;
 begin
-  Assert.AreEqual(StrToCurr('100'), FModel.ICMSTot.vBC);
-  Assert.AreEqual(StrToCurr('12'), FModel.ICMSTot.vICMS);
-  Assert.AreEqual(StrToCurr('0'), FModel.ICMSTot.vICMSDeson);
-  Assert.AreEqual(StrToCurr('0'), FModel.ICMSTot.vFCP);
-  Assert.AreEqual(StrToCurr('0'), FModel.ICMSTot.vBCST);
-  Assert.AreEqual(StrToCurr('0'), FModel.ICMSTot.vST);
-  Assert.AreEqual(StrToCurr('0'), FModel.ICMSTot.vFCPST);
-  Assert.AreEqual(StrToCurr('0'), FModel.ICMSTot.vFCPSTRet);
-  Assert.AreEqual(StrToCurr('100'), FModel.ICMSTot.vProd);
-  Assert.AreEqual(StrToCurr('0'), FModel.ICMSTot.vFrete);
-  Assert.AreEqual(StrToCurr('0'), FModel.ICMSTot.vSeg);
-  Assert.AreEqual(StrToCurr('0'), FModel.ICMSTot.vDesc);
-  Assert.AreEqual(StrToCurr('0'), FModel.ICMSTot.vII);
-  Assert.AreEqual(StrToCurr('0'), FModel.ICMSTot.vIPI);
-  Assert.AreEqual(StrToCurr('0'), FModel.ICMSTot.vIPIDevol);
-  Assert.AreEqual(StrToCurr('1,65'), FModel.ICMSTot.vPIS);
-  Assert.AreEqual(StrToCurr('7,6'), FModel.ICMSTot.vCOFINS);
-  Assert.AreEqual(StrToCurr('0'), FModel.ICMSTot.vOutro);
-  Assert.AreEqual(StrToCurr('100'), FModel.ICMSTot.vNF);
+  Assert.AreEqual<Currency>(100, FModel.ICMSTot.vBC);
+  Assert.AreEqual<Currency>(12, FModel.ICMSTot.vICMS);
+  Assert.AreEqual<Currency>(0, FModel.ICMSTot.vICMSDeson);
+  Assert.AreEqual<Currency>(0, FModel.ICMSTot.vFCP);
+  Assert.AreEqual<Currency>(0, FModel.ICMSTot.vBCST);
+  Assert.AreEqual<Currency>(0, FModel.ICMSTot.vST);
+  Assert.AreEqual<Currency>(0, FModel.ICMSTot.vFCPST);
+  Assert.AreEqual<Currency>(0, FModel.ICMSTot.vFCPSTRet);
+  Assert.AreEqual<Currency>(100, FModel.ICMSTot.vProd);
+  Assert.AreEqual<Currency>(0, FModel.ICMSTot.vFrete);
+  Assert.AreEqual<Currency>(0, FModel.ICMSTot.vSeg);
+  Assert.AreEqual<Currency>(0, FModel.ICMSTot.vDesc);
+  Assert.AreEqual<Currency>(0, FModel.ICMSTot.vII);
+  Assert.AreEqual<Currency>(0, FModel.ICMSTot.vIPI);
+  Assert.AreEqual<Currency>(0, FModel.ICMSTot.vIPIDevol);
+  Assert.AreEqual<Currency>(1.65, FModel.ICMSTot.vPIS);
+  Assert.AreEqual<Currency>(7.6, FModel.ICMSTot.vCOFINS);
+  Assert.AreEqual<Currency>(0, FModel.ICMSTot.vOutro);
+  Assert.AreEqual<Currency>(100, FModel.ICMSTot.vNF);
 end;
 
 procedure TGBFRNFeTestNFCeOneItem.TestIde;
@@ -251,20 +251,20 @@ end;
 procedure TGBFRNFeTestNFCeOneItem.TestItem;
 begin
   Assert.AreEqual(1, FModel.itens.Count);
-  Assert.AreEqual('000092', FModel.itens[0].cProd);
-  Assert.AreEqual('SEM GTIN', FModel.itens[0].cEAN);
-  Assert.AreEqual('NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL', FModel.itens[0].xProd);
-  Assert.AreEqual('08011900', FModel.itens[0].NCM);
-  Assert.AreEqual('5102', FModel.itens[0].CFOP);
-  Assert.AreEqual('UN', FModel.itens[0].uCom);
-  Assert.AreEqual('2', FModel.itens[0].qCom.ToString);
-  Assert.AreEqual(StrToCurr('50'), FModel.itens[0].vUnCom);
-  Assert.AreEqual(StrToCurr('100'), FModel.itens[0].vProd);
-  Assert.AreEqual('SEM GTIN', FModel.itens[0].cEANTrib);
-  Assert.AreEqual('UN', FModel.itens[0].uTrib);
-  Assert.AreEqual('2', FModel.itens[0].qTrib.ToString);
-  Assert.AreEqual(StrToCurr('50'), FModel.itens[0].vUnTrib);
-  Assert.AreEqual(NFeCompoe, FModel.itens[0].indTot);
+  Assert.AreEqual('000092', FModel.itens[0].prod.cProd);
+  Assert.AreEqual('SEM GTIN', FModel.itens[0].prod.cEAN);
+  Assert.AreEqual('NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL', FModel.itens[0].prod.xProd);
+  Assert.AreEqual('08011900', FModel.itens[0].prod.NCM);
+  Assert.AreEqual('5102', FModel.itens[0].prod.CFOP);
+  Assert.AreEqual('UN', FModel.itens[0].prod.uCom);
+  Assert.AreEqual('2', FModel.itens[0].prod.qCom.ToString);
+  Assert.AreEqual(StrToCurr('50'), FModel.itens[0].prod.vUnCom);
+  Assert.AreEqual(StrToCurr('100'), FModel.itens[0].prod.vProd);
+  Assert.AreEqual('SEM GTIN', FModel.itens[0].prod.cEANTrib);
+  Assert.AreEqual('UN', FModel.itens[0].prod.uTrib);
+  Assert.AreEqual('2', FModel.itens[0].prod.qTrib.ToString);
+  Assert.AreEqual(StrToCurr('50'), FModel.itens[0].prod.vUnTrib);
+  Assert.AreEqual(NFeCompoe, FModel.itens[0].prod.indTot);
 end;
 
 procedure TGBFRNFeTestNFCeOneItem.TestPag;

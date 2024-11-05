@@ -112,39 +112,46 @@
         </DelphiCompile>
         <DCCReference Include="Source\GBFR.NFe.Test.Base.pas"/>
         <DCCReference Include="..\..\Source\XML\GBFR.XML.Base.pas"/>
+        <DCCReference Include="Source\GBFR.NFe.Test.NFCe.OneItem.pas"/>
+        <DCCReference Include="Source\GBFR.NFe.Test.NFeReferenciada.pas"/>
+        <DCCReference Include="Source\GBFR.NFe.Test.NFCeMoreItems.pas">
+            <Form>/</Form>
+        </DCCReference>
+        <DCCReference Include="Source\GBFR.NFe.Test.NFeComISSQN.pas"/>
+        <DCCReference Include="Source\GBFR.NFe.Test.NFCe.OneItem.Stream.pas"/>
+        <DCCReference Include="Source\GBFR.NFe.Test.NFCePayments.pas"/>
+        <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.Adi.pas"/>
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.Classes.pas"/>
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.Destinatario.pas"/>
+        <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.DI.pas"/>
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.Emitente.pas"/>
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.Endereco.pas"/>
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.FormaPagamento.pas"/>
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.ICMSTot.pas"/>
+        <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.Ide.pas"/>
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.Imposto.COFINS.pas"/>
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.Imposto.ICMS.pas"/>
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.Imposto.II.pas"/>
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.Imposto.IPI.pas"/>
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.Imposto.ISSQN.pas"/>
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.Imposto.PIS.pas"/>
+        <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.InfAdic.pas"/>
+        <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.ISSQNTot.pas"/>
+        <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.Item.Imposto.pas"/>
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.Item.pas"/>
-        <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.pas"/>
+        <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.NFRef.pas"/>
+        <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.ObsCont.pas"/>
+        <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.ObsFisco.pas"/>
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.Pagamento.pas"/>
+        <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.pas"/>
+        <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.ProcRef.pas"/>
+        <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.Prod.pas"/>
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.Protocolo.pas"/>
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.ResponsavelTecnico.pas"/>
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.Types.pas"/>
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.XML.Default.pas"/>
         <DCCReference Include="..\..\Source\NFe\GBFR.NFe.XML.Interfaces.pas"/>
-        <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.Ide.pas"/>
-        <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.InfAdic.pas"/>
-        <DCCReference Include="Source\GBFR.NFe.Test.NFCe.OneItem.pas"/>
-        <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.NFRef.pas"/>
-        <DCCReference Include="Source\GBFR.NFe.Test.NFeReferenciada.pas"/>
-        <DCCReference Include="Source\GBFR.NFe.Test.NFCeMoreItems.pas">
-            <Form>/</Form>
-        </DCCReference>
-        <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.ISSQNTot.pas"/>
-        <DCCReference Include="Source\GBFR.NFe.Test.NFeComISSQN.pas"/>
-        <DCCReference Include="..\..\Source\NFe\GBFR.NFe.Model.Item.Imposto.pas"/>
-        <DCCReference Include="Source\GBFR.NFe.Test.NFCe.OneItem.Stream.pas"/>
-        <DCCReference Include="Source\GBFR.NFe.Test.NFCePayments.pas"/>
+        <DCCReference Include="Source\GBFR.NFe.Test.NFCe.Cancelled.pas"/>
         <RcItem Include="Resources\41200699999999999999650020000000031000000117-nfce.xml">
             <ContainerId>ResourceItem</ContainerId>
             <ResourceType>RCDATA</ResourceType>
@@ -174,6 +181,11 @@
             <ContainerId>ResourceItem</ContainerId>
             <ResourceType>RCDATA</ResourceType>
             <ResourceId>nfceCom2PagamentosETroco</ResourceId>
+        </RcItem>
+        <RcItem Include="Resources\41200999999999999999650020000000481000000659-nfce_can.xml">
+            <ContainerId>ResourceItem</ContainerId>
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>NFCe41200999999999999999650020000000481000000659_CANCELADA</ResourceId>
         </RcItem>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
@@ -218,12 +230,60 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="Resources\41200699999999999999650020000000031000000117-nfce.xml" Configuration="Debug" Class="ProjectFile"/>
+                <DeployFile LocalName="Resources\41200699999999999999650020000000031000000117-nfce.xml" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Resources\41200999999999999999650020000000481000000659-nfce.xml" Configuration="Debug" Class="ProjectFile"/>
+                <DeployFile LocalName="Resources\41200999999999999999650020000000481000000659-nfce.xml" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Resources\41200999999999999999650020000000481000000659-nfce_can.xml" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Resources\nfceCom2Pagamentos.xml" Configuration="Debug" Class="ProjectFile"/>
+                <DeployFile LocalName="Resources\nfceCom2Pagamentos.xml" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Resources\nfceCom2PagamentosETroco.xml" Configuration="Debug" Class="ProjectFile"/>
+                <DeployFile LocalName="Resources\nfceCom2PagamentosETroco.xml" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Resources\nfeComISSQN.xml" Configuration="Debug" Class="ProjectFile"/>
+                <DeployFile LocalName="Resources\nfeComISSQN.xml" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Resources\nfeComNotaReferenciada.xml" Configuration="Debug" Class="ProjectFile"/>
+                <DeployFile LocalName="Resources\nfeComNotaReferenciada.xml" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Win32\Debug\GBFRNFeTest.exe" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile LocalName="Win32\Debug\GBFRNFeTest.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>GBFRNFeTest.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="OSX32">
                         <Operation>1</Operation>
@@ -615,6 +675,127 @@
                         <Operation>0</Operation>
                     </Platform>
                 </DeployClass>
+                <DeployClass Name="ProjectAndroidManifest">
+                    <Platform Name="Android">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectOSXDebug"/>
+                <DeployClass Name="ProjectOSXEntitlements"/>
+                <DeployClass Name="ProjectOSXInfoPList"/>
+                <DeployClass Name="ProjectOSXResource">
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\Resources</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSX64">
+                        <RemoteDir>Contents\Resources</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\Resources</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Required="true" Name="ProjectOutput">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>library\lib\arm64-v8a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Linux64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSX64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSXARM64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectOutput_Android32">
+                    <Platform Name="Android64">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectUWPManifest">
+                    <Platform Name="Win32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win64">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSDeviceDebug">
+                    <Platform Name="iOSDevice32">
+                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSEntitlements"/>
+                <DeployClass Name="ProjectiOSInfoPList"/>
+                <DeployClass Name="ProjectiOSLaunchScreen"/>
+                <DeployClass Name="ProjectiOSResource">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimARM64">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="UWP_DelphiLogo150">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win64">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="UWP_DelphiLogo44">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win64">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
                 <DeployClass Name="iOS_AppStore1024">
                     <Platform Name="iOSDevice64">
                         <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
@@ -812,127 +993,6 @@
                     </Platform>
                     <Platform Name="iOSSimARM64">
                         <RemoteDir>..\$(PROJECTNAME).launchscreen\Assets\AppIcon.appiconset</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="ProjectAndroidManifest">
-                    <Platform Name="Android">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="ProjectiOSDeviceDebug">
-                    <Platform Name="iOSDevice32">
-                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSDevice64">
-                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSSimARM64">
-                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="ProjectiOSEntitlements"/>
-                <DeployClass Name="ProjectiOSInfoPList"/>
-                <DeployClass Name="ProjectiOSLaunchScreen"/>
-                <DeployClass Name="ProjectiOSResource">
-                    <Platform Name="iOSDevice32">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSDevice64">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSSimARM64">
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="ProjectOSXDebug"/>
-                <DeployClass Name="ProjectOSXEntitlements"/>
-                <DeployClass Name="ProjectOSXInfoPList"/>
-                <DeployClass Name="ProjectOSXResource">
-                    <Platform Name="OSX32">
-                        <RemoteDir>Contents\Resources</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="OSX64">
-                        <RemoteDir>Contents\Resources</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="OSXARM64">
-                        <RemoteDir>Contents\Resources</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Required="true" Name="ProjectOutput">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\arm64-v8a</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSDevice32">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSDevice64">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSSimARM64">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="Linux64">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="OSX32">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="OSX64">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="OSXARM64">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="ProjectOutput_Android32">
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="ProjectUWPManifest">
-                    <Platform Name="Win32">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="Win64">
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="UWP_DelphiLogo150">
-                    <Platform Name="Win32">
-                        <RemoteDir>Assets</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="Win64">
-                        <RemoteDir>Assets</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="UWP_DelphiLogo44">
-                    <Platform Name="Win32">
-                        <RemoteDir>Assets</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="Win64">
-                        <RemoteDir>Assets</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
