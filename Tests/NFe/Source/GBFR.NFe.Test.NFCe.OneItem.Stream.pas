@@ -208,7 +208,7 @@ begin
   Assert.AreEqual('2020-06-09 08:51:46', FormatDateTime('yyyy-MM-dd hh:mm:ss', FModel.ide.dhEmi));
   Assert.AreEqual('4110805', FModel.ide.cMunFG);
   Assert.AreEqual('7', FModel.ide.cDV);
-  Assert.AreEqual(0, FModel.Ide.NFRef.Count);
+  Assert.AreEqual(0, FModel.Ide.refNFes.Count);
   Assert.AreEqual(NFeHomologacao, FModel.ide.tpAmb);
   Assert.AreEqual(NFeSaida, FModel.ide.tpNF);
   Assert.AreEqual(NFeInterna, FModel.ide.idDest);

@@ -441,6 +441,10 @@ procedure TGBFRNFeXMLDefault.LoadTagIdeNFref;
 var
   LNodeIDE: IXMLNode;
   LNodeNFRef: IXMLNode;
+  LNodeRefNFe: IXMLNode;
+  LNodeRefNF: IXMLNode;
+  LNodeRefNFP: IXMLNode;
+  LNodeRefECF: IXMLNode;
 begin
   LNodeIDE := FInfNFe.ChildNodes.FindNode('ide');
   if not Assigned(LNodeIDE) then
@@ -448,8 +452,50 @@ begin
   LNodeNFRef := LNodeIDE.ChildNodes.FindNode('NFref');
   if not Assigned(LNodeNFRef) then
     Exit;
+
   repeat
-    FModel.ide.addNFRef(GetNodeStr(LNodeNFRef, 'refNFe'));
+    LNodeRefNFe := LNodeNFRef.ChildNodes.FindNode('refNFe');
+    if Assigned(LNodeRefNFe) then
+    begin
+      FModel.ide.refNFes.Add(TGBFRNFeModelRefNFe.Create);
+      FModel.ide.refNFes.Last.refNFe := GetNodeStr(LNodeNFRef, 'refNFe');
+    end;
+
+    LNodeRefNF := LNodeNFRef.ChildNodes.FindNode('refNF');
+    if Assigned(LNodeRefNF) then
+    begin
+      FModel.ide.refNFs.Add(TGBFRNFeModelRefNF.Create);
+      FModel.ide.refNFs.Last.cUf := GetNodeStr(LNodeRefNF, 'cUF');
+      FModel.ide.refNFs.Last.aamm := GetNodeStr(LNodeRefNF, 'AAMM');
+      FModel.ide.refNFs.Last.cnpj := GetNodeStr(LNodeRefNF, 'CNPJ');
+      FModel.ide.refNFs.Last.&mod := GetNodeStr(LNodeRefNF, 'mod');
+      FModel.ide.refNFs.Last.serie := GetNodeStr(LNodeRefNF, 'serie');
+      FModel.ide.refNFs.Last.nNf := GetNodeStr(LNodeRefNF, 'nNF');
+    end;
+
+    LNodeRefNFP := LNodeNFRef.ChildNodes.FindNode('refNFP');
+    if Assigned(LNodeRefNFP) then
+    begin
+      FModel.ide.refNFPs.Add(TGBFRNFeModelRefNFP.Create);
+      FModel.ide.refNFPs.Last.cUf := GetNodeStr(LNodeRefNFP, 'cUF');
+      FModel.ide.refNFPs.Last.aamm := GetNodeStr(LNodeRefNFP, 'AAMM');
+      FModel.ide.refNFPs.Last.cnpj := GetNodeStr(LNodeRefNFP, 'CNPJ');
+      FModel.ide.refNFPs.Last.cpf := GetNodeStr(LNodeRefNFP, 'CPF');
+      FModel.ide.refNFPs.Last.ie := GetNodeStr(LNodeRefNFP, 'IE');
+      FModel.ide.refNFPs.Last.&mod := GetNodeStr(LNodeRefNFP, 'mod');
+      FModel.ide.refNFPs.Last.serie := GetNodeStr(LNodeRefNFP, 'serie');
+      FModel.ide.refNFPs.Last.nNf := GetNodeStr(LNodeRefNFP, 'nNF');
+    end;
+
+    LNodeRefECF := LNodeNFRef.ChildNodes.FindNode('refECF');
+    if Assigned(LNodeRefECF) then
+    begin
+      FModel.ide.refECFs.Add(TGBFRNFeModelRefECF.Create);
+      FModel.ide.refECFs.Last.&mod := GetNodeStr(LNodeRefECF, 'mod');
+      FModel.ide.refECFs.Last.nECF := GetNodeStr(LNodeRefECF, 'nECF');
+      FModel.ide.refECFs.Last.nCOO := GetNodeStr(LNodeRefECF, 'nCOO');
+    end;
+
     LNodeNFRef := LNodeNFRef.NextSibling;
   until LNodeNFRef = nil;
 end;

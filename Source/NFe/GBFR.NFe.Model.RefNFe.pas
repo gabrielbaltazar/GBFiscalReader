@@ -1,14 +1,14 @@
-unit GBFR.NFe.Model.NFRef;
+unit GBFR.NFe.Model.RefNFe;
 
 interface
 
-type TGBFRNFeModelNFRef = class
+type
+  TGBFRNFeModelRefNFe = class
   private
     FrefNFe: String;
-
   public
     property refNFe: String read FrefNFe write FrefNFe;
-end;
+  end;
 
 implementation
 

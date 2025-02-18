@@ -62,7 +62,7 @@ begin
   Assert.AreEqual<Currency>(8, FModel.pag.vTroco);
   Assert.AreEqual<Currency>(50, FModel.pag.detPag[0].vPag);
   Assert.AreEqual<Currency>(40, FModel.pag.detPag[1].vPag);
-  Assert.AreEqual('54742734000175', FModel.pag.detPag[1].CNPJ);
+  Assert.AreEqual('54742734000175', FModel.pag.detPag[1].Card.CNPJ);
 end;
 
 procedure TGBFRNFeTestNFCePayments.Setup;

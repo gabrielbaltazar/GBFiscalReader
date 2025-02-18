@@ -4,7 +4,10 @@ interface
 
 uses
   GBFR.NFe.Model.Types,
-  GBFR.NFe.Model.NFRef,
+  GBFR.NFe.Model.RefNFe,
+  GBFR.NFe.Model.RefNF,
+  GBFR.NFe.Model.RefNFP,
+  GBFR.NFe.Model.RefECF,
   System.Generics.Collections;
 
 type TGBFRNFeModelIde = class
@@ -20,7 +23,10 @@ type TGBFRNFeModelIde = class
     Fmod: string;
     FdSaiEnt: TDateTime;
     FcDV: String;
-    FNFRef: TObjectList<TGBFRNFeModelNFRef>;
+    FrefNFes: TObjectList<TGBFRNFeModelRefNFe>;
+    FrefNFs: TObjectList<TGBFRNFeModelRefNF>;
+    FrefNFPs: TObjectList<TGBFRNFeModelRefNFP>;
+    FrefECFs: TObjectList<TGBFRNFeModelRefECF>;
     FtpNF: TNFeTipoOperacao;
     FidDest: TNFeDestinoOperacao;
     FtpImp: TNFeFormatoImpressao;
@@ -52,9 +58,10 @@ type TGBFRNFeModelIde = class
     property procEmi: TNFeProcessoEmissao read FprocEmi write FprocEmi;
     property cDV: String read FcDV write FcDV;
     property verProc: String read FverProc write FverProc;
-    property NFRef: TObjectList<TGBFRNFeModelNFRef> read FNFRef write FNFRef;
-
-    procedure addNFRef(ARefNFe: String);
+    property refNFes: TObjectList<TGBFRNFeModelRefNFe> read FrefNFes write FrefNFes;
+    property refNFs: TObjectList<TGBFRNFeModelRefNF> read FrefNFs write FrefNFs;
+    property refNFPs: TObjectList<TGBFRNFeModelRefNFP> read FrefNFPs write FrefNFPs;
+    property refECFs: TObjectList<TGBFRNFeModelRefECF> read FrefECFs write FrefECFs;
 
     constructor create;
     destructor  Destroy; override;
@@ -64,20 +71,20 @@ implementation
 
 { TGBFRNFeModelIde }
 
-procedure TGBFRNFeModelIde.addNFRef(ARefNFe: String);
-begin
-  NFRef.Add(TGBFRNFeModelNFRef.Create);
-  NFRef.Last.refNFe := ARefNFe;
-end;
-
 constructor TGBFRNFeModelIde.create;
 begin
-  FNFRef := TObjectList<TGBFRNFeModelNFRef>.Create;
+  FrefNFes := TObjectList<TGBFRNFeModelRefNFe>.Create;
+  FrefNFs := TObjectList<TGBFRNFeModelRefNF>.Create;
+  FrefNFPs := TObjectList<TGBFRNFeModelRefNFP>.Create;
+  FrefECFs := TObjectList<TGBFRNFeModelRefECF>.Create;
 end;
 
 destructor TGBFRNFeModelIde.Destroy;
 begin
-  FNFRef.Free;
+  FrefNFes.Free;
+  FrefNFs.Free;
+  FrefNFPs.Free;
+  FrefECFs.Free;
   inherited;
 end;
 

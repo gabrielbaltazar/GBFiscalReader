@@ -117,7 +117,7 @@ begin
   Assert.AreEqual('4110805', FModel.ide.cMunFG);
   Assert.AreEqual('9', FModel.ide.cDV);
   Assert.AreEqual(NFeHomologacao, FModel.ide.tpAmb);
-  Assert.AreEqual(0, FModel.Ide.NFRef.Count);
+  Assert.AreEqual(0, FModel.Ide.refNFes.Count);
 end;
 
 procedure TGBFRNFeTestNFCeMoreItems.TestInfNFe;

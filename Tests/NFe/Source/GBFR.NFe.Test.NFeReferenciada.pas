@@ -140,11 +140,11 @@ end;
 
 procedure TGBFRNFeTestNFeReferenciada.TestIdeNotaReferenciada;
 begin
-  Assert.AreEqual(4, FModel.ide.NFRef.Count);
-  Assert.AreEqual('53190937069853000190655010000001521424299392', FModel.ide.NFRef[0].refNFe);
-  Assert.AreEqual('53190937069853000190655010000001511101259820', FModel.ide.NFRef[1].refNFe);
-  Assert.AreEqual('53190937069853000190655010000001491855056051', FModel.ide.NFRef[2].refNFe);
-  Assert.AreEqual('53190937069853000190655010000001501336520645', FModel.ide.NFRef[3].refNFe);
+  Assert.AreEqual(4, FModel.ide.refNFes.Count);
+  Assert.AreEqual('53190937069853000190655010000001521424299392', FModel.ide.refNFes[0].refNFe);
+  Assert.AreEqual('53190937069853000190655010000001511101259820', FModel.ide.refNFes[1].refNFe);
+  Assert.AreEqual('53190937069853000190655010000001491855056051', FModel.ide.refNFes[2].refNFe);
+  Assert.AreEqual('53190937069853000190655010000001501336520645', FModel.ide.refNFes[3].refNFe);
 end;
 
 procedure TGBFRNFeTestNFeReferenciada.TestImposto;
