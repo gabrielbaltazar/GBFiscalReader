@@ -65,10 +65,15 @@ type
   TGBFRNFeModelISSQNTot = GBFR.NFe.Model.ISSQNTot.TGBFRNFeModelISSQNTot;
 
   TGBFRNFeModelItem = GBFR.NFe.Model.Item.TGBFRNFeModelItem;
+
   TGBFRNFeModelRefNFe = GBFR.NFe.Model.RefNFe.TGBFRNFeModelRefNFe;
+
   TGBFRNFeModelRefNF = GBFR.NFe.Model.RefNF.TGBFRNFeModelRefNF;
+
   TGBFRNFeModelRefNFP = GBFR.NFe.Model.RefNFP.TGBFRNFeModelRefNFP;
+
   TGBFRNFeModelRefECF = GBFR.NFe.Model.RefECF.TGBFRNFeModelRefECF;
+
   TGBFRNFeModel = GBFR.NFe.Model.TGBFRNFeModel;
 
   TGBFRNFeInfEvento = GBFR.NFe.Model.TGBFRNFeInfEvento;
