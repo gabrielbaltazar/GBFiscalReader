@@ -2,6 +2,10 @@ unit GBFR.NFe.Test.NFeComISSQN;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   DUnitX.TestFramework,
   GBFR.NFe.Test.Base,

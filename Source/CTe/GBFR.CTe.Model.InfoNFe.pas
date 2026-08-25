@@ -2,6 +2,10 @@ unit GBFR.CTe.Model.InfoNFe;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 type TGBFRCTeModelInfoNFe = class
   private
     Fchave: String;

@@ -2,6 +2,10 @@ unit GBFR.SAT.Model.Types;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 type
   TSATAmbiente = (satProducao, satTestes);
 

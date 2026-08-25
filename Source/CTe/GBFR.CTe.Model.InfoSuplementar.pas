@@ -2,6 +2,10 @@ unit GBFR.CTe.Model.InfoSuplementar;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 type TGBFRCTeModelInfoSuplementar = class
   private
     FqrCodCTe: String;

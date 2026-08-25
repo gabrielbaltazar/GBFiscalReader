@@ -2,6 +2,10 @@ unit FNFeReader;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.FileCtrl,
@@ -16,7 +20,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure lstFilesDblClick(Sender: TObject);
   private
-    procedure writeNota(Value: TGBRFNFeModel);
+    procedure writeNota(Value: TGBFRNFeModel);
     { Private declarations }
   public
     { Public declarations }
@@ -37,7 +41,7 @@ end;
 procedure TfrmMain.lstFilesDblClick(Sender: TObject);
 var
   xmlFile: string;
-  nfe    : TGBRFNFeModel;
+  nfe    : TGBFRNFeModel;
 begin
   xmlFile := lstFiles.Directory + '\' + lstFiles.Items[lstFiles.ItemIndex];
   nfe     := XMLNFeReader.loadFromFile(xmlFile);
@@ -48,7 +52,7 @@ begin
   end;
 end;
 
-procedure TfrmMain.writeNota(Value: TGBRFNFeModel);
+procedure TfrmMain.writeNota(Value: TGBFRNFeModel);
 var
   I: Integer;
 begin
@@ -69,10 +73,24 @@ begin
     Add('');
 
     for I := 0 to Pred(Value.itens.Count) do
-      Add('Produto: ' + Value.itens[i].cProd + ' ' +
-                        Value.itens[i].xProd  + ' ' +
-                        Value.itens[i].qCom.ToString + ' ' +
-                        CurrToStr( Value.itens[i].vUnCom));
+      Add('Produto: ' + Value.itens[i].prod.cProd + ' ' +
+                        Value.itens[i].prod.xProd  + ' ' +
+                        Value.itens[i].prod.qCom.ToString + ' ' +
+                        CurrToStr( Value.itens[i].prod.vUnCom));
+
+    for I := 0 to Pred(Value.itens.Count) do
+      Add('IPI: ' + Value.itens[i].imposto.IPI.CST + ' ' +
+                    CurrToStr(Value.itens[i].imposto.IPI.vBC)  + ' ' +
+                    CurrToStr(Value.itens[i].imposto.IPI.pIPI) + ' ' +
+                    CurrToStr(Value.itens[i].imposto.IPI.vIPI) + ' ' +
+                    Value.itens[i].imposto.IPI.cEnq);
+
+    for I := 0 to Pred(Value.itens.Count) do
+      Add('II: ' +  CurrToStr(Value.itens[i].imposto.II.vBC)  + ' ' +
+                    CurrToStr(Value.itens[i].imposto.II.vDespAdu) + ' ' +
+                    CurrToStr(Value.itens[i].imposto.II.vII) + ' ' +
+                    CurrToStr(Value.itens[i].imposto.II.vIOF));
+
     Add('');
     Add('Troco: ' + CurrToStr( Value.pag.vTroco) );
     Add('Pagamentos');

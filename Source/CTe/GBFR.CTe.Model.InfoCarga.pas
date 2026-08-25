@@ -2,6 +2,10 @@ unit GBFR.CTe.Model.InfoCarga;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   GBFR.CTe.Model.InfoQuantidade,
   System.Generics.Collections;

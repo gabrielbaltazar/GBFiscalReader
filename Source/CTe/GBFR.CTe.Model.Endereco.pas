@@ -2,6 +2,10 @@ unit GBFR.CTe.Model.Endereco;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 type TGBFRCTeModelEndereco = class
   private
     FxLgr: String;

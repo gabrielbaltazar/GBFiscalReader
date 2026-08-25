@@ -2,6 +2,10 @@ unit GBFR.SAT.Model.Classes;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   GBFR.SAT.Model.Types,
   System.Generics.Collections,

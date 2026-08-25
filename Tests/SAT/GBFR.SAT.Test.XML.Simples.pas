@@ -2,6 +2,10 @@ unit GBFR.SAT.Test.XML.Simples;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   DUnitX.TestFramework,
   GBFR.SAT.Test.Base,

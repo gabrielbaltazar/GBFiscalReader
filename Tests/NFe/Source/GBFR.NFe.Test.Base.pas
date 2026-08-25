@@ -2,6 +2,10 @@
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   System.SysUtils,
   System.Classes,

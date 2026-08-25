@@ -2,6 +2,10 @@ unit GBFR.CTe.Model.InfoCTeNormal;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   GBFR.CTe.Model.InfoCarga,
   GBFR.CTe.Model.InfoDoc,

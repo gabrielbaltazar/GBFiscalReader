@@ -2,6 +2,10 @@ unit GBFR.SAT.XML.Interfaces;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   GBFR.SAT.Model.Classes,
   System.SysUtils,

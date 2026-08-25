@@ -2,6 +2,10 @@ unit GBFR.CTe.Model.AutDownloadXML;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 type TGBFRCTeModelAutDownloadXML = class
   private
     FCNPJ: String;

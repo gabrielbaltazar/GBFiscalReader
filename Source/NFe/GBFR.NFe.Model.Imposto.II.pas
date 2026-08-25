@@ -2,6 +2,10 @@ unit GBFR.NFe.Model.Imposto.II;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 type TGBFRNFeModelII = class
   private
     FvBC: Currency;

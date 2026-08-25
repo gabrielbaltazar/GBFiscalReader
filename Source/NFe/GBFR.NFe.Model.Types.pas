@@ -2,6 +2,10 @@ unit GBFR.NFe.Model.Types;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   System.SysUtils;
 
@@ -58,7 +62,8 @@ type
 
   TNFeCRT = (NFeSimplesNacional,
             NFeSimplesNacionalExcessoDeSublimiteDeReceitaBruta,
-            NFeRegimeNormal);
+            NFeRegimeNormal,
+            NFeSimplesNacionalMicroempreendedorIndividual);
 
   TNFeIndicadorIE = (NFeContribuinteICMS,
                     NFeContribuinteIsentoInscricao,
@@ -335,8 +340,8 @@ end;
 
 procedure TNFeCRTHelper.fromInteger(Value: Integer);
 begin
-  if (Value < 1) or (Value > 3) then
-    raise Exception.CreateFmt('Invalid NFeCRT, must be in 1, 2 or 3.', []);
+  if (Value < 1) or (Value > 4) then
+    raise Exception.CreateFmt('Invalid NFeCRT, must be in 1, 2, 3 or 4.', []);
 
   Self := TNFeCRT(Value - 1);
 end;

@@ -2,6 +2,10 @@ unit GBFR.CTe.Model.PrestacaoServico;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   GBFR.CTe.Model.ComponentePrestacao,
   System.Generics.Collections;

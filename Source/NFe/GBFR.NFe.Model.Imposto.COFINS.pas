@@ -2,6 +2,10 @@ unit GBFR.NFe.Model.Imposto.COFINS;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 type TGBFRNFeModelCOFINS = class
   private
     FCST: string;

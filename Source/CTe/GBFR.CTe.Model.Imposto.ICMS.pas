@@ -2,6 +2,10 @@ unit GBFR.CTe.Model.Imposto.ICMS;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 type TGBFRCTeModelImpostoICMS = class
   private
     FCST: String;

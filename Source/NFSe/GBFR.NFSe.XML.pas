@@ -2,6 +2,10 @@
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   GBFR.NFSe.Model.Classes,
   GBFR.NFSe.XML.Interfaces,

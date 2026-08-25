@@ -2,6 +2,10 @@ unit GBFR.CTe.Test.Base;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   DUnitX.TestFramework,
   System.SysUtils,

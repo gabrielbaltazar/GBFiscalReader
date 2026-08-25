@@ -2,6 +2,10 @@ unit GBFR.NFe.Model.Item.Imposto;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   GBFR.NFe.Model.Imposto.ICMS,
   GBFR.NFe.Model.Imposto.PIS,
@@ -10,7 +14,8 @@ uses
   GBFR.NFe.Model.Imposto.ISSQN,
   GBFR.NFe.Model.Imposto.IPI;
 
-type TGBFRNFeItemImposto = class
+type
+  TGBFRNFeItemImposto = class
   private
     FII: TGBFRNFeModelII;
     FICMS: TGBFRNFeModelICMS;
@@ -19,8 +24,10 @@ type TGBFRNFeItemImposto = class
     FCOFINS: TGBFRNFeModelCOFINS;
     FIPI: TGBFRNFeModelIPI;
     FvTotTrib: Currency;
-
   public
+    constructor Create;
+    destructor Destroy; override;
+
     property vTotTrib: Currency read FvTotTrib write FvTotTrib;
     property ICMS: TGBFRNFeModelICMS read FICMS write FICMS;
     property PIS: TGBFRNFeModelPIS read FPIS write FPIS;
@@ -28,23 +35,20 @@ type TGBFRNFeItemImposto = class
     property IPI: TGBFRNFeModelIPI read FIPI write FIPI;
     property II: TGBFRNFeModelII read FII write FII;
     property ISSQN: TGBFRNFeModelISSQN read FISSQN write FISSQN;
-
-    constructor create;
-    destructor Destroy; override;
-end;
+  end;
 
 implementation
 
 { TGBFRNFeItemImposto }
 
-constructor TGBFRNFeItemImposto.create;
+constructor TGBFRNFeItemImposto.Create;
 begin
-  FICMS   := TGBFRNFeModelICMS.Create;
-  FPIS    := TGBFRNFeModelPIS.Create;
+  FICMS := TGBFRNFeModelICMS.Create;
+  FPIS := TGBFRNFeModelPIS.Create;
   FCOFINS := TGBFRNFeModelCOFINS.Create;
-  FIPI    := TGBFRNFeModelIPI.Create;
-  FISSQN  := TGBFRNFeModelISSQN.Create;
-  FII     := TGBFRNFeModelII.Create;
+  FIPI := TGBFRNFeModelIPI.Create;
+  FISSQN := TGBFRNFeModelISSQN.Create;
+  FII := TGBFRNFeModelII.Create;
 end;
 
 destructor TGBFRNFeItemImposto.Destroy;

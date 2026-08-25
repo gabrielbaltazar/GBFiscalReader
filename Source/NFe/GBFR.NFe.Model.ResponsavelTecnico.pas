@@ -2,6 +2,10 @@ unit GBFR.NFe.Model.ResponsavelTecnico;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 type TGBFRNFeModelResponsavelTecnico = class
   private
     FCNPJ: String;

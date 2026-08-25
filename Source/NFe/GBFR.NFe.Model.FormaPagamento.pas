@@ -2,6 +2,10 @@ unit GBFR.NFe.Model.FormaPagamento;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   GBFR.NFe.Model.Types;
 

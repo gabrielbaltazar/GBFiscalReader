@@ -2,6 +2,10 @@ unit GBFR.NFe.Model.RefNFP;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 type
   TGBFRNFeModelRefNFP = class
   private

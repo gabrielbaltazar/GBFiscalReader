@@ -2,6 +2,10 @@ unit GBFR.CTe.Model.Ide;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   GBFR.CTe.Model.Types,
   GBFR.CTe.Model.Ide.Toma3,

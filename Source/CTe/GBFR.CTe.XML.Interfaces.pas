@@ -2,6 +2,10 @@ unit GBFR.CTe.XML.Interfaces;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   GBFR.CTe.Model.Classes,
   System.Classes;

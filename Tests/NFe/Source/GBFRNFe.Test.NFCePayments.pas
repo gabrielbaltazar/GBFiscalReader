@@ -2,6 +2,10 @@ unit GBFRNFe.Test.NFCePayments;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   DUnitX.TestFramework,
   GBFR.NFe.Test.Base,

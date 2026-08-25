@@ -2,11 +2,18 @@ unit GBFR.NFe.Model.Classes;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   GBFR.NFe.Model,
+  GBFR.NFe.Model.Cobranca,
   GBFR.NFe.Model.Destinatario,
   GBFR.NFe.Model.Emitente,
   GBFR.NFe.Model.Endereco,
+  GBFR.NFe.Model.Duplicata,
+  GBFR.NFe.Model.Fatura,
   GBFR.NFe.Model.FormaPagamento,
   GBFR.NFe.Model.ICMSTot,
   GBFR.NFe.Model.InfAdic,
@@ -32,11 +39,17 @@ uses
   GBFR.NFe.Model.Adi;
 
 type
+  TGBFRNFeModelCobranca = GBFR.NFe.Model.Cobranca.TGBFRNFeModelCobranca;
+
   TGBFRNFeModelDestinatario = GBFR.NFe.Model.Destinatario.TGBFRNFeModelDestinatario;
 
   TGBFRNFeModelEmitente = GBFR.NFe.Model.Emitente.TGBFRNFeModelEmitente;
 
   TGBFRNFeModelEndereco = GBFR.NFe.Model.Endereco.TGBFRNFeModelEndereco;
+
+  TGBFRNFeModelDuplicata = GBFR.NFe.Model.Duplicata.TGBFRNFeModelDuplicata;
+
+  TGBFRNFeModelFatura = GBFR.NFe.Model.Fatura.TGBFRNFeModelFatura;
 
   TGBFRNFeModelFormaPagamento = GBFR.NFe.Model.FormaPagamento.TGBFRNFeModelFormaPagamento;
 

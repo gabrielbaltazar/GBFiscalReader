@@ -9,12 +9,6 @@
         <Projects Include="CTe\GBFRCTeTest.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="SAT\GBFRSATTest.dproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="NFSe\GBFRNFSeTest.dproj">
-            <Dependencies/>
-        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -41,32 +35,14 @@
     <Target Name="GBFRCTeTest:Make">
         <MSBuild Projects="CTe\GBFRCTeTest.dproj" Targets="Make"/>
     </Target>
-    <Target Name="GBFRSATTest">
-        <MSBuild Projects="SAT\GBFRSATTest.dproj"/>
-    </Target>
-    <Target Name="GBFRSATTest:Clean">
-        <MSBuild Projects="SAT\GBFRSATTest.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="GBFRSATTest:Make">
-        <MSBuild Projects="SAT\GBFRSATTest.dproj" Targets="Make"/>
-    </Target>
-    <Target Name="GBFRNFSeTest">
-        <MSBuild Projects="NFSe\GBFRNFSeTest.dproj"/>
-    </Target>
-    <Target Name="GBFRNFSeTest:Clean">
-        <MSBuild Projects="NFSe\GBFRNFSeTest.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="GBFRNFSeTest:Make">
-        <MSBuild Projects="NFSe\GBFRNFSeTest.dproj" Targets="Make"/>
-    </Target>
     <Target Name="Build">
-        <CallTarget Targets="GBFRNFeTest;GBFRCTeTest;GBFRSATTest;GBFRNFSeTest"/>
+        <CallTarget Targets="GBFRNFeTest;GBFRCTeTest"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="GBFRNFeTest:Clean;GBFRCTeTest:Clean;GBFRSATTest:Clean;GBFRNFSeTest:Clean"/>
+        <CallTarget Targets="GBFRNFeTest:Clean;GBFRCTeTest:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="GBFRNFeTest:Make;GBFRCTeTest:Make;GBFRSATTest:Make;GBFRNFSeTest:Make"/>
+        <CallTarget Targets="GBFRNFeTest:Make;GBFRCTeTest:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

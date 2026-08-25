@@ -2,6 +2,10 @@ unit GBFRNFe.Test.NFCe.OneItem;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   DUnitX.TestFramework,
   GBFR.NFe.Test.Base,

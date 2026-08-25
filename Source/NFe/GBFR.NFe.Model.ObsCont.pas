@@ -2,6 +2,10 @@ unit GBFR.NFe.Model.ObsCont;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 type
   TGBFRNFeModelObsCont =  class
   private

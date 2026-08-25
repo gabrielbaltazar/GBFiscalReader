@@ -2,6 +2,10 @@ unit GBFR.NFe.Model.InfAdic;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   GBFR.NFe.Model.ObsFisco,
   GBFR.NFe.Model.ObsCont,

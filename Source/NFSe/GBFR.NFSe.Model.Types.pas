@@ -2,6 +2,10 @@ unit GBFR.NFSe.Model.Types;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 type
   TNFSeExigilidadeIss = (eiNenhum, eiExigivel, eiNaoIncidencia, eiIsencao, eiExportacao,
     eiImunidade, eiSuspensaJudicial, eiSuspensaProcessoAdministrativo);

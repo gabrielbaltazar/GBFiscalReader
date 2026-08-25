@@ -2,12 +2,17 @@ unit GBFR.CTe.Model;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   GBFR.CTe.Model.AutDownloadXML,
   GBFR.CTe.Model.Ide,
   GBFR.CTe.Model.DadosComplementares,
   GBFR.CTe.Model.Destinatario,
   GBFR.CTe.Model.Emitente,
+  GBFR.CTe.Model.Tomador,
   GBFR.CTe.Model.Expedidor,
   GBFR.CTe.Model.InfoCTeNormal,
   GBFR.CTe.Model.PrestacaoServico,
@@ -33,6 +38,7 @@ type TGBFRCTeModel = class
     FinfProt: TGBFRCTeModelInfProt;
     FinfCTeSupl: TGBFRCTeModelInfoSuplementar;
     Fimp: TGBFRCTeModelImposto;
+    Ftoma: TGBFRCTeModelTomador;
 
   public
     property Id: string read FId write FId;
@@ -40,6 +46,7 @@ type TGBFRCTeModel = class
     property ide: TGBFRCTeModelIde read Fide write Fide;
     property compl: TGBFRCTeModelDadosComplementares read Fcompl write Fcompl;
     property emit: TGBFRCTeModelEmitente read Femit write Femit;
+    property toma: TGBFRCTeModelTomador read Ftoma write Ftoma;
     property rem: TGBFRCTeModelRemetente read Frem write Frem;
     property exped: TGBFRCTeModelExpedidor read Fexped write Fexped;
     property dest: TGBFRCTeModelDestinatario read Fdest write Fdest;
@@ -72,6 +79,7 @@ begin
   Fide        := TGBFRCTeModelIde.Create;
   Fcompl      := TGBFRCTeModelDadosComplementares.Create;
   Femit       := TGBFRCTeModelEmitente.Create;
+  Ftoma       := TGBFRCTeModelTomador.Create;
   Frem        := TGBFRCTeModelRemetente.create;
   Fexped      := TGBFRCTeModelExpedidor.create;
   Fdest       := TGBFRCTeModelDestinatario.create;
@@ -88,6 +96,7 @@ begin
   Fide.Free;
   Fcompl.Free;
   Femit.Free;
+  Ftoma.Free;
   Frem.Free;
   Fexped.Free;
   Fdest.Free;

@@ -2,6 +2,10 @@ unit GBFR.NFe.Model.DI;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   GBFR.NFe.Model.Adi,
   GBFR.NFe.Model.Types,

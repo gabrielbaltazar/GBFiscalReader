@@ -2,6 +2,10 @@ unit GBFR.NFe.Model.Adi;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 type
   TGBFRNFeModelAdi = class
   private

@@ -2,6 +2,10 @@ unit GBFR.NFe.Model.ObsFisco;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 type
   TGBFRNFeModelObsFisco =  class
   private

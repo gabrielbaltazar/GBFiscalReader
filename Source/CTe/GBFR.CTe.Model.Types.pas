@@ -2,6 +2,10 @@ unit GBFR.CTe.Model.Types;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   System.SysUtils;
 

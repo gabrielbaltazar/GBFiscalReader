@@ -2,6 +2,10 @@ unit GBFR.CTe.Model.ModalRodoviario;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 type TGBFRCTeModelModalRodoviario = class
   private
     FRNTRC: String;

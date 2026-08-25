@@ -2,6 +2,10 @@ unit GBFR.CTe.Model.Imposto;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   GBFR.CTe.Model.Imposto.ICMS;
 

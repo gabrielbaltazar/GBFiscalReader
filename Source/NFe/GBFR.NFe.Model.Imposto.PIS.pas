@@ -2,6 +2,10 @@ unit GBFR.NFe.Model.Imposto.PIS;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 type TGBFRNFeModelPIS = class
   private
     FCST: String;

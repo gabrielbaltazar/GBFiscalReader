@@ -2,9 +2,14 @@ unit GBFR.NFe.Model;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   GBFR.NFe.Model.Types,
   GBFR.NFe.Model.Ide,
+  GBFR.NFe.Model.Cobranca,
   GBFR.NFe.Model.Destinatario,
   GBFR.NFe.Model.Emitente,
   GBFR.NFe.Model.ICMSTot,
@@ -34,6 +39,7 @@ type
     Fversao: string;
     FISSQNTot: TGBFRNFeModelISSQNTot;
     FEventos: TObjectList<TGBFRNFeInfEvento>;
+    Fcobr: TGBFRNFEModelCobranca;
   public
     constructor Create;
     destructor Destroy; override;
@@ -54,6 +60,7 @@ type
     property infRespTec: TGBFRNFeModelResponsavelTecnico read FinfRespTec write FinfRespTec;
     property protNFe: TGBFRNFeModelProtocolo read FprotNFe write FprotNFe;
     property Eventos: TObjectList<TGBFRNFeInfEvento> read FEventos write FEventos;
+    property cobr: TGBFRNFEModelCobranca read Fcobr write Fcobr;
   end;
 
   TGBFRNFeInfEvento = class
@@ -110,6 +117,7 @@ begin
   FinfAdic := TGBFRNFeModelInfAdic.Create;
   Fitens := TObjectList<TGBFRNFeModelItem>.Create;
   FEventos := TObjectList<TGBFRNFeInfEvento>.Create;
+  Fcobr := TGBFRNFEModelCobranca.create;
 end;
 
 destructor TGBFRNFeModel.Destroy;
@@ -125,6 +133,7 @@ begin
   FinfRespTec.Free;
   FprotNFe.Free;
   FEventos.Free;
+  Fcobr.Free;
   inherited;
 end;
 

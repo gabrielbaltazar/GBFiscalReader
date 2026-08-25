@@ -2,6 +2,10 @@ unit GBFR.NFe.Model.ISSQNTot;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 type TGBFRNFeModelISSQNTot = class
   private
     FvServ: Currency;

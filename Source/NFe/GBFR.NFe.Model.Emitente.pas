@@ -2,6 +2,10 @@ unit GBFR.NFe.Model.Emitente;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   GBFR.NFe.Model.Types,
   GBFR.NFe.Model.Endereco;

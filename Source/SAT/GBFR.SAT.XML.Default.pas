@@ -2,6 +2,10 @@
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   GBFR.SAT.XML.Interfaces,
   GBFR.SAT.Model.Types,

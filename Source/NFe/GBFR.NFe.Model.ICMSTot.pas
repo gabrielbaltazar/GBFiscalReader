@@ -2,6 +2,10 @@ unit GBFR.NFe.Model.ICMSTot;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 type TGBFRNFeModelICMSTot = class
   private
     FvBC: Currency;

@@ -2,6 +2,10 @@ unit GBFR.NFe.XML.Interfaces;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   GBFR.NFe.Model.Classes,
   System.Classes;

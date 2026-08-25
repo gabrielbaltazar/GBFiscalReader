@@ -2,6 +2,10 @@ unit GBFR.CTe.XML.Default;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   GBFR.CTe.Model.Classes,
   GBFR.CTe.Model.Types,
@@ -24,6 +28,7 @@ type TGBFRCTeXMLDefault = class(TGBFRXmlBase, IGBFRCTeXML)
     procedure loadTagIdeToma3(ANode: IXMLNode);
     procedure loadTagCompl;
     procedure loadTagEmit;
+    procedure loadTagToma;
     procedure loadTagRem;
     procedure loadTagExped;
     procedure loadTagDest;
@@ -62,6 +67,7 @@ begin
     loadTagIde;
     loadTagCompl;
     loadTagEmit;
+    loadTagToma;
     loadTagRem;
     loadTagExped;
     loadTagDest;
@@ -496,6 +502,26 @@ begin
 
   nodeEndereco := nodeRem.ChildNodes.FindNode('enderReme');
   loadTagEndereco(nodeEndereco, FCTe.rem.enderReme);
+end;
+
+procedure TGBFRCTeXMLDefault.loadTagToma;
+var
+  nodeToma: IXMLNode;
+  nodeEndereco: IXMLNode;
+begin
+  nodeToma := FInfCTe.ChildNodes.FindNode('toma');
+  if not Assigned(nodeToma) then
+    Exit;
+
+  FCTe.toma.CNPJ  := GetNodeStr(nodeToma, 'CNPJ');
+  FCTe.toma.CPF   := GetNodeStr(nodeToma, 'CPF');
+  FCTe.toma.IE    := GetNodeStr(nodeToma, 'IE');
+  FCTe.toma.xNome := GetNodeStr(nodeToma, 'xNome');
+  FCTe.toma.xFant := GetNodeStr(nodeToma, 'xFant');
+  FCTe.toma.fone  := GetNodeStr(nodeToma, 'fone');
+
+  nodeEndereco := nodeToma.ChildNodes.FindNode('enderToma');
+  loadTagEndereco(nodeEndereco, FCTe.toma.enderToma);
 end;
 
 procedure TGBFRCTeXMLDefault.loadTagVPrest;

@@ -2,6 +2,10 @@ unit GBFR.NFSe.Model.IssNetOnline;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   GBFR.NFSe.Model.Types,
   GBFR.NFSe.Model.Classes,

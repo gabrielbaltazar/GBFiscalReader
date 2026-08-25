@@ -2,6 +2,10 @@
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 uses
   System.Classes,
   System.SysUtils,
@@ -19,6 +23,7 @@ type
     [Weak]
     FInfNFe: IXMLNode;
     function GetNodeImposto(ANodeDet: IXMLNode; ATag: string): IXMLNode;
+    function GetNodeImpostoDevol(ANodeDet: IXMLNode; ATag: string): IXMLNode;
     procedure LoadTagInfNFe;
     procedure LoadTagIde;
     procedure LoadTagIdeNFref;
@@ -27,6 +32,7 @@ type
     procedure LoadTagDetItem;
     procedure LoadTagPag;
     procedure LoadTagTotal;
+    procedure LoadTagCobr;
     procedure LoadTagTotalICMSTot(ANodeTotal: IXMLNode);
     procedure LoadTagTotalISSQNTot(ANodeTotal: IXMLNode);
     procedure LoadTagInfRespTec;
@@ -45,6 +51,14 @@ type
     procedure LoadTagImpostoIPI(ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
     procedure LoadTagImpostoII(ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
     procedure LoadTagImpostoISSQN(ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
+    procedure LoadTagImpostoDevol(ANodeDet: IXMLNode);
+    procedure LoadTagImpostoDevolIPI(ANodeImpostoDevolIPI: IXMLNode; AItem: TGBFRNFeModelItem);
+    procedure LoadTagIBSCBS(ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
+    procedure LoadTagImpSel(ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
+    procedure LoadTagIBSUF(ANodegIBSCBS: IXMLNode; AItem: TGBFRNFeModelItem);
+    procedure LoadTagIBSMun(ANodegIBSCBS: IXMLNode; AItem: TGBFRNFeModelItem);
+    procedure LoadTagCBS(ANodegIBSCBS: IXMLNode; AItem: TGBFRNFeModelItem);
+    procedure LoadTagDFeReferenciado(ANodeDet: IXMLNode);
   protected
     function LoadFromContent(AValue: WideString): TGBFRNFeModel;
     function LoadFromFile(AValue: WideString): TGBFRNFeModel;
@@ -65,7 +79,29 @@ begin
   Result := Result.ChildNodes.FindNode(ATag);
   if not Assigned(Result) then
     Exit;
-  if not ATag.ToLower.Equals('issqn') and not ATag.ToLower.Equals('ipi') and not ATag.ToLower.Equals('ii') then
+  if not ATag.ToLower.Equals('issqn') and
+    not ATag.ToLower.Equals('ipi') and
+    not ATag.ToLower.Equals('ii') and
+    not ATag.ToLower.Equals('is') and
+    not ATag.ToLower.Equals('ibscbs') then
+  begin
+    Result := Result.ChildNodes.Get(0);
+    if not Assigned(Result) then
+      Exit;
+  end;
+end;
+
+function TGBFRNFeXMLDefault.GetNodeImpostoDevol(ANodeDet: IXMLNode;
+  ATag: string): IXMLNode;
+begin
+  Result := ANodeDet.ChildNodes.FindNode(ATag);
+  if not Assigned(Result) then
+    Exit;
+  if not ATag.ToLower.Equals('issqn') and
+    not ATag.ToLower.Equals('ipi') and
+    not ATag.ToLower.Equals('ii') and
+    not ATag.ToLower.Equals('is') and
+    not ATag.ToLower.Equals('ibscbs') then
   begin
     Result := Result.ChildNodes.Get(0);
     if not Assigned(Result) then
@@ -98,6 +134,59 @@ begin
     end;
     LNodesAdi := LNodesAdi.NextSibling;
   until (LNodeAdi = nil) or (LNodesAdi = nil);
+end;
+
+procedure TGBFRNFeXMLDefault.LoadTagCBS(ANodegIBSCBS: IXMLNode;
+  AItem: TGBFRNFeModelItem);
+var
+  LNodegCBS: IXMLNode;
+  LNodegRed: IXMLNode;
+begin
+  LNodegCBS := ANodegIBSCBS.ChildNodes.FindNode('gCBS');
+  if not Assigned(LNodegCBS) then
+    Exit;
+
+  AItem.IBSCBS.gIBSCBS.gCBS.pCBS := GetNodeFloat(LNodegCBS, 'pCBS');
+  AItem.IBSCBS.gIBSCBS.gCBS.vCBS := GetNodeCurrency(LNodegCBS, 'vCBS');
+
+  LNodegRed := LNodegCBS.ChildNodes.FindNode('gRed');
+  if Assigned(LNodegRed) then
+  begin
+    AItem.IBSCBS.gIBSCBS.gCBS.gRed.pRedAliq := GetNodeFloat(LNodegRed, 'pRedAliq');
+    AItem.IBSCBS.gIBSCBS.gCBS.gRed.pAliqEfet := GetNodeFloat(LNodegRed, 'pAliqEfet');
+  end;
+end;
+
+procedure TGBFRNFeXMLDefault.LoadTagCobr;
+var
+  LNodeCobranca: IXMLNode;
+  LNode: IXMLNode;
+  I: Integer;
+begin
+  LNodeCobranca := FInfNFe.ChildNodes.FindNode('cobr');
+  if not Assigned(LNodeCobranca) then
+    Exit;
+
+  LNode := LNodeCobranca.ChildNodes.FindNode('fat');
+  if Assigned(LNode) then
+  begin
+    FModel.cobr.fat.nFat := GetNodeStr(LNode, 'nFat');
+    FModel.cobr.fat.vOrig := GetNodeCurrency(LNode, 'vOrig');
+    FModel.cobr.fat.vDesc := GetNodeCurrency(LNode, 'vDesc');
+    FModel.cobr.fat.vLiq := GetNodeCurrency(LNode, 'vLiq');
+  end;
+
+  LNodeCobranca.ChildNodes.First;
+  for I := 0 to Pred(LNodeCobranca.ChildNodes.Count) do
+  begin
+    LNode := LNodeCobranca.ChildNodes.Get(I);
+    if LNode.NodeName <> 'dup' then
+      Continue;
+    FModel.cobr.dup.Add(TGBFRNFeModelDuplicata.Create);
+    FModel.cobr.dup.Last.nDup := GetNodeStr(LNode, 'nDup');
+    FModel.cobr.dup.Last.dVenc := GetNodeDate(LNode, 'dVenc');
+    FModel.cobr.dup.Last.vDup := GetNodeCurrency(LNode, 'vDup');
+  end;
 end;
 
 procedure TGBFRNFeXMLDefault.LoadTagDest;
@@ -180,6 +269,8 @@ begin
   LoadTagImpostoCOFINS(ANodeDet, LItem);
   LoadTagImpostoISSQN(ANodeDet, LItem);
   LoadTagImpostoII(ANodeDet, LItem);
+  LoadTagIBSCBS(ANodeDet, LItem);
+  LoadTagImpSel(ANodeDet, LItem);
 end;
 
 procedure TGBFRNFeXMLDefault.LoadTagImpostoCOFINS(ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
@@ -193,6 +284,33 @@ begin
   AItem.imposto.COFINS.vBC := GetNodeCurrency(LNodeImposto, 'vBC');
   AItem.imposto.COFINS.pCOFINS := GetNodeCurrency(LNodeImposto, 'pCOFINS');
   AItem.imposto.COFINS.vCOFINS := GetNodeCurrency(LNodeImposto, 'vCOFINS');
+end;
+
+procedure TGBFRNFeXMLDefault.LoadTagImpostoDevol(ANodeDet: IXMLNode);
+var
+  LItem: TGBFRNFeModelItem;
+  LNodeImpostoDevol: IXMLNode;
+begin
+  LItem := FModel.itens.Last;
+  LNodeImpostoDevol := ANodeDet.ChildNodes.FindNode('impostoDevol');
+
+  if not Assigned(LNodeImpostoDevol) then
+    Exit;
+
+  LItem.impostoDevol.pDevol := GetNodeCurrency(LNodeImpostoDevol, 'pDevol');
+  LoadTagImpostoDevolIPI(LNodeImpostoDevol, LItem);
+end;
+
+procedure TGBFRNFeXMLDefault.LoadTagImpostoDevolIPI(ANodeImpostoDevolIPI: IXMLNode;
+  AItem: TGBFRNFeModelItem);
+var
+  LNodeImpostoDevolIPI: IXMLNode;
+begin
+  LNodeImpostoDevolIPI := GetNodeImpostoDevol(ANodeImpostoDevolIPI, 'IPI');
+  if not Assigned(LNodeImpostoDevolIPI) then
+    Exit;
+
+  AItem.impostoDevol.IPI.vIPIDevol := GetNodeCurrency(LNodeImpostoDevolIPI, 'vIPIDevol');
 end;
 
 procedure TGBFRNFeXMLDefault.LoadTagImpostoICMS(ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
@@ -254,17 +372,32 @@ end;
 procedure TGBFRNFeXMLDefault.LoadTagImpostoIPI(ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
 var
   LNodeImposto: IXMLNode;
+  LNodeIPITrib: IXMLNode;
 begin
   LNodeImposto := GetNodeImposto(ANodeDet, 'IPI');
   if not Assigned(LNodeImposto) then
     Exit;
+  LNodeIPITrib := LNodeImposto.ChildNodes.FindNode('IPITrib');
+
+  AItem.imposto.IPI.CNPJProd := GetNodeStr(LNodeImposto, 'CNPJProd');
+  AItem.imposto.IPI.cSelo := GetNodeStr(LNodeImposto, 'cSelo');
+  AItem.imposto.IPI.qSelo := GetNodeFloat(LNodeImposto, 'qSelo');
   AItem.imposto.IPI.cEnq := GetNodeStr(LNodeImposto, 'cEnq');
-  if LNodeImposto.ChildNodes.Count > 1 then
-    LNodeImposto := LNodeImposto.ChildNodes.Get(1);
-  AItem.imposto.IPI.CST := GetNodeStr(LNodeImposto, 'CST');
-  AItem.imposto.IPI.vBC := GetNodeCurrency(LNodeImposto, 'vBC');
-  AItem.imposto.IPI.pIPI := GetNodeCurrency(LNodeImposto, 'pIPI');
-  AItem.imposto.IPI.vIPI := GetNodeCurrency(LNodeImposto, 'vIPI');
+
+  if Assigned(LNodeIPITrib) then
+  begin
+    AItem.imposto.IPI.IPITrib.CST := GetNodeStr(LNodeIPITrib, 'CST');
+    AItem.imposto.IPI.IPITrib.vBC := GetNodeCurrency(LNodeIPITrib, 'vBC');
+    AItem.imposto.IPI.IPITrib.pIPI := GetNodeCurrency(LNodeIPITrib, 'pIPI');
+    AItem.imposto.IPI.IPITrib.vIPI := GetNodeCurrency(LNodeIPITrib, 'vIPI');
+  end
+  else
+  begin
+    AItem.imposto.IPI.IPITrib.CST := GetNodeStr(LNodeImposto, 'CST');
+    AItem.imposto.IPI.IPITrib.vBC := GetNodeCurrency(LNodeImposto, 'vBC');
+    AItem.imposto.IPI.IPITrib.pIPI := GetNodeCurrency(LNodeImposto, 'pIPI');
+    AItem.imposto.IPI.IPITrib.vIPI := GetNodeCurrency(LNodeImposto, 'vIPI');
+  end;
 end;
 
 procedure TGBFRNFeXMLDefault.LoadTagImpostoISSQN(ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
@@ -294,6 +427,24 @@ begin
   AItem.imposto.PIS.vBC := GetNodeFloat(LNodeImposto, 'vBC');
   AItem.imposto.PIS.pPIS := GetNodeFloat(LNodeImposto, 'pPIS');
   AItem.imposto.PIS.vPIS := GetNodeFloat(LNodeImposto, 'vPIS');
+end;
+
+procedure TGBFRNFeXMLDefault.LoadTagImpSel(ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
+var
+  LNodeImpSel: IXMLNode;
+begin
+  LNodeImpSel := GetNodeImposto(ANodeDet, 'IS');
+  if not Assigned(LNodeImpSel) then
+    Exit;
+
+  AItem.ImpSel.CST := GetNodeStr(LNodeImpSel, 'CST');
+  AItem.ImpSel.cClassTrib := GetNodeStr(LNodeImpSel, 'cClassTrib');
+  AItem.ImpSel.vBCImpSel := GetNodeCurrency(LNodeImpSel, 'vBCImpSel');
+  AItem.ImpSel.pImpSel := GetNodeFloat(LNodeImpSel, 'pImpSel');
+  AItem.ImpSel.vImpSel := GetNodeCurrency(LNodeImpSel, 'vImpSel');
+  AItem.ImpSel.pImpSelEspec := GetNodeFloat(LNodeImpSel, 'pImpSelEspec');
+  AItem.ImpSel.uTrib := GetNodeStr(LNodeImpSel, 'uTrib');
+  AItem.ImpSel.qTrib := GetNodeFloat(LNodeImpSel, 'qTrib');
 end;
 
 procedure TGBFRNFeXMLDefault.LoadTagInfAdic;
@@ -356,9 +507,26 @@ begin
       FModel.itens.Add(LItem);
       LoadTagDI(LNodeItem);
       LoadTagImposto(LNodeDet);
+      LoadTagImpostoDevol(LNodeDet);
+      LoadTagDFeReferenciado(LNodeDet);
     end;
     LNodeDet := LNodeDet.NextSibling;
   until (LNodeDet = nil) or (LNodeItem = nil);
+end;
+
+procedure TGBFRNFeXMLDefault.LoadTagDFeReferenciado(ANodeDet: IXMLNode);
+var
+  LItem: TGBFRNFeModelItem;
+  LNodeDFeReferenciado: IXMLNode;
+begin
+  LItem := FModel.itens.Last;
+  LNodeDFeReferenciado := ANodeDet.ChildNodes.FindNode('DFeReferenciado');
+
+  if not Assigned(LNodeDFeReferenciado) then
+    Exit;
+
+  LItem.DFeReferenciado.chaveAcesso := GetNodeStr(LNodeDFeReferenciado, 'chaveAcesso');
+  LItem.DFeReferenciado.nItem := GetNodeInt(LNodeDFeReferenciado, 'nItem');
 end;
 
 procedure TGBFRNFeXMLDefault.LoadTagDI(ANodeItem: IXMLNode);
@@ -396,6 +564,70 @@ begin
 
     LNodeDI := LNodesDI.NextSibling;
   until (LNodeDI = nil) or (LNodesDI = nil);
+end;
+
+procedure TGBFRNFeXMLDefault.LoadTagIBSMun(ANodegIBSCBS: IXMLNode;
+  AItem: TGBFRNFeModelItem);
+var
+  LNodegIBSMun: IXMLNode;
+  LNodegRed: IXMLNode;
+begin
+  LNodegIBSMun := ANodegIBSCBS.ChildNodes.FindNode('gIBSMun');
+  if not Assigned(LNodegIBSMun) then
+    Exit;
+
+  AItem.IBSCBS.gIBSCBS.gIBSMun.pIBSMun := GetNodeFloat(LNodegIBSMun, 'pIBSMun');
+  AItem.IBSCBS.gIBSCBS.gIBSMun.vIBSMun := GetNodeCurrency(LNodegIBSMun, 'vIBSMun');
+
+  LNodegRed := LNodegIBSMun.ChildNodes.FindNode('gRed');
+  if Assigned(LNodegRed) then
+  begin
+    AItem.IBSCBS.gIBSCBS.gIBSMun.gRed.pRedAliq := GetNodeFloat(LNodegRed, 'pRedAliq');
+    AItem.IBSCBS.gIBSCBS.gIBSMun.gRed.pAliqEfet := GetNodeFloat(LNodegRed, 'pAliqEfet');
+  end;
+end;
+
+procedure TGBFRNFeXMLDefault.LoadTagIBSCBS(ANodeDet: IXMLNode; AItem: TGBFRNFeModelItem);
+var
+  LNodeIBSCBS: IXMLNode;
+  LNodegIBSCBS: IXMLNode;
+begin
+  LNodeIBSCBS := GetNodeImposto(ANodeDet, 'IBSCBS');
+  if not Assigned(LNodeIBSCBS) then
+    Exit;
+
+  AItem.IBSCBS.CST := GetNodeStr(LNodeIBSCBS, 'CST');
+  AItem.IBSCBS.cClassTrib := GetNodeStr(LNodeIBSCBS, 'cClassTrib');
+
+  LNodegIBSCBS := LNodeIBSCBS.ChildNodes.FindNode('gIBSCBS');
+  if Assigned(LNodegIBSCBS) then
+  begin
+    AItem.IBSCBS.gIBSCBS.vBC := GetNodeCurrency(LNodegIBSCBS, 'vBC');
+    LoadTagIBSUF(LNodegIBSCBS, AItem);
+    LoadTagIBSMun(LNodegIBSCBS, AItem);
+    LoadTagCBS(LNodegIBSCBS, AItem);
+  end;
+end;
+
+procedure TGBFRNFeXMLDefault.LoadTagIBSUF(ANodegIBSCBS: IXMLNode;
+  AItem: TGBFRNFeModelItem);
+var
+  LNodegIBSUF: IXMLNode;
+  LNodegRed: IXMLNode;
+begin
+  LNodegIBSUF := ANodegIBSCBS.ChildNodes.FindNode('gIBSUF');
+  if not Assigned(LNodegIBSUF) then
+    Exit;
+
+  AItem.IBSCBS.gIBSCBS.gIBSUF.pIBSUF := GetNodeFloat(LNodegIBSUF, 'pIBSUF');
+  AItem.IBSCBS.gIBSCBS.gIBSUF.vIBSUF := GetNodeCurrency(LNodegIBSUF, 'vIBSUF');
+
+  LNodegRed := LNodegIBSUF.ChildNodes.FindNode('gRed');
+  if Assigned(LNodegRed) then
+  begin
+    AItem.IBSCBS.gIBSCBS.gIBSUF.gRed.pRedAliq := GetNodeFloat(LNodegRed, 'pRedAliq');
+    AItem.IBSCBS.gIBSCBS.gIBSUF.gRed.pAliqEfet := GetNodeFloat(LNodegRed, 'pAliqEfet');
+  end;
 end;
 
 procedure TGBFRNFeXMLDefault.LoadTagIde;
@@ -716,6 +948,7 @@ begin
     LoadTagInfAdic;
     LoadTagInfRespTec;
     LoadTagTotal;
+    LoadTagCobr;
     LoadTagPag;
     LoadTagProtNFe;
     LoadTagRetEvento;

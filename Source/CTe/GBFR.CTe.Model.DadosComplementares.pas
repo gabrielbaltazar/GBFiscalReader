@@ -2,6 +2,10 @@ unit GBFR.CTe.Model.DadosComplementares;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 type TGBFRCTeModelDadosComplementares = class
   private
     FxCaracAd: String;

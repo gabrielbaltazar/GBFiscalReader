@@ -2,6 +2,10 @@ unit GBFR.CTe.Model.ComponentePrestacao;
 
 interface
 
+{$IFDEF WEAKPACKAGEUNIT}
+  {$WEAKPACKAGEUNIT ON}
+{$ENDIF}
+
 type TGBFRCTeModelComponentePrestacao = class
   private
     FxNome: String;
