@@ -32,11 +32,32 @@ type
   public
     constructor Create;
     destructor Destroy; override;
-end;
+  end;
+
+function RetornarConteudoTagSimples(const AXMLString, ANomeTag: string): string;
 
 implementation
 
 { TGBFRXmlBase }
+
+function RetornarConteudoTagSimples(const AXMLString, ANomeTag: string): string;
+var
+  TagAbertura, TagFechamento: string;
+  PosIni, PosFim: Integer;
+begin
+  Result := '';
+  TagAbertura := '<' + ANomeTag + '>';
+  TagFechamento := '</' + ANomeTag + '>';
+
+  PosIni := Pos(TagAbertura, AXMLString);
+  if PosIni > 0 then
+  begin
+    PosIni := PosIni + Length(TagAbertura);
+    PosFim := Pos(TagFechamento, AXMLString);
+    if PosFim > PosIni then
+      Result := Copy(AXMLString, PosIni, PosFim - PosIni);
+  end;
+end;
 
 constructor TGBFRXmlBase.Create;
 begin
@@ -179,7 +200,7 @@ begin
     .Replace(#9, '').Replace(#$D, '').Replace(#$A, '');
 
   FXml.Active := False;
-  FXml.LoadFromXML(LXml);
+  FXml.LoadFromXML(LXml.Trim);
 end;
 
 procedure TGBFRXmlBase.LoadXmlFile(AValue: string);
